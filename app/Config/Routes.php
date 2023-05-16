@@ -43,8 +43,8 @@ $routes->get('reservar/(:any)', 'ReservasMesa::index/$1');
 $routes->get('admin', 'Admin::index');
 $routes->post('reservar/reservarMesa', 'ReservasMesa::reservarMesa');
 $routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes');
-$routes->post('admin/mostrarMesas', 'ReservasMesa::mostrarMesas');
-
+$routes->post('admin/mostrarMesas', 'ReservasMesa::mostrarMesasDisponibles');
+$routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmarReservaMesa');
 
 /*
  * --------------------------------------------------------------------
