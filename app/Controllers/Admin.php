@@ -27,4 +27,22 @@ class Admin extends Controller {
         return view("template/admin", $data);
     }
 
+    public function enviarEmail()
+    {
+        $this->email = \Config\Services::email();
+
+        try {
+            $this->email->setFrom('davidmoralesm2003@gmail.com', 'David Morales - Hostal Restaurante Mejías');
+            $this->email->setTo('davidmomu4@gmail.com');
+            $this->email->setSubject('Asunto del Correo');
+            $this->email->setMessage('Cuerpo del correo electrónico');
+            
+            $this->email->send();
+            
+            echo json_encode(["data" => "success"]);
+        } catch (\Exception $e) {
+            echo "Error al enviar el correo: " . $e->getMessage();
+        }
+    }
+
 }

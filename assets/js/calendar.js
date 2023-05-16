@@ -49,26 +49,32 @@ $(document).ready(function () {
     updateCalendar();
 
     function escribeFecha() {
-
-        // Buscar si hay algún td con la clase "dia-activo"
+        let diaSeleccionado = $(this).text();
         let diaActivo = $(".dia-activo");
-        // Si se encuentra, eliminar la clase
+    
         if (diaActivo.length > 0) {
             diaActivo.removeClass("dia-activo");
         }
-
+    
         $(this).addClass("dia-activo");
-
-        let fechaSeleccionada = new Date(year, month, $(this).text())
-
+    
+        let year = new Date().getFullYear();
+        let month = new Date().getMonth();
+        let fechaSeleccionada = new Date(year, month, diaSeleccionado);
+    
         let diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         let nombreMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
         $(".date-reserva").text(diasSemana[fechaSeleccionada.getDay()] + ", " + fechaSeleccionada.getDate() +
-                             " de " + nombreMeses[fechaSeleccionada.getMonth()] + " " + fechaSeleccionada.getFullYear())
-
-        $(".date-reserva").attr("data-value", fechaSeleccionada.toISOString().substring(0, 10));
+                                 " de " + nombreMeses[fechaSeleccionada.getMonth()] + " " + fechaSeleccionada.getFullYear());
+    
+        let formattedDate = fechaSeleccionada.getFullYear() + '-' +
+                ('0' + (fechaSeleccionada.getMonth() + 1)).slice(-2) + '-' +
+                ('0' + fechaSeleccionada.getDate()).slice(-2);
+        $(".date-reserva").attr("data-value", formattedDate);
     }
+    
+    
 
     $(".horas .container button.my-2").on("click", function() {
 

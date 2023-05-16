@@ -94,7 +94,7 @@
     <div class="container">
       <div class="row justify-content-between gy-5">
         <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-          <h2 data-aos="fade-up">Ponte Cómodo,<br>Estás con los MEJÍAS</h2>
+          <h2 data-aos="fade-up">Ponte Cómodo,<br>Estás con los <b style="color: red;">MEJÍAS</b></h2>
           <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#book-a-table" class="btn-book-a-table">¡Reserva Ahora!</a>

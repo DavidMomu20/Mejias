@@ -21,7 +21,7 @@ $("#bReservarMesa").click(function() {
     let errores = [];
 
     // Comprobar si se ha elegido un dia
-    let fecha = $(".date-reserva").data("value");
+    let fecha = $(".date-reserva").attr("data-value");
     if (fecha === "")
         errores.push("No se ha elegido una fecha");
 

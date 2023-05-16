@@ -15,7 +15,7 @@
         <?php
         for ($cont = 0; $cont < $contador; $cont++):
             ?>
-            <div class="reserva">
+            <div class="reserva" data-index="<?=$reservas[$cont]->id_reserva_mesa?>">
                 <div class="reserva-contenedor">
                     <div class="div-punzon">
                         <div class="punzon"></div>
