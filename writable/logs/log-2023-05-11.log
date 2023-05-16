@@ -1,0 +1,118 @@
+CRITICAL - 2023-05-11 11:48:21 --> Trying to access array offset on value of type null
+in APPPATH\Views\template\admin.php on line 63.
+ 1 APPPATH\Views\template\admin.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\Proyectos\\mejias\\app\\Views\\template\\admin.php', 63)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\template\\admin.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('template/admin', [], true)
+ 5 APPPATH\Controllers\Admin.php(11): view('template/admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 11:48:23 --> Trying to access array offset on value of type null
+in APPPATH\Views\template\admin.php on line 63.
+ 1 APPPATH\Views\template\admin.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\Proyectos\\mejias\\app\\Views\\template\\admin.php', 63)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\template\\admin.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('template/admin', [], true)
+ 5 APPPATH\Controllers\Admin.php(11): view('template/admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:37:30 --> Undefined variable $reservas
+in APPPATH\Views\admin\reservas.php on line 10.
+ 1 APPPATH\Views\admin\reservas.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $reservas', 'C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 5 APPPATH\Controllers\Admin.php(21): view('admin/reservas')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:37:32 --> Undefined variable $reservas
+in APPPATH\Views\admin\reservas.php on line 10.
+ 1 APPPATH\Views\admin\reservas.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $reservas', 'C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 5 APPPATH\Controllers\Admin.php(21): view('admin/reservas')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:37:59 --> Cannot use object of type stdClass as array
+in APPPATH\Views\admin\reservas.php on line 19.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 4 APPPATH\Controllers\Admin.php(22): view('admin/reservas', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:38:01 --> Cannot use object of type stdClass as array
+in APPPATH\Views\admin\reservas.php on line 19.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 4 APPPATH\Controllers\Admin.php(22): view('admin/reservas', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:38:36 --> Cannot use object of type stdClass as array
+in APPPATH\Views\admin\reservas.php on line 19.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 4 APPPATH\Controllers\Admin.php(22): view('admin/reservas', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:58:12 --> Undefined variable $reserva
+in APPPATH\Views\admin\reservas.php on line 19.
+ 1 APPPATH\Views\admin\reservas.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $reserva', 'C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php', 19)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/reservas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:58:26 --> Undefined variable $reserva
+in APPPATH\Views\admin\reservas.php on line 19.
+ 1 APPPATH\Views\admin\reservas.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $reserva', 'C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php', 19)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/reservas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:58:29 --> Undefined variable $reserva
+in APPPATH\Views\admin\reservas.php on line 19.
+ 1 APPPATH\Views\admin\reservas.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $reserva', 'C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php', 19)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/reservas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-11 15:58:31 --> Undefined variable $reserva
+in APPPATH\Views\admin\reservas.php on line 19.
+ 1 APPPATH\Views\admin\reservas.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $reserva', 'C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php', 19)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\admin\\reservas.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/reservas', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/reservas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

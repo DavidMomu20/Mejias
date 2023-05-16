@@ -1,0 +1,216 @@
+CRITICAL - 2023-05-09 17:35:19 --> Undefined variable $cuerpo
+in APPPATH\Views\template\admin.php on line 83.
+ 1 APPPATH\Views\template\admin.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cuerpo', 'C:\\Proyectos\\mejias\\app\\Views\\template\\admin.php', 83)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\template\\admin.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('template/admin', [], true)
+ 5 APPPATH\Controllers\Admin.php(16): view('template/admin')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->opReservas()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-09 18:55:40 --> Undefined variable $data
+in APPPATH\Controllers\Home.php on line 9.
+ 1 APPPATH\Controllers\Home.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\Proyectos\\mejias\\app\\Controllers\\Home.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-09 19:13:40 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-05-09 19:13:40 --> Table 'mejias.usuarios_reservas-mesa' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 2)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 2)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 2)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (:id_usuario:, :id_reserva_mesa:)', [...], false)
+ 5 APPPATH\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa([...], 4)
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-09 19:13:41 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-05-09 19:13:41 --> Table 'mejias.usuarios_reservas-mesa' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 3)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 3)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 3)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (:id_usuario:, :id_reserva_mesa:)', [...], false)
+ 5 APPPATH\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa([...], 4)
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-09 19:13:42 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-05-09 19:13:42 --> Table 'mejias.usuarios_reservas-mesa' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 4)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 4)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 4)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (:id_usuario:, :id_reserva_mesa:)', [...], false)
+ 5 APPPATH\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa([...], 4)
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-09 19:13:43 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-05-09 19:13:43 --> Table 'mejias.usuarios_reservas-mesa' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 5)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 5)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 5)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (:id_usuario:, :id_reserva_mesa:)', [...], false)
+ 5 APPPATH\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa([...], 4)
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-09 19:13:44 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-05-09 19:13:44 --> Table 'mejias.usuarios_reservas-mesa' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 6)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 6)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 6)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (:id_usuario:, :id_reserva_mesa:)', [...], false)
+ 5 APPPATH\Models\Reservas_Mesa.php(30): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa([...], 4)
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-09 19:13:53 --> syntax error, unexpected token "}", expecting identifier or variable or "{" or "$"
+in APPPATH\Models\Reservas_Mesa.php on line 19.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\mejias\\app\\Models\\Reservas_Mesa.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Reservas_Mesa')
+ 3 APPPATH\Controllers\Reservas.php(21): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Reservas_Mesa')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-09 19:15:05 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(41): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-05-09 19:15:41 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(41): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-05-09 19:17:06 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(41): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-05-09 19:17:07 --> Table 'mejias.usuarios_reservas-mesa' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 9)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 9)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (4, 9)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios_reservas-mesa` (`id_usuario`, `id_reserva_mesa`) VALUES (:id_usuario:, :id_reserva_mesa:)', [...], false)
+ 5 APPPATH\Models\Reservas_Mesa.php(41): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa([...], 4)
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-09 19:18:07 --> mysqli_sql_exception: Table 'mejias.usuarios_reservas-mesa' doesn't exist in C:\Proyectos\mejias\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\Proyectos\mejias\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\mejias\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\mejias\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\mejias\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\mejias\app\Models\Reservas_Mesa.php(41): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\mejias\app\Controllers\Reservas.php(40): App\Models\Reservas_Mesa->insertReservaMesa(Array, 4)
+#6 C:\Proyectos\mejias\system\CodeIgniter.php(934): App\Controllers\Reservas->reservarMesa()
+#7 C:\Proyectos\mejias\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\mejias\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\mejias\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}

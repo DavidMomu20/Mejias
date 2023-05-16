@@ -1,0 +1,30 @@
+CRITICAL - 2023-04-27 14:14:03 --> Trying to access array offset on value of type null
+in APPPATH\Models\Roles.php on line 25.
+ 1 APPPATH\Models\Roles.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\Proyectos\\mejias\\app\\Models\\Roles.php', 25)
+ 2 APPPATH\Controllers\Register.php(23): App\Models\Roles->dameIdRol('administrador')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Register->doRegister()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-27 16:55:35 --> Undefined variable $titulo
+in APPPATH\Views\template\plantilla.php on line 8.
+ 1 APPPATH\Views\template\plantilla.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $titulo', 'C:\\Proyectos\\mejias\\app\\Views\\template\\plantilla.php', 8)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\template\\plantilla.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('template/plantilla', [], true)
+ 5 APPPATH\Controllers\Reservas.php(11): view('template/plantilla', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-27 17:07:42 --> Undefined variable $tipo
+in APPPATH\Views\mejias\reserva.php on line 6.
+ 1 APPPATH\Views\mejias\reserva.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tipo', 'C:\\Proyectos\\mejias\\app\\Views\\mejias\\reserva.php', 6)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\Proyectos\\mejias\\app\\Views\\mejias\\reserva.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('mejias/reserva', [], true)
+ 5 APPPATH\Controllers\Reservas.php(12): view('mejias/reserva')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reservas->index('mesa')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
