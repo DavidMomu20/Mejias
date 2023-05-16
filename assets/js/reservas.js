@@ -5,7 +5,8 @@
 
 $(".b-confirmar-reserva").click(function() {
 
-    let idReserva = $(this).closest('.reserva').data('index');
+    let nComensales = $(this).closest('.reserva-contenedor').find('.reserva-ncomensales span').text();
+    let fecha = $(this).closest('.reserva-contenedor').find('.reserva-fecha span').text();
 
     $(".modal-body").empty();
 
@@ -24,15 +25,13 @@ $(".b-confirmar-reserva").click(function() {
     $(".modal .modal-title").text("Confirmar Reserva de Mesa");
     $(".modal").show();
 
-    console.log($(this).closest('.reserva-contenedor').find('.reserva-fecha span').text());
-
     $.ajax({
-        url: "./mostrarMesas",
+        url: "./mostrarMesas", 
         type: "POST", 
-        dataType: "json",
+        dataType: "json", 
         data: {
-            n_comensales: $(this).closest('.reserva-contenedor').find('.reserva-ncomensales span').text(), 
-            fecha: $(this).closest('.reserva-contenedor').find('.reserva-fecha span').text()
+            n_comensales: nComensales, 
+            fecha: fecha
         },
         success: function(response) {
 
@@ -41,11 +40,8 @@ $(".b-confirmar-reserva").click(function() {
             let mesas = '<label for="mesasDisponibles">Elija una mesa de las disponibles:</label>' +
                         '<div class="mesasDisponibles">';
 
-            let botonesMesa = "";
             for (let mesa of response)
-                botonesMesa += '<button class="bMesa" data-value="' + mesa.id_mesa + '">' + mesa.id_mesa + '</button>';
-
-            mesas += botonesMesa;
+                mesas += '<button class="bMesa">' + mesa.id_mesa + '</button>';
 
             mesas += '</div>' +
                     '<div class="btn-modal text-center">' +
@@ -59,23 +55,11 @@ $(".b-confirmar-reserva").click(function() {
              * al cliente con la confirmación de reserva con la mesa elegida.
              */
 
-            /*
+            
             $(".confirmar").click(function() {
-                
-                $.ajax({
-                    url: "../confirmarReservaMesa/" + idReserva, 
-                    type: "POST", 
-                    dataType: "json", 
-                    data: {
-                        id_mesa: $(".bMesa-active").data("value"),
-                    }, 
-                    success: function(response) {
-                        console.log(response.data);
-                    }
-                })
 
             })
-            */
+            
 
             $(".bMesa").on("click", function() {
 

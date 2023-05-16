@@ -42,41 +42,14 @@ class ReservasMesa extends Controller{
             echo json_encode(["data" => "success"]);
     }
 
-    public function mostrarMesasDisponibles() {
+    public function mostrarMesas() {
 
         $mMesa = new Mesas();
-        $mRes = new Reservas_Mesa();
 
         $nc = $_POST["n_comensales"];
         $fecha = $_POST["fecha"];
-        
-        if (($mesas = $mMesa->dameMesasNComensales($nc)) && ($reservas = $mRes->dameReservasMesaByFecha($fecha))) {
-            
-            foreach ($mesas as $clave => $mesa) {
-                foreach ($reservas as $reserva) {
-                    if ($reserva["id_mesa"] == $mesa["id_mesa"]) {
-                        array_splice($mesas, $clave, 1);
-                        break;
-                    }
-                }
-            }
 
+        if ($mesas = $mMesa->dameMesasNComensales($nc))
             echo json_encode($mesas);
-        }
-    }
-
-    public function confirmarReservaMesa(?int $id = null)
-    {
-        $mRes = new Reservas_Mesa();
-
-        $datos = [
-            "id_reserva_mesa" => $id, 
-            "id_mesa" => $_POST["id_mesa"], 
-            "id_estado" => 4
-        ];
-
-        if ($mRes->updateReservaMesa($id, $datos)) {
-            echo json_encode(["data" => "Reserva confirmada correctamente"])
-        }
     }
 }
