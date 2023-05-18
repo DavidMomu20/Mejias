@@ -8,6 +8,7 @@ $(".b-confirmar-reserva").click(function() {
     let nComensales = $(this).closest('.reserva-contenedor').find('.reserva-ncomensales span').text();
     let fecha = $(this).closest('.reserva-contenedor').find('.reserva-fecha span').text();
     let idReserva = $(this).closest(".reserva").data("index");
+    let divReserva = $(this).closest(".reserva");
 
     $(".modal-body").empty();
 
@@ -68,7 +69,11 @@ $(".b-confirmar-reserva").click(function() {
                         id_mesa: $(".bMesa-active").text()
                     },
                     success: function(response) {
-                        console.log(response.data);
+
+                        $(".modal-body").empty();
+                        $(".modal-body").html("<p>" + response.data + "</p>");
+
+                        divReserva.remove();
                     }
                 })
             })
