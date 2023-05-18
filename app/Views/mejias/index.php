@@ -250,6 +250,28 @@
       </div>
     </section><!-- End Stats Counter Section -->
 
+    <!-- ======= In Memoriam Section ======= -->
+
+    <section id="in-memorian" class="in-memorian">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>En recuerdo de</h2>
+          <p>Antonio Mejías Rubio</span></p>
+        </div>
+        <div class="row gy-4">
+          <div class="col-lg-6 justify-content-center">
+            <img src="<?=base_url('assets/img/antonio.png')?>" alt="Antonio Mejías Rubio">
+            <div class="text-center">
+              <span>26/12/1964 - 30/12/2022</span>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi! Earum cumque at eos dolores non.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ======= Menu Section ======= -->
     <section id="menu" class="menu">
       <div class="container" data-aos="fade-up">

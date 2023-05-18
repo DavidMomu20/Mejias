@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Usuarios extends Model{
+class Usuarios extends M_base{
     protected $table      = 'usuarios';
     protected $primaryKey = 'id_usuario';
     protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password"];

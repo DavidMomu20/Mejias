@@ -72,11 +72,11 @@ class ReservasMesa extends Controller{
 
         $id = $_POST["id_reserva_mesa"];
         $datos = [
-            "id_mesa" => $_POST["id_mesa"], 
+            "id_mesa" => intval($_POST["id_mesa"]), 
             "id_estado" => 4
         ];
 
-        if ($mRes->updateReservaMesa($id, $datos))
+        if ($mRes->updateRegistro($id, $datos))
             echo json_encode(["data" => "Reserva Comfirmada con éxito"]);
     }
 }

@@ -3,18 +3,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Mesas extends Model{
+class Mesas extends M_base{
     protected $table      = 'mesas';
     protected $primaryKey = 'id_mesa';
-
-    /**
-     * Función para obtener todas las mesas
-     */
-
-    public function dameMesas()
-    {
-        return $this->findAll();
-    }
 
     /**
      * Obtener todas las mesas con el número máximo de comensales

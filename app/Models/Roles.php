@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Roles extends Model{
+class Roles extends M_base{
     protected $table      = 'roles';
     protected $primaryKey = 'id_rol';
 

@@ -935,6 +935,22 @@ section {
 }
 
 /*--------------------------------------------------------------
+# In Memoriam Section
+--------------------------------------------------------------*/
+
+.in-memorian {
+  background-color: #131313;
+  color: rgb(244, 243, 243);
+}
+
+.in-memorian img {
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+/*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
 .testimonials .section-header {

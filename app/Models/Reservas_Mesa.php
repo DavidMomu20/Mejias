@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Reservas_Mesa extends Model {
+class Reservas_Mesa extends M_base {
 
     protected $table      = 'reservas_mesa';
     protected $primaryKey = 'id_reserva_mesa';
@@ -48,9 +48,7 @@ class Reservas_Mesa extends Model {
 
     public function insertReservaMesa(array $data, int $id_user)
     {
-        $this->insert($data);
-
-        if ($newId = $this->insertID()) {
+        if ($newId = $this->insertarRegistro($data)) {
 
             $db = \Config\Database::connect();
             $builder = $db->table("usuarios_reservas_mesa");
@@ -61,37 +59,6 @@ class Reservas_Mesa extends Model {
             ];
 
             return $builder->insert($datos);
-        }
-    }
-
-    /**
-     * Método para actualizar los datos de una reserva
-     */
-
-    public function updateReservaMesa(int $id, array $datos)
-    {
-        // Verificar que el ID sea válido
-        if (!is_numeric($id) || $id <= 0) {
-            return false;
-        }
-
-        // Verificar que los datos sean un array y no estén vacíos
-        if (!is_array($datos) || empty($datos)) {
-            return false;
-        }
-
-        // Filtrar y sanitizar los datos
-        $datosFiltrados = [
-            'id_mesa' => filter_var($datos['id_mesa'], FILTER_SANITIZE_NUMBER_INT),
-            'id_estado' => filter_var($datos['id_estado'], FILTER_SANITIZE_NUMBER_INT),
-        ];
-
-        // Realizar la actualización del registro
-        try {
-            $this->update($id, $datosFiltrados);
-            return true;
-        } catch (\Exception $e) {
-            return false;
         }
     }
 }
