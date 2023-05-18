@@ -7,7 +7,7 @@ class Reservas_Mesa extends M_base {
 
     protected $table      = 'reservas_mesa';
     protected $primaryKey = 'id_reserva_mesa';
-    protected $allowedFields = ["id_estado", "fecha", "hora", "n_comensales"];
+    protected $allowedFields = ["id_mesa", "id_estado", "fecha", "hora", "n_comensales"];
 
     /**
      * Método para obtener todas aquellas incidencias que esten pendientes de confirmar

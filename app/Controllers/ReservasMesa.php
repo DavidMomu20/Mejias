@@ -70,13 +70,22 @@ class ReservasMesa extends Controller{
     {
         $mRes = new Reservas_Mesa();
 
-        $id = $_POST["id_reserva_mesa"];
+        $id = intval($_POST["id_reserva_mesa"]);
+
         $datos = [
-            "id_mesa" => intval($_POST["id_mesa"]), 
+            "id_mesa" => intval(filter_var($_POST["id_mesa"], FILTER_SANITIZE_NUMBER_INT)), 
             "id_estado" => 4
         ];
 
+        // Filtrar y sanitizar los datos
+        /*
+        $datosFiltrados = [
+            'id_mesa' => filter_var($datos['id_mesa'], FILTER_SANITIZE_NUMBER_INT),
+            'id_estado' => filter_var($datos['id_estado'], FILTER_SANITIZE_NUMBER_INT),
+        ];
+        */
+
         if ($mRes->updateRegistro($id, $datos))
-            echo json_encode(["data" => "Reserva Comfirmada con éxito"]);
+            echo json_encode(["data" => "Reserva Confirmada con éxito"]);
     }
 }

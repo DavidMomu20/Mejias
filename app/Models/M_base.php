@@ -100,13 +100,7 @@ class M_base extends Model {
                 return false;
             }
 
-            // Filtrar y sanitizar los datos
-            $datosFiltrados = [
-                'id_mesa' => filter_var($datos['id_mesa'], FILTER_SANITIZE_NUMBER_INT),
-                'id_estado' => filter_var($datos['id_estado'], FILTER_SANITIZE_NUMBER_INT),
-            ];
-
-            return $this->update($id, $datosFiltrados);
+            return $this->update($id, $datos);
 
         } catch (\Exception $e) {
             log_message('error', 'Error al actualizar el registro: ' . $e->getMessage());
