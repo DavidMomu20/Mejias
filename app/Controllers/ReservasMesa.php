@@ -85,7 +85,21 @@ class ReservasMesa extends Controller{
         ];
         */
 
-        if ($mRes->updateRegistro($id, $datos))
-            echo json_encode(["data" => "Reserva Confirmada con éxito"]);
+        if ($mRes->updateRegistro($id, $datos)) {
+
+            $email = new \App\Libraries\EmailsSender();
+
+            # Pasamos los parámetros del envío
+            $datosEmail['emailTO'] = "davidmomu4@gmail.com";
+            $datosEmail['subject'] = "Esto es un email de prueba";
+            $datosEmail['message'] = "Y esto es un texto de pruebas";
+
+            if ($email->SendEmails($datosEmail))
+                echo json_encode(["data" => "Reserva Confirmada con éxito - Email enviado con éxito"]);
+            else
+                echo json_encode(["data" => "Reserva Confirmada con éxito - Email enviado sin éxito"]);
+        }
+        else
+            json_encode(["data" => "Reserva Confirmada sin éxito"]);
     }
 }

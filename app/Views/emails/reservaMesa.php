@@ -1,0 +1,1 @@
+<p>¡Hola muy buenas! Reserva de Mesa Confirmada con éxito</p>
