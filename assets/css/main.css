@@ -63,6 +63,11 @@ h6 {
   font-family: var(--font-secondary);
 }
 
+.btn-book-a-table:hover {
+  background-color: #dd4545;
+  color: white;
+}
+
 /*--------------------------------------------------------------
 # Sections & Section Header
 --------------------------------------------------------------*/
@@ -1972,6 +1977,63 @@ a.tipoReserva:nth-of-type(2) {color: var(--color-alternative);}
 
 .spinner::after {
   margin: 8.9px;
+}
+
+/* ------------------------ */
+
+div.div-habs-scroll {
+  border: 1px solid rgb(180, 180, 180);
+  overflow-y: scroll;
+  max-height: 700px;
+}
+
+.habitacion {
+  min-height: 100px;
+  padding: 3% 0;
+  width: 100%;
+  height: 20%;
+}
+
+.habitacion .datos-habitacion {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 0.1fr 0.7fr 0.2fr;
+  width: 100%;
+  height: 100%;
+}
+
+.habitacion .datos-habitacion .datos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 10%;
+  width: 100%;
+  height: 100%;
+}
+
+.habitacion .datos-habitacion .datos .dato-hab {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.habitacion .datos-habitacion .datos .numero-hab span {
+  color: var(--color-primary);
+}
+
+.habitacion .datos-habitacion .datos .numero-hab {
+  font-size: 1.6rem;
+}
+
+.habitacion .datos-habitacion .image {
+  background: url(../img/habitaciones/habitacion-1.jpg);
+  background-size: cover;
+  width: 80px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.habitacion:not(.habitacion:last-of-type) {
+  border-bottom: 1px solid rgb(180, 180, 180);
 }
 
 @keyframes spinner-e04l1k {

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title><?=$titulo?></title>
+  <title><?=$titulo?> - Hostal Restaurante Mejías</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,6 +27,9 @@
 
   <!-- Template Main CSS File -->
   <link href="<?php echo base_url('assets/css/main.css');?>" rel="stylesheet">
+
+  <!-- Font Awesome Script -->
+  <script src="https://use.fontawesome.com/releases/v6.4.0/js/all.js" crossorigin="anonymous"></script>
 
   <!-- =======================================================
   * Template Name: Yummy
@@ -51,12 +54,12 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Principal</a></li>
-          <li><a href="#about">Acerca de</a></li>
-          <li><a href="#menu">Menú</a></li>
-          <li><a href="#events">Eventos</a></li>
-          <li><a href="#chefs">Habitaciones</a></li>
-          <li><a href="#gallery">Galería</a></li>
+          <li><a href="<?=base_url()?>#hero">Principal</a></li>
+          <li><a href="<?=base_url()?>#about">Acerca de</a></li>
+          <li><a href="<?=base_url()?>#menu">Menú</a></li>
+          <li><a href="<?=base_url()?>#events">Eventos</a></li>
+          <li><a href="<?=base_url()?>#habitaciones">Habitaciones</a></li>
+          <li><a href="<?=base_url()?>#gallery">Galería</a></li>
           <!--
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -76,7 +79,7 @@
             </ul>
           </li>
           -->
-          <li><a href="#contact">Contacto</a></li>
+          <li><a href="<?=base_url()?>#contact">Contacto</a></li>
         </ul>
       </nav><!-- .navbar -->
 

@@ -16,4 +16,11 @@ class Home extends BaseController
         $data["cuerpo"] = view('mejias/reserva' . $tipo, $data);
         return view('template/plantilla', $data);
     }
+
+    public function verHabitaciones()
+    {
+        $data["titulo"] = "Ver Habitaciones";
+        $data["cuerpo"] = view('mejias/habitaciones');
+        return view('template/plantilla', $data);
+    }
 }

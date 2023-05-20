@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index');
 
 $routes->add('/Home', 'Home::index');
 $routes->get('reservar/(:any)', 'Home::reservaElegida/$1');
+$routes->get('habitaciones', 'Home::verHabitaciones');
 $routes->post('doLogin', 'Login::doLogin');
 $routes->get('logout', 'Login::logout');
 $routes->post('doRegister', 'Register::doRegister');
