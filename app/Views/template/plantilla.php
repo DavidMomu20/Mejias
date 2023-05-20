@@ -82,16 +82,6 @@
 
       <?php
       if (session()->get('logged_in')) {
-        if (session()->get('permisos_user')["perm7"] == 1) {
-          ?>
-          <a class="btn-book-a-table" href="<?=site_url('/eligeReserva');?>">¡Reserva Ahora!</a>
-          <?php
-        }
-        else {
-          ?>
-          <a class="btn-book-a-table" href="<?=site_url('/admin');?>">Volver a Gestor</a>
-          <?php
-        }
         ?>
         <a class="btn-book-a-table" href="<?=site_url('/logout');?>">Cerrar Sesión</a>
         <?php

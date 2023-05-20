@@ -63,16 +63,6 @@
 
       <?php
       if (session()->get('logged_in')) {
-        if (session()->get('permisos_user')["perm7"] == 1) {
-          ?>
-          <a class="btn-book-a-table" href="<?=site_url('/eligeReserva');?>">¡Reserva Ahora!</a>
-          <?php
-        }
-        else {
-          ?>
-          <a class="btn-book-a-table" href="<?=site_url('/admin');?>">Volver a Gestor</a>
-          <?php
-        }
         ?>
         <a class="btn-book-a-table" href="<?=site_url('/logout');?>">Cerrar Sesión</a>
         <?php
@@ -96,10 +86,18 @@
         <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
           <h2 data-aos="fade-up">Ponte Cómodo,<br>Estás con los <b style="color: red;">MEJÍAS</b></h2>
           <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
-          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#book-a-table" class="btn-book-a-table">¡Reserva Ahora!</a>
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Ver vídeo</span></a>
-          </div>
+          <?php if (session()->get('logged_in')): ?>
+            <?php if (session()->get('permisos_user')["perm7"] == 1): ?>
+                <div class="d-flex div-opReservas" data-aos="fade-up" data-aos-delay="200" data-haysesion="<?= session()->get('logged_in') ?>">
+                    <a id="reservarMesa" class="btn-book-a-table opReservas">¡Reserva Mesa!</a>
+                    <a id="reservarHabitacion" class="btn-book-a-table opReservas" style="background-color: blue;">¡Reserva Habitación!</a>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200" data-haysesion="<?= session()->get('logged_in') ?>">
+                <p style="font-style: italic; font-weight: bold; color: red;">¡Iniciar Sesión para poder reservar!</p>
+            </div>
+        <?php endif; ?>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
           <img src="<?php echo base_url('assets/img/HOSTAL - RESTAURANTE.png'); ?>" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
@@ -1197,6 +1195,7 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="<?php echo base_url('assets/js/formsLogin.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+  <script src="<?=base_url('assets/js/inicio.js')?>"></script>
 
 </body>
 

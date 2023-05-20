@@ -8,14 +8,6 @@ use App\Models\Mesas;
 
 class ReservasMesa extends Controller{
 
-    public function index(?string $tipo = null)
-    {
-        $data["tipo"] = $tipo;
-        $data["titulo"] = "Reserva de " . $tipo;
-        $data["cuerpo"] = view('mejias/reserva', $data);
-        return view('template/plantilla', $data);
-    }
-
     public function reservarMesa()
     {
         $id_user = intval(session()->get('id_user'));
@@ -100,6 +92,6 @@ class ReservasMesa extends Controller{
                 echo json_encode(["data" => "Reserva Confirmada con éxito - Email enviado sin éxito"]);
         }
         else
-            json_encode(["data" => "Reserva Confirmada sin éxito"]);
+            echo json_encode(["data" => "Reserva Confirmada sin éxito"]);
     }
 }

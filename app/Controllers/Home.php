@@ -9,11 +9,11 @@ class Home extends BaseController
         echo view('mejias/index');
     }
 
-    public function eligeReserva()
+    public function reservaElegida(?string $tipo = null)
     {
-        $data["titulo"] = "Elige Reserva";
-        $data["cuerpo"] = view('mejias/eligeReserva');
-
-        echo view('template/plantilla', $data);
+        $data["tipo"] = $tipo;
+        $data["titulo"] = "Reserva de " . $tipo;
+        $data["cuerpo"] = view('mejias/reserva' . $tipo, $data);
+        return view('template/plantilla', $data);
     }
 }
