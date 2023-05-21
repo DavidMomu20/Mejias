@@ -41,6 +41,7 @@ $routes->get('logout', 'Login::logout');
 $routes->post('doRegister', 'Register::doRegister');
 $routes->post('reservar/reservarMesa', 'ReservasMesa::reservarMesa');
 $routes->post('admin/mostrarMesas', 'ReservasMesa::mostrarMesasDisponibles');
+$routes->post('buscarHabitaciones', 'ReservasHabitacion::buscarHabitaciones');
 $routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmarReservaMesa');
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes');

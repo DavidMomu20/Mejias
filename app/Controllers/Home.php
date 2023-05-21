@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Habitaciones;
+
 class Home extends BaseController
 {
     public function index()
@@ -19,8 +21,11 @@ class Home extends BaseController
 
     public function verHabitaciones()
     {
+        $mHab = new Habitaciones();
+        
+        $data["habitaciones"] = $mHab->obtenerRegistros();
         $data["titulo"] = "Ver Habitaciones";
-        $data["cuerpo"] = view('mejias/habitaciones');
+        $data["cuerpo"] = view('mejias/habitaciones', $data);
         return view('template/plantilla', $data);
     }
 }

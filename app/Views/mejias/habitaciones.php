@@ -38,34 +38,31 @@
                         </div>
                         <div class="row mt-4">
                             <div class="div-habs-scroll">
-                                    <div class="habitacion">
-                                        <div class="datos-habitacion">
-                                            <div class="image"></div>
-                                            <div class="datos">
-                                                <div class="dato-hab numero-hab"><span>Habitación</span> 215</div>
-                                                <div class="dato-hab capacidad-hab">
-                                                    <i class="fa-solid fa-user-group"></i>
-                                                    <span>2 personas</span>
+                                    <?php
+                                    foreach($habitaciones as $habitacion):
+                                        ?>
+                                        <div class="habitacion" data-value="<?=$habitacion["id_habitacion"]?>">
+                                            <div class="datos-habitacion">
+                                                <div class="image" style="background: url(<?=base_url('assets/img/habitaciones/' . $habitacion["foto"])?>)"></div>
+                                                <div class="datos">
+                                                    <div class="dato-hab numero-hab"><span>Habitación</span> <?=$habitacion["num_habitacion"]?></div>
+                                                    <div class="dato-hab capacidad-hab" data-value="<?=$habitacion["capacidad"]?>">
+                                                        <i class="fa-solid fa-user-group"></i>
+                                                        <span><?=$habitacion["capacidad"]?> personas</span>
+                                                    </div>
+                                                    <div class="dato-hab precio-hab" data-value="<?=$habitacion["precio"]?>">
+                                                        <i class="fa-solid fa-money-bill-wave"></i>
+                                                        <span><?=$habitacion["precio"]?>€ / noche</span>
+                                                    </div>
                                                 </div>
-                                                <div class="dato-hab precio-hab">
-                                                    <i class="fa-solid fa-money-bill-wave"></i>
-                                                    <span>20€ / noche</span>
+                                                <div class="div-bReservarHab">
+                                                    <button class="btn btn-book-a-table">Reservar</button>
                                                 </div>
-                                            </div>
-                                            <div class="div-bReservarHab">
-                                                <button class="btn btn-book-a-table">Reservar</button>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
-                                    <div class="habitacion"><h2>Mi Div</h2></div>
+                                        <?php
+                                    endforeach;
+                                    ?>
                             </div>
                         </div>
                     </div>
@@ -75,3 +72,5 @@
 
     </div>
 </section>
+
+<script src="<?=base_url('assets/js/habitaciones.js')?>"></script>
