@@ -5,6 +5,22 @@ $(function() {
             '<span class="cargando">Buscando habitaciones...</span>' + 
             '</div>';
 
+    /**
+     * Al pulsar sobre cualquier botón para reservar una habitación, se abrirá un modal con el formulario
+     * necesario para la reserva
+     */
+
+    $(".div-habs-scroll").on("click", ".div-bReservarHab button", function(){
+        
+        let idHab = $(this).closest(".habitacion").data("value");
+        window.location.href = "./reservar/habitacion/" + idHab;
+    });
+
+    /**
+     * Al escribir sobre cualquiera de los inputs del filtro, se realizará una búsqueda de las habitaciones
+     * con los datos establecidos
+     */
+
     $(".form-control").on("input", function() {
 
         $(".div-habs-scroll").empty();
@@ -53,4 +69,12 @@ $(function() {
             }
         })
     })
+
+    $(".modal [aria-label=Close]").on("click", function() {
+    
+        $(".modal").removeClass("fade");
+        $(".modal").removeClass("show");
+      
+        $(".modal").hide();
+      })
 })

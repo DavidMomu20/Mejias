@@ -8,7 +8,7 @@ use App\Models\Mesas;
 
 class ReservasMesa extends Controller{
 
-    public function reservarMesa()
+    public function realizarReservaMesa()
     {
         $id_user = intval(session()->get('id_user'));
         $mRes = new Reservas_Mesa();

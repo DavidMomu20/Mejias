@@ -47,7 +47,7 @@ $(".b-confirmar-reserva").click(function() {
 
             mesas += '</div>' +
                     '<div class="btn-modal text-center">' +
-                    '<button type="button" class="btn btn-success confirmar">Confirmar</button>' +
+                    "<button type='button' class='btn btn-success confirmar'>\nConfirmar\n</button>" +
                     '</div>';
 
             $(".modal-body").html(mesas);
@@ -59,6 +59,10 @@ $(".b-confirmar-reserva").click(function() {
 
             
             $(".confirmar").click(function() {
+
+                let spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+                $(this).prepend(spinner);
+                $(this).attr("disabled", "true");
 
                 $.ajax({
                     url: "./confirmarReservaMesa", 

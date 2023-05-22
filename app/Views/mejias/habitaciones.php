@@ -74,3 +74,4 @@
 </section>
 
 <script src="<?=base_url('assets/js/habitaciones.js')?>"></script>
+<script src="<?=base_url('assets/js/calendar.js')?>"></script>

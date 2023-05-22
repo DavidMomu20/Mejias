@@ -3,7 +3,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-            <h2>Reservar <?=$tipo?></h2>
+            <h2>Reservar habitación</h2>
             <p>Rellene los <span>siguientes datos</span>, por  favor</p>
         </div>
 
@@ -61,18 +61,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col reserva-comensales text-center">
-                        <div class="comensales">
-                            <label for="n_comensales">¿Cuántas personas sois?</label>
-                            <div class="inp-comensales">
-                                <button class="bCount bMenos">-</button>
-                                <input type="number" name="n_comensales" id="n_comensales" value="1" min="1" max="10">
-                                <button class="bCount bMas">+</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="row" style="margin-top: 3rem;">
                     <div class="col text-center">

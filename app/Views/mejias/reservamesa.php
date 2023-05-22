@@ -3,7 +3,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-            <h2>Reservar <?=$tipo?></h2>
+            <h2>Reservar mesa</h2>
             <p>Rellene los <span>siguientes datos</span>, por  favor</p>
         </div>
 

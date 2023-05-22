@@ -34,12 +34,13 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 $routes->add('/Home', 'Home::index');
-$routes->get('reservar/(:any)', 'Home::reservaElegida/$1');
+$routes->get('reservar/mesa', 'Home::reservarMesa');
+$routes->get('reservar/habitacion/(:num)', 'Home::reservarHab/$1');
 $routes->get('habitaciones', 'Home::verHabitaciones');
 $routes->post('doLogin', 'Login::doLogin');
 $routes->get('logout', 'Login::logout');
 $routes->post('doRegister', 'Register::doRegister');
-$routes->post('reservar/reservarMesa', 'ReservasMesa::reservarMesa');
+$routes->post('reservar/reservarMesa', 'ReservasMesa::realizarReservaMesa');
 $routes->post('admin/mostrarMesas', 'ReservasMesa::mostrarMesasDisponibles');
 $routes->post('buscarHabitaciones', 'ReservasHabitacion::buscarHabitaciones');
 $routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmarReservaMesa');

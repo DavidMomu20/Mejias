@@ -5,6 +5,6 @@ $(function() {
     if (haySesion) {
 
         $("#reservarMesa").click(function() { window.location.href = "./reservar/mesa"; })
-        $("#reservarHabitacion").click(function() { window.location.href = "./reservar/habitacion"; })
+        $("#reservarHabitacion").click(function() { window.location.href = "./habitaciones"; })
     }
 })

@@ -1812,6 +1812,10 @@ div.div-habs-scroll .loading {
   border-bottom: 1px solid rgb(180, 180, 180);
 }
 
+.modal {
+  background-color: rgba(205, 205, 205, 0.8);
+}
+
 @keyframes spinner-e04l1k {
   100% {
     transform: rotate(1turn);
