@@ -5,6 +5,8 @@
  * -- Con este calendario podremos establecer las fechas para la reserva.
  */
 
+var diaInicio = true;
+
 class Calendario {
 
     constructor() {
@@ -101,13 +103,10 @@ class CalendarioPlus extends Calendario {
     
     constructor() {
         super();
-        this.fechaFinSeleccionada = null;
     }
 
     escribeFecha() {
         const diaSeleccionado = $(this).text();
-        const diaActivo = $(".dia-activo");
-        const diaFinActivo = $(".dia-fin-activo");
         const year = new Date().getFullYear();
         const month = new Date().getMonth();
         const fechaSeleccionada = new Date(year, month, diaSeleccionado);
@@ -115,45 +114,36 @@ class CalendarioPlus extends Calendario {
         const nombreMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
         const formattedDate = fechaSeleccionada.getFullYear() + '-' + ('0' + (fechaSeleccionada.getMonth() + 1)).slice(-2) + '-' + ('0' + fechaSeleccionada.getDate()).slice(-2);
 
-        if (diaActivo.length === 0) {
+        let diaActivo = $(".dia-activo");
+        let diaFinActivo = $(".dia-fin-activo");
+
+        console.log(diaActivo.length + " - " + diaFinActivo.length);
+
+        if (diaActivo.length > 0 && diaFinActivo.length > 0) {
+            $(".dia-activo").removeClass("dia-activo");
+            $(".dia-fin-activo").removeClass("dia-fin-activo");
+
             $(this).addClass("dia-activo");
+
             $(".fecha-inicio-reserva").text(`${diasSemana[fechaSeleccionada.getDay()]}, ${fechaSeleccionada.getDate()} de ${nombreMeses[fechaSeleccionada.getMonth()]} ${fechaSeleccionada.getFullYear()}`);
             $(".fecha-inicio-reserva").attr("data-value", formattedDate);
 
-        } else if (diaFinActivo.length === 0 && !$(this).hasClass("dia-activo")) {
-            $(this).addClass("dia-fin-activo");
-            this.diaFinActivo = $(this);
-            $(".fecha-fin-reserva").text(`${diasSemana[fechaSeleccionada.getDay()]}, ${fechaSeleccionada.getDate()} de ${nombreMeses[fechaSeleccionada.getMonth()]} ${fechaSeleccionada.getFullYear()}`);
-            $(".fecha-fin-reserva").attr("data-value", formattedDate);
-        } else if (!$(this).hasClass("dia-activo") && !$(this).hasClass("dia-fin-activo")) {
-            
-            // Comparar fechas
-            let fechaInicioReserva = new Date($(".fecha-inicio-reserva").attr("data-value"));
-            let fechaFinReserva = new Date($(".fecha-fin-reserva").attr("data-value"));
-
-            if (fechaSeleccionada < fechaInicioReserva) {
-
-                $(".dia-activo").removeClass("dia-activo");
-                $(this).addClass("dia-activo");
-
-                $(".fecha-inicio-reserva").text(diasSemana[fechaSeleccionada.getDay()] + ", " + fechaSeleccionada.getDate() + " de " + nombreMeses[fechaSeleccionada.getMonth()] + " " + fechaSeleccionada.getFullYear());
-                $(".fecha-inicio-reserva").attr("data-value", formattedDate);
-
-            } else if (fechaSeleccionada > fechaFinReserva) {
-                $(".dia-fin-activo").removeClass("dia-fin-activo");
+            $(".fecha-fin-reserva").text("Sin definir");
+            $(".fecha-fin-reserva").removeAttr("data-value");
+        }
+        else {
+            if (diaActivo.length > 0) {
                 $(this).addClass("dia-fin-activo");
 
-                $(".fecha-fin-reserva").text(diasSemana[fechaSeleccionada.getDay()] + ", " + fechaSeleccionada.getDate() + " de " + nombreMeses[fechaSeleccionada.getMonth()] + " " + fechaSeleccionada.getFullYear());
+                $(".fecha-fin-reserva").text(`${diasSemana[fechaSeleccionada.getDay()]}, ${fechaSeleccionada.getDate()} de ${nombreMeses[fechaSeleccionada.getMonth()]} ${fechaSeleccionada.getFullYear()}`);
                 $(".fecha-fin-reserva").attr("data-value", formattedDate);
-
-            } else {
-                $(".dia-activo").removeClass("dia-activo");
+            }
+            else {
                 $(this).addClass("dia-activo");
 
-                $(".fecha-inicio-reserva").text(diasSemana[fechaSeleccionada.getDay()] + ", " + fechaSeleccionada.getDate() + " de " + nombreMeses[fechaSeleccionada.getMonth()] + " " + fechaSeleccionada.getFullYear());
+                $(".fecha-inicio-reserva").text(`${diasSemana[fechaSeleccionada.getDay()]}, ${fechaSeleccionada.getDate()} de ${nombreMeses[fechaSeleccionada.getMonth()]} ${fechaSeleccionada.getFullYear()}`);
                 $(".fecha-inicio-reserva").attr("data-value", formattedDate);
             }
-
         }
     }
 }
