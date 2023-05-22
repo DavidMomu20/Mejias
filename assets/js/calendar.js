@@ -1,66 +1,70 @@
-$(document).ready(function () {
-    var date = new Date();
-    var month = date.getMonth();
-    var year = date.getFullYear();
-    var months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+/**
+ * Clase Calendario
+ * 
+ * -- Esta clase crea un calendario en el cual puedes escoger una fecha determinada. 
+ * -- Con este calendario podremos establecer las fechas para la reserva.
+ */
 
-    $(".prev-month").click(function () {
-        var calendar = $(this).closest('.calendar');
-        var monthElement = calendar.find('.current-month-year');
-        var month = monthElement.data('month');
-        var year = monthElement.data('year');
+class Calendario {
 
-        if (month === 0) {
-            month = 11;
-            year--;
-        } else {
-            month--;
+    constructor() {
+        this.months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        this.currentDate = new Date();
+        this.month = this.currentDate.getMonth();
+        this.year = this.currentDate.getFullYear();
+
+        this.initialize();
+    }
+
+    initialize() {
+        $(".prev-month").click(() => {
+            if (this.month === 0) {
+                this.month = 11;
+                this.year--;
+            } else {
+                this.month--;
+            }
+            this.updateCalendar();
+        });
+
+        $(".next-month").click(() => {
+            if (this.month === 11) {
+                this.month = 0;
+                this.year++;
+            } else {
+                this.month++;
+            }
+            this.updateCalendar();
+        });
+
+        this.updateCalendar();
+    }
+
+    updateCalendar() {
+        let monthElement = $(".current-month-year");
+        monthElement.data('month', this.month);
+        monthElement.data('year', this.year);
+
+        monthElement.text(this.months[this.month] + " " + this.year);
+        $(".calendar-days").empty();
+
+        let firstDay = new Date(this.year, this.month, 1).getDay();
+        let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+
+        for (let i = 0; i < firstDay; i++) {
+            $('.calendar-days').append('<div class="calendar-day"></div>');
         }
-        updateCalendar(calendar, month, year);
-    });
 
-    $(".next-month").click(function () {
-        var calendar = $(this).closest('.calendar');
-        var monthElement = calendar.find('.current-month-year');
-        var month = monthElement.data('month');
-        var year = monthElement.data('year');
-
-        if (month === 11) {
-            month = 0;
-            year++;
-        } else {
-            month++;
-        }
-        updateCalendar(calendar, month, year);
-    });
-
-    function updateCalendar(calendar, month, year) {
-        var monthElement = calendar.find('.current-month-year');
-        monthElement.data('month', month);
-        monthElement.data('year', year);
-
-        monthElement.text(months[month] + " " + year);
-        calendar.find(".calendar-days").empty();
-
-        // Obtener el primer día del mes y el número de días en el mes
-        var firstDay = new Date(year, month, 1).getDay();
-        var daysInMonth = new Date(year, month + 1, 0).getDate();
-
-        // Ajustar los días del calendario para que correspondan al día de la semana correcto
-        for (var i = 0; i < firstDay; i++) {
-            calendar.find('.calendar-days').append('<div class="calendar-day"></div>');
-        }
-
-        for (var i = 1; i <= daysInMonth; i++) {
-            var day = $('<div class="calendar-day">' + i + '</div>');
-            calendar.find('.calendar-days').append(day);
-            day.click(escribeFecha);
+        for (let i = 1; i <= daysInMonth; i++) {
+            let day = $('<div class="calendar-day">' + i + '</div>');
+            $('.calendar-days').append(day);
+            day.click(this.escribeFecha);
         }
     }
 
-    function escribeFecha() {
-        var diaSeleccionado = $(this).text();
-        var diaActivo = $(".dia-activo");
+    escribeFecha() {
+        let diaSeleccionado = $(this).text();
+        let diaActivo = $(".dia-activo");
 
         if (diaActivo.length > 0) {
             diaActivo.removeClass("dia-activo");
@@ -68,43 +72,51 @@ $(document).ready(function () {
 
         $(this).addClass("dia-activo");
 
-        var year = new Date().getFullYear();
-        var month = new Date().getMonth();
-        var fechaSeleccionada = new Date(year, month, diaSeleccionado);
+        let year = new Date().getFullYear();
+        let month = new Date().getMonth();
+        let fechaSeleccionada = new Date(year, month, diaSeleccionado);
 
-        var diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-        var nombreMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        let diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        let nombreMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
         $(".date-reserva").text(diasSemana[fechaSeleccionada.getDay()] + ", " + fechaSeleccionada.getDate() +
-                                 " de " + nombreMeses[fechaSeleccionada.getMonth()] + " " + fechaSeleccionada.getFullYear());
+            " de " + nombreMeses[fechaSeleccionada.getMonth()] + " " + fechaSeleccionada.getFullYear());
 
-        var formattedDate = fechaSeleccionada.getFullYear() + '-' +
-                ('0' + (fechaSeleccionada.getMonth() + 1)).slice(-2) + '-' +
-                ('0' + fechaSeleccionada.getDate()).slice(-2);
+        let formattedDate = fechaSeleccionada.getFullYear() + '-' +
+            ('0' + (fechaSeleccionada.getMonth() + 1)).slice(-2) + '-' +
+            ('0' + fechaSeleccionada.getDate()).slice(-2);
         $(".date-reserva").attr("data-value", formattedDate);
     }
+}
 
-    updateCalendar($(".reserva-calendario .calendar"), month, year);
-    updateCalendar($(".reserva-horas .calendar"), month, year);
+/**
+ * Clase CalendarioPlus 
+ * 
+ * -- Clase que hereda de Calendario.
+ * -- Se le han agregado nuevas funcionalidades, necesarias para la reserva de habitaciones
+ */
 
-    $(".horas .container button.my-2").on("click", function() {
-        $(".horas .container .hora-activa").removeClass("hora-activa");
-        $(this).addClass("hora-activa");
-    });
+class CalendarioPlus extends Calendario {
 
-    $(".bMas").on("click", function() {
-        var valorActual = parseInt($("#n_comensales").val());
-        var valorMaximo = parseInt($("#n_comensales").attr("max"));
+    constructor() {
+        super();
+    }
 
-        if (valorActual < valorMaximo)
-            $("#n_comensales").val(valorActual + 1); 
-    });
+    escribeFecha() {
+        
+        super.escribeFecha();
 
-    $(".bMenos").on("click", function() {
-        var valorActual = parseInt($("#n_comensales").val());
-        var valorMinimo = parseInt($("#n_comensales").attr("min"));
+        console.log(this.outerHTML);
+    }
 
-        if (valorActual > valorMinimo)
-            $("#n_comensales").val(valorActual - 1); 
-    });
-});
+    ponerFechaFin() {
+
+        let diaActivo = $(".dia-activo");
+        if (diaActivo) {
+            console.log("Hay un día activo");
+        }
+        else {
+            console.log("No hay día activo");
+        }
+    }
+}

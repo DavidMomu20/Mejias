@@ -13,54 +13,34 @@
 
             <div class="col-lg-8 d-flex align-items-center reservation-form-bg custom-width div-form-reserva" style="padding: 5% 0;">
             <form method="post">
+                <div class="row fechas-elegidas">
+                    <div class="col-6 fecha-inicio-reserva">Hola mundo</div>
+                    <div class="col-6 fecha-fin-reserva">Hola mundo</div>
+                </div>
                 <div class="row">
-                <div class="col reserva-calendario">
-                    <div class="date-inicio-reserva">
-                        Elija un día:
-                    </div>
-                    <div class="calendar">
-                        <div class="calendar-header">
-                            <span class="prev-month">&#8249;</span>
-                            <span class="current-month-year"></span>
-                            <span class="next-month">&#8250;</span>
+                    <div class="col reserva-calendario">
+                        <div class="date-reserva">
+                            Elija un día de inicio:
                         </div>
-                        <div class="calendar-weekdays">
-                            <span>Dom</span>
-                            <span>Lun</span>
-                            <span>Mar</span>
-                            <span>Mie</span>
-                            <span>Jue</span>
-                            <span>Vie</span>
-                            <span>Sab</span>
-                        </div>
-                        <div class="calendar-days">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col reserva-horas">
-                    <div class="date-inicio-reserva">
-                        Elija un día:
-                    </div>
-                    <div class="calendar">
-                        <div class="calendar-header">
-                            <span class="prev-month">&#8249;</span>
-                            <span class="current-month-year"></span>
-                            <span class="next-month">&#8250;</span>
-                        </div>
-                        <div class="calendar-weekdays">
-                            <span>Dom</span>
-                            <span>Lun</span>
-                            <span>Mar</span>
-                            <span>Mie</span>
-                            <span>Jue</span>
-                            <span>Vie</span>
-                            <span>Sab</span>
-                        </div>
-                        <div class="calendar-days">
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <span class="prev-month">&#8249;</span>
+                                <span class="current-month-year"></span>
+                                <span class="next-month">&#8250;</span>
+                            </div>
+                            <div class="calendar-weekdays">
+                                <span>Dom</span>
+                                <span>Lun</span>
+                                <span>Mar</span>
+                                <span>Mie</span>
+                                <span>Jue</span>
+                                <span>Vie</span>
+                                <span>Sab</span>
+                            </div>
+                            <div class="calendar-days">
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <div class="row" style="margin-top: 3rem;">
                     <div class="col text-center">

@@ -1,19 +1,32 @@
+$(function() {
+    
+    new Calendario();
+
+    $(".horas .container button.my-2").on("click", function () {
+        $(".horas .container .hora-activa").removeClass("hora-activa");
+        $(this).addClass("hora-activa");
+    });
+
+    $(".bMas").on("click", function () {
+        var valorActual = parseInt($("#n_comensales").val());
+        var valorMaximo = parseInt($("#n_comensales").attr("max"));
+
+        if (valorActual < valorMaximo)
+            $("#n_comensales").val(valorActual + 1);
+    });
+
+    $(".bMenos").on("click", function () {
+        var valorActual = parseInt($("#n_comensales").val());
+        var valorMinimo = parseInt($("#n_comensales").attr("min"));
+
+        if (valorActual > valorMinimo)
+            $("#n_comensales").val(valorActual - 1);
+    });
+})
+
 $("button").click(function(e) {
 
     e.preventDefault();
-})
-
-$(".horas button").click(function() {
-
-    // Buscar si hay algún boton con la clase "horaa-activo"
-    let horaActiva = $(".hora-activa");
-
-    // Si se encuentra, eliminar la clase
-    if (horaActiva.length > 0) {
-        horaActiva.removeClass("hora-activa");
-    }
-
-    $(this).addClass("hora-activa");
 })
 
 $("#bReservarMesa").click(function() {

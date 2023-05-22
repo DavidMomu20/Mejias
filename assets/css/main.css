@@ -1654,6 +1654,14 @@ button.hora-activa {
   font-size: 1.1rem;
 }
 
+.fecha-inicio-reserva {
+  background-color: rgb(96, 96, 157);
+}
+
+.fecha-fin-reserva {
+  background-color: rgb(211, 169, 103);
+}
+
 /* =================================== */
 
 .mainReserva, .tipoReserva {
