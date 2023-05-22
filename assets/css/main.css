@@ -1619,6 +1619,11 @@ a.btn-login, a.btn-register {
   color: #252525;
 }
 
+.dia-fin-activo {
+  background-color: rgb(57, 159, 67);
+  color: rgb(244, 244, 244);
+}
+
 .reserva-horas button {
   background-color: rgb(47, 47, 108);
   border: none;

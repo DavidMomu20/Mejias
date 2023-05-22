@@ -11,7 +11,6 @@
 
   <!-- Favicons -->
   <link href="<?php echo base_url('assets/img/favicon.png')?>" rel="icon">
-  <link href="<?php echo base_url('assets/img/apple-touch-icon.png'); ?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
