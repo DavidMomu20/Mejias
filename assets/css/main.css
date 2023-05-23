@@ -49,6 +49,11 @@ h6 {
   font-family: var(--font-secondary);
 }
 
+.btn-book-a-table:disabled {
+  background-color: rgb(182, 182, 182);
+  color: rgb(46, 46, 46);
+}
+
 .btn-book-a-table:hover {
   background-color: #dd4545;
   color: white;
@@ -1500,7 +1505,7 @@ a.btn-login, a.btn-register {
 }
 
 .calendar {
-  max-width: 340px;  /* Limita el ancho máximo del calendario */
+  max-width: 340px;
   min-height: 390px;
 }
 
@@ -1619,6 +1624,10 @@ a.btn-login, a.btn-register {
   color: #252525;
 }
 
+.dia-inactivo {
+  color: #5d5d5d;
+}
+
 .dia-fin-activo {
   background-color: rgb(57, 159, 67);
   color: rgb(244, 244, 244);
@@ -1665,6 +1674,74 @@ button.hora-activa {
 
 .fecha-fin-reserva {
   background-color: rgb(211, 169, 103);
+}
+
+/* =================================== */
+
+.form-reserva-hab {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-body .calendar {
+  width: 350px;
+  max-width: 380px;
+  min-height: 390px;
+}
+
+.form-reserva-hab .container {
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  display: grid;
+  place-items: center;
+  grid-template-rows: 0.75fr 0.25fr;
+}
+
+.form-reserva-hab .container > div {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-reserva-hab .container .fechas-reserva {
+  min-height: 520px;
+  gap: 0 15%;
+}
+
+.form-reserva-hab .container .div-btn-reserva-hab {
+  min-height: 80px;
+}
+
+.fecha {
+  margin-bottom: 10px;
+}
+
+.fecha label {
+  display: block;
+  font-weight: bold;
+}
+
+.fecha input[type="text"] {
+  width: 100%;
+  min-width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: var(--font-secondary);
+}
+
+#fecha-inicio-input {
+  background-color: rgb(154, 190, 241);
+}
+
+#fecha-fin-input {
+  background-color: rgb(167, 241, 154);
 }
 
 /* =================================== */

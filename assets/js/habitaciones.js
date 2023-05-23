@@ -1,3 +1,46 @@
+var formHabHTML = '<form class="form-reserva-hab">\
+                    <div class="container">\
+                        <div class="fechas-reserva">\
+                            <div class="col reserva-calendario">\
+                                <div class="date-reserva">\
+                                    Elija un día de inicio:\
+                                </div>\
+                                <div class="calendar">\
+                                    <div class="calendar-header">\
+                                        <span class="prev-month">&#8249;</span>\
+                                        <span class="current-month-year"></span>\
+                                        <span class="next-month">&#8250;</span>\
+                                    </div>\
+                                    <div class="calendar-weekdays">\
+                                        <span>Dom</span>\
+                                        <span>Lun</span>\
+                                        <span>Mar</span>\
+                                        <span>Mie</span>\
+                                        <span>Jue</span>\
+                                        <span>Vie</span>\
+                                        <span>Sab</span>\
+                                    </div>\
+                                    <div class="calendar-days">\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <div class="div-fechas">\
+                                <div class="fecha fecha-inicio">\
+                                    <label for="fecha-inicio-input">Fecha de inicio:</label>\
+                                    <input id="fecha-inicio-input" type="text" readonly>\
+                                </div>\
+                                <div class="fecha fecha-fin">\
+                                    <label for="fecha-fin-input">Fecha de fin:</label>\
+                                    <input id="fecha-fin-input" type="text" readonly>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="div-btn-reserva-hab">\
+                            <button type="button" id="b-reservar-hab" class="btn btn-book-a-table" disabled>Enviar</button>\
+                        </div>\
+                    </div>\
+                    </form>';
+
 $(function() {
 
     let loading = '<div class="loading">' + 
@@ -13,7 +56,20 @@ $(function() {
     $(".div-habs-scroll").on("click", ".div-bReservarHab button", function(){
         
         let idHab = $(this).closest(".habitacion").data("value");
-        window.location.href = "./reservar/habitacion/" + idHab;
+
+        $(".modal-body").empty();
+        $(".modal-body").html(formHabHTML);
+
+        new CalendarioPlus();
+
+        $(".modal").addClass("fade");
+        setTimeout(function() {
+            $(".modal").addClass("show");
+        }, 25);
+        $(".modal-dialog").addClass("modal-lg");
+
+        $(".modal .modal-title").text("Establezca las fechas para la reserva, por favor");
+        $(".modal").show();
     });
 
     /**
@@ -69,6 +125,21 @@ $(function() {
             }
         })
     })
+
+    /**
+     * Al pulsar sobre el botón b-reservar-hab, se introducirá la reserva de la habitación en la base de datos
+     */
+
+    $("#b-reservar-hab").on("click", function(e) {
+
+        e.preventDefault();
+
+        console.log("Hola mundo");
+    })
+
+    /**
+     * Función para cerrar el modal
+     */
 
     $(".modal [aria-label=Close]").on("click", function() {
     
