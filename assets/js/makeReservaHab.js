@@ -30,7 +30,7 @@ $(function() {
         $(this).attr("disabled", "true");
 
         $.ajax({
-            url: "./habitaciones/reservarHab", 
+            url: "./reservarHab", 
             type: "POST", 
             dataType: "json", 
             data: {

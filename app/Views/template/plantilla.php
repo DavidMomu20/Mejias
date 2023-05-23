@@ -29,7 +29,7 @@
   <link href="<?php echo base_url('assets/css/main.css');?>" rel="stylesheet">
 
   <!-- Font Awesome Script -->
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v6.4.0/js/all.js" crossorigin="anonymous"></script>
 
   <!-- =======================================================
