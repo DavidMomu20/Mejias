@@ -7,6 +7,7 @@ class Reservas_Habitacion extends M_base {
 
     protected $table      = 'reservas_hab';
     protected $primaryKey = 'id_reserva_hab';
+    protected $allowedFields = ["id_habitacion", "id_estado", "fecha_inicio", "fecha_fin", "n_huespedes"];
 
     /**
      * Método para insertar una reserva en reservas_hab y usuarios_reservas_hab
@@ -14,7 +15,7 @@ class Reservas_Habitacion extends M_base {
 
     public function insertReservaHab(array $data, int $id_user)
     {
-        if ($newId = $this->insertRegistro($data)) 
+        if ($newId = $this->insertarRegistro($data)) 
         {
             $db = \Config\Database::connect();
             $builder = $db->table("usuarios_reservas_hab");

@@ -47,8 +47,11 @@ $("#bReservarMesa").click(function() {
 
     if (errores.length == 0) {
 
-        $("#bReservarMesa").css({"display": "none"});
-        $(".loading").css({"display": "inline-block"});
+        let btn = $(this);
+        let spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+        
+        $(this).prepend(spinner);
+        $(this).attr("disabled", "true");
 
         $.ajax({
             url: "./reservarMesa", 
@@ -61,8 +64,8 @@ $("#bReservarMesa").click(function() {
             }, 
             success: function(response) {
                 
-                $(".loading").css({"display": "none"});
-                $("#bReservarMesa").css({"display": "inline-block"});
+                btn.find(".spinner-border").remove();
+                btn.removeAttr("disabled");
 
                 $(".toast-header strong").text("Reserva de mesa realizada con éxito");
                 $(".toast-body").text("Se le enviará un correo con la reserva confirmada o rechazada. Si lo desea, puede realizar otra reserva.");

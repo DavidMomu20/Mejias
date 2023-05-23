@@ -13,21 +13,23 @@ class ReservasMesa extends Controller{
         $id_user = intval(session()->get('id_user'));
         $mRes = new Reservas_Mesa();
 
-        if (isset($this->request->getPost("fecha")))
-            $fecha = date_create_from_format("Y-m-d", $this->request->getPost("fecha"))->format("Y-m-d");
+        $fecha = $this->request->getPost("fecha");
+        if (isset($fecha))
+            $fecha = date_create_from_format("Y-m-d", $fecha)->format("Y-m-d");
 
-        if (isset($this->request->getPost("hora")))
-            $hora = date_create_from_format("H:i", $this->request->getPost("hora"))->format("H:i:s");
+        $hora = $this->request->getPost("hora");
+        if (isset($hora))
+            $hora = date_create_from_format("H:i", $hora)->format("H:i:s");
 
-        if (isset($this->request->getPost("n_comensales")))
-            $n_comensales = intval($this->request->getPost("n_comensales"));
+        $n_comensales = $this->request->getPost("n_comensales");
+        if (isset($n_comensales))
+            $n_comensales = intval($n_comensales);
 
         $datos = [
             "id_estado" => 3,
             "fecha" => $fecha, 
             "hora" => $hora, 
-            "n_comensales" => $n_comensales, 
-            "mesa_asignada" => null
+            "n_comensales" => $n_comensales
         ];
         
         if ($id = $mRes->insertReservaMesa($datos, $id_user))
