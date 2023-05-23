@@ -21,7 +21,7 @@ class Reservas_Mesa extends M_base {
              ->select('rm.*, u.nombre, u.apellido, u.telefono')
              ->join('usuarios_reservas_mesa urm', 'rm.id_reserva_mesa = urm.id_reserva_mesa')
              ->join('usuarios u', 'urm.id_usuario = u.id_usuario')
-             ->where('rm.id_estado', 6)
+             ->where('rm.id_estado', 3)
              ->get();
         
         return $query->getResult();

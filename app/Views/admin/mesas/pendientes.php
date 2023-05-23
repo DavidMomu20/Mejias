@@ -1,4 +1,4 @@
-<h1 class="mt-4"><i>Reservas Realizadas</i></h1>
+<h1 class="mt-4"><i>Reservas de Mesa Realizadas</i></h1>
 
 <div class="container">
   <div class="marcoReserva">
@@ -64,4 +64,4 @@
   </div>
 </div>
 
-<script src="<?=base_url('assets/js/reservas.js')?>"></script>
+<script src="<?=base_url('assets/js/reservas-mesa-p.js')?>"></script>

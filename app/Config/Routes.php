@@ -46,6 +46,7 @@ $routes->post('reservarHab', 'ReservasHabitacion::realizarReservaHab');
 $routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmarReservaMesa');
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes');
+$routes->get('admin/reservas-habs-pendientes', 'Admin::reservasHabPendientes');
 
 /*
  * --------------------------------------------------------------------

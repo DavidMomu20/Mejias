@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 
 use App\Models\Reservas_Mesa;
+use App\Models\Reservas_Habitacion;
 
 class Admin extends Controller {
 
@@ -12,6 +13,10 @@ class Admin extends Controller {
         $data["cuerpo"] = view("admin/index");
         return view("template/admin", $data);
     }
+
+    /**
+     * -- Funciones para administrar las reservas PENDIENTES --
+     */
 
     public function reservasMesaPendientes()
     {
@@ -22,10 +27,21 @@ class Admin extends Controller {
 
         $data["reservas"] = $reservas;
         $data["contador"] = $contador;
-        $data["cuerpo"] = view("admin/reservas", $data);
+        $data["cuerpo"] = view("admin/mesas/pendientes", $data);
 
         return view("template/admin", $data);
     }
+
+    public function reservasHabPendientes()
+    {
+        $data["cuerpo"] = view("admin/habitaciones/pendientes");
+
+        return view("template/admin", $data);
+    }
+
+    /**
+     * -- Método para enviar emails --
+     */
 
     public function enviarEmail()
     {
