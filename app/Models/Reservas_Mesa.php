@@ -48,8 +48,8 @@ class Reservas_Mesa extends M_base {
 
     public function insertReservaMesa(array $data, int $id_user)
     {
-        if ($newId = $this->insertarRegistro($data)) {
-
+        if ($newId = $this->insertarRegistro($data))
+        {
             $db = \Config\Database::connect();
             $builder = $db->table("usuarios_reservas_mesa");
 

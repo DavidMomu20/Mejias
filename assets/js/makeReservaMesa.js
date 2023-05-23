@@ -8,16 +8,16 @@ $(function() {
     });
 
     $(".bMas").on("click", function () {
-        var valorActual = parseInt($("#n_comensales").val());
-        var valorMaximo = parseInt($("#n_comensales").attr("max"));
+        let valorActual = parseInt($("#n_comensales").val());
+        let valorMaximo = parseInt($("#n_comensales").attr("max"));
 
         if (valorActual < valorMaximo)
             $("#n_comensales").val(valorActual + 1);
     });
 
     $(".bMenos").on("click", function () {
-        var valorActual = parseInt($("#n_comensales").val());
-        var valorMinimo = parseInt($("#n_comensales").attr("min"));
+        let valorActual = parseInt($("#n_comensales").val());
+        let valorMinimo = parseInt($("#n_comensales").attr("min"));
 
         if (valorActual > valorMinimo)
             $("#n_comensales").val(valorActual - 1);

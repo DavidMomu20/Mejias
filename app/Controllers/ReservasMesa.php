@@ -13,17 +13,17 @@ class ReservasMesa extends Controller{
         $id_user = intval(session()->get('id_user'));
         $mRes = new Reservas_Mesa();
 
-        if (isset($_POST["fecha"]))
-            $fecha = date_create_from_format("Y-m-d", $_POST["fecha"])->format("Y-m-d");
+        if (isset($this->request->getPost("fecha")))
+            $fecha = date_create_from_format("Y-m-d", $this->request->getPost("fecha"))->format("Y-m-d");
 
-        if (isset($_POST["hora"]))
-            $hora = date_create_from_format("H:i", $_POST["hora"])->format("H:i:s");
+        if (isset($this->request->getPost("hora")))
+            $hora = date_create_from_format("H:i", $this->request->getPost("hora"))->format("H:i:s");
 
-        if (isset($_POST["n_comensales"]))
-            $n_comensales = intval($_POST["n_comensales"]);
+        if (isset($this->request->getPost("n_comensales")))
+            $n_comensales = intval($this->request->getPost("n_comensales"));
 
         $datos = [
-            "id_estado" => 6,
+            "id_estado" => 3,
             "fecha" => $fecha, 
             "hora" => $hora, 
             "n_comensales" => $n_comensales, 
@@ -40,8 +40,8 @@ class ReservasMesa extends Controller{
         $mMesa = new Mesas();
         $mRes = new Reservas_Mesa();
 
-        $nc = $_POST["n_comensales"];
-        $fecha = $_POST["fecha"];
+        $nc = $this->request->getPost("n_comensales");
+        $fecha = $this->request->getPost("fecha");
 
         if (($mesas = $mMesa->dameMesasNComensales($nc)) && ($reservas = $mRes->dameReservasMesaByFecha($fecha))) {
             $mesasDisponibles = $mesas;
@@ -62,11 +62,11 @@ class ReservasMesa extends Controller{
     {
         $mRes = new Reservas_Mesa();
 
-        $id = intval($_POST["id_reserva_mesa"]);
+        $id = intval($this->request->getPost("id_reserva_mesa"));
 
         $datos = [
-            "id_mesa" => intval(filter_var($_POST["id_mesa"], FILTER_SANITIZE_NUMBER_INT)), 
-            "id_estado" => 4
+            "id_mesa" => intval(filter_var($this->request->getPost("id_mesa"), FILTER_SANITIZE_NUMBER_INT)), 
+            "id_estado" => 1
         ];
 
         // Filtrar y sanitizar los datos

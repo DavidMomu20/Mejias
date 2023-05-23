@@ -1516,11 +1516,7 @@ a.btn-login, a.btn-register {
   height: 390px
 }
 
-.comensales {
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  max-width: 5700px;
-  min-height: 120px;
+.comensales, .huespedes {
   background-color: #844747;
   border-color: #844747;
   display: flex;
@@ -1530,23 +1526,46 @@ a.btn-login, a.btn-register {
   gap: 10px 0;
 }
 
-.comensales label {
+.comensales {
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  max-width: 5700px;
+  min-height: 120px;
+}
+
+.huespedes {
+  border-radius: 20px;
+  padding: 5%;
+  box-shadow: 0px 10px 15px #838383;
+  margin-top: 2%;
+}
+
+.comensales label, .huespedes label {
   color: white;
   font-family: var(--font-secondary);
+}
+
+.comensales label {
   font-size: 1.2rem;
+}
+
+.huespedes label {
+  font-size: 0.9rem;
 }
 
 .comensales .inp-comensales {
   margin-bottom: 3%;
 }
 
-.comensales .inp-comensales input {
+.comensales .inp-comensales input, .huespedes .inp-huespedes input {
   text-align: center;
   font-size: 1.3rem;
 }
 
 .comensales .inp-comensales input[type="number"]::-webkit-inner-spin-button,
-.comensales .inp-comensales input[type="number"]::-webkit-outer-spin-button
+.comensales .inp-comensales input[type="number"]::-webkit-outer-spin-button,
+.huespedes .inp-huespedes input[type="number"]::-webkit-inner-spin-button,
+.huespedes .inp-huespedes input[type="number"]::-webkit-ouner-spin-button
 {
   -webkit-appearance: none;
   margin: 0;

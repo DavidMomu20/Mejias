@@ -3,7 +3,7 @@ var formHabHTML = '<form class="form-reserva-hab">\
                         <div class="fechas-reserva">\
                             <div class="col reserva-calendario">\
                                 <div class="date-reserva">\
-                                    Elija un día de inicio:\
+                                    Elija los días pulsando en este calendario:\
                                 </div>\
                                 <div class="calendar">\
                                     <div class="calendar-header">\
@@ -33,10 +33,18 @@ var formHabHTML = '<form class="form-reserva-hab">\
                                     <label for="fecha-fin-input">Fecha de fin:</label>\
                                     <input id="fecha-fin-input" type="text" readonly>\
                                 </div>\
+                                <div class="huespedes">\
+                                    <label for="n_huespedes">¿Cuántas personas sois?</label>\
+                                    <div class="inp-huespedes">\
+                                        <button type="button" class="bCount bMenos">-</button>\
+                                        <input type="number" name="n_huespedes" id="n_huespedes" value="1" min="1" max="10">\
+                                        <button type="button" class="bCount bMas">+</button>\
+                                    </div>\
+                                </div>\
                             </div>\
                         </div>\
                         <div class="div-btn-reserva-hab">\
-                            <button type="button" id="b-reservar-hab" class="btn btn-book-a-table" disabled>Enviar</button>\
+                            <button type="button" id="b-reservar-hab" class="btn btn-book-a-table" disabled>\nEnviar datos\n</button>\
                         </div>\
                     </div>\
                     </form>';
@@ -56,9 +64,13 @@ $(function() {
     $(".div-habs-scroll").on("click", ".div-bReservarHab button", function(){
         
         let idHab = $(this).closest(".habitacion").data("value");
+        let huespedes = $(this).closest(".habitacion").find(".capacidad-hab").data("value");
 
         $(".modal-body").empty();
         $(".modal-body").html(formHabHTML);
+
+        $(".modal").attr("data-id", idHab);
+        $("#n_huespedes").attr("max", huespedes);
 
         new CalendarioPlus();
 
@@ -127,17 +139,6 @@ $(function() {
     })
 
     /**
-     * Al pulsar sobre el botón b-reservar-hab, se introducirá la reserva de la habitación en la base de datos
-     */
-
-    $("#b-reservar-hab").on("click", function(e) {
-
-        e.preventDefault();
-
-        console.log("Hola mundo");
-    })
-
-    /**
      * Función para cerrar el modal
      */
 
@@ -146,6 +147,8 @@ $(function() {
         $(".modal").removeClass("fade");
         $(".modal").removeClass("show");
       
+        $(".modal").removeAttr("data-id");
+
         $(".modal").hide();
       })
 })
