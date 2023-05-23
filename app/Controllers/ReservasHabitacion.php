@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 
 use App\Models\Habitaciones;
+use App\Models\Reservas_Habitacion;
 
 class ReservasHabitacion extends Controller{
 
