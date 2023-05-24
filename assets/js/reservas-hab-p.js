@@ -2,12 +2,12 @@ var multipleCardCarousel = document.querySelector(
     "#carouselExampleControls"
 );
 if (window.matchMedia("(min-width: 768px)").matches) {
-    var carousel = new bootstrap.Carousel(multipleCardCarousel, {
+    let carousel = new bootstrap.Carousel(multipleCardCarousel, {
         interval: false,
     });
-    var carouselWidth = $(".carousel-inner")[0].scrollWidth;
-    var cardWidth = $(".carousel-item").width();
-    var scrollPosition = 0;
+    let carouselWidth = $(".carousel-inner")[0].scrollWidth;
+    let cardWidth = $(".carousel-item").width();
+    let scrollPosition = 0;
     $("#carouselExampleControls .carousel-control-next").on("click", function () {
         if (scrollPosition < carouselWidth - cardWidth * 4) {
             scrollPosition += cardWidth;

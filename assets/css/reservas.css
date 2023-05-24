@@ -86,22 +86,28 @@
   align-items: center;
 }
 
+.div-datos-reserva {
+  display: grid;
+  white-space: nowrap;
+}
+
 .reserva-contenedor .div-datos-reserva {
   height: auto;
   flex-grow: 1;
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
   place-items: center;
-  white-space: nowrap;
+  grid-template-rows: repeat(5, 1fr);
   padding: 2%;
 }
 
-.reserva-contenedor .div-botones-reserva {
-  height: 21%;
+.div-botones-reserva {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0 10%;
+}
+
+.reserva-contenedor .div-botones-reserva {
+  height: 21%;
 }
 
 .div-punzon .punzon {
@@ -120,10 +126,10 @@
   place-items: center;
 }
 
-.div-datos-reserva span {
-  font-family: var(--font-secondary);
-  font-size: 0.8rem;
-}
+.div-datos-reserva span { font-family: var(--font-secondary); }
+
+.reserva-contenedor .div-datos-reserva span { font-size: 0.8rem; }
+.carousel-habs .div-datos-reserva span { font-size: 0.93rem; }
 
 /*
 @media only screen and (max-width: 768px) {
@@ -171,6 +177,7 @@
   margin: 0 0.5em;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
   border: none;
+  padding-bottom: 5%;
 }
 
 .carousel-control-prev,
@@ -210,5 +217,37 @@
 @media (max-width: 767px) {
   .card .img-wrapper {
       height: 17em;
+  }
+}
+
+.carousel-habs .card-body {
+  display: grid;
+  place-items: center;
+  grid-template-rows: 0.3fr 1fr 0.6fr;
+  gap: 5% 0;
+}
+
+.carousel-habs .card-title {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.carousel-habs .div-datos-reserva {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 7% 10%;
+}
+
+.carousel-habs .div-botones-reserva {
+  margin-top: 5%;
+}
+
+@media only screen and (max-width: 1680px) {
+
+  .carousel-habs .div-datos-reserva {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
 }

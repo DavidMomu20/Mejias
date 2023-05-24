@@ -1747,7 +1747,7 @@ button.hora-activa {
 
 .fecha input[type="text"] {
   width: 100%;
-  min-width: 200px;
+  min-width: 240px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;

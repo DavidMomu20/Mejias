@@ -26,7 +26,7 @@
                             <span><?=$reservas[$cont]->nombre . " " . $reservas[$cont]->apellido?></span>
                         </div>
                         <div class="div-dato reserva-telefono">
-                            <i class="fa-solid fa-phone"></i>
+                            <i class="fa-solid fa-phone icono"></i>
                             <span><?=$reservas[$cont]->telefono?></span>
                         </div>
                         <div class="div-dato reserva-fecha">

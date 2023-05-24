@@ -15,7 +15,7 @@ class Admin extends Controller {
     }
 
     /**
-     * -- Funciones para administrar las reservas PENDIENTES --
+     * ---------- Funciones para administrar las reservas PENDIENTES ----------
      */
 
     public function reservasMesaPendientes()
@@ -34,13 +34,20 @@ class Admin extends Controller {
 
     public function reservasHabPendientes()
     {
-        $data["cuerpo"] = view("admin/habitaciones/pendientes");
+        $mRes = new Reservas_Habitacion();
+        $reservas = $mRes->dameReservasHabPendientes();
+
+        $contador = count($reservas);
+
+        $data["reservas"] = $reservas;
+        $data["contador"] = $contador;
+        $data["cuerpo"] = view("admin/habitaciones/pendientes", $data);
 
         return view("template/admin", $data);
     }
 
     /**
-     * -- Método para enviar emails --
+     * ---------- Método para enviar emails ----------
      */
 
     public function enviarEmail()
