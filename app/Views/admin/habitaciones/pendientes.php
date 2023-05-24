@@ -6,7 +6,7 @@
             foreach ($reservas as $reserva):
                 ?>
                 <div class="carousel-item">
-                    <div class="card" date-index="<?=$reserva->id_reserva_hab?>">
+                    <div class="card" data-index="<?=$reserva->id_reserva_hab?>" data-precio="<?=$reserva->precio?>">
                         <div class="img-wrapper"><img src="<?=base_url('assets/img/habitaciones/' . $reserva->foto)?>" class="d-block w-100" alt="Habitación <?=$reserva->num_habitacion?>"> </div>
                         <div class="card-body">
                             <h5 class="card-title">

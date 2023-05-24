@@ -18,7 +18,7 @@ class Reservas_Habitacion extends M_base {
         $db = \Config\Database::connect();
 
         $query = $db->table("reservas_hab rh")
-            ->select("rh.*, u.nombre, u.apellido, u.telefono, h.foto, h.num_habitacion")
+            ->select("rh.*, u.nombre, u.apellido, u.telefono, h.foto, h.num_habitacion, h.precio")
             ->join("usuarios_reservas_hab urh", "rh.id_reserva_hab = urh.id_reserva_hab")
             ->join("usuarios u", "urh.id_usuario = u.id_usuario")
             ->join("habitaciones h", "rh.id_habitacion = h.id_habitacion")
