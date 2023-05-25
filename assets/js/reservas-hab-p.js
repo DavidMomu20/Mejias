@@ -1,31 +1,13 @@
-var multipleCardCarousel = document.querySelector(
-    "#carouselExampleControls"
-);
-if (window.matchMedia("(min-width: 768px)").matches) {
-    let carousel = new bootstrap.Carousel(multipleCardCarousel, {
-        interval: false,
+$(function() {
+    // Manejar el clic en el enlace de "Siguiente"
+    $('a[data-slide="next"]').click(function() {
+      $('.carousel').carousel('next');
+      return false; // Evitar el comportamiento predeterminado del enlace
     });
-    let carouselWidth = $(".carousel-inner")[0].scrollWidth;
-    let cardWidth = $(".carousel-item").width();
-    let scrollPosition = 0;
-    $("#carouselExampleControls .carousel-control-next").on("click", function () {
-        if (scrollPosition < carouselWidth - cardWidth * 4) {
-            scrollPosition += cardWidth;
-            $("#carouselExampleControls .carousel-inner").animate(
-                { scrollLeft: scrollPosition },
-                600
-            );
-        }
+  
+    // Manejar el clic en el enlace de "Anterior"
+    $('a[data-slide="prev"]').click(function() {
+      $('.carousel').carousel('prev');
+      return false; // Evitar el comportamiento predeterminado del enlace
     });
-    $("#carouselExampleControls .carousel-control-prev").on("click", function () {
-        if (scrollPosition > 0) {
-            scrollPosition -= cardWidth;
-            $("#carouselExampleControls .carousel-inner").animate(
-                { scrollLeft: scrollPosition },
-                600
-            );
-        }
-    });
-} else {
-    $(multipleCardCarousel).addClass("slide");
-}
+  });
