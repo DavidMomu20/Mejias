@@ -1,69 +1,137 @@
 <h1 class="mt-4"><i>Reservas de habitación Realizadas</i></h1>
 
-<div id="carouselExampleControls" class="carousel carousel-habs" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <?php 
-            foreach ($reservas as $reserva):
-                ?>
-                <div class="carousel-item">
-                    <div class="card" data-index="<?=$reserva->id_reserva_hab?>" data-precio="<?=$reserva->precio?>">
-                        <div class="img-wrapper"><img src="<?=base_url('assets/img/habitaciones/' . $reserva->foto)?>" class="d-block w-100" alt="Habitación <?=$reserva->num_habitacion?>"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="far fa-calendar-alt icono"></i>
-                                Datos Reserva
-                            </h5>
-                            <div class="div-datos-reserva">
-                                <div class="div-dato reserva-nombre">
-                                    <i class="fas fa-user icono"></i>
-                                    <span><?=$reserva->nombre . " " . $reserva->apellido?></span>
-                                </div>
-                                <div class="div-dato reserva-fecha-inicio">
-                                    <i class="fa-solid fa-person-running"></i>
-                                    <span><?=$reserva->fecha_inicio?></span>
-                                </div>
-                                <div class="div-dato reserva-telefono">
-                                    <i class="fa-solid fa-phone icono"></i>
-                                    <span><?=$reserva->telefono?></span>
-                                </div>
-                                <div class="div-dato reserva-fecha-fin">
-                                    <i class="fa-solid fa-person-running fa-flip-horizontal"></i>
-                                    <span><?=$reserva->fecha_fin?></span>
-                                </div>
-                                <div class="div-dato reserva-nhuespedes">
-                                    <i class="fa-solid fa-people-roof"></i>
-                                    <span><?=$reserva->n_huespedes?></span>
-                                </div>
-                                <div class="div-dato reserva-habitacion">
-                                    <i class="fa-solid fa-building"></i>
-                                    <span>Habitación <?=$reserva->num_habitacion?></span>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3>Elije una:</h3>
+            </div>
+            <div class="col-6 d-flex justify-content-end column-gap-2">
+                <a href="#carruselHabitaciones" class="btn btn-primary" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a href="#carruselHabitaciones" class="btn btn-primary" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-12">
+            <div id="carruselHabitaciones" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-4 mb-3">
+                                <div class="card">
+                                    <img class="img-fluid" alt="100%x280"
+                                        src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Special title treatment</h4>
+                                        <p class="card-text">With supporting text below as a natural lead-in to
+                                            additional content.</p>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="div-botones-reserva">
-                                <button type="button" class="btn btn-success b-confirmar-reserva"><i class="fa-solid fa-check"></i></button>
-                                <button type="button" class="btn btn-danger b-rechazar-reserva"><i class="fa-solid fa-xmark"></i></button>
+                            <div class="col-sm-4 mb-3">
+                                <div class="card">
+                                    <img class="img-fluid" alt="100%x280"
+                                        src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-center">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                            Datos Reserva
+                                        </h4>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <i class="fa-solid fa-user"></i>
+                                                    Nombre Apellido
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <i class="fa-solid fa-person-walking-luggage"></i>
+                                                    Fecha de inicio
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <i class="fa-solid fa-phone-volume"></i>
+                                                    Nº teléfono
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <i class="fa-solid fa-person-walking-luggage fa-flip-horizontal"></i>
+                                                    Fecha de fin
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <i class="fa-solid fa-people-roof"></i>
+                                                    Nº huéspedes
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <i class="fa-solid fa-building"></i>
+                                                    Nº habitacion
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <div class="card">
+                                    <img class="img-fluid" alt="100%x280"
+                                        src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Special title treatment</h4>
+                                        <p class="card-text">With supporting text below as a natural lead-in to
+                                            additional content.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-4 mb-3">
+                                <div class="card">
+                                    <img class="img-fluid" alt="100%x280"
+                                        src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Special title treatment</h4>
+                                        <p class="card-text">With supporting text below as a natural lead-in to
+                                            additional content.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <div class="card">
+                                    <img class="img-fluid" alt="100%x280"
+                                        src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Special title treatment</h4>
+                                        <p class="card-text">With supporting text below as a natural lead-in to
+                                            additional content.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <div class="card">
+                                    <img class="img-fluid" alt="100%x280"
+                                        src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Special title treatment</h4>
+                                        <p class="card-text">With supporting text below as a natural lead-in to
+                                            additional content.</p>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
-            endforeach;
-            ?>
+            </div>
         </div>
-        <?php
-        if ($contador > 3):
-            ?>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            <?php
-        endif;
-        ?>
     </div>
-
-<script src="<?=base_url('assets/js/reservas-hab-p.js')?>"></script>
+</section>
