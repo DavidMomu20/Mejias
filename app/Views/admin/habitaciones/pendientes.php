@@ -28,8 +28,8 @@
                         endif;
                         ?>
                         <div class="col-sm-4 mb-3">
-                            <div class="card">
-                                <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                            <div class="card reserva-hab" data-index="<?=$reserva->id_reserva_hab?>" data-precio="<?=$reserva->precio?>">
+                                <img class="img-fluid" alt="100%x280" src="<?=base_url('assets/img/habitaciones/' . $reserva->foto)?>">
                                 <div class="card-body">
                                     <h4 class="card-title text-center">
                                         <i class="fa-solid fa-calendar-days"></i>
@@ -37,33 +37,33 @@
                                     </h4>
                                     <div class="container datos-reservas-hab mt-2">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 reserva-usuario">
                                                 <i class="fa-solid fa-user"></i>
-                                                Nombre Apellido
+                                                <?=$reserva->nombre . " " . $reserva->apellido?>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 reserva-fecha-inicio">
                                                 <i class="fa-solid fa-person-walking-luggage"></i>
-                                                Fecha de inicio
+                                                <?=$reserva->fecha_inicio?>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 reserva-telefono">
                                                 <i class="fa-solid fa-phone-volume"></i>
-                                                Nº teléfono
+                                                <?=$reserva->telefono?>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 reserva-fecha-fin">
                                                 <i class="fa-solid fa-person-walking-luggage fa-flip-horizontal"></i>
-                                                Fecha de fin
+                                                <?=$reserva->fecha_fin?>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 reserva-huespedes">
                                                 <i class="fa-solid fa-people-roof"></i>
-                                                Nº huéspedes
+                                                <?=$reserva->n_huespedes?> huéspedes
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 reserva-num-hab">
                                                 <i class="fa-solid fa-building"></i>
-                                                Nº habitacion
+                                                Habitación <?=$reserva->num_habitacion?>
                                             </div>
                                         </div>
                                     </div>
