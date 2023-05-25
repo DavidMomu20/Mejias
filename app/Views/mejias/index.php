@@ -686,7 +686,7 @@
                 </div>
 
                 <div class="col-lg-12 text-center my-4">
-                    <button class="btn btn-book-a-table">Ver Carta</button>
+                    <button id="b-verCarta" class="btn btn-book-a-table">Ver Carta</button>
                 </div>
 
             </div>

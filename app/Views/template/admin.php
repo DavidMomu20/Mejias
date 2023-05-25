@@ -64,7 +64,17 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <?php
-                            if (session()->get("permisos_user")["perm9"] == 1):
+                            if (session()->get('logged_in')):
+                                if (session()->get("permisos_user")["perm8"] == 1):
+                                ?>
+                                <div class="sb-sidenav-menu-heading">Comandas</div>
+                                <a class="nav-link" href="<?=base_url('admin')?>">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-scroll"></i></div>
+                                    Crear nueva comanda
+                                </a>
+                                <?php
+                                endif;
+                                if (session()->get("permisos_user")["perm9"] == 1):
                                 ?>
                                 <div class="sb-sidenav-menu-heading">Reservas</div>
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReservasPendientes" aria-expanded="false" aria-controls="collapseLayouts">
@@ -92,6 +102,7 @@
                                 </div>
                                 <?php
                                 endif;
+                            endif;
                             ?>
                         </div>
                     </div>
