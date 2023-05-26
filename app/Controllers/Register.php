@@ -15,32 +15,39 @@ class Register extends Controller {
 
         $rol = $mRol->dameIdRol('cliente');
 
-        $datos = [
-            "id_rol" => $rol,
-            "nombre" => $this->request->getPost('nombre'), 
-            "apellido" => $this->request->getPost('apellido'), 
-            "email" => $this->request->getPost('email-register'), 
-            "password" => $this->request->getPost('password-register'), 
-            "telefono" => $this->request->getPost('phone')
-        ];
+        $email = $this->request->getPost('email_register');
+        $password = $this->request->getPost('password_register');
 
-        if ($id = $mUser->insertaUsuario($datos)) {
-
-            $permisos = $mUser->damePermisosUser($id);
-
-            $session = session();
-            $session->set('logged_in', true);
-            $session->set('id_user', $id);
-            $session->set('permisos_user', $permisos);
-            $session->set('full_name', $datos["nombre"] . " " . $datos["apellido"]);
-
-            if ($permisos["perm7"] == 1)
-                return redirect()->to(base_url());
+        if ($mUser->buscaUsuario($email, $password))
+        {
+            $datos = [
+                "id_rol" => $rol,
+                "nombre" => $this->request->getPost('nombre'), 
+                "apellido" => $this->request->getPost('apellido'), 
+                "email" => $email, 
+                "password" => $password, 
+                "telefono" => $this->request->getPost('phone')
+            ];
+    
+            if ($id = $mUser->insertaUsuario($datos)) {
+    
+                $permisos = $mUser->damePermisosUser($id);
+    
+                $session = session();
+                $session->set('logged_in', true);
+                $session->set('id_user', $id);
+                $session->set('permisos_user', $permisos);
+                $session->set('full_name', $datos["nombre"] . " " . $datos["apellido"]);
+    
+                if ($permisos["perm7"] == 1)
+                    echo json_encode(["data" => base_url()]);
+                else
+                    echo json_encode(["data" => base_url("admin")]);
+            }
             else
-                return redirect()->to(base_url("admin"));
+                echo json_encode(["data" => "errorBadInsert"]);
         }
-
-        else
-            return redirect()->to(base_url());
+        else 
+            echo json_encode(["data" => "errorNotUserFound"]);
     }
 }

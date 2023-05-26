@@ -1132,7 +1132,7 @@
                         <div class="card shadow-lg">
                             <div class="card-body p-5">
                                 <h1 class="fs-4 card-title fw-bold mb-4">Iniciar Sesión</h1>
-                                <form action="<?=base_url('doLogin')?>" method="POST" class="needs-validation"
+                                <form method="POST" class="needs-validation"
                                     novalidate="" autocomplete="off">
                                     <div class="mb-3">
                                         <label class="mb-2 text-muted" for="email-login">Correo electrónico</label>
@@ -1189,7 +1189,7 @@
                         <div class="card shadow-lg">
                             <div class="card-body p-5">
                                 <h1 class="fs-4 card-title fw-bold mb-4">Registrarse</h1>
-                                <form action="<?=base_url('doRegister')?>" method="POST" class="needs-validation"
+                                <form method="POST" class="needs-validation"
                                     novalidate="" autocomplete="off">
                                     <div class="row">
                                         <div class="col">

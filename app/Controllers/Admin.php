@@ -5,6 +5,8 @@ use CodeIgniter\Controller;
 
 use App\Models\Reservas_Mesa;
 use App\Models\Reservas_Habitacion;
+use App\Models\Platos;
+use App\Models\Categorias;
 
 class Admin extends Controller {
 
@@ -42,6 +44,27 @@ class Admin extends Controller {
         $data["reservas"] = $reservas;
         $data["contador"] = $contador;
         $data["cuerpo"] = view("admin/habitaciones/pendientes", $data);
+
+        return view("template/admin", $data);
+    }
+
+    /**
+     * ---------- Método para abrir la gestión de comandas ----------
+     */
+
+    public function comandas()
+    {
+        $mPlatos = new Platos();
+
+        $platos = $mPlatos->obtenerRegistros([], ["*"], "id_categoria");
+
+        $data["platos"] = [
+            "bocadillos" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "1"; }), 
+            "platos_combinados" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "2"; }), 
+            "raciones_frias" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "3"; }), 
+            "bebidas" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "8"; }), 
+        ];
+        $data["cuerpo"] = view("admin/comandas/index", $data);
 
         return view("template/admin", $data);
     }

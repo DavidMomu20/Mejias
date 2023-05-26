@@ -33,11 +33,15 @@ class M_base extends Model {
      *      ];
      */
 
-     public function obtenerRegistros(array $where = [], array $campos = ['*'])
+     public function obtenerRegistros(array $where = [], array $campos = ['*'], string $ordenarPor = "")
      {
         try {
             $query = $this->select($campos)
                         ->where($where);
+
+            if (!empty($ordenarPor)) {
+                $query = $query->orderBy($ordenarPor);
+            }
      
             return $query->findAll(); 
         } catch (\Exception $e) {

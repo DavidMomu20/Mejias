@@ -9,8 +9,8 @@ class Login extends Controller {
 
     public function doLogin()
     {
-        $email = $this->request->getPost('email-login');
-        $password = $this->request->getPost('password-login');
+        $email = $this->request->getPost('email_login');
+        $password = $this->request->getPost('password_login');
         $rememberMe = ($this->request->getPost('rememberMe')) ? true : false;
 
         $mUser = new Usuarios();
@@ -25,12 +25,12 @@ class Login extends Controller {
             $session->set('full_name', $user["nombre"] . " " . $user["apellido"]);
             
             if ($permisos["perm7"] == 1)
-                return redirect()->to(base_url());
+                echo json_encode(["data" => base_url()]);
             else
-                return redirect()->to(base_url("admin"));
+                echo json_encode(["data" => base_url("admin")]);
         }
         else
-            return redirect()->to(base_url());
+            echo json_encode(["data" => "error"]);
     }
 
     public function logout()

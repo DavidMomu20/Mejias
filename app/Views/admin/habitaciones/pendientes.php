@@ -1,4 +1,4 @@
-<h1 class="mt-4"><i>Reservas de habitación Realizadas</i></h1>
+<h1 class="mt-4">Reservas de habitación Realizadas</h1>
 
 <section class="pt-5 pb-5">
     <div class="container">

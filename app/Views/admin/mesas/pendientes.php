@@ -1,4 +1,4 @@
-<h1 class="mt-4"><i>Reservas de Mesa Realizadas</i></h1>
+<h1 class="mt-4">Reservas de Mesa Realizadas</h1>
 
 <div class="container">
   <div class="marcoReserva">

@@ -1,12 +1,20 @@
 $(".btn-login").click(function() {
 
-    $(".login-form").show();
+    $(".card-body").find(".alert-danger").remove();
+
     $(".register-form").hide();
+    $(".register-form input").val("");
+
+    $(".login-form").show();
 })
 
 $(".btn-register").click(function() {
 
+    $(".card-body").find(".alert-danger").remove();
+
     $(".login-form").hide();
+    $(".login-form input").val("");
+
     $(".register-form").show();
 })
 

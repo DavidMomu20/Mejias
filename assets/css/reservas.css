@@ -172,3 +172,14 @@
 .card-title {
   font-family: var(--font-secondary);
 }
+
+#carta-accordion .accordion-header button {
+  font-family: var(--font-secondary);
+}
+
+.square {
+  width: 70%;
+  height: 200px;
+  border: 1px solid rgb(177, 177, 177);
+  border-radius: 15px;
+}

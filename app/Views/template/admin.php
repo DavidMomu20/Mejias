@@ -68,7 +68,7 @@
                                 if (session()->get("permisos_user")["perm8"] == 1):
                                 ?>
                                 <div class="sb-sidenav-menu-heading">Comandas</div>
-                                <a class="nav-link" href="<?=base_url('admin')?>">
+                                <a class="nav-link" href="<?=base_url('admin/comandas')?>">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-scroll"></i></div>
                                     Crear nueva comanda
                                 </a>
