@@ -3,14 +3,14 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-use App\Models\Habitaciones;
-use App\Models\Reservas_Habitacion;
+use App\Models\M_Habitaciones;
+use App\Models\M_Reservas_Habitacion;
 
 class ReservasHabitacion extends Controller{
 
     public function buscarHabitaciones()
     {
-        $mHab = new Habitaciones();
+        $mHab = new M_Habitaciones();
 
         $where = [];
 

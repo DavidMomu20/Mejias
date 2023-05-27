@@ -3,22 +3,22 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-use App\Models\Usuarios;
-use App\Models\Roles;
+use App\Models\M_Usuarios;
+use App\Models\M_Roles;
 
 class Register extends Controller {
 
     public function doRegister()
     {
-        $mUser = new Usuarios();
-        $mRol = new Roles();
+        $mUser = new M_Usuarios();
+        $mRol = new M_Roles();
 
         $rol = $mRol->dameIdRol('cliente');
 
         $email = $this->request->getPost('email_register');
         $password = $this->request->getPost('password_register');
 
-        if ($mUser->buscaUsuario($email, $password))
+        if (!$mUser->buscaUsuario($email, $password))
         {
             $datos = [
                 "id_rol" => $rol,

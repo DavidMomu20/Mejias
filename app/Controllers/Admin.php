@@ -3,17 +3,25 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-use App\Models\Reservas_Mesa;
-use App\Models\Reservas_Habitacion;
-use App\Models\Platos;
-use App\Models\Categorias;
+use App\Models\M_Reservas_Mesa;
+use App\Models\M_Reservas_Habitacion;
+use App\Models\M_Platos;
+use App\Models\M_Categorias;
 
 class Admin extends Controller {
 
     public function index()
     {
-        $data["cuerpo"] = view("admin/index");
-        return view("template/admin", $data);
+        if (session()->get('logged_in')) {
+
+            if (session()->get("permisos_user")["perm9"] == 1)
+                return redirect()->to(base_url("admin/reservas-mesa-pendientes"));
+
+            if (session()->get("permisos_user")["perm8"] == 1)
+                return redirect()->to(base_url('admin/comandas'));
+        }
+        else
+            return redirect()->to(base_url());
     }
 
     /**
@@ -22,7 +30,7 @@ class Admin extends Controller {
 
     public function reservasMesaPendientes()
     {
-        $mRes = new Reservas_Mesa();
+        $mRes = new M_Reservas_Mesa();
         $reservas = $mRes->dameReservasMesaPendientes();
 
         $contador = (count($reservas) < 8 ? count($reservas) : 8);
@@ -36,7 +44,7 @@ class Admin extends Controller {
 
     public function reservasHabPendientes()
     {
-        $mRes = new Reservas_Habitacion();
+        $mRes = new M_Reservas_Habitacion();
         $reservas = $mRes->dameReservasHabPendientes();
 
         $contador = count($reservas);
@@ -54,7 +62,7 @@ class Admin extends Controller {
 
     public function comandas()
     {
-        $mPlatos = new Platos();
+        $mPlatos = new M_Platos();
 
         $platos = $mPlatos->obtenerRegistros([], ["*"], "id_categoria");
 
@@ -64,7 +72,7 @@ class Admin extends Controller {
             "raciones_frias" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "3"; }), 
             "bebidas" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "8"; }), 
         ];
-        $data["cuerpo"] = view("admin/comandas/index", $data);
+        $data["cuerpo"] = view("admin/comandas/comandas", $data);
 
         return view("template/admin", $data);
     }

@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Reservas_Mesa extends M_base {
+class M_Reservas_Mesa extends M_base {
 
     protected $table      = 'reservas_mesa';
     protected $primaryKey = 'id_reserva_mesa';

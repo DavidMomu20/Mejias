@@ -90,14 +90,6 @@ $(".b-confirmar-reserva").click(function() {
             })
         }
     })
-
-    $(".modal [aria-label=Close]").on("click", function() {
-
-        $(".modal").removeClass("fade");
-        $(".modal").removeClass("show");
-      
-        $(".modal").hide();
-    })
 })
 
 /**
@@ -107,6 +99,8 @@ $(".b-confirmar-reserva").click(function() {
 
 $(".b-rechazar-reserva").click(function() {
 
+    $(".modal-body").empty();
+
     $(".modal").addClass("fade");
     setTimeout(function() {
         $(".modal").addClass("show");
@@ -114,12 +108,4 @@ $(".b-rechazar-reserva").click(function() {
 
     $(".modal .modal-title").text("Rechazar Reserva de Mesa");
     $(".modal").show();
-
-    $(".modal [aria-label=Close]").on("click", function() {
-    
-        $(".modal").removeClass("fade");
-        $(".modal").removeClass("show");
-      
-        $(".modal").hide();
-      })
 })

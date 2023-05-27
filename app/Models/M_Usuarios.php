@@ -3,10 +3,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Usuarios extends M_base{
+class M_Usuarios extends M_base{
     protected $table      = 'usuarios';
     protected $primaryKey = 'id_usuario';
-    protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password"];
+    protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password", "telefono"];
 
     /**
      * Método para buscar un usuario a través de su ID

@@ -27,6 +27,7 @@
         <!-- Templates JS -->
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="<?=base_url("assets/js/misFunciones.js")?>" defer></script>
 
     </head>
     <body class="sb-nav-fixed">
@@ -65,6 +66,26 @@
                         <div class="nav">
                             <?php
                             if (session()->get('logged_in')):
+                                if (session()->get("permisos_user")["perm10"] == 1):
+                                ?>
+                                <div class="sb-sidenav-menu-heading">Cruds</div>
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCruds" aria-expanded="false" aria-controls="collapseLayouts">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-table"></i></div>
+                                    Seleccione una tabla
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseCruds" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="<?=base_url("admin")?>">Reservas Mesas</a>
+                                        <a class="nav-link" href="<?=base_url("admin")?>">Reservas Habitaciones</a>
+                                        <a class="nav-link" href="<?=base_url("admin")?>">Comandas</a>
+                                        <a class="nav-link" href="<?=base_url("admin")?>">Habitaciones</a>
+                                        <a class="nav-link" href="<?=base_url("admin")?>">Platos</a>
+                                        <a class="nav-link" href="<?=base_url("admin")?>">Usuarios</a>
+                                    </nav>
+                                </div>
+                                <?php
+                                endif;
                                 if (session()->get("permisos_user")["perm8"] == 1):
                                 ?>
                                 <div class="sb-sidenav-menu-heading">Comandas</div>

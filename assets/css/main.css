@@ -1763,6 +1763,13 @@ button.hora-activa {
   background-color: rgb(167, 241, 154);
 }
 
+/* ===================================*/
+
+button.show-password {
+  border-top-left-radius: none;
+  border-bottom-left-radius: none;
+}
+
 /* =================================== */
 
 .mainReserva, .tipoReserva {

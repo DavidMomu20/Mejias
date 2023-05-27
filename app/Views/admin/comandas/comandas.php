@@ -15,7 +15,7 @@
                         <div class="row row-cols-dynamic row-cols-5 g-3">
                             <?php foreach($platos["bocadillos"] as $bocadillo): ?>
                             <div class="col">
-                                <div class="card">
+                                <div class="card" data-precio="<?=$bocadillo["precio"]?>">
                                     <img src="<?=base_url('assets/img/platos/' . $bocadillo["imagen"])?>" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <p class="card-text"><?=$bocadillo["nombre"]?></p>
@@ -37,7 +37,18 @@
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#carta-accordion">
                 <div class="accordion-body">
-                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    <div class="row row-cols-dynamic row-cols-5 g-3">
+                        <?php foreach($platos["platos_combinados"] as $plato_comb): ?>
+                        <div class="col">
+                            <div class="card" data-precio="<?=$plato_comb["precio"]?>">
+                                <img src="<?=base_url('assets/img/platos/' . $plato_comb["imagen"])?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text"><?=$plato_comb["nombre"]?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,7 +61,18 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#carta-accordion">
                 <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="row row-cols-dynamic row-cols-5 g-3">
+                        <?php foreach($platos["raciones_frias"] as $racion_fria): ?>
+                        <div class="col">
+                            <div class="card" data-precio="<?=$racion_fria["precio"]?>">
+                                <img src="<?=base_url('assets/img/platos/' . $racion_fria["imagen"])?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text"><?=$racion_fria["nombre"]?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,7 +85,18 @@
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#carta-accordion">
                 <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    <div class="row row-cols-dynamic row-cols-5 g-3">
+                        <?php foreach($platos["bebidas"] as $bebida): ?>
+                        <div class="col">
+                            <div class="card" data-precio="<?=$bebida["precio"]?>">
+                                <img src="<?=base_url('assets/img/platos/' . $bebida["imagen"])?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text"><?=$bebida["nombre"]?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,10 +112,3 @@
 </div>
 
 <script src="<?=base_url("assets/js/comandas.js")?>"></script>
-
-<!--
-
--> 1150 px = row-cols-4
--> 
-
--->

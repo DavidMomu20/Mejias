@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Habitaciones;
+use App\Models\M_Habitaciones;
 
 class Home extends BaseController
 {
@@ -28,7 +28,7 @@ class Home extends BaseController
 
     public function verHabitaciones()
     {
-        $mHab = new Habitaciones();
+        $mHab = new M_Habitaciones();
         
         $data["habitaciones"] = $mHab->obtenerRegistros();
         $data["titulo"] = "Ver Habitaciones";

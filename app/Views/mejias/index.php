@@ -1153,7 +1153,7 @@
                                                 aria-describedby="show-password-btn">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-outline-secondary" type="button"
-                                                    id="show-password-btn-login">
+                                                    id="show-password-btn-login"  style="border-top-left-radius: none; border-bottom-left-radius: none;">
                                                     <span class="bi bi-eye"></span>
                                                 </button>
                                             </div>
@@ -1214,7 +1214,7 @@
                                                         aria-describedby="show-password-btn">
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-secondary" type="button"
-                                                            id="show-password-btn-register">
+                                                            id="show-password-btn-register" style="border-top-left-radius: none; border-bottom-left-radius: none;">
                                                             <span class="bi bi-eye"></span>
                                                         </button>
                                                     </div>

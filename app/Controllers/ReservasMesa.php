@@ -3,15 +3,15 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-use App\Models\Reservas_Mesa;
-use App\Models\Mesas;
+use App\Models\M_Reservas_Mesa;
+use App\Models\M_Mesas;
 
 class ReservasMesa extends Controller{
 
     public function realizarReservaMesa()
     {
         $id_user = intval(session()->get('id_user'));
-        $mRes = new Reservas_Mesa();
+        $mRes = new M_Reservas_Mesa();
 
         $fecha = $this->request->getPost("fecha");
         if (isset($fecha))
@@ -39,8 +39,8 @@ class ReservasMesa extends Controller{
     public function mostrarMesasDisponibles()
     {
 
-        $mMesa = new Mesas();
-        $mRes = new Reservas_Mesa();
+        $mMesa = new M_Mesas();
+        $mRes = new M_Reservas_Mesa();
 
         $nc = $this->request->getPost("n_comensales");
         $fecha = $this->request->getPost("fecha");
@@ -62,7 +62,7 @@ class ReservasMesa extends Controller{
 
     public function confirmarReservaMesa()
     {
-        $mRes = new Reservas_Mesa();
+        $mRes = new M_Reservas_Mesa();
 
         $id = intval($this->request->getPost("id_reserva_mesa"));
 
