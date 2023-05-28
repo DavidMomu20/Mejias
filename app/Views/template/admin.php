@@ -27,6 +27,16 @@
         <!-- Templates JS -->
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+        <!-- Select2 Templates -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <!-- DataTable Templates -->
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+
+        <!-- My JS Files -->
         <script src="<?=base_url("assets/js/misFunciones.js")?>" defer></script>
 
     </head>
@@ -76,7 +86,7 @@
                                 </a>
                                 <div class="collapse" id="collapseCruds" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="<?=base_url("admin")?>">Reservas Mesas</a>
+                                        <a class="nav-link" href="<?=base_url("admin/crud/reservas-mesa")?>">Reservas Mesas</a>
                                         <a class="nav-link" href="<?=base_url("admin")?>">Reservas Habitaciones</a>
                                         <a class="nav-link" href="<?=base_url("admin")?>">Comandas</a>
                                         <a class="nav-link" href="<?=base_url("admin")?>">Habitaciones</a>
@@ -167,8 +177,5 @@
 
         <!-- Scripts -->
         <script src="<?=base_url('assets/js/scripts.js')?>"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="<?=base_url('assets/js/datatables-simple-demo.js')?>"></script>
     </body>
 </html>

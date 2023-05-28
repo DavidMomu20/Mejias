@@ -31,6 +31,9 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v6.4.0/js/all.js" crossorigin="anonymous"></script>
 
+  <!-- My JS Files -->
+  <script src="<?=base_url("assets/js/misFunciones.js")?>" defer></script>
+
   <!-- =======================================================
   * Template Name: Yummy
   * Updated: Mar 10 2023 with Bootstrap v5.2.3

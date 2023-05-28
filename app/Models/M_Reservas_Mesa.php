@@ -10,6 +10,20 @@ class M_Reservas_Mesa extends M_base {
     protected $allowedFields = ["id_mesa", "id_estado", "fecha", "hora", "n_comensales"];
 
     /**
+     * Método para obtener todas las reservas con los datos del usuario correspondiente.
+     * En esta función se hará los filtros del crud
+     */
+
+    public function dameReservasMesa(?array $filtros = null)
+    {
+        $reservas = $this->select("reservas_mesa.*, usuarios.email, usuarios.telefono")
+            ->join("usuarios_reservas_mesa", "usuarios_reservas_mesa.id_reserva_mesa = reservas_mesa.id_reserva_mesa")
+            ->join("usuarios", "usuarios_reservas_mesa.id_usuario = usuarios.id_usuario");
+
+        return $reservas->findAll();
+    }
+
+    /**
      * Método para obtener todas aquellas incidencias que esten pendientes de confirmar
      */
 

@@ -7,12 +7,18 @@ use App\Models\M_Reservas_Mesa;
 use App\Models\M_Reservas_Habitacion;
 use App\Models\M_Platos;
 use App\Models\M_Categorias;
+use App\Models\M_Mesas;
+use App\Models\M_Estados;
+use App\Models\M_Usuarios;
 
 class Admin extends Controller {
 
     public function index()
     {
         if (session()->get('logged_in')) {
+
+            if (session()->get("permisos_user")["perm10"] == 1)
+                return redirect()->to(base_url("admin/crud/reservas-mesa"));
 
             if (session()->get("permisos_user")["perm9"] == 1)
                 return redirect()->to(base_url("admin/reservas-mesa-pendientes"));
@@ -99,4 +105,24 @@ class Admin extends Controller {
         }
     }
 
+    /**
+     * ---------- MÉTODOS CRUD ----------
+     */
+
+    public function crudReservasMesa()
+    {
+        $mRes = new M_Reservas_Mesa();
+        $mMesa = new M_Mesas();
+        $mEst = new M_Estados();
+        $mUser = new M_Usuarios();
+
+        $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"]);
+        $data["estados"] = $mEst->obtenerRegistros();
+        $data["reservas"] = $mRes->dameReservasMesa();
+        $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"]);
+
+        $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);
+
+        return view('template/admin', $data);
+    }
 }

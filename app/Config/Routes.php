@@ -49,6 +49,11 @@ $routes->get('admin/comandas', 'Admin::comandas');
 $routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes');
 $routes->get('admin/reservas-habs-pendientes', 'Admin::reservasHabPendientes');
 
+// ---- CRUD ----
+
+$routes->get('admin/crud/reservas-mesa', 'Admin::crudReservasMesa');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
