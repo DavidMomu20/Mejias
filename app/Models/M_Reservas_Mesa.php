@@ -16,7 +16,8 @@ class M_Reservas_Mesa extends M_base {
 
     public function dameReservasMesa(?array $filtros = null)
     {
-        $reservas = $this->select("reservas_mesa.*, usuarios.email, usuarios.telefono")
+        $reservas = $this->select("reservas_mesa.*, estados.descripcion AS estado, usuarios.email, usuarios.telefono")
+            ->join("estados", "reservas_mesa.id_estado = estados.id_estado")
             ->join("usuarios_reservas_mesa", "usuarios_reservas_mesa.id_reserva_mesa = reservas_mesa.id_reserva_mesa")
             ->join("usuarios", "usuarios_reservas_mesa.id_usuario = usuarios.id_usuario");
 

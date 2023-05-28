@@ -93,6 +93,7 @@
                         <tr>
                             <th>ID Reserva Mesa</th>
                             <th>Mesa Asignada</th>
+                            <th>Estado</th>
                             <th>Email Usuario</th>
                             <th>Nº Teléfono</th>
                             <th>Fecha</th>
@@ -104,6 +105,7 @@
                         <tr>
                             <th>ID Reserva Mesa</th>
                             <th>Mesa Asignada</th>
+                            <th>Estado</th>
                             <th>Email Usuario</th>
                             <th>Nº Teléfono</th>
                             <th>Fecha</th>
@@ -116,9 +118,10 @@
                         <tr>
                             <td><?=$reserva["id_reserva_mesa"]?></td>
                             <td><?php echo (is_null($reserva["id_mesa"]) ? "<i>Sin asignar</i>" : $reserva["id_mesa"]); ?></td>
+                            <td><?=$reserva["estado"]?></td>
                             <td><?=$reserva["email"]?></td>
                             <td><?=$reserva["telefono"]?></td>
-                            <td><?=date("d/m/Y", strtotime($reserva["fecha"]))?></td>
+                            <td data-fecha="<?=$reserva["fecha"]?>"><?=date("d/m/Y", strtotime($reserva["fecha"]))?></td>
                             <td><?=$reserva["hora"]?></td>
                             <td><?=$reserva["n_comensales"]?></td>
                         </tr>
