@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -52,25 +52,32 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a href="#hero">Inicio</a></li>
-                    <li><a href="#about">Acerca de</a></li>
-                    <li><a href="#menu">Menú</a></li>
-                    <li><a href="#events">Eventos</a></li>
-                    <li><a href="#habitaciones">Habitaciones</a></li>
-                    <li><a href="#gallery">Galería</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#hero"><?php echo lang('Translate.home'); ?></a></li>
+                    <li><a href="#about"><?php echo lang('Translate.acerca-de'); ?></a></li>
+                    <li><a href="#menu"><?php echo lang('Translate.menu'); ?></a></li>
+                    <li><a href="#events"><?php echo lang('Translate.eventos'); ?></a></li>
+                    <li><a href="#habitaciones"><?php echo lang('Translate.habitaciones'); ?></a></li>
+                    <li><a href="#gallery"><?php echo lang('Translate.galeria'); ?></a></li>
+                    <li><a href="#contact"><?php echo lang('Translate.contacto'); ?></a></li>
+                    <li class="dropdown"><a href="#"><?php echo lang('Translate.idioma'); ?> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                        <ul>
+                            <li><a href="#" value="es">ES</a></li>
+                            <li><a href="#" value="en">EN</a></li>
+                            <li><a href="#" value="fr">FR</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav><!-- .navbar -->
 
             <?php
       if (session()->get('logged_in')) {
         ?>
-            <a class="btn-book-a-table" href="<?=site_url('/logout');?>">Cerrar Sesión</a>
+            <a class="btn-book-a-table" href="<?=site_url('/logout');?>"><?php echo lang('Translate.cerrar-sesion'); ?></a>
             <?php
       }
       else {
         ?>
-            <a class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#modalLogin">Iniciar Sesión</a>
+            <a class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#modalLogin"><?php echo lang('Translate.iniciar-sesion'); ?></a>
             <?php
       }
       ?>
@@ -86,23 +93,22 @@
             <div class="row justify-content-between gy-5">
                 <div
                     class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                    <h2 data-aos="fade-up">Ponte Cómodo,<br>Estás con los <b style="color: red;">MEJÍAS</b></h2>
+                    <h2 data-aos="fade-up"><?php echo lang("Translate.titulo"); ?></h2>
                     <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea
                         consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
                     <?php if (session()->get('logged_in')): ?>
                     <?php if (session()->get('permisos_user')["perm7"] == 1): ?>
                     <div class="d-flex div-opReservas" data-aos="fade-up" data-aos-delay="200"
                         data-haysesion="<?= session()->get('logged_in') ?>">
-                        <a id="reservarMesa" class="btn-book-a-table opReservas">¡Reserva Mesa!</a>
+                        <a id="reservarMesa" class="btn-book-a-table opReservas"><?php echo lang('Translate.reserva-mesa'); ?></a>
                         <a id="reservarHabitacion" class="btn-book-a-table opReservas"
-                            style="background-color: blue;">¡Reserva Habitación!</a>
+                            style="background-color: blue;"><?php echo lang('Translate.reserva-hab'); ?></a>
                     </div>
                     <?php endif; ?>
                     <?php else: ?>
                     <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200"
                         data-haysesion="<?= session()->get('logged_in') ?>">
-                        <p style="font-style: italic; font-weight: bold; color: red;">¡Iniciar Sesión para poder
-                            reservar!</p>
+                        <p style="font-style: italic; font-weight: bold; color: red;"><?php echo lang('Translate.debes-iniciar-sesion'); ?></p>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -121,8 +127,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Acerca de</h2>
-                    <p>Esta es <span>Nuestra Historia</span></p>
+                    <h2><?php echo lang('Translate.acerca-de'); ?></h2>
+                    <p><?php echo lang('Translate.our-historia'); ?></p>
                 </div>
 
                 <div class="row gy-4">
@@ -130,7 +136,7 @@
                         style="background-image: url(<?php echo base_url('assets/img/weAreMejias.jpg'); ?>) ;"
                         data-aos="fade-up" data-aos-delay="150">
                         <div class="call-us position-absolute">
-                            <h4>Reserva Ahora Tu Mesa</h4>
+                            <h4><?php echo lang('Translate.reserva-mesa-ahora'); ?></h4>
                             <p>+34 952 71 45 02</p>
                         </div>
                     </div>
@@ -176,7 +182,7 @@
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="why-box">
-                            <h3>¿Por qué en Mejías?</h3>
+                            <h3><?php echo lang('Translate.why-mejias'); ?></h3>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
@@ -184,7 +190,7 @@
                                 optio ad corporis.
                             </p>
                             <div class="text-center">
-                                <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                                <a href="#" class="more-btn"><?php echo lang('Translate.saber-mas'); ?> <i class="bx bx-chevron-right"></i></a>
                             </div>
                         </div>
                     </div><!-- End Why Box -->
@@ -195,7 +201,7 @@
                             <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
                                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                     <i class="bi bi-egg-fried"></i>
-                                    <h4>Comida de alta calidad a precio económico</h4>
+                                    <h4><?php echo lang('Translate.comida-alta'); ?></h4>
                                     <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
                                         aliquip</p>
                                 </div>
@@ -204,7 +210,7 @@
                             <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
                                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                     <i class="bi bi-bell"></i>
-                                    <h4>Excelente servicio al cliente</h4>
+                                    <h4><?php echo lang('Translate.excelente-cliente'); ?></h4>
                                     <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                                         deserunt</p>
                                 </div>
@@ -213,7 +219,7 @@
                             <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
                                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                     <i class="bi bi-cup-hot"></i>
-                                    <h4>Ambiente agradable y familiar</h4>
+                                    <h4><?php echo lang('Translate.ambiente'); ?></h4>
                                     <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere
                                     </p>
                                 </div>
@@ -238,14 +244,14 @@
                             <span style="display: inline-block;">+ de</span>&nbsp;
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="953"
                                 data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Reseñas</p>
+                            <p><?php echo lang('Translate.reseñas'); ?></p>
                         </div>
                     </div><!-- End Stats Item -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
                             <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p>Projects</p>
+                            <p><?php echo lang('Translate.proyectos'); ?></p>
                         </div>
 
                     </div>
@@ -256,7 +262,7 @@
                             <span style="display: inline-block;">+ de</span>&nbsp;
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="47"
                                 data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Años de experiencia</p>
+                            <p><?php echo lang('Translate.años-exp'); ?></p>
                         </div>
                     </div><!-- End Stats Item -->
 
@@ -265,7 +271,7 @@
                             <span style="display: inline-block;">+ de</span>&nbsp;
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="20"
                                 data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Trabajadores</p>
+                            <p><?php echo lang('Translate.trabajadores'); ?></p>
                         </div>
                     </div><!-- End Stats Item -->
 
@@ -279,7 +285,7 @@
         <section id="in-memorian" class="in-memorian">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
-                    <h2>En recuerdo de</h2>
+                    <h2><?php echo lang('Translate.in-memoriam'); ?></h2>
                     <p>Antonio Mejías Rubio</span></p>
                 </div>
                 <div class="row gy-4">
@@ -303,8 +309,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Nuestro Menú</h2>
-                    <p>Échale un vistazo a <span>Nuestra Carta</span></p>
+                    <h2><?php echo lang('Translate.our-menu'); ?></h2>
+                    <p><?php echo lang('Translate.vistazo-carta'); ?></p>
                 </div>
 
                 <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
@@ -686,7 +692,7 @@
                 </div>
 
                 <div class="col-lg-12 text-center my-4">
-                    <button id="b-verCarta" class="btn btn-book-a-table">Ver Carta</button>
+                    <button id="b-verCarta" class="btn btn-book-a-table"><?php echo lang('Translate.ver-carta'); ?></button>
                 </div>
 
             </div>
@@ -697,8 +703,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Reseñas</h2>
-                    <p>¿Qué está opinando la gente<span> de nosotros</span>?</p>
+                    <h2><?php echo lang('Translate.reseñas'); ?></h2>
+                    <p><?php echo lang('Translate.opinando'); ?></p>
                 </div>
 
                 <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -828,8 +834,8 @@
             <div class="container-fluid" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Eventos</h2>
-                    <p>Comparte <span>tus eventos y/o celebraciones</span> En Nuestro Restaurante</p>
+                    <h2><?php echo lang('Translate.eventos'); ?></h2>
+                    <p><?php echo lang('Translate.comparte-momentos'); ?></p>
                 </div>
 
                 <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -837,7 +843,7 @@
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
                             style="background-image: url(assets/img/bautizos.jpg)">
-                            <h3>Bautizos</h3>
+                            <h3><?php echo lang('Translate.bautizos'); ?></h3>
                             <div class="price align-self-start">99€</div>
                             <p class="description">
                                 Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis
@@ -847,7 +853,7 @@
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
                             style="background-image: url(assets/img/comuniones.png)">
-                            <h3>Comuniones</h3>
+                            <h3><?php echo lang('Translate.comuniones'); ?></h3>
                             <div class="price align-self-start">289€</div>
                             <p class="description">
                                 In delectus sint qui et enim. Et ab repudiandae inventore quaerat doloribus. Facere nemo
@@ -857,7 +863,7 @@
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
                             style="background-image: url(assets/img/comidas-empresa.jpg)">
-                            <h3>Comidas de empresa</h3>
+                            <h3><?php echo lang('Translate.comidas-empresa'); ?></h3>
                             <div class="price align-self-start">499€</div>
                             <p class="description">
                                 Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam.
@@ -877,8 +883,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Habitaciones</h2>
-                    <p>Descanse en nuestras <span> Habitaciones</span></p>
+                    <h2><?php echo lang('Translate.habitaciones'); ?></h2>
+                    <p><?php echo lang('Translate.descanse'); ?></p>
                 </div>
 
                 <div class="row gy-4">
@@ -889,7 +895,7 @@
                                 <img src="assets/img/habitaciones/habitacion-1.jpg" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
-                                <h4>Camas Cómodas</h4>
+                                <h4><?php echo lang('Translate.camas-comodas'); ?></h4>
                                 <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
                                     Ipsum exercitationem iure minima enim corporis et voluptate.</p>
                             </div>
@@ -902,7 +908,7 @@
                                 <img src="assets/img/habitaciones/habitacion-2.jpg" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
-                                <h4>Baños</h4>
+                                <h4><?php echo lang('Translate.baños'); ?></h4>
                                 <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima
                                     suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
                             </div>
@@ -915,7 +921,7 @@
                                 <img src="assets/img/habitaciones/habitacion-3.jpg" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
-                                <h4>Salas de Estar</h4>
+                                <h4><?php echo lang('Translate.salas-estar'); ?></h4>
                                 <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt.
                                     Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
                             </div>
@@ -925,7 +931,7 @@
                 </div>
 
                 <div class="col-lg-12 text-center my-4">
-                    <a href="<?=base_url('habitaciones')?>" class="btn btn-book-a-table">Ver Habitaciones</a>
+                    <a href="<?=base_url('habitaciones')?>" class="btn btn-book-a-table"><?php echo lang('Translate.ver-hab'); ?></a>
                 </div>
 
             </div>
@@ -936,8 +942,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Galería</h2>
-                    <p>Algunas Fotos <span>del local</span></p>
+                    <h2><?php echo lang('Translate.galeria'); ?></h2>
+                    <p><?php echo lang('Translate.some-fotos'); ?></p>
                 </div>
 
                 <div class="gallery-slider swiper">
@@ -978,8 +984,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Contacto</h2>
-                    <p>¿Necesitas ayuda? <span>Contacta con nosotros</span></p>
+                    <h2><?php echo lang('Translate.contacto'); ?></h2>
+                    <p><?php echo lang('Translate.need-help'); ?></p>
                 </div>
 
                 <div class="mb-3">
@@ -994,7 +1000,7 @@
                         <div class="info-item  d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-map flex-shrink-0"></i>
                             <div>
-                                <h3>Dirección</h3>
+                                <h3><?php echo lang('Translate.direccion'); ?></h3>
                                 <p>C. Estación Salinas, 2, 29315 - Estación de Salinas (Málaga)</p>
                             </div>
                         </div>
@@ -1004,7 +1010,7 @@
                         <div class="info-item d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-envelope flex-shrink-0"></i>
                             <div>
-                                <h3>Correo electrónico</h3>
+                                <h3><?php echo lang('Translate.correo'); ?></h3>
                                 <p>hostalmejias@hotmail.com</p>
                             </div>
                         </div>
@@ -1014,7 +1020,7 @@
                         <div class="info-item  d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-telephone flex-shrink-0"></i>
                             <div>
-                                <h3>Llámanos</h3>
+                                <h3><?php echo lang('Translate.call-us'); ?></h3>
                                 <p>+34 952 71 45 02</p>
                             </div>
                         </div>
@@ -1024,9 +1030,9 @@
                         <div class="info-item  d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-clock flex-shrink-0"></i>
                             <div>
-                                <h3>Horario</h3>
+                                <h3><?php echo lang('Translate.horario'); ?></h3>
                                 <div>
-                                    <strong>Todos los días: </strong> 07:00 - 00:00
+                                    <strong><?php echo lang('Translate.every-day'); ?>: </strong> 07:00 - 00:00
                                 </div>
                             </div>
                         </div>
@@ -1046,7 +1052,7 @@
                 <div class="col-lg-3 col-md-6 d-flex">
                     <i class="bi bi-geo-alt icon"></i>
                     <div>
-                        <h4>Dirección</h4>
+                        <h4><?php echo lang('Translate.direccion'); ?></h4>
                         <p>
                             C. Estación Salinas, 2, 29315 <br>
                             Estación de Salinas - Málaga<br>
@@ -1058,10 +1064,10 @@
                 <div class="col-lg-3 col-md-6 footer-links d-flex">
                     <i class="bi bi-telephone icon"></i>
                     <div>
-                        <h4>Reservas</h4>
+                        <h4><?php echo lang('Translate.reservas'); ?></h4>
                         <p>
-                            <strong>Teléfono:</strong> +34 952 71 45 02<br>
-                            <strong>Correo:</strong> hostalmejias@hotmail.com<br>
+                            <strong><?php echo lang('Translate.telefono'); ?>:</strong> +34 952 71 45 02<br>
+                            <strong><?php echo lang('Translate.correo'); ?>:</strong> hostalmejias@hotmail.com<br>
                         </p>
                     </div>
                 </div>
@@ -1069,16 +1075,16 @@
                 <div class="col-lg-3 col-md-6 footer-links d-flex">
                     <i class="bi bi-clock icon"></i>
                     <div>
-                        <h4>Horario</h4>
+                        <h4><?php echo lang('Translate.horario'); ?></h4>
                         <p>
-                            <strong>Todos los días: </strong><br>
+                            <strong><?php echo lang('Translate.every-day'); ?>: </strong><br>
                             07:00 - 00:00
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Síguenos</h4>
+                    <h4><?php echo lang('Translate.siguenos'); ?></h4>
                     <div class="social-links d-flex">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -1091,7 +1097,7 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Mejías</span></strong>. Todos los derechos reservados
+                &copy; Copyright <strong><span>Mejías</span></strong>. <?php echo lang('Translate.derechos'); ?>
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
