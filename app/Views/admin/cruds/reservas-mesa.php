@@ -80,9 +80,9 @@
         </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-4 mb-4">
         <div class="col-xl-12">
-            <div class="card card-tabla-crud">
+            <div class="card card-tabla-crud-rm">
                 <div class="card-header">
                     <i class="fa-solid fa-table"></i>
                     Tabla
@@ -130,3 +130,5 @@
         </div>
     </div>
 </div>
+
+<script src="<?=base_url("assets/js/cruds/reservas-mesa.js")?>"></script>

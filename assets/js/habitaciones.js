@@ -74,14 +74,10 @@ $(function() {
 
         new CalendarioPlus();
 
-        $(".modal").addClass("fade");
-        setTimeout(function() {
-            $(".modal").addClass("show");
-        }, 25);
         $(".modal-dialog").addClass("modal-lg");
 
         $(".modal .modal-title").text("Establezca las fechas para la reserva, por favor");
-        $(".modal").show();
+        abrirModal();
     });
 
     /**

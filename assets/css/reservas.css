@@ -204,3 +204,23 @@
   background-color: rgb(26, 131, 212);
   color: whitesmoke;
 }
+
+/* --------------------------------------- */
+
+.tabla-crud tbody tr {
+  cursor: pointer;
+}
+
+.tabla-crud tbody tr:hover {
+  background-color: #bac2ca;
+  color: azure;
+}
+
+.card-tabla-crud-rm .card-header, .filtros-reservas-mesa .card-header {
+  background-color: #763636;
+  color: white;
+}
+
+.card-tabla-crud-rm, .filtros-reservas-mesa {
+  border-color: #763636;
+}

@@ -26,3 +26,17 @@ $(function() {
         $(".modal").hide();
       })
 })
+
+/**
+ * Función para abrir modal
+ */
+
+function abrirModal() {
+
+  $(".modal").addClass("fade");
+    setTimeout(function() {
+        $(".modal").addClass("show");
+    }, 25);
+
+  $(".modal").show();
+}

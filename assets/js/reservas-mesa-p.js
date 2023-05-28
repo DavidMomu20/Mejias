@@ -19,13 +19,8 @@ $(".b-confirmar-reserva").click(function() {
 
     $(".modal-body").html(loading);
 
-    $(".modal").addClass("fade");
-        setTimeout(function() {
-            $(".modal").addClass("show");
-        }, 25);
-
     $(".modal .modal-title").text("Confirmar Reserva de Mesa");
-    $(".modal").show();
+    abrirModal();
 
     $.ajax({
         url: "./mostrarMesas", 
@@ -101,11 +96,6 @@ $(".b-rechazar-reserva").click(function() {
 
     $(".modal-body").empty();
 
-    $(".modal").addClass("fade");
-    setTimeout(function() {
-        $(".modal").addClass("show");
-    }, 25);
-
     $(".modal .modal-title").text("Rechazar Reserva de Mesa");
-    $(".modal").show();
+    abrirModal();
 })
