@@ -22,7 +22,7 @@ return [
     "excelente-cliente" => "Excelente servicio al cliente", 
     "ambiente" => "Ambiente agradable y familiar", 
     "reseñas" => "Reseñas", 
-    "proyectos" => "Proyectos", 
+    "valoracion" => "Valoración", 
     "años-exp" => "Años de experiencia", 
     "trabajadores" => "Trabajadores", 
     "in-memoriam" => "En recuerdo de", 
@@ -49,6 +49,7 @@ return [
     "reservas" => "Reservas", 
     "telefono" => "Teléfono", 
     "siguenos" => "Síguenos", 
-    "derechos" => "Todos los derechos reservados"
+    "derechos" => "Todos los derechos reservados", 
+    "mas-de" => "Más de"
 ];
 ?>

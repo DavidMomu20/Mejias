@@ -26,14 +26,6 @@ class Home extends BaseController
         return view('template/plantilla', $data);
     }
 
-    public function reservarHab(?int $id = null)
-    {
-        $data["titulo"] = "Reserva de habitación";
-        $data["id"] = $id;
-        $data["cuerpo"] = view('mejias/reservahabitacion', $data);
-        return view('template/plantilla', $data);
-    }
-
     public function verHabitaciones()
     {
         $mHab = new M_Habitaciones();

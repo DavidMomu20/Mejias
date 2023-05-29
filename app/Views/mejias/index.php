@@ -29,6 +29,9 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url('assets/css/main.css'); ?>" rel="stylesheet">
 
+    <!-- API Google Places -->
+
+
     <!-- =======================================================
   * Template Name: Yummy
   * Updated: Mar 10 2023 with Bootstrap v5.2.3
@@ -61,9 +64,9 @@
                     <li><a href="#contact"><?php echo lang('Translate.contacto'); ?></a></li>
                     <li class="dropdown"><a href="#"><?php echo lang('Translate.idioma'); ?> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="#" value="es">ES</a></li>
-                            <li><a href="#" value="en">EN</a></li>
-                            <li><a href="#" value="fr">FR</a></li>
+                            <li><a href="<?= base_url('Idiomas/cambiaIdioma/es'); ?>" class="language-link" data-language="es">Español</a></li>
+                            <li><a href="<?= base_url('Idiomas/cambiaIdioma/en'); ?>" class="language-link" data-language="en">English</a></li>
+                            <li><a href="<?= base_url('Idiomas/cambiaIdioma/fr'); ?>" class="language-link" data-language="fr">Français</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -241,17 +244,17 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span style="display: inline-block;">+ de</span>&nbsp;
-                            <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="953"
+                            <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="962"
                                 data-purecounter-duration="1" class="purecounter"></span>
                             <p><?php echo lang('Translate.reseñas'); ?></p>
                         </div>
                     </div><!-- End Stats Item -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                            <span style="display: inline-block;"><i class="fa-solid fa-star"></i></span>&nbsp;
+                            <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="4.3" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><?php echo lang('Translate.proyectos'); ?></p>
+                            <p><?php echo lang('Translate.valoracion'); ?></p>
                         </div>
 
                     </div>
@@ -259,7 +262,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span style="display: inline-block;">+ de</span>&nbsp;
+                            <span style="display: inline-block;"><?php echo lang('Translate.mas-de'); ?></span>&nbsp;
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="47"
                                 data-purecounter-duration="1" class="purecounter"></span>
                             <p><?php echo lang('Translate.años-exp'); ?></p>
@@ -268,7 +271,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span style="display: inline-block;">+ de</span>&nbsp;
+                            <span style="display: inline-block;"><?php echo lang('Translate.mas-de'); ?></span>&nbsp;
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="20"
                                 data-purecounter-duration="1" class="purecounter"></span>
                             <p><?php echo lang('Translate.trabajadores'); ?></p>
@@ -284,21 +287,32 @@
 
         <section id="in-memorian" class="in-memorian">
             <div class="container" data-aos="fade-up">
-                <div class="section-header">
-                    <h2><?php echo lang('Translate.in-memoriam'); ?></h2>
-                    <p>Antonio Mejías Rubio</span></p>
-                </div>
-                <div class="row gy-4">
-                    <div class="col-lg-6 justify-content-center">
-                        <img src="<?=base_url('assets/img/antonio.png')?>" alt="Antonio Mejías Rubio">
-                        <div class="text-center">
-                            <span>26/12/1964 - 30/12/2022</span>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-xl-6 d-flex flex-column justify-content-center gap-3">
+                        <div class="img-antonio d-flex justify-content-center">
+                            <img src="<?=base_url('assets/img/antonio.png')?>" alt="Antonio Mejías Rubio">
+                        </div>
+                        <div class="fecha-antonio d-flex justify-content-center text-center">
+                            <span>26/12/1956 - 30/12/2022</span>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
+                    <div class="col-xl-6 d-flex flex-column gap-1">
+                        <div class="section-header">
+                            <h2><?php echo lang('Translate.in-memoriam'); ?></h2>
+                            <p>Antonio Mejías Rubio</span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
                             beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi! Earum
                             cumque at eos dolores non.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
+                            beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi! Earum
+                            cumque at eos dolores non.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
+                            beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi! Earum
+                            cumque at eos dolores non.</p>
+                            <span class="firma text-md-right">Antonio.</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -730,10 +744,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="assets/img/testimonials/testimonials-1.jpg"
-                                            class="img-fluid testimonial-img" alt="">
-                                    </div>
                                 </div>
                             </div>
                         </div><!-- End testimonial item -->
@@ -757,10 +767,6 @@
                                                     class="bi bi-star-fill"></i>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="assets/img/testimonials/testimonials-2.jpg"
-                                            class="img-fluid testimonial-img" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -786,10 +792,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="assets/img/testimonials/testimonials-3.jpg"
-                                            class="img-fluid testimonial-img" alt="">
-                                    </div>
                                 </div>
                             </div>
                         </div><!-- End testimonial item -->
@@ -813,10 +815,6 @@
                                                     class="bi bi-star-fill"></i>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="assets/img/testimonials/testimonials-4.jpg"
-                                            class="img-fluid testimonial-img" alt="">
                                     </div>
                                 </div>
                             </div>

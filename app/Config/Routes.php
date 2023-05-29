@@ -31,19 +31,23 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index'); // , ["filter" => "locale"]
 
 $routes->get('reservar/mesa', 'Home::reservarMesa');
 $routes->get('reservar/habitacion/(:num)', 'Home::reservarHab/$1');
 $routes->get('habitaciones', 'Home::verHabitaciones');
+
 $routes->post('doLogin', 'Login::doLogin');
 $routes->get('logout', 'Login::logout');
 $routes->post('doRegister', 'Register::doRegister');
+
 $routes->post('reservar/reservarMesa', 'ReservasMesa::realizarReservaMesa');
 $routes->post('admin/mostrarMesas', 'ReservasMesa::mostrarMesasDisponibles');
+$routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmarReservaMesa');
+
 $routes->post('buscarHabitaciones', 'ReservasHabitacion::buscarHabitaciones');
 $routes->post('reservarHab', 'ReservasHabitacion::realizarReservaHab');
-$routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmarReservaMesa');
+
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/comandas', 'Admin::comandas');
 $routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes');
@@ -52,7 +56,6 @@ $routes->get('admin/reservas-habs-pendientes', 'Admin::reservasHabPendientes');
 // ---- CRUD ----
 
 $routes->get('admin/crud/reservas-mesa', 'Admin::crudReservasMesa');
-
 
 /*
  * --------------------------------------------------------------------

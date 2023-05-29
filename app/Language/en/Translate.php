@@ -22,10 +22,10 @@ return [
     "excelente-cliente" => "Excellent customer service",
     "ambiente" => "Pleasant and family-friendly atmosphere",
     "reseñas" => "Reviews",
-    "proyectos" => "Projects",
+    "valoracion" => "Rating",
     "años-exp" => "Years of experience",
     "trabajadores" => "Employees",
-    "in-memoriam" => "In memory of",
+    "in-memoriam" => "In loving memory of",
     "our-menu" => "Our Menu",
     "vistazo-carta" => "Take a look at <span>Our Charter</span>",
     "ver-carta" => "View Menu",
@@ -49,6 +49,7 @@ return [
     "reservas" => "Reservations",
     "telefono" => "Phone",
     "siguenos" => "Follow Us",
-    "derechos" => "All rights reserved"
+    "derechos" => "All rights reserved", 
+    "mas-de" => "Over"
 ];
 ?>

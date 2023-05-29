@@ -22,7 +22,7 @@ return [
     "excelente-cliente" => "Un service clientèle excellent",
     "ambiente" => "Une ambiance agréable et familiale",
     "reseñas" => "Avis",
-    "proyectos" => "Projets",
+    "valoracion" => "Valorisation",
     "años-exp" => "Années d'expérience",
     "trabajadores" => "Employés",
     "in-memoriam" => "En mémoire de",
@@ -49,6 +49,7 @@ return [
     "reservas" => "Réservations",
     "telefono" => "Téléphone",
     "siguenos" => "Suivez-nous",
-    "derechos" => "Tous droits réservés"
+    "derechos" => "Tous droits réservés", 
+    "mas-de" => "Plus de"
 ];
 ?>

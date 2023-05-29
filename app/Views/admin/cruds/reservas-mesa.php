@@ -88,7 +88,7 @@
                     Tabla
                 </div>
                 <div class="card-body">
-                    <table id="tabla-reservas-mesa" class="tabla-crud table table-striped">
+                    <table id="tabla-reservas-mesa" class="tabla-crud table table-striped" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID Reserva Mesa</th>
