@@ -50,6 +50,22 @@ return [
     "telefono" => "Phone",
     "siguenos" => "Follow Us",
     "derechos" => "All rights reserved", 
-    "mas-de" => "Over"
+    "mas-de" => "Over", 
+    "bienvenido" => "Welcome!",
+    "registrarse" => "Sign Up",
+    "correo-inv" => "Invalid Email",
+    "contraseña" => "Password",
+    "contraseña-ob" => "Password Required",
+    "enviar" => "Send",
+    "unete" => "Join Now!",
+    "not-miembro" => "Not a Member Yet?",
+    "correo-ob" => "Email Required",
+    "nombre" => "Name",
+    "nombre-ob" => "Name Required",
+    "apellido" => "Last Name",
+    "apellido-ob" => "Last Name Required",
+    "condiciones" => "By signing up, you agree to our terms and conditions.",
+    "cuenta-ya" => "Already have an account?",
+    "inicia-sesion-ya" => "Log In Now!"
 ];
 ?>

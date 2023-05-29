@@ -21,16 +21,13 @@
                                         <h4 class="col-sm-12">Filtros</h4>
                                     </div>
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <label for="capacidad" class="form-label">Capacidad:</label>
                                             <input class="form-control" type="number" name="capacidad" id="capacidad">
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <label for="precio" class="form-label">Precio:</label>
                                             <input class="form-control" type="number" name="precio" id="precio">
-                                        </div>
-                                        <div class="col-4">
-                                            <select name="" id="" class="form-select"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -38,31 +35,29 @@
                         </div>
                         <div class="row mt-4">
                             <div class="div-habs-scroll">
-                                    <?php
-                                    foreach($habitaciones as $habitacion):
-                                        ?>
-                                        <div class="habitacion" data-value="<?=$habitacion["id_habitacion"]?>">
-                                            <div class="datos-habitacion">
-                                                <div class="image" style="background: url(<?=base_url('assets/img/habitaciones/' . $habitacion["foto"])?>)"></div>
-                                                <div class="datos">
-                                                    <div class="dato-hab numero-hab"><span>Habitación</span> <?=$habitacion["num_habitacion"]?></div>
-                                                    <div class="dato-hab capacidad-hab" data-value="<?=$habitacion["capacidad"]?>">
-                                                        <i class="fa-solid fa-user-group"></i>
-                                                        <span><?=$habitacion["capacidad"]?> personas</span>
-                                                    </div>
-                                                    <div class="dato-hab precio-hab" data-value="<?=$habitacion["precio"]?>">
-                                                        <i class="fa-solid fa-money-bill-wave"></i>
-                                                        <span><?=$habitacion["precio"]?>€ / noche</span>
-                                                    </div>
+                                <?php foreach($habitaciones as $habitacion): ?>
+                                <div class="habitacion container" data-value="<?=$habitacion["id_habitacion"]?>">
+                                    <div class="row">
+                                        <div class="col-xl-12 d-flex justify-content-center gap-2">
+                                            <div class="col-md-6 img-hab"></div>
+                                            <div class="col-md-3 d-flex flex-column justify-content-center align-items-center gap-2">
+                                                <div class="dato-hab numero-hab"><span>Habitación</span> <?=$habitacion["num_habitacion"]?></div>
+                                                <div class="dato-hab capacidad-hab" data-value="<?=$habitacion["capacidad"]?>">
+                                                    <i class="fa-solid fa-user-group"></i>
+                                                    <span><?=$habitacion["capacidad"]?> personas</span>
                                                 </div>
-                                                <div class="div-bReservarHab">
-                                                    <button class="btn btn-book-a-table">Reservar</button>
+                                                <div class="dato-hab precio-hab" data-value="<?=$habitacion["precio"]?>">
+                                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                                    <span><?=$habitacion["precio"]?>€ / noche</span>
                                                 </div>
                                             </div>
+                                            <div class="div-bReservarHab col-sm-2 d-flex justify-content-center align-items-center">
+                                                <button class="btn btn-book-a-table">Reservar</button>
+                                            </div>
                                         </div>
-                                        <?php
-                                    endforeach;
-                                    ?>
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

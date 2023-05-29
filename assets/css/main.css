@@ -1886,47 +1886,16 @@ div.div-habs-scroll .loading {
 }
 
 .habitacion {
-  min-height: 100px;
+  min-height: 200px;
   padding: 3% 0;
   width: 100%;
   height: 20%;
 }
 
-.habitacion .datos-habitacion {
-  display: grid;
-  place-items: center;
-  grid-template-columns: 0.1fr 0.7fr 0.2fr;
-  width: 100%;
-  height: 100%;
-}
-
-.habitacion .datos-habitacion .datos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0 10%;
-  width: 100%;
-  height: 100%;
-}
-
-.habitacion .datos-habitacion .datos .dato-hab {
-  font-weight: bold;
-  font-size: 1.4rem;
-}
-
-.habitacion .datos-habitacion .datos .numero-hab span {
-  color: var(--color-primary);
-}
-
-.habitacion .datos-habitacion .datos .numero-hab {
-  font-size: 1.6rem;
-}
-
-.habitacion .datos-habitacion .image {
+.img-hab {
   background-size: cover;
-  width: 80px;
-  height: 100%;
-  border-radius: 5px;
+  min-height: 150px;
+  background-color: red;
 }
 
 .habitacion:not(.habitacion:last-of-type) {

@@ -31,14 +31,6 @@
 
     <!-- API Google Places -->
 
-
-    <!-- =======================================================
-  * Template Name: Yummy
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -48,9 +40,7 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <a href="<?=base_url()?>" class="logo d-flex align-items-center me-auto me-lg-0">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
                 <img src="<?php echo base_url('assets/img/logo.png'); ?>" alt="">
-                <!-- <h1>Yummy<span>.</span></h1> -->
             </a>
 
             <nav id="navbar" class="navbar">
@@ -1116,7 +1106,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">¡Bienvenido!</h4>
+                    <h4 class="modal-title"><?php echo lang('Translate.bienvenido'); ?></h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -1125,31 +1115,31 @@
                     <div class="opciones-login d-flex flex-column justify-content-between">
                         <div class="row">
                             <div class="col">
-                                <button class="btn btn-login w-100 mb-2">Iniciar Sesión</button>
+                                <button class="btn btn-login w-100 mb-2"><?php echo lang('Translate.iniciar-sesion'); ?></button>
                             </div>
                             <div class="col">
-                                <button class="btn btn-register w-100 mb-2">Registrarse</button>
+                                <button class="btn btn-register w-100 mb-2"><?php echo lang('Translate.registrarse'); ?></button>
                             </div>
                         </div>
                     </div>
                     <div class="login-form">
                         <div class="card shadow-lg">
                             <div class="card-body p-5">
-                                <h1 class="fs-4 card-title fw-bold mb-4">Iniciar Sesión</h1>
+                                <h1 class="fs-4 card-title fw-bold mb-4"><?php echo lang('Translate.iniciar-sesion'); ?></h1>
                                 <form method="POST" class="needs-validation"
                                     novalidate="" autocomplete="off">
                                     <div class="mb-3">
-                                        <label class="mb-2 text-muted" for="email-login">Correo electrónico</label>
+                                        <label class="mb-2 text-muted" for="email-login"><?php echo lang('Translate.correo'); ?></label>
                                         <input id="email-login" type="email" class="form-control" name="email-login"
                                             value="" required autofocus>
                                         <div class="invalid-feedback">
-                                            Correo inválido
+                                            <?php echo lang('Translate.correo-inv'); ?>
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
                                         <div class="mb-2 w-100">
-                                            <label class="text-muted" for="password-login">Contraseña</label>
+                                            <label class="text-muted" for="password-login"><?php echo lang('Translate.contraseña'); ?></label>
                                         </div>
                                         <div class="input-group">
                                             <input type="password" class="form-control" name="password-login"
@@ -1163,7 +1153,7 @@
                                             </div>
                                         </div>
                                         <div class="invalid-feedback">
-                                            Contraseña obligatoria
+                                            <?php echo lang('Translate.contraseña-ob'); ?>
                                         </div>
                                     </div>
 
@@ -1177,14 +1167,14 @@
 
                                     <div class="d-flex align-items-center">
                                         <button type="submit" class="btn login ms-auto">
-                                            Enviar
+                                            <?php echo lang('Translate.enviar'); ?>
                                         </button>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer py-3 border-0">
                                 <div class="text-center">
-                                    ¿Aún no eres miembro? <a class="btn-register">¡Únete Ahora!</a>
+                                    <?php echo lang('Translate.not-miembro'); ?> <a class="btn-register"><?php echo lang('Translate.unete'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -1192,18 +1182,17 @@
                     <div class="register-form" style="display: none;">
                         <div class="card shadow-lg">
                             <div class="card-body p-5">
-                                <h1 class="fs-4 card-title fw-bold mb-4">Registrarse</h1>
+                                <h1 class="fs-4 card-title fw-bold mb-4"><?php echo lang('Translate.registrarse'); ?></h1>
                                 <form method="POST" class="needs-validation"
                                     novalidate="" autocomplete="off">
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="email-register">Correo
-                                                    electrónico</label>
+                                                <label class="mb-2 text-muted" for="email-register"><?php echo lang('Translate.correo'); ?></label>
                                                 <input id="email-register" type="email" class="form-control"
                                                     name="email-register" value="" required>
                                                 <div class="invalid-feedback">
-                                                    Correo obligatorio
+                                                    <?php echo lang('Translate.correo-ob'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -1211,7 +1200,7 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label class="mb-2 text-muted"
-                                                    for="password-register">Contraseña</label>
+                                                    for="password-register"><?php echo lang('Translate.contraseña'); ?></label>
                                                 <div class="input-group">
                                                     <input type="password" class="form-control" name="password-register"
                                                         id="password-register" aria-label="password"
@@ -1224,7 +1213,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="invalid-feedback">
-                                                    Contraseña obligatoria
+                                                    <?php echo lang('Translate.contraseña-ob'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -1233,46 +1222,46 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="name">Nombre</label>
+                                                <label class="mb-2 text-muted" for="name"><?php echo lang('Translate.nombre'); ?></label>
                                                 <input id="nombre" type="text" class="form-control" name="nombre"
                                                     value="" required autofocus>
                                                 <div class="invalid-feedback">
-                                                    Nombre obligatorio
+                                                    <?php echo lang('Translate.nombre-ob'); ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="name">1º Apellido</label>
+                                                <label class="mb-2 text-muted" for="name"><?php echo lang('Translate.apellido'); ?></label>
                                                 <input id="apellido" type="text" class="form-control" name="apellido"
                                                     value="" required autofocus>
                                                 <div class="invalid-feedback">
-                                                    Apellido obligatorio
+                                                    <?php echo lang('Translate.apellido-ob'); ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="phone">Nº Teléfono</label>
+                                                <label class="mb-2 text-muted" for="phone"><?php echo lang('Translate.telefono'); ?></label>
                                                 <input id="phone" type="tel" class="form-control" name="phone">
                                             </div>
                                         </div>
                                     </div>
 
                                     <p class="form-text text-muted mb-3 text-center">
-                                        Al registrarse, estarás aceptando nuestras condiciones generales.
+                                        
                                     </p>
 
                                     <div class="align-items-center d-flex">
                                         <button type="submit" class="btn register ms-auto">
-                                            Registrarse
+                                            <?php echo lang('Translate.registrarse'); ?>
                                         </button>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer py-3 border-0">
                                 <div class="text-center">
-                                    ¿Ya tienes una cuenta? <a class="btn-login">¡Inicia Sesión!</a>
+                                    <?php echo lang('Translate.cuenta-ya'); ?> <a class="btn-login"><?php echo lang('Translate.inicia-sesion-ya'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -1296,7 +1285,7 @@
     <script src="<?php echo base_url('assets/vendor/php-email-form/validate.js'); ?>"></script>
 
     <!-- Template Main JS File -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="<?php echo base_url('assets/js/formsLogin.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
     <script src="<?=base_url('assets/js/inicio.js')?>"></script>

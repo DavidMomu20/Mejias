@@ -50,6 +50,22 @@ return [
     "telefono" => "Téléphone",
     "siguenos" => "Suivez-nous",
     "derechos" => "Tous droits réservés", 
-    "mas-de" => "Plus de"
+    "mas-de" => "Plus de", 
+    "bienvenido" => "Bienvenue!",
+    "registrarse" => "S'inscrire",
+    "correo-inv" => "Adresse e-mail invalide",
+    "contraseña" => "Mot de passe",
+    "contraseña-ob" => "Mot de passe obligatoire",
+    "enviar" => "Envoyer",
+    "unete" => "Rejoignez-nous maintenant !",
+    "not-miembro" => "Pas encore membre ?",
+    "correo-ob" => "Adresse e-mail obligatoire",
+    "nombre" => "Nom",
+    "nombre-ob" => "Nom obligatoire",
+    "apellido" => "Nom de famille",
+    "apellido-ob" => "Nom de famille obligatoire",
+    "condiciones" => "En vous inscrivant, vous acceptez nos conditions générales.",
+    "cuenta-ya" => "Vous avez déjà un compte ?",
+    "inicia-sesion-ya" => "Connectez-vous maintenant !"
 ];
 ?>

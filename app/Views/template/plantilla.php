@@ -31,6 +31,14 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v6.4.0/js/all.js" crossorigin="anonymous"></script>
 
+  <!-- Select2 Templates -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <!-- DataTable Templates -->
+  <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+  <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+
   <!-- My JS Files -->
   <script src="<?=base_url("assets/js/misFunciones.js")?>" defer></script>
 
@@ -56,34 +64,22 @@
       </a>
 
       <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="<?=base_url()?>#hero">Principal</a></li>
-          <li><a href="<?=base_url()?>#about">Acerca de</a></li>
-          <li><a href="<?=base_url()?>#menu">Menú</a></li>
-          <li><a href="<?=base_url()?>#events">Eventos</a></li>
-          <li><a href="<?=base_url()?>#habitaciones">Habitaciones</a></li>
-          <li><a href="<?=base_url()?>#gallery">Galería</a></li>
-          <!--
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
+          <ul>
+              <li><a href="#hero"><?php echo lang('Translate.home'); ?></a></li>
+              <li><a href="#about"><?php echo lang('Translate.acerca-de'); ?></a></li>
+              <li><a href="#menu"><?php echo lang('Translate.menu'); ?></a></li>
+              <li><a href="#events"><?php echo lang('Translate.eventos'); ?></a></li>
+              <li><a href="#habitaciones"><?php echo lang('Translate.habitaciones'); ?></a></li>
+              <li><a href="#gallery"><?php echo lang('Translate.galeria'); ?></a></li>
+              <li><a href="#contact"><?php echo lang('Translate.contacto'); ?></a></li>
+              <li class="dropdown"><a href="#"><?php echo lang('Translate.idioma'); ?> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                  <ul>
+                      <li><a href="<?= base_url('Idiomas/cambiaIdioma/es'); ?>" class="language-link" data-language="es">Español</a></li>
+                      <li><a href="<?= base_url('Idiomas/cambiaIdioma/en'); ?>" class="language-link" data-language="en">English</a></li>
+                      <li><a href="<?= base_url('Idiomas/cambiaIdioma/fr'); ?>" class="language-link" data-language="fr">Français</a></li>
+                  </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          -->
-          <li><a href="<?=base_url()?>#contact">Contacto</a></li>
-        </ul>
+          </ul>
       </nav><!-- .navbar -->
 
       <?php
@@ -134,66 +130,62 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
-    <div class="container">
+  <div class="container">
       <div class="row gy-3">
-        <div class="col-lg-3 col-md-6 d-flex">
-          <i class="bi bi-geo-alt icon"></i>
-          <div>
-            <h4>Dirección</h4>
-            <p>
-              C. Estación Salinas, 2, 29315 <br>
-              Estación de Salinas - Málaga<br>
-            </p>
+          <div class="col-lg-3 col-md-6 d-flex">
+              <i class="bi bi-geo-alt icon"></i>
+              <div>
+                  <h4><?php echo lang('Translate.direccion'); ?></h4>
+                  <p>
+                      C. Estación Salinas, 2, 29315 <br>
+                      Estación de Salinas - Málaga<br>
+                  </p>
+              </div>
+
           </div>
 
-        </div>
-
-        <div class="col-lg-3 col-md-6 footer-links d-flex">
-          <i class="bi bi-telephone icon"></i>
-          <div>
-            <h4>Reservas</h4>
-            <p>
-              <strong>Teléfono:</strong> +34 952 71 45 02<br>
-              <strong>Correo:</strong> hostalmejias@hotmail.com<br>
-            </p>
+          <div class="col-lg-3 col-md-6 footer-links d-flex">
+              <i class="bi bi-telephone icon"></i>
+              <div>
+                  <h4><?php echo lang('Translate.reservas'); ?></h4>
+                  <p>
+                      <strong><?php echo lang('Translate.telefono'); ?>:</strong> +34 952 71 45 02<br>
+                      <strong><?php echo lang('Translate.correo'); ?>:</strong> hostalmejias@hotmail.com<br>
+                  </p>
+              </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6 footer-links d-flex">
-          <i class="bi bi-clock icon"></i>
-          <div>
-            <h4>Horario</h4>
-            <p>
-              <strong>Todos los días: </strong><br>
-              07:00 - 00:00
-            </p>
+          <div class="col-lg-3 col-md-6 footer-links d-flex">
+              <i class="bi bi-clock icon"></i>
+              <div>
+                  <h4><?php echo lang('Translate.horario'); ?></h4>
+                  <p>
+                      <strong><?php echo lang('Translate.every-day'); ?>: </strong><br>
+                      07:00 - 00:00
+                  </p>
+              </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Síguenos</h4>
-          <div class="social-links d-flex">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          <div class="col-lg-3 col-md-6 footer-links">
+              <h4><?php echo lang('Translate.siguenos'); ?></h4>
+              <div class="social-links d-flex">
+                  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              </div>
           </div>
-        </div>
 
       </div>
-    </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Mejías</span></strong>. Todos los derechos reservados
+          &copy; Copyright <strong><span>Mejías</span></strong>. <?php echo lang('Translate.derechos'); ?>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
-        Designed by David Morales 2ºDAW
+          Designed by David Morales 2ºDAW
       </div>
-    </div>
+  </div>
 
   </footer><!-- End Footer -->
   <!-- End Footer -->
@@ -235,7 +227,6 @@
   <script src="<?php echo base_url('assets/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/vendor/purecounter/purecounter_vanilla.js'); ?>"></script>
   <script src="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/vendor/php-email-form/validate.js'); ?>"></script>
 
   <!-- Template Main JS File -->
   <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>

@@ -50,6 +50,22 @@ return [
     "telefono" => "Teléfono", 
     "siguenos" => "Síguenos", 
     "derechos" => "Todos los derechos reservados", 
-    "mas-de" => "Más de"
+    "mas-de" => "Más de", 
+    "bienvenido" => "¡Bienvenido!", 
+    "registrarse" => "Registrarse", 
+    "correo-inv" => "Correo Inválido", 
+    "contraseña" => "Contraseña", 
+    "contraseña-ob" => "Contraseña Obligatoria", 
+    "enviar" => "Enviar", 
+    "unete" => "¡Únete Ahora!", 
+    "not-miembro" => "¿Aún no eres miembro?", 
+    "correo-ob" => "Correo Obligatorio", 
+    "nombre" => "Nombre", 
+    "nombre-ob" => "Nombre Obligatorio", 
+    "apellido" => "1º Apellido", 
+    "apellido-ob" => "Apellido Obligatorio", 
+    "condiciones" => "Al registrarse, estarás aceptando nuestras condiciones generales.", 
+    "cuenta-ya" => "¿Ya tienes una cuenta?", 
+    "inicia-sesion-ya" => "¡Inicia Sesión!"
 ];
 ?>
