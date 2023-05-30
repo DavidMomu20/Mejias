@@ -41,14 +41,14 @@
                                         <div class="col-xl-12 d-flex justify-content-center gap-2">
                                             <div class="col-md-6 img-hab"></div>
                                             <div class="col-md-3 d-flex flex-column justify-content-center align-items-center gap-2">
-                                                <div class="dato-hab numero-hab"><span>Habitación</span> <?=$habitacion["num_habitacion"]?></div>
+                                                <div class="dato-hab numero-hab">Habitación <span><?=$habitacion["num_habitacion"]?></span></div>
                                                 <div class="dato-hab capacidad-hab" data-value="<?=$habitacion["capacidad"]?>">
                                                     <i class="fa-solid fa-user-group"></i>
-                                                    <span><?=$habitacion["capacidad"]?> personas</span>
+                                                    <span><?=$habitacion["capacidad"]?></span> personas
                                                 </div>
                                                 <div class="dato-hab precio-hab" data-value="<?=$habitacion["precio"]?>">
                                                     <i class="fa-solid fa-money-bill-wave"></i>
-                                                    <span><?=$habitacion["precio"]?>€ / noche</span>
+                                                    <span><?=$habitacion["precio"]?>€</span> / noche
                                                 </div>
                                             </div>
                                             <div class="div-bReservarHab col-sm-2 d-flex justify-content-center align-items-center">

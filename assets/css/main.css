@@ -1886,20 +1886,35 @@ div.div-habs-scroll .loading {
 }
 
 .habitacion {
-  min-height: 200px;
+  min-height: 260px;
   padding: 3% 0;
   width: 100%;
   height: 20%;
 }
 
 .img-hab {
+  min-height: 210px;
+  background: url(../img/habitaciones/habitacion-3.jpg);
   background-size: cover;
-  min-height: 150px;
-  background-color: red;
+  background-position: center;
+}
+
+.habitacion .btn-book-a-table {
+  margin-left: none;
 }
 
 .habitacion:not(.habitacion:last-of-type) {
   border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+.dato-hab {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+
+.dato-hab span {
+  color: var(--color-primary);
 }
 
 .modal {
