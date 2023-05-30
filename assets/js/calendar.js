@@ -64,6 +64,7 @@ class Calendario {
         const firstDay = new Date(this.year, this.month, 1).getDay();
         const daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
         const currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0); // Establecer la hora a 00:00:00:00
 
         for (let i = 0; i < firstDay; i++) {
             calendarDayElements.push('<div class="calendar-day"></div>');
