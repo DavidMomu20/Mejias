@@ -18,7 +18,7 @@ $(".btn-register").click(function() {
     $(".register-form").show();
 })
 
-$("#show-password-btn-login").click(function() {
+$("#show-password-btn-login").hover(function() {
 
     let passwordField = document.getElementById("password-login");
     if (passwordField.type === "password") {
@@ -28,7 +28,7 @@ $("#show-password-btn-login").click(function() {
     }
 });
 
-$("#show-password-btn-register").click(function() {
+$("#show-password-btn-register").hover(function() {
 
     let passwordField = document.getElementById("password-register");
     if (passwordField.type === "password") {
