@@ -31,7 +31,7 @@ class ReservasHabitacion extends Controller{
 
     public function realizarReservaHab()
     {
-        $mRes = new Reservas_Habitacion();
+        $mRes = new M_Reservas_Habitacion();
         $id_user = intval(session()->get('id_user'));
 
         $fecha_inicio = $this->request->getPost("fecha_inicio");
