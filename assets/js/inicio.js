@@ -15,26 +15,6 @@ $(function() {
 
     // ========================================
 
-    /*
-    $(".language-link").click(function(e) {
-
-        e.preventDefault();
-
-        $.ajax({
-            url: ".", 
-            type: "POST",  
-            data: {
-                idioma: $(this).data("language")
-            }, 
-            success: function(response) {
-                location.reload();
-            }
-        })
-    })
-    */
-
-    // ========================================
-
     $("button.login").on("click", function(e) {
 
         e.preventDefault();

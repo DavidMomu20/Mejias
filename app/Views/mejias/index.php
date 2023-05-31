@@ -54,9 +54,9 @@
                     <li><a href="#contact"><?php echo lang('Translate.contacto'); ?></a></li>
                     <li class="dropdown"><a href="#"><?php echo lang('Translate.idioma'); ?> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="<?= base_url('Idiomas/cambiaIdioma/es'); ?>" class="language-link" data-language="es">Español</a></li>
-                            <li><a href="<?= base_url('Idiomas/cambiaIdioma/en'); ?>" class="language-link" data-language="en">English</a></li>
-                            <li><a href="<?= base_url('Idiomas/cambiaIdioma/fr'); ?>" class="language-link" data-language="fr">Français</a></li>
+                            <li><a href="<?=base_url("updateLang/es")?>" class="language-link" data-language="es">Español</a></li>
+                            <li><a href="<?=base_url("updateLang/en")?>" class="language-link" data-language="en">English</a></li>
+                            <li><a href="<?=base_url("updateLang/fr")?>" class="language-link" data-language="fr">Français</a></li>
                         </ul>
                     </li>
                 </ul>
