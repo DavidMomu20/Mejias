@@ -1615,7 +1615,7 @@ a.btn-login, a.btn-register {
   font-family: var(--font-secondary);
 }
 
-.calendar-day:not(.dia-inactivo):hover {
+.calendar-day:not(.dia-inactivo):hover, .calendar-day:not(:empty):hover {
   cursor: pointer;
   background-color: #eee;
 }
