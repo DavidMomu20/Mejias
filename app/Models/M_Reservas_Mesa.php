@@ -21,7 +21,7 @@ class M_Reservas_Mesa extends M_base {
             ->join("usuarios_reservas_mesa", "usuarios_reservas_mesa.id_reserva_mesa = reservas_mesa.id_reserva_mesa")
             ->join("usuarios", "usuarios_reservas_mesa.id_usuario = usuarios.id_usuario");
 
-        return $reservas->findAll();
+        return $reservas;
     }
 
     /**

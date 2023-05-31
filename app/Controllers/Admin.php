@@ -111,14 +111,12 @@ class Admin extends Controller {
 
     public function crudReservasMesa()
     {
-        $mRes = new M_Reservas_Mesa();
         $mMesa = new M_Mesas();
         $mEst = new M_Estados();
         $mUser = new M_Usuarios();
 
         $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"]);
         $data["estados"] = $mEst->obtenerRegistros();
-        $data["reservas"] = $mRes->dameReservasMesa();
         $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"]);
 
         $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);

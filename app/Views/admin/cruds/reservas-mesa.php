@@ -89,49 +89,67 @@
                 </div>
                 <div class="card-body">
                     <table id="tabla-reservas-mesa" class="tabla-crud table table-striped" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>ID Reserva Mesa</th>
-                            <th>Mesa Asignada</th>
-                            <th>Estado</th>
-                            <th>Email Usuario</th>
-                            <th>Nº Teléfono</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Nº Comensales</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>ID Reserva Mesa</th>
-                            <th>Mesa Asignada</th>
-                            <th>Estado</th>
-                            <th>Email Usuario</th>
-                            <th>Nº Teléfono</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Nº Comensales</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <?php foreach($reservas as $reserva): ?>
-                        <tr>
-                            <td><?=$reserva["id_reserva_mesa"]?></td>
-                            <td><?php echo (is_null($reserva["id_mesa"]) ? "<i>Sin asignar</i>" : $reserva["id_mesa"]); ?></td>
-                            <td><?=$reserva["estado"]?></td>
-                            <td><?=$reserva["email"]?></td>
-                            <td><?=$reserva["telefono"]?></td>
-                            <td data-fecha="<?=$reserva["fecha"]?>"><?=date("d/m/Y", strtotime($reserva["fecha"]))?></td>
-                            <td><?=$reserva["hora"]?></td>
-                            <td><?=$reserva["n_comensales"]?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+                        <thead>
+                            <tr>
+                                <th>ID Reserva Mesa</th>
+                                <th>Mesa Asignada</th>
+                                <th>Estado</th>
+                                <th>Email Usuario</th>
+                                <th>Nº Teléfono</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Nº Comensales</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID Reserva Mesa</th>
+                                <th>Mesa Asignada</th>
+                                <th>Estado</th>
+                                <th>Email Usuario</th>
+                                <th>Nº Teléfono</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Nº Comensales</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $("#tabla-reservas-mesa").DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
+        },
+        responsive: true, 
+        scrollX: true,
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "<?php echo base_url('admin/crud/ajax-rm'); ?>",
+            type: "POST"
+        },
+        columns: [
+            { data: "id_reserva_mesa" },
+            { 
+                data: "id_mesa",
+                render: function(data, type, row) {
+                    let id = ((data === null) ? "<i>Sin asignar</i>" : data);
+                    return "<td>" + data + "</td>";
+                } 
+            },
+            { data: "estado" },
+            { data: "email" },
+            { data: "telefono" },
+            { data: "fecha" },
+            { data: "hora" },
+            { data: "n_comensales" },
+        ]
+    })
+</script>
 
 <script src="<?=base_url("assets/js/cruds/reservas-mesa.js")?>"></script>

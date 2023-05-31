@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 
 use App\Models\M_Reservas_Mesa;
 use App\Models\M_Mesas;
+use App\Libraries\TableLib;
 
 class ReservasMesa extends Controller{
 
@@ -71,14 +72,6 @@ class ReservasMesa extends Controller{
             "id_estado" => 1
         ];
 
-        // Filtrar y sanitizar los datos
-        /*
-        $datosFiltrados = [
-            'id_mesa' => filter_var($datos['id_mesa'], FILTER_SANITIZE_NUMBER_INT),
-            'id_estado' => filter_var($datos['id_estado'], FILTER_SANITIZE_NUMBER_INT),
-        ];
-        */
-
         if ($mRes->updateRegistro($id, $datos)) {
 
             $email = new \App\Libraries\EmailsSender();
@@ -95,5 +88,31 @@ class ReservasMesa extends Controller{
         }
         else
             echo json_encode(["data" => "Reserva Confirmada sin éxito"]);
+    }
+
+    /**
+     * ==================== MÉTODOS CRUD ====================
+     */
+
+    public function ajax()
+    {
+        $order = $this->request->getVar("order");
+        $order = array_shift($order);
+
+        $mRes = new M_Reservas_Mesa();
+        $reservas = $mRes->dameReservasMesa();
+        
+        $columnas = ["id_reserva_mesa", "id_mesa", "estado", "email", "telefono", "fecha", "hora", "n_comensales"];
+        $lib = new TableLib($reservas, 'gp1', $columnas);
+
+        $response = $lib->getResponse([
+            "draw" => $this->request->getVar("draw"), 
+            "length" => $this->request->getVar("length"), 
+            "start" => $this->request->getVar("start"), 
+            "order" => $order["column"], 
+            "direction" => $order["dir"]
+        ]);
+
+        echo json_encode($response);
     }
 }

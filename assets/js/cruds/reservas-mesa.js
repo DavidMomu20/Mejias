@@ -62,7 +62,7 @@ $(function () {
 
     $("#btn-modificar").attr("disabled", "true");
 
-    $("#tabla-reservas-mesa tbody tr").on("click", function () {
+    $("#tabla-reservas-mesa").on("click", "tbody tr", function () {
 
         abrirModal();
 
