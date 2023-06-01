@@ -1894,9 +1894,7 @@ div.div-habs-scroll .loading {
 
 .img-hab {
   min-height: 210px;
-  background: url(../img/habitaciones/habitacion-3.jpg);
   background-size: cover;
-  background-position: center;
 }
 
 .habitacion .btn-book-a-table {
@@ -1952,4 +1950,19 @@ div.div-habs-scroll .loading {
   font-family: "Delight Sunset";
   color: whitesmoke;
   font-size: 6rem;
+}
+
+.puntos-user {
+  font-size: 6rem;
+  font-weight: bold;
+}
+
+.recuerda {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.form-label {
+  font-weight: bold;
 }

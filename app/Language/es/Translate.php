@@ -66,6 +66,7 @@ return [
     "apellido-ob" => "Apellido Obligatorio", 
     "condiciones" => "Al registrarse, estarás aceptando nuestras condiciones generales.", 
     "cuenta-ya" => "¿Ya tienes una cuenta?", 
-    "inicia-sesion-ya" => "¡Inicia Sesión!"
+    "inicia-sesion-ya" => "¡Inicia Sesión!", 
+    "mi-cuenta" => "Mi cuenta",
 ];
 ?>

@@ -29,8 +29,6 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url('assets/css/main.css'); ?>" rel="stylesheet">
 
-    <!-- API Google Places -->
-
 </head>
 
 <body>
@@ -45,18 +43,38 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a href="#hero"><?php echo lang('Translate.home'); ?></a></li>
-                    <li><a href="#about"><?php echo lang('Translate.acerca-de'); ?></a></li>
-                    <li><a href="#menu"><?php echo lang('Translate.menu'); ?></a></li>
-                    <li><a href="#events"><?php echo lang('Translate.eventos'); ?></a></li>
-                    <li><a href="#habitaciones"><?php echo lang('Translate.habitaciones'); ?></a></li>
-                    <li><a href="#gallery"><?php echo lang('Translate.galeria'); ?></a></li>
-                    <li><a href="#contact"><?php echo lang('Translate.contacto'); ?></a></li>
-                    <li class="dropdown"><a href="#"><?php echo lang('Translate.idioma'); ?> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li><a href="#hero">
+                            <?php echo lang('Translate.home'); ?>
+                        </a></li>
+                    <li><a href="#about">
+                            <?php echo lang('Translate.acerca-de'); ?>
+                        </a></li>
+                    <li><a href="#menu">
+                            <?php echo lang('Translate.menu'); ?>
+                        </a></li>
+                    <li><a href="#events">
+                            <?php echo lang('Translate.eventos'); ?>
+                        </a></li>
+                    <li><a href="#habitaciones">
+                            <?php echo lang('Translate.habitaciones'); ?>
+                        </a></li>
+                    <li><a href="#gallery">
+                            <?php echo lang('Translate.galeria'); ?>
+                        </a></li>
+                    <li><a href="#contact">
+                            <?php echo lang('Translate.contacto'); ?>
+                        </a></li>
+                    <li class="dropdown"><a href="#">
+                            <?php echo lang('Translate.idioma'); ?> <i
+                                class="bi bi-chevron-down dropdown-indicator"></i>
+                        </a>
                         <ul>
-                            <li><a href="<?=base_url("updateLang/es")?>" class="language-link" data-language="es">Español</a></li>
-                            <li><a href="<?=base_url("updateLang/en")?>" class="language-link" data-language="en">English</a></li>
-                            <li><a href="<?=base_url("updateLang/fr")?>" class="language-link" data-language="fr">Français</a></li>
+                            <li><a href="<?=base_url(" updateLang/es")?>" class="language-link"
+                                    data-language="es">Español</a></li>
+                            <li><a href="<?=base_url(" updateLang/en")?>" class="language-link"
+                                    data-language="en">English</a></li>
+                            <li><a href="<?=base_url(" updateLang/fr")?>" class="language-link"
+                                    data-language="fr">Français</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -65,12 +83,16 @@
             <?php
       if (session()->get('logged_in')) {
         ?>
-            <a class="btn-book-a-table" href="<?=site_url('/logout');?>"><?php echo lang('Translate.cerrar-sesion'); ?></a>
+            <a class="btn-book-a-table" href="<?=site_url('/micuenta');?>">
+                <?php echo lang('Translate.mi-cuenta'); ?>
+            </a>
             <?php
       }
       else {
         ?>
-            <a class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#modalLogin"><?php echo lang('Translate.iniciar-sesion'); ?></a>
+            <a class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                <?php echo lang('Translate.iniciar-sesion'); ?>
+            </a>
             <?php
       }
       ?>
@@ -86,22 +108,29 @@
             <div class="row justify-content-between gy-5">
                 <div
                     class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                    <h2 data-aos="fade-up"><?php echo lang("Translate.titulo"); ?></h2>
+                    <h2 data-aos="fade-up">
+                        <?php echo lang("Translate.titulo"); ?>
+                    </h2>
                     <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea
                         consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
                     <?php if (session()->get('logged_in')): ?>
                     <?php if (session()->get('permisos_user')["perm7"] == 1): ?>
                     <div class="d-flex div-opReservas" data-aos="fade-up" data-aos-delay="200"
                         data-haysesion="<?= session()->get('logged_in') ?>">
-                        <a id="reservarMesa" class="btn-book-a-table opReservas"><?php echo lang('Translate.reserva-mesa'); ?></a>
-                        <a id="reservarHabitacion" class="btn-book-a-table opReservas"
-                            style="background-color: blue;"><?php echo lang('Translate.reserva-hab'); ?></a>
+                        <a id="reservarMesa" class="btn-book-a-table opReservas">
+                            <?php echo lang('Translate.reserva-mesa'); ?>
+                        </a>
+                        <a id="reservarHabitacion" class="btn-book-a-table opReservas" style="background-color: blue;">
+                            <?php echo lang('Translate.reserva-hab'); ?>
+                        </a>
                     </div>
                     <?php endif; ?>
                     <?php else: ?>
                     <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200"
                         data-haysesion="<?= session()->get('logged_in') ?>">
-                        <p style="font-style: italic; font-weight: bold; color: red;"><?php echo lang('Translate.debes-iniciar-sesion'); ?></p>
+                        <p style="font-style: italic; font-weight: bold; color: red;">
+                            <?php echo lang('Translate.debes-iniciar-sesion'); ?>
+                        </p>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -120,8 +149,12 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2><?php echo lang('Translate.acerca-de'); ?></h2>
-                    <p><?php echo lang('Translate.our-historia'); ?></p>
+                    <h2>
+                        <?php echo lang('Translate.acerca-de'); ?>
+                    </h2>
+                    <p>
+                        <?php echo lang('Translate.our-historia'); ?>
+                    </p>
                 </div>
 
                 <div class="row gy-4">
@@ -129,7 +162,9 @@
                         style="background-image: url(<?php echo base_url('assets/img/weAreMejias.jpg'); ?>) ;"
                         data-aos="fade-up" data-aos-delay="150">
                         <div class="call-us position-absolute">
-                            <h4><?php echo lang('Translate.reserva-mesa-ahora'); ?></h4>
+                            <h4>
+                                <?php echo lang('Translate.reserva-mesa-ahora'); ?>
+                            </h4>
                             <p>+34 952 71 45 02</p>
                         </div>
                     </div>
@@ -175,7 +210,9 @@
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="why-box">
-                            <h3><?php echo lang('Translate.why-mejias'); ?></h3>
+                            <h3>
+                                <?php echo lang('Translate.why-mejias'); ?>
+                            </h3>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
@@ -183,7 +220,9 @@
                                 optio ad corporis.
                             </p>
                             <div class="text-center">
-                                <a href="#" class="more-btn"><?php echo lang('Translate.saber-mas'); ?> <i class="bx bx-chevron-right"></i></a>
+                                <a href="#" class="more-btn">
+                                    <?php echo lang('Translate.saber-mas'); ?> <i class="bx bx-chevron-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div><!-- End Why Box -->
@@ -194,7 +233,9 @@
                             <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
                                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                     <i class="bi bi-egg-fried"></i>
-                                    <h4><?php echo lang('Translate.comida-alta'); ?></h4>
+                                    <h4>
+                                        <?php echo lang('Translate.comida-alta'); ?>
+                                    </h4>
                                     <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
                                         aliquip</p>
                                 </div>
@@ -203,7 +244,9 @@
                             <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
                                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                     <i class="bi bi-bell"></i>
-                                    <h4><?php echo lang('Translate.excelente-cliente'); ?></h4>
+                                    <h4>
+                                        <?php echo lang('Translate.excelente-cliente'); ?>
+                                    </h4>
                                     <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                                         deserunt</p>
                                 </div>
@@ -212,7 +255,9 @@
                             <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
                                 <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                     <i class="bi bi-cup-hot"></i>
-                                    <h4><?php echo lang('Translate.ambiente'); ?></h4>
+                                    <h4>
+                                        <?php echo lang('Translate.ambiente'); ?>
+                                    </h4>
                                     <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere
                                     </p>
                                 </div>
@@ -236,15 +281,19 @@
                         <div class="stats-item text-center w-100 h-100">
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="962"
                                 data-purecounter-duration="1" class="purecounter"></span>
-                            <p><?php echo lang('Translate.reseñas'); ?></p>
+                            <p>
+                                <?php echo lang('Translate.reseñas'); ?>
+                            </p>
                         </div>
                     </div><!-- End Stats Item -->
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
                             <span style="display: inline-block;"><i class="fa-solid fa-star"></i></span>&nbsp;
-                            <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="4.3" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><?php echo lang('Translate.valoracion'); ?></p>
+                            <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="4.3"
+                                data-purecounter-duration="1" class="purecounter"></span>
+                            <p>
+                                <?php echo lang('Translate.valoracion'); ?>
+                            </p>
                         </div>
 
                     </div>
@@ -252,19 +301,27 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span style="display: inline-block;"><?php echo lang('Translate.mas-de'); ?></span>&nbsp;
+                            <span style="display: inline-block;">
+                                <?php echo lang('Translate.mas-de'); ?>
+                            </span>&nbsp;
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="47"
                                 data-purecounter-duration="1" class="purecounter"></span>
-                            <p><?php echo lang('Translate.años-exp'); ?></p>
+                            <p>
+                                <?php echo lang('Translate.años-exp'); ?>
+                            </p>
                         </div>
                     </div><!-- End Stats Item -->
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span style="display: inline-block;"><?php echo lang('Translate.mas-de'); ?></span>&nbsp;
+                            <span style="display: inline-block;">
+                                <?php echo lang('Translate.mas-de'); ?>
+                            </span>&nbsp;
                             <span style="display: inline-block;" data-purecounter-start="0" data-purecounter-end="20"
                                 data-purecounter-duration="1" class="purecounter"></span>
-                            <p><?php echo lang('Translate.trabajadores'); ?></p>
+                            <p>
+                                <?php echo lang('Translate.trabajadores'); ?>
+                            </p>
                         </div>
                     </div><!-- End Stats Item -->
 
@@ -288,19 +345,24 @@
                     </div>
                     <div class="col-xl-6 d-flex flex-column gap-1">
                         <div class="section-header">
-                            <h2><?php echo lang('Translate.in-memoriam'); ?></h2>
+                            <h2>
+                                <?php echo lang('Translate.in-memoriam'); ?>
+                            </h2>
                             <p>Antonio Mejías Rubio</span></p>
                         </div>
                         <div class="col-md-12">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
-                            beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi! Earum
-                            cumque at eos dolores non.</p>
+                                beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi!
+                                Earum
+                                cumque at eos dolores non.</p>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
-                            beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi! Earum
-                            cumque at eos dolores non.</p>
+                                beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi!
+                                Earum
+                                cumque at eos dolores non.</p>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
-                            beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi! Earum
-                            cumque at eos dolores non.</p>
+                                beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi!
+                                Earum
+                                cumque at eos dolores non.</p>
                             <span class="firma text-md-right">Antonio.</span>
                         </div>
                     </div>
@@ -313,8 +375,12 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2><?php echo lang('Translate.our-menu'); ?></h2>
-                    <p><?php echo lang('Translate.vistazo-carta'); ?></p>
+                    <h2>
+                        <?php echo lang('Translate.our-menu'); ?>
+                    </h2>
+                    <p>
+                        <?php echo lang('Translate.vistazo-carta'); ?>
+                    </p>
                 </div>
 
                 <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
@@ -696,7 +762,9 @@
                 </div>
 
                 <div class="col-lg-12 text-center my-4">
-                    <button id="b-verCarta" class="btn btn-book-a-table"><?php echo lang('Translate.ver-carta'); ?></button>
+                    <button id="b-verCarta" class="btn btn-book-a-table">
+                        <?php echo lang('Translate.ver-carta'); ?>
+                    </button>
                 </div>
 
             </div>
@@ -704,40 +772,27 @@
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials section-bg">
-            <div class="container" data-aos="fade-up">
+            <div class="container cont-reviews" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2><?php echo lang('Translate.reseñas'); ?></h2>
-                    <p><?php echo lang('Translate.opinando'); ?></p>
+                    <h2>
+                        <?php echo lang('Translate.reseñas'); ?>
+                    </h2>
+                    <p>
+                        <?php echo lang('Translate.opinando'); ?>
+                    </p>
                 </div>
 
                 <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="row gy-4 justify-content-center">
-                                    <div class="col-lg-6">
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum
-                                                suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh
-                                                et. Maecen aliquam, risus at semper.
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <h3>Saul Goodman</h3>
-                                            <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
+                        <?php foreach($reviews as $review): ?>
 
+                        <?php
+                        $stars = "";
+                        for ($cont = 0; $cont <= $review['rating']; $cont++)
+                            $stars .= '<i class="bi bi-star-fill"></i>';
+                        ?>
                         <div class="swiper-slide">
                             <div class="testimonial-item">
                                 <div class="row gy-4 justify-content-center">
@@ -745,76 +800,23 @@
                                         <div class="testimonial-content">
                                             <p>
                                                 <i class="bi bi-quote quote-icon-left"></i>
-                                                Export tempor illum tamen malis malis eram quae irure esse labore quem
-                                                cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua
-                                                noster fugiat irure amet legam anim culpa.
+                                                <?=$review["review_text"]?>
                                                 <i class="bi bi-quote quote-icon-right"></i>
                                             </p>
-                                            <h3>Sara Wilsson</h3>
+                                            <h3><?=$review["author_name"]?></h3>
                                             <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
+                                                <?=$stars?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="row gy-4 justify-content-center">
-                                    <div class="col-lg-6">
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                Enim nisi quem export duis labore cillum quae magna enim sint quorum
-                                                nulla quem veniam duis minim tempor labore quem eram duis noster aute
-                                                amet eram fore quis sint minim.
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <h3>Jena Karlis</h3>
-                                            <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="row gy-4 justify-content-center">
-                                    <div class="col-lg-6">
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam
-                                                tempor noster veniam enim culpa labore duis sunt culpa nulla illum
-                                                cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <h3>John Larson</h3>
-                                            <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
+                        <?php endforeach ?>
 
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-
-            </div>
         </section><!-- End Testimonials Section -->
 
         <!-- ======= Events Section ======= -->
@@ -822,8 +824,12 @@
             <div class="container-fluid" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2><?php echo lang('Translate.eventos'); ?></h2>
-                    <p><?php echo lang('Translate.comparte-momentos'); ?></p>
+                    <h2>
+                        <?php echo lang('Translate.eventos'); ?>
+                    </h2>
+                    <p>
+                        <?php echo lang('Translate.comparte-momentos'); ?>
+                    </p>
                 </div>
 
                 <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -831,7 +837,9 @@
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
                             style="background-image: url(assets/img/bautizos.jpg)">
-                            <h3><?php echo lang('Translate.bautizos'); ?></h3>
+                            <h3>
+                                <?php echo lang('Translate.bautizos'); ?>
+                            </h3>
                             <div class="price align-self-start">99€</div>
                             <p class="description">
                                 Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis
@@ -841,7 +849,9 @@
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
                             style="background-image: url(assets/img/comuniones.png)">
-                            <h3><?php echo lang('Translate.comuniones'); ?></h3>
+                            <h3>
+                                <?php echo lang('Translate.comuniones'); ?>
+                            </h3>
                             <div class="price align-self-start">289€</div>
                             <p class="description">
                                 In delectus sint qui et enim. Et ab repudiandae inventore quaerat doloribus. Facere nemo
@@ -851,7 +861,9 @@
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
                             style="background-image: url(assets/img/comidas-empresa.jpg)">
-                            <h3><?php echo lang('Translate.comidas-empresa'); ?></h3>
+                            <h3>
+                                <?php echo lang('Translate.comidas-empresa'); ?>
+                            </h3>
                             <div class="price align-self-start">499€</div>
                             <p class="description">
                                 Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam.
@@ -871,8 +883,12 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2><?php echo lang('Translate.habitaciones'); ?></h2>
-                    <p><?php echo lang('Translate.descanse'); ?></p>
+                    <h2>
+                        <?php echo lang('Translate.habitaciones'); ?>
+                    </h2>
+                    <p>
+                        <?php echo lang('Translate.descanse'); ?>
+                    </p>
                 </div>
 
                 <div class="row gy-4">
@@ -883,7 +899,9 @@
                                 <img src="assets/img/habitaciones/habitacion-1.jpg" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
-                                <h4><?php echo lang('Translate.camas-comodas'); ?></h4>
+                                <h4>
+                                    <?php echo lang('Translate.camas-comodas'); ?>
+                                </h4>
                                 <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
                                     Ipsum exercitationem iure minima enim corporis et voluptate.</p>
                             </div>
@@ -896,7 +914,9 @@
                                 <img src="assets/img/habitaciones/habitacion-2.jpg" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
-                                <h4><?php echo lang('Translate.baños'); ?></h4>
+                                <h4>
+                                    <?php echo lang('Translate.baños'); ?>
+                                </h4>
                                 <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima
                                     suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
                             </div>
@@ -909,7 +929,9 @@
                                 <img src="assets/img/habitaciones/habitacion-3.jpg" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
-                                <h4><?php echo lang('Translate.salas-estar'); ?></h4>
+                                <h4>
+                                    <?php echo lang('Translate.salas-estar'); ?>
+                                </h4>
                                 <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt.
                                     Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
                             </div>
@@ -919,7 +941,9 @@
                 </div>
 
                 <div class="col-lg-12 text-center my-4">
-                    <a href="<?=base_url('habitaciones')?>" class="btn btn-book-a-table"><?php echo lang('Translate.ver-hab'); ?></a>
+                    <a href="<?=base_url('habitaciones')?>" class="btn btn-book-a-table">
+                        <?php echo lang('Translate.ver-hab'); ?>
+                    </a>
                 </div>
 
             </div>
@@ -930,8 +954,12 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2><?php echo lang('Translate.galeria'); ?></h2>
-                    <p><?php echo lang('Translate.some-fotos'); ?></p>
+                    <h2>
+                        <?php echo lang('Translate.galeria'); ?>
+                    </h2>
+                    <p>
+                        <?php echo lang('Translate.some-fotos'); ?>
+                    </p>
                 </div>
 
                 <div class="gallery-slider swiper">
@@ -972,8 +1000,12 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2><?php echo lang('Translate.contacto'); ?></h2>
-                    <p><?php echo lang('Translate.need-help'); ?></p>
+                    <h2>
+                        <?php echo lang('Translate.contacto'); ?>
+                    </h2>
+                    <p>
+                        <?php echo lang('Translate.need-help'); ?>
+                    </p>
                 </div>
 
                 <div class="mb-3">
@@ -988,7 +1020,9 @@
                         <div class="info-item  d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-map flex-shrink-0"></i>
                             <div>
-                                <h3><?php echo lang('Translate.direccion'); ?></h3>
+                                <h3>
+                                    <?php echo lang('Translate.direccion'); ?>
+                                </h3>
                                 <p>C. Estación Salinas, 2, 29315 - Estación de Salinas (Málaga)</p>
                             </div>
                         </div>
@@ -998,7 +1032,9 @@
                         <div class="info-item d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-envelope flex-shrink-0"></i>
                             <div>
-                                <h3><?php echo lang('Translate.correo'); ?></h3>
+                                <h3>
+                                    <?php echo lang('Translate.correo'); ?>
+                                </h3>
                                 <p>hostalmejias@hotmail.com</p>
                             </div>
                         </div>
@@ -1008,7 +1044,9 @@
                         <div class="info-item  d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-telephone flex-shrink-0"></i>
                             <div>
-                                <h3><?php echo lang('Translate.call-us'); ?></h3>
+                                <h3>
+                                    <?php echo lang('Translate.call-us'); ?>
+                                </h3>
                                 <p>+34 952 71 45 02</p>
                             </div>
                         </div>
@@ -1018,9 +1056,13 @@
                         <div class="info-item  d-flex align-items-center" style="background-color: #fff !important;">
                             <i class="icon bi bi-clock flex-shrink-0"></i>
                             <div>
-                                <h3><?php echo lang('Translate.horario'); ?></h3>
+                                <h3>
+                                    <?php echo lang('Translate.horario'); ?>
+                                </h3>
                                 <div>
-                                    <strong><?php echo lang('Translate.every-day'); ?>: </strong> 07:00 - 00:00
+                                    <strong>
+                                        <?php echo lang('Translate.every-day'); ?>:
+                                    </strong> 07:00 - 00:00
                                 </div>
                             </div>
                         </div>
@@ -1040,7 +1082,9 @@
                 <div class="col-lg-3 col-md-6 d-flex">
                     <i class="bi bi-geo-alt icon"></i>
                     <div>
-                        <h4><?php echo lang('Translate.direccion'); ?></h4>
+                        <h4>
+                            <?php echo lang('Translate.direccion'); ?>
+                        </h4>
                         <p>
                             C. Estación Salinas, 2, 29315 <br>
                             Estación de Salinas - Málaga<br>
@@ -1052,10 +1096,16 @@
                 <div class="col-lg-3 col-md-6 footer-links d-flex">
                     <i class="bi bi-telephone icon"></i>
                     <div>
-                        <h4><?php echo lang('Translate.reservas'); ?></h4>
+                        <h4>
+                            <?php echo lang('Translate.reservas'); ?>
+                        </h4>
                         <p>
-                            <strong><?php echo lang('Translate.telefono'); ?>:</strong> +34 952 71 45 02<br>
-                            <strong><?php echo lang('Translate.correo'); ?>:</strong> hostalmejias@hotmail.com<br>
+                            <strong>
+                                <?php echo lang('Translate.telefono'); ?>:
+                            </strong> +34 952 71 45 02<br>
+                            <strong>
+                                <?php echo lang('Translate.correo'); ?>:
+                            </strong> hostalmejias@hotmail.com<br>
                         </p>
                     </div>
                 </div>
@@ -1063,16 +1113,22 @@
                 <div class="col-lg-3 col-md-6 footer-links d-flex">
                     <i class="bi bi-clock icon"></i>
                     <div>
-                        <h4><?php echo lang('Translate.horario'); ?></h4>
+                        <h4>
+                            <?php echo lang('Translate.horario'); ?>
+                        </h4>
                         <p>
-                            <strong><?php echo lang('Translate.every-day'); ?>: </strong><br>
+                            <strong>
+                                <?php echo lang('Translate.every-day'); ?>:
+                            </strong><br>
                             07:00 - 00:00
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4><?php echo lang('Translate.siguenos'); ?></h4>
+                    <h4>
+                        <?php echo lang('Translate.siguenos'); ?>
+                    </h4>
                     <div class="social-links d-flex">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -1085,7 +1141,8 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Mejías</span></strong>. <?php echo lang('Translate.derechos'); ?>
+                &copy; Copyright <strong><span>Mejías</span></strong>.
+                <?php echo lang('Translate.derechos'); ?>
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
@@ -1106,7 +1163,9 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title"><?php echo lang('Translate.bienvenido'); ?></h4>
+                    <h4 class="modal-title">
+                        <?php echo lang('Translate.bienvenido'); ?>
+                    </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -1115,21 +1174,28 @@
                     <div class="opciones-login d-flex flex-column justify-content-between">
                         <div class="row">
                             <div class="col">
-                                <button class="btn btn-login w-100 mb-2"><?php echo lang('Translate.iniciar-sesion'); ?></button>
+                                <button class="btn btn-login w-100 mb-2">
+                                    <?php echo lang('Translate.iniciar-sesion'); ?>
+                                </button>
                             </div>
                             <div class="col">
-                                <button class="btn btn-register w-100 mb-2"><?php echo lang('Translate.registrarse'); ?></button>
+                                <button class="btn btn-register w-100 mb-2">
+                                    <?php echo lang('Translate.registrarse'); ?>
+                                </button>
                             </div>
                         </div>
                     </div>
                     <div class="login-form">
                         <div class="card shadow-lg">
                             <div class="card-body p-5">
-                                <h1 class="fs-4 card-title fw-bold mb-4"><?php echo lang('Translate.iniciar-sesion'); ?></h1>
-                                <form method="POST" class="needs-validation"
-                                    novalidate="" autocomplete="off">
+                                <h1 class="fs-4 card-title fw-bold mb-4">
+                                    <?php echo lang('Translate.iniciar-sesion'); ?>
+                                </h1>
+                                <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
                                     <div class="mb-3">
-                                        <label class="mb-2 text-muted" for="email-login"><?php echo lang('Translate.correo'); ?></label>
+                                        <label class="mb-2 text-muted" for="email-login">
+                                            <?php echo lang('Translate.correo'); ?>
+                                        </label>
                                         <input id="email-login" type="email" class="form-control" name="email-login"
                                             value="" required autofocus>
                                         <div class="invalid-feedback">
@@ -1139,7 +1205,9 @@
 
                                     <div class="mb-3">
                                         <div class="mb-2 w-100">
-                                            <label class="text-muted" for="password-login"><?php echo lang('Translate.contraseña'); ?></label>
+                                            <label class="text-muted" for="password-login">
+                                                <?php echo lang('Translate.contraseña'); ?>
+                                            </label>
                                         </div>
                                         <div class="input-group">
                                             <input type="password" class="form-control" name="password-login"
@@ -1147,7 +1215,8 @@
                                                 aria-describedby="show-password-btn">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-outline-secondary" type="button"
-                                                    id="show-password-btn-login" class="show-password-btn" style="border-top-left-radius: none; border-bottom-left-radius: none;">
+                                                    id="show-password-btn-login" class="show-password-btn"
+                                                    style="border-top-left-radius: none; border-bottom-left-radius: none;">
                                                     <span class="bi bi-eye"></span>
                                                 </button>
                                             </div>
@@ -1174,7 +1243,9 @@
                             </div>
                             <div class="card-footer py-3 border-0">
                                 <div class="text-center">
-                                    <?php echo lang('Translate.not-miembro'); ?> <a class="btn-register"><?php echo lang('Translate.unete'); ?></a>
+                                    <?php echo lang('Translate.not-miembro'); ?> <a class="btn-register">
+                                        <?php echo lang('Translate.unete'); ?>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1182,13 +1253,16 @@
                     <div class="register-form" style="display: none;">
                         <div class="card shadow-lg">
                             <div class="card-body p-5">
-                                <h1 class="fs-4 card-title fw-bold mb-4"><?php echo lang('Translate.registrarse'); ?></h1>
-                                <form method="POST" class="needs-validation"
-                                    novalidate="" autocomplete="off">
+                                <h1 class="fs-4 card-title fw-bold mb-4">
+                                    <?php echo lang('Translate.registrarse'); ?>
+                                </h1>
+                                <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="email-register"><?php echo lang('Translate.correo'); ?></label>
+                                                <label class="mb-2 text-muted" for="email-register">
+                                                    <?php echo lang('Translate.correo'); ?>
+                                                </label>
                                                 <input id="email-register" type="email" class="form-control"
                                                     name="email-register" value="" required>
                                                 <div class="invalid-feedback">
@@ -1199,15 +1273,17 @@
 
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted"
-                                                    for="password-register"><?php echo lang('Translate.contraseña'); ?></label>
+                                                <label class="mb-2 text-muted" for="password-register">
+                                                    <?php echo lang('Translate.contraseña'); ?>
+                                                </label>
                                                 <div class="input-group">
                                                     <input type="password" class="form-control" name="password-register"
                                                         id="password-register" aria-label="password"
                                                         aria-describedby="show-password-btn">
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-secondary" type="button"
-                                                            id="show-password-btn-register" class="show-password-btn" style="border-top-left-radius: none; border-bottom-left-radius: none;">
+                                                            id="show-password-btn-register" class="show-password-btn"
+                                                            style="border-top-left-radius: none; border-bottom-left-radius: none;">
                                                             <i class="bi bi-eye-slash"></i>
                                                         </button>
                                                     </div>
@@ -1222,7 +1298,9 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="name"><?php echo lang('Translate.nombre'); ?></label>
+                                                <label class="mb-2 text-muted" for="name">
+                                                    <?php echo lang('Translate.nombre'); ?>
+                                                </label>
                                                 <input id="nombre" type="text" class="form-control" name="nombre"
                                                     value="" required autofocus>
                                                 <div class="invalid-feedback">
@@ -1232,7 +1310,9 @@
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="name"><?php echo lang('Translate.apellido'); ?></label>
+                                                <label class="mb-2 text-muted" for="name">
+                                                    <?php echo lang('Translate.apellido'); ?>
+                                                </label>
                                                 <input id="apellido" type="text" class="form-control" name="apellido"
                                                     value="" required autofocus>
                                                 <div class="invalid-feedback">
@@ -1242,14 +1322,16 @@
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label class="mb-2 text-muted" for="phone"><?php echo lang('Translate.telefono'); ?></label>
+                                                <label class="mb-2 text-muted" for="phone">
+                                                    <?php echo lang('Translate.telefono'); ?>
+                                                </label>
                                                 <input id="phone" type="tel" class="form-control" name="phone">
                                             </div>
                                         </div>
                                     </div>
 
                                     <p class="form-text text-muted mb-3 text-center">
-                                        
+
                                     </p>
 
                                     <div class="align-items-center d-flex">
@@ -1261,7 +1343,9 @@
                             </div>
                             <div class="card-footer py-3 border-0">
                                 <div class="text-center">
-                                    <?php echo lang('Translate.cuenta-ya'); ?> <a class="btn-login"><?php echo lang('Translate.inicia-sesion-ya'); ?></a>
+                                    <?php echo lang('Translate.cuenta-ya'); ?> <a class="btn-login">
+                                        <?php echo lang('Translate.inicia-sesion-ya'); ?>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1282,7 +1366,6 @@
     <script src="<?php echo base_url('assets/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendor/purecounter/purecounter_vanilla.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/vendor/php-email-form/validate.js'); ?>"></script>
 
     <!-- Template Main JS File -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

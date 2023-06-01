@@ -39,7 +39,7 @@
                                 <div class="habitacion container" data-value="<?=$habitacion["id_habitacion"]?>">
                                     <div class="row">
                                         <div class="col-xl-12 d-flex justify-content-center gap-2">
-                                            <div class="col-md-6 img-hab"></div>
+                                            <div class="col-md-6 img-hab" style="background: url(<?=base_url('assets/img/habitaciones/' . $habitacion["foto"])?>); background-position: center;"></div>
                                             <div class="col-md-3 d-flex flex-column justify-content-center align-items-center gap-2">
                                                 <div class="dato-hab numero-hab">Habitación <span><?=$habitacion["num_habitacion"]?></span></div>
                                                 <div class="dato-hab capacidad-hab" data-value="<?=$habitacion["capacidad"]?>">

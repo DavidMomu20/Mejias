@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('updateLang/(:any)', "Home::updateLang/$1");
+$routes->get("micuenta", "Home::miCuenta");
 
 $routes->get('reservar/mesa', 'Home::reservarMesa');
 $routes->get('reservar/habitacion/(:num)', 'Home::reservarHab/$1');

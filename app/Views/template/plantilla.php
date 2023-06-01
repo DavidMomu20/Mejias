@@ -65,13 +65,13 @@
 
       <nav id="navbar" class="navbar">
           <ul>
-              <li><a href="#hero"><?php echo lang('Translate.home'); ?></a></li>
-              <li><a href="#about"><?php echo lang('Translate.acerca-de'); ?></a></li>
-              <li><a href="#menu"><?php echo lang('Translate.menu'); ?></a></li>
-              <li><a href="#events"><?php echo lang('Translate.eventos'); ?></a></li>
-              <li><a href="#habitaciones"><?php echo lang('Translate.habitaciones'); ?></a></li>
-              <li><a href="#gallery"><?php echo lang('Translate.galeria'); ?></a></li>
-              <li><a href="#contact"><?php echo lang('Translate.contacto'); ?></a></li>
+              <li><a href="<?=base_url()?>#hero"><?php echo lang('Translate.home'); ?></a></li>
+              <li><a href="<?=base_url()?>#about"><?php echo lang('Translate.acerca-de'); ?></a></li>
+              <li><a href="<?=base_url()?>#menu"><?php echo lang('Translate.menu'); ?></a></li>
+              <li><a href="<?=base_url()?>#events"><?php echo lang('Translate.eventos'); ?></a></li>
+              <li><a href="<?=base_url()?>#habitaciones"><?php echo lang('Translate.habitaciones'); ?></a></li>
+              <li><a href="<?=base_url()?>#gallery"><?php echo lang('Translate.galeria'); ?></a></li>
+              <li><a href="<?=base_url()?>#contact"><?php echo lang('Translate.contacto'); ?></a></li>
               <li class="dropdown"><a href="#"><?php echo lang('Translate.idioma'); ?> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                   <ul>
                       <li><a href="<?= base_url('Idiomas/cambiaIdioma/es'); ?>" class="language-link" data-language="es">Español</a></li>
@@ -85,13 +85,13 @@
       <?php
       if (session()->get('logged_in')) {
         ?>
-        <a class="btn-book-a-table" href="<?=site_url('/logout');?>">Cerrar Sesión</a>
-        <?php
+            <a class="btn-book-a-table" href="<?=site_url('/micuenta');?>"><?php echo lang('Translate.mi-cuenta'); ?></a>
+            <?php
       }
       else {
         ?>
-        <a class="btn-book-a-table"  data-bs-toggle="modal" data-bs-target="#modalLogin">Iniciar Sesión</a>
-        <?php
+            <a class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#modalLogin"><?php echo lang('Translate.iniciar-sesion'); ?></a>
+            <?php
       }
       ?>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>

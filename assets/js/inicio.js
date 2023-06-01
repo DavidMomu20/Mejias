@@ -26,6 +26,7 @@ $(function() {
         
         $(this).prepend(spinner);
         $(this).attr("disabled", "true");
+        $(this).text("Enviando...");
 
         $.ajax({
             url: "./doLogin", 
@@ -36,6 +37,8 @@ $(function() {
                 password_login: $("#password-login").val()
             }, 
             success: function(response) {
+
+                $(this).text("Redirigiendo...");
 
                 if (response.data === "error") {
                     btn.find(".spinner-border").remove();

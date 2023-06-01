@@ -66,6 +66,7 @@ return [
     "apellido-ob" => "Last Name Required",
     "condiciones" => "By signing up, you agree to our terms and conditions.",
     "cuenta-ya" => "Already have an account?",
-    "inicia-sesion-ya" => "Log In Now!"
+    "inicia-sesion-ya" => "Log In Now!",
+    "mi-cuenta" => "My account",
 ];
 ?>

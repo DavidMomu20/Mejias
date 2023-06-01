@@ -66,6 +66,7 @@ return [
     "apellido-ob" => "Nom de famille obligatoire",
     "condiciones" => "En vous inscrivant, vous acceptez nos conditions générales.",
     "cuenta-ya" => "Vous avez déjà un compte ?",
-    "inicia-sesion-ya" => "Connectez-vous maintenant !"
+    "inicia-sesion-ya" => "Connectez-vous maintenant !",
+    "mi-cuenta" => "Mon compte",
 ];
 ?>
