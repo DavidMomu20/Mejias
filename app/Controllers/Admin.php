@@ -106,6 +106,25 @@ class Admin extends Controller {
     }
 
     /**
+     * ------------- Método para acceder a los datos de mi cuenta -------------
+     */
+
+    public function miCuenta()
+    {
+        $mUser = new M_Usuarios();
+
+        if (session()->get('logged_in'))
+            $id = intval(session()->get('id_user'));
+
+        $usuario = $mUser->buscaUsuarioById($id);
+
+        $data["usuario"] = $usuario;
+        $data["cuerpo"] = view("mejias/micuenta", $data);
+        $data["titulo"] = "Mi cuenta";
+        return view("template/admin", $data);
+    }
+
+    /**
      * ---------- MÉTODOS CRUD ----------
      */
 

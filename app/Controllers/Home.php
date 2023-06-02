@@ -97,7 +97,7 @@ class Home extends BaseController
             return $randomReviews;
         } 
         else
-            die('El archivo JSON no se encuentra.');
+            return $randomReviews["error"] = "El archivo JSON no existe";
 
         /* -- En esta parte muestro cómo hubiese sido el método si se hubiese llamado a la 
             API directamente -- */

@@ -2,6 +2,8 @@
     <div class="row d-flex justify-content-center gap-4">
         <div class="col-xl-4 d-flex justify-content-center align-items-center">
             <div class="container text-center">
+                <?php if (session()->get('logged_in')): ?>
+                <?php if (session()->get('permisos_user')["perm7"] == 1): ?>
                 <div class="row">
                     <span>Usted posee:</span>
                     <div class="col-md-12 d-flex flex-column justify-content-center">
@@ -19,6 +21,8 @@
                         <b>Cada 5 puntos = 0.50€</b>
                     </span>
                 </div>
+                <?php endif; ?>
+                <?php endif; ?>
             </div>
         </div>
         <div class="col-xl-6">
