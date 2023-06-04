@@ -1,57 +1,67 @@
-var formHabHTML = '<form class="form-reserva-hab">\
-                    <div class="container">\
-                        <div class="fechas-reserva">\
-                            <div class="col reserva-calendario">\
-                                <div class="date-reserva">\
-                                    Elija los días pulsando en este calendario:\
-                                </div>\
-                                <div class="calendar">\
-                                    <div class="calendar-header">\
-                                        <span class="prev-month">&#8249;</span>\
-                                        <span class="current-month-year"></span>\
-                                        <span class="next-month">&#8250;</span>\
-                                    </div>\
-                                    <div class="calendar-weekdays">\
-                                        <span>Dom</span>\
-                                        <span>Lun</span>\
-                                        <span>Mar</span>\
-                                        <span>Mie</span>\
-                                        <span>Jue</span>\
-                                        <span>Vie</span>\
-                                        <span>Sab</span>\
-                                    </div>\
-                                    <div class="calendar-days">\
-                                    </div>\
-                                </div>\
-                            </div>\
-                            <div class="div-fechas">\
-                                <div class="fecha fecha-inicio">\
-                                    <label for="fecha-inicio-input">Fecha de inicio:</label>\
-                                    <input id="fecha-inicio-input" type="text" readonly>\
-                                </div>\
-                                <div class="fecha fecha-fin">\
-                                    <label for="fecha-fin-input">Fecha de fin:</label>\
-                                    <input id="fecha-fin-input" type="text" readonly>\
-                                </div>\
-                                <div class="huespedes">\
-                                    <label for="n_huespedes">¿Cuántas personas sois?</label>\
-                                    <div class="inp-huespedes">\
-                                        <button type="button" class="bCount bMenos">-</button>\
-                                        <input type="number" name="n_huespedes" id="n_huespedes" value="1" min="1" max="10">\
-                                        <button type="button" class="bCount bMas">+</button>\
-                                    </div>\
-                                </div>\
-                                <div class="container mt-4 cont-puntos">\
-                                    <label for="n_puntos">¿Desea usar algunos puntos?</label>\
-                                    <div class="">\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class="div-btn-reserva-hab">\
-                            <button type="button" id="b-reservar-hab" class="btn btn-book-a-table" disabled>\nEnviar datos\n</button>\
-                        </div>\
-                    </div>\
-                    </form>';
+var formHabHTML = '<form class="container mb-4">' +
+'    <div class="row">' +
+'        <div class="col-xl-6">' +
+'            <div class="date-reserva">' +
+'                Elija los días pulsando en este calendario:' +
+'            </div>' +
+'            <div class="calendar">' +
+'                <div class="calendar-header">' +
+'                    <span class="prev-month">&#8249;</span>' +
+'                    <span class="current-month-year"></span>' +
+'                    <span class="next-month">&#8250;</span>' +
+'                </div>' +
+'                <div class="calendar-weekdays">' +
+'                    <span>Dom</span>' +
+'                    <span>Lun</span>' +
+'                    <span>Mar</span>' +
+'                    <span>Mie</span>' +
+'                    <span>Jue</span>' +
+'                    <span>Vie</span>' +
+'                    <span>Sab</span>' +
+'                </div>' +
+'                <div class="calendar-days">' +
+'                </div>' +
+'            </div>' +
+'        </div>' +
+'        <div class="col-xl-6 d-flex flex-column justify-content-center row-gap-3">' +
+'            <div class="row">' +
+'                <label for="fecha-inicio-input">Fecha de inicio:</label>' +
+'                <input id="fecha-inicio-input" class="form-control" type="text" readonly>' +
+'            </div>' +
+'            <div class="row mt-2">' +
+'                <label for="fecha-fin-input">Fecha de fin:</label>' +
+'                <input class="form-control" id="fecha-fin-input" type="text" readonly>' +
+'            </div>' +
+'            <div class="row mt-3">' +
+'                <div class="my-cont-reserva container d-flex flex-column justify-content-center gap-2 p-3">' +
+'                    <label for="n_huespedes" class="my-label text-center">¿Cuántas personas sois?</label>' +
+'                    <div class="d-flex justify-content-center gap-2">' +
+'                        <button type="button" class="bCount bMenos">-</button>' +
+'                        <input class="my-input-number" type="number" name="n_huespedes" id="n_huespedes" value="1" min="1" max="10">' +
+'                        <button type="button" class="bCount bMas">+</button>' +
+'                    </div>' +
+'                </div>' +
+'            </div>' +
+'            <div class="row mt-3">' +
+'                <div class="my-cont-reserva container d-flex flex-column justify-content-center gap-2 p-3">' +
+'                    <label for="puntos" class="my-label text-center">¿Deseas usar puntos?</label>' +
+'                    <div class="d-flex justify-content-center gap-2">' +
+'                        <button type="button" class="bCount bMenos">-</button>' +
+'                        <input class="my-input-number" type="number" name="puntos" id="puntos" value="0" min="0" max="' + puntos + '">' +
+'                        <button type="button" class="bCount bMas">+</button>' +
+'                    </div>' +
+'                </div>' +
+'            </div>' +
+'        </div>' +
+'    </div>' +
+'    <div class="row mt-4">' +
+'        <div class="container d-flex justify-content-center">' +
+'            <button disabled id="b-reservar-hab" class="btn btn-book-a-table">' +
+'                Enviar datos' +
+'            </button>' +
+'        </div>' +
+'    </div>' +
+'</form>';
 
 $(function() {
 
@@ -70,8 +80,8 @@ $(function() {
         let idHab = $(this).closest(".habitacion").data("value");
         let huespedes = $(this).closest(".habitacion").find(".capacidad-hab").data("value");
 
-        // $(".modal-body").empty();
-        // $(".modal-body").html(formHabHTML);
+        $(".modal-body").empty();
+        $(".modal-body").html(formHabHTML);
 
         $(".modal").attr("data-id", idHab);
         $("#n_huespedes").attr("max", huespedes);

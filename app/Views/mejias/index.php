@@ -790,7 +790,7 @@
 
                         <?php
                         $stars = "";
-                        for ($cont = 0; $cont <= $review['rating']; $cont++)
+                        for ($cont = 1; $cont <= $review['rating']; $cont++)
                             $stars .= '<i class="bi bi-star-fill"></i>';
                         ?>
                         <div class="swiper-slide">

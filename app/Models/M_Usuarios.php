@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class M_Usuarios extends M_base{
     protected $table      = 'usuarios';
     protected $primaryKey = 'id_usuario';
-    protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password", "telefono"];
+    protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password", "telefono", "puntos"];
 
     /**
      * Método para buscar un usuario a través de su ID

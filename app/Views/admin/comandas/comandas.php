@@ -15,10 +15,10 @@
                         <div class="row row-cols-dynamic row-cols-5 g-3">
                             <?php foreach($platos["bocadillos"] as $bocadillo): ?>
                             <div class="col">
-                                <div class="card" data-precio="<?=$bocadillo["precio"]?>">
-                                    <img src="<?=base_url('assets/img/platos/' . $bocadillo["imagen"])?>" class="card-img-top" alt="...">
+                                <div class="card d-flex flex-row">
+                                    <div class="img-plato col-md-4 col-lg-3" style="background: url(<?=base_url('assets/img/platos/' . $bocadillo["imagen"])?>)"></div>
                                     <div class="card-body">
-                                        <p class="card-text"><?=$bocadillo["nombre"]?></p>
+                                        <p class="card-text"><?= $bocadillo["nombre"] ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -40,10 +40,10 @@
                     <div class="row row-cols-dynamic row-cols-5 g-3">
                         <?php foreach($platos["platos_combinados"] as $plato_comb): ?>
                         <div class="col">
-                            <div class="card" data-precio="<?=$plato_comb["precio"]?>">
-                                <img src="<?=base_url('assets/img/platos/' . $plato_comb["imagen"])?>" class="card-img-top" alt="...">
+                            <div class="card d-flex flex-row">
+                                <div class="img-plato col-md-4 col-lg-3" style="background: url(<?=base_url('assets/img/platos/' . $plato_comb["imagen"])?>)"></div>
                                 <div class="card-body">
-                                    <p class="card-text"><?=$plato_comb["nombre"]?></p>
+                                    <p class="card-text"><?= $plato_comb["nombre"] ?></p>
                                 </div>
                             </div>
                         </div>
@@ -64,10 +64,10 @@
                 <div class="row row-cols-dynamic row-cols-5 g-3">
                         <?php foreach($platos["raciones_frias"] as $racion_fria): ?>
                         <div class="col">
-                            <div class="card" data-precio="<?=$racion_fria["precio"]?>">
-                                <img src="<?=base_url('assets/img/platos/' . $racion_fria["imagen"])?>" class="card-img-top" alt="...">
+                            <div class="card d-flex flex-row">
+                                <div class="img-plato col-md-4 col-lg-3" style="background: url(<?=base_url('assets/img/platos/' . $racion_fria["imagen"])?>)"></div>
                                 <div class="card-body">
-                                    <p class="card-text"><?=$racion_fria["nombre"]?></p>
+                                    <p class="card-text"><?= $racion_fria["nombre"] ?></p>
                                 </div>
                             </div>
                         </div>
@@ -88,10 +88,10 @@
                     <div class="row row-cols-dynamic row-cols-5 g-3">
                         <?php foreach($platos["bebidas"] as $bebida): ?>
                         <div class="col">
-                            <div class="card" data-precio="<?=$bebida["precio"]?>">
-                                <img src="<?=base_url('assets/img/platos/' . $bebida["imagen"])?>" class="card-img-top" alt="...">
+                            <div class="card d-flex flex-row">
+                                <div class="img-plato col-md-4 col-lg-3" style="background: url(<?=base_url('assets/img/platos/' . $bebida["imagen"])?>)"></div>
                                 <div class="card-body">
-                                    <p class="card-text"><?=$bebida["nombre"]?></p>
+                                    <p class="card-text"><?= $bebida["nombre"] ?></p>
                                 </div>
                             </div>
                         </div>

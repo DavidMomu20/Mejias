@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 
 use App\Models\M_Habitaciones;
 use App\Models\M_Reservas_Habitacion;
+use App\Models\M_Usuarios;
 
 class ReservasHabitacion extends Controller{
 
@@ -50,15 +51,30 @@ class ReservasHabitacion extends Controller{
         if (isset($id_habitacion))
             $id_habitacion = intval($id_habitacion);
 
+        $puntos = $this->request->getPost("puntos_usados");
+        if (isset($puntos))
+            $puntos = intval($puntos);
+
         $datos = [
             "id_habitacion" => $id_habitacion,
             "id_estado" => 3, 
             "fecha_inicio" => $fecha_inicio, 
             "fecha_fin" => $fecha_fin, 
-            "n_huespedes" => $n_huespedes
+            "n_huespedes" => $n_huespedes, 
+            "puntos_usados" => $puntos
         ];
 
-        if ($id = $mRes->insertReservaHab($datos, $id_user))
-            echo json_encode(["data" => "Reserva de habitación Realizada con éxito"]);
+        if ($id = $mRes->insertReservaHab($datos, $id_user)) {
+
+            $mUser = new M_Usuarios();
+            $user = $mUser->obtenerRegistroByPrimaryKey($id_user);
+
+            $dataUser = [
+                "puntos" => $user["puntos"] - $puntos 
+            ];
+
+            if ($mUser->updateRegistro($id_user, $dataUser))
+                echo json_encode(["data" => "Reserva de habitación Realizada con éxito"]);
+        }
     }
 }

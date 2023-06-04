@@ -7,7 +7,7 @@ class M_Reservas_Habitacion extends M_base {
 
     protected $table      = 'reservas_hab';
     protected $primaryKey = 'id_reserva_hab';
-    protected $allowedFields = ["id_habitacion", "id_estado", "fecha_inicio", "fecha_fin", "n_huespedes"];
+    protected $allowedFields = ["id_habitacion", "id_estado", "fecha_inicio", "fecha_fin", "n_huespedes", "puntos_usados"];
 
     /**
      * Método para obtener todas las reservas pendientes
@@ -22,7 +22,7 @@ class M_Reservas_Habitacion extends M_base {
             ->join("usuarios_reservas_hab urh", "rh.id_reserva_hab = urh.id_reserva_hab")
             ->join("usuarios u", "urh.id_usuario = u.id_usuario")
             ->join("habitaciones h", "rh.id_habitacion = h.id_habitacion")
-            ->where("rh.id_habitacion", 3)
+            ->where("rh.id_estado", 3)
             ->get();
 
         return $query->getResult();

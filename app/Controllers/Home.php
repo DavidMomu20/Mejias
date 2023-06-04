@@ -25,19 +25,6 @@ class Home extends BaseController
         }
     }
 
-    public function updateLang(?string $language = null)
-    {
-        $validLanguages = ['es', 'en', 'fr'];
-
-        if (in_array($language, $validLanguages)) {
-            session()->set('language', $language);
-
-            
-        }
-
-        return redirect()->to(base_url());
-    }
-
     public function reservarMesa()
     {
         $data["titulo"] = "Reserva de mesa";
@@ -48,8 +35,10 @@ class Home extends BaseController
     public function verHabitaciones()
     {
         $mHab = new M_Habitaciones();
+        $mUser = new M_Usuarios();
         
         $data["habitaciones"] = $mHab->obtenerRegistros();
+        $data["puntos"] = $mUser->obtenerRegistros(["id_usuario" => session()->get("id_user")], ["puntos"])["puntos"];
         $data["titulo"] = "Ver Habitaciones";
         $data["cuerpo"] = view('mejias/habitaciones', $data);
         return view('template/plantilla', $data);

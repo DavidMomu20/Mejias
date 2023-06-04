@@ -205,6 +205,18 @@
   color: whitesmoke;
 }
 
+/*
+#carta-accordion .card .card-text {
+  white-space: nowrap;
+}
+*/
+
+.img-plato {
+  border: 1px solid #212529;
+  background-size: contain;
+  background-position: center;
+}
+
 /* --------------------------------------- */
 
 .tabla-crud tbody tr {

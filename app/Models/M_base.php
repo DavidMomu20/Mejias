@@ -43,20 +43,14 @@ class M_base extends Model {
                 $query = $query->orderBy($ordenarPor);
             }
      
+            if (isset($where[$this->primaryKey]))
+                return $query->first(); 
+            
             return $query->findAll(); 
         } catch (\Exception $e) {
             log_message('error', 'Error al obtener los registros: ' . $e->getMessage());
             return [];
         }
-    }
-
-    /**
-     * Método para obtener todos los datos del modelo
-     */
-
-    public function obtenerAllRegistros()
-    {
-        return $this->findAll();
     }
 
     /**

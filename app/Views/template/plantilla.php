@@ -251,64 +251,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container mb-4">
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="date-reserva">
-                                    Elija los días pulsando en este calendario:
-                                </div>
-                                <div class="calendar">
-                                    <div class="calendar-header">
-                                        <span class="prev-month">&#8249;</span>
-                                        <span class="current-month-year"></span>
-                                        <span class="next-month">&#8250;</span>
-                                    </div>
-                                    <div class="calendar-weekdays">
-                                        <span>Dom</span>
-                                        <span>Lun</span>
-                                        <span>Mar</span>
-                                        <span>Mie</span>
-                                        <span>Jue</span>
-                                        <span>Vie</span>
-                                        <span>Sab</span>
-                                    </div>
-                                    <div class="calendar-days">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="row">
-                                  <label for="fecha-inicio-input">Fecha de inicio:</label>
-                                  <input id="fecha-inicio-input" type="text" readonly>
-                                </div>
-                                <div class="row">
-                                  <label for="fecha-fin-input">Fecha de fin:</label>
-                                  <input id="fecha-fin-input" type="text" readonly>
-                                </div>
-                                <div class="row">
-                                  <div class="container huespedes">
-                                    <label for="n_huespedes">¿Cuántas personas sois?</label>
-                                    <div class="inp-huespedes">
-                                        <button type="button" class="bCount bMenos">-</button>
-                                        <input type="number" name="n_huespedes" id="n_huespedes" value="1" min="1" max="10">
-                                        <button type="button" class="bCount bMas">+</button>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="container huespedes">
-                                    <label for="n_huespedes">¿Deseas usar puntos?</label>
-                                    <div class="inp-huespedes">
-                                        <button type="button" class="bCount bMenos">-</button>
-                                        <input type="number" name="n_huespedes" id="n_huespedes" value="1" min="1" max="10">
-                                        <button type="button" class="bCount bMas">+</button>
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
+                    
                 </div>
             </div>
         </div>
