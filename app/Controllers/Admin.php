@@ -37,12 +37,9 @@ class Admin extends Controller {
     public function reservasMesaPendientes()
     {
         $mRes = new M_Reservas_Mesa();
-        $reservas = $mRes->dameReservasMesaPendientes();
 
-        $contador = (count($reservas) < 8 ? count($reservas) : 8);
-
-        $data["reservas"] = $reservas;
-        $data["contador"] = $contador;
+        $data["reservas"] = $mRes->dameReservasMesaPendientes()->paginate(8);
+        $data["pager"] = $mRes->pager;
         $data["cuerpo"] = view("admin/mesas/pendientes", $data);
 
         return view("template/admin", $data);

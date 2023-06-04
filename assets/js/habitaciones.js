@@ -41,6 +41,10 @@ var formHabHTML = '<form class="form-reserva-hab">\
                                         <button type="button" class="bCount bMas">+</button>\
                                     </div>\
                                 </div>\
+                                <div class="container mt-4 cont-puntos">\
+                                    <label for="n_puntos">¿Desea usar algunos puntos?</label>\
+                                    <div class="">\
+                                </div>\
                             </div>\
                         </div>\
                         <div class="div-btn-reserva-hab">\
@@ -66,8 +70,8 @@ $(function() {
         let idHab = $(this).closest(".habitacion").data("value");
         let huespedes = $(this).closest(".habitacion").find(".capacidad-hab").data("value");
 
-        $(".modal-body").empty();
-        $(".modal-body").html(formHabHTML);
+        // $(".modal-body").empty();
+        // $(".modal-body").html(formHabHTML);
 
         $(".modal").attr("data-id", idHab);
         $("#n_huespedes").attr("max", huespedes);

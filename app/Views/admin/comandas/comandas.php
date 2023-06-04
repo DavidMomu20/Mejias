@@ -4,8 +4,8 @@
     <div class="accordion" id="carta-accordion">
         <div class="accordion-item bocadillos">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <i class="fa-solid fa-burger"></i> 
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false aria-controls="collapseOne">
+                    <i class="fa-solid fa-burger"></i>&nbsp; 
                     Bocadillos
                 </button>
             </h2>
@@ -30,8 +30,8 @@
         </div>
         <div class="accordion-item platos-combinados">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-utensils"></i> 
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <i class="fa-solid fa-utensils"></i>&nbsp;
                     Platos Combinados
                 </button>
             </h2>
@@ -54,8 +54,8 @@
         </div>
         <div class="accordion-item raciones-frias">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    <i class="fa-solid fa-snowflake"></i> 
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <i class="fa-solid fa-snowflake"></i>&nbsp;
                     Raciones Frías
                 </button>
             </h2>
@@ -78,8 +78,8 @@
         </div>
         <div class="accordion-item bebidas">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    <i class="fa-solid fa-whiskey-glass"></i> 
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <i class="fa-solid fa-whiskey-glass"></i>&nbsp; 
                     Bebidas
                 </button>
             </h2>

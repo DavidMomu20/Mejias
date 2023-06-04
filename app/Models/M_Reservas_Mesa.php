@@ -29,17 +29,13 @@ class M_Reservas_Mesa extends M_base {
      */
 
     public function dameReservasMesaPendientes()
-    {
-        $db = \Config\Database::connect();
-        
-        $query = $db->table('reservas_mesa rm')
-             ->select('rm.*, u.nombre, u.apellido, u.telefono')
-             ->join('usuarios_reservas_mesa urm', 'rm.id_reserva_mesa = urm.id_reserva_mesa')
-             ->join('usuarios u', 'urm.id_usuario = u.id_usuario')
-             ->where('rm.id_estado', 3)
-             ->get();
-        
-        return $query->getResult();
+    {   
+        $reservas = $this->select("reservas_mesa.*, usuarios.nombre, usuarios.apellido, usuarios.telefono")
+                        ->join('usuarios_reservas_mesa', 'reservas_mesa.id_reserva_mesa = usuarios_reservas_mesa.id_reserva_mesa')
+                        ->join('usuarios', 'usuarios_reservas_mesa.id_usuario = usuarios.id_usuario')
+                        ->where("reservas_mesa.id_estado", 3);
+
+        return $reservas;
     }
 
     /**
