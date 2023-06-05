@@ -44,7 +44,10 @@ var formHabHTML = '<form class="container mb-4">' +
 '            </div>' +
 '            <div class="row mt-3">' +
 '                <div class="my-cont-reserva container d-flex flex-column justify-content-center gap-2 p-3">' +
-'                    <label for="puntos" class="my-label text-center">¿Deseas usar puntos?</label>' +
+'                    <label for="puntos" class="my-label text-center">' + 
+'                       <i class="fa-solid fa-mug-hot fa-bounce"></i>\n' + 
+'                       ¿Deseas usar puntos?' + 
+'                    </label>' +
 '                    <div class="d-flex justify-content-center gap-2">' +
 '                        <button type="button" class="bCount bMenos">-</button>' +
 '                        <input class="my-input-number" type="number" name="puntos" id="puntos" value="0" min="0" max="' + puntos + '">' +
