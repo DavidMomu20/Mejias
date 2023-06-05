@@ -6,6 +6,10 @@ use CodeIgniter\Controller;
 use App\Models\M_Reservas_Mesa;
 use App\Models\M_Mesas;
 use App\Libraries\TableLib;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; // Agrega esta línea
 
 class ReservasMesa extends Controller{
 
@@ -74,20 +78,33 @@ class ReservasMesa extends Controller{
 
         if ($mRes->updateRegistro($id, $datos)) {
 
-            $email = new \App\Libraries\EmailsSender();
+            // Crea una instancia de PHPMailer
+            $mail = new PHPMailer(true);
 
-            # Pasamos los parámetros del envío
-            $datosEmail['emailTO'] = "davidmomu4@gmail.com";
-            $datosEmail['subject'] = "Esto es un email de prueba";
-            $datosEmail['message'] = "Y esto es un texto de pruebas";
+            try {
+                // Configuración del servidor de correo
+                $mail->isSMTP();
+                $mail->Host       = 'sandbox.smtp.mailtrap.io';  // Cambia por tu servidor SMTP
+                $mail->SMTPAuth   = true;
+                $mail->Username   = '08fd788cd37fcb';  // Cambia por tu dirección de correo
+                $mail->Password   = '927b6721542ff2';  // Cambia por tu contraseña
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Opcionalmente cambia a ENCRYPTION_SMTPS para SMTPS
+                $mail->Port       = 2525;  // Cambia por el puerto de tu servidor SMTP
 
-            if ($email->SendEmails($datosEmail))
-                echo json_encode(["data" => "Reserva Confirmada con éxito - Email enviado con éxito"]);
-            else
-                echo json_encode(["data" => "Reserva Confirmada con éxito - Email enviado sin éxito"]);
+                // Configuración del mensaje
+                $mail->setFrom('davidmoralesm2003@hotmail.com', 'David Morales');
+                $mail->addAddress('davidmomu4@gmail.com', 'David Morales');
+                $mail->Subject = 'Correo de prueba';
+                $mail->Body = 'Este es un correo de prueba enviado desde PHPMailer y Mailtrap.';
+                
+                // Envía el correo electrónico
+                $mail->send();
+
+                echo json_encode(["data" => 'Correo enviado correctamente.']);
+            } catch (Exception $e) {
+                echo json_encode(["data" => 'Error al enviar el correo: ' . $mail->ErrorInfo]);
+            }
         }
-        else
-            echo json_encode(["data" => "Reserva Confirmada sin éxito"]);
     }
 
     /**

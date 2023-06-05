@@ -28,22 +28,22 @@ class Email extends BaseConfig
     /**
      * SMTP Server Address
      */
-    public string $SMTPHost = 'sandbox.smtp.mailtrap.io';
+    public string $SMTPHost = 'smtp.serviciodecorreo.es';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = '08fd788cd37fcb';
+    public string $SMTPUser = 'acusesenvio@abire.es';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '927b6721542ff2';
+    public string $SMTPPass = '951080170aE';
 
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 2525;
+    public int $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -58,7 +58,7 @@ class Email extends BaseConfig
     /**
      * SMTP Encryption. Either tls or ssl
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
