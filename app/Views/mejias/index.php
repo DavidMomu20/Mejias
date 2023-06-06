@@ -69,11 +69,11 @@
                                 class="bi bi-chevron-down dropdown-indicator"></i>
                         </a>
                         <ul>
-                            <li><a href="<?=base_url(" updateLang/es")?>" class="language-link"
+                            <li><a href="<?= base_url('lang/es'); ?>" class="language-link"
                                     data-language="es">Español</a></li>
-                            <li><a href="<?=base_url(" updateLang/en")?>" class="language-link"
+                            <li><a href="<?= base_url('lang/en'); ?>" class="language-link"
                                     data-language="en">English</a></li>
-                            <li><a href="<?=base_url(" updateLang/fr")?>" class="language-link"
+                            <li><a href="<?= base_url('lang/fr'); ?>" class="language-link"
                                     data-language="fr">Français</a></li>
                         </ul>
                     </li>
