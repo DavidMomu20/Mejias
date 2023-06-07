@@ -69,10 +69,10 @@
                                     </div>
                                     <div class="container div-botones mt-2">
                                         <div class="row d-flex justify-content-center column-gap-2">
-                                            <button type="button" class="btn btn-success col-sm-5">
+                                            <button type="button" class="btn b-confirmar-rh btn-success col-sm-5">
                                                 <i class="fa-solid fa-check"></i>
                                             </button>
-                                            <button type="button" class="btn btn-danger col-sm-5">
+                                            <button type="button" class="btn b-rechazar-rh btn-danger col-sm-5">
                                                 <i class="fa-solid fa-xmark"></i>
                                             </button>
                                         </div>

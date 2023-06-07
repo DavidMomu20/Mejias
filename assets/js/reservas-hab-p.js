@@ -1,4 +1,5 @@
 $(function() {
+
     // Manejar el clic en el enlace de "Siguiente"
     $('a[data-slide="next"]').click(function() {
       $('.carousel').carousel('next');
@@ -10,4 +11,14 @@ $(function() {
       $('.carousel').carousel('prev');
       return false; // Evitar el comportamiento predeterminado del enlace
     });
+
+    /**
+     * Confirmar reserva de habitación
+     */
+
+    $(".b-confirmar-rh").on("click", function() {
+
+      $(".modal-title").text("Confirmar Reserva de Habitación");
+      abrirModal();
+    })
   });
