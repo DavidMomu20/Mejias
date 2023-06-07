@@ -18,9 +18,9 @@
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         Recuerde que los puntos SÓLO sirven para<br> realizar descuentos en las reservas de habitaciones.
                         <br><br>
-                        Al realizar una reserva de mesa, ganarás 10 puntos.
+                        Al realizar una reserva de mesa, ganarás 15 puntos.
                         <br><br>
-                        <b>Cada 5 puntos = 1.25€</b>
+                        <b>Cada punto = 0.05€</b>
                     </span>
                 </div>
                 <?php endif; ?>

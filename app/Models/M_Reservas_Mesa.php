@@ -30,7 +30,7 @@ class M_Reservas_Mesa extends M_base {
 
     public function dameReservasMesaPendientes()
     {   
-        $reservas = $this->select("reservas_mesa.*, usuarios.nombre, usuarios.apellido, usuarios.telefono")
+        $reservas = $this->select("reservas_mesa.*, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.telefono")
                         ->join('usuarios_reservas_mesa', 'reservas_mesa.id_reserva_mesa = usuarios_reservas_mesa.id_reserva_mesa')
                         ->join('usuarios', 'usuarios_reservas_mesa.id_usuario = usuarios.id_usuario')
                         ->where("reservas_mesa.id_estado", 3);

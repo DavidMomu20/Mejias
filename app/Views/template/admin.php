@@ -170,12 +170,7 @@
                     <h5 class="modal-title">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <p class="mt-2"></p>
-                    </div>
-                </div>
-            </div>
+                <div class="modal-body"></div>
             </div>
         </div>
 

@@ -5,7 +5,7 @@ use CodeIgniter\Controller;
 
 use App\Models\M_Usuarios;
 
-class Login extends Controller {
+class Login extends BaseController {
 
     public function doLogin()
     {

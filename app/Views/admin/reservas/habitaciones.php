@@ -28,7 +28,7 @@
                         endif;
                         ?>
                         <div class="col-sm-4 mb-3">
-                            <div class="card reserva-hab" data-index="<?=$reserva->id_reserva_hab?>" data-precio="<?=$reserva->precio?>">
+                            <div class="card reserva-hab" data-index="<?=$reserva->id_reserva_hab?>" data-precio="<?=$reserva->precio?>" data-puntos="<?=$reserva->puntos_usados?>">
                                 <img class="img-fluid" alt="100%x280" src="<?=base_url('assets/img/habitaciones/' . $reserva->foto)?>">
                                 <div class="card-body">
                                     <h4 class="card-title text-center">
@@ -41,7 +41,7 @@
                                                 <i class="fa-solid fa-user"></i>
                                                 <?=$reserva->nombre . " " . $reserva->apellido?>
                                             </div>
-                                            <div class="col-md-6 reserva-fecha-inicio">
+                                            <div class="col-md-6 reserva-fecha-inicio" data-value="<?=$reserva->fecha_inicio?>">
                                                 <i class="fa-solid fa-person-walking-luggage"></i>
                                                 <?=$reserva->fecha_inicio?>
                                             </div>
@@ -51,7 +51,7 @@
                                                 <i class="fa-solid fa-phone-volume"></i>
                                                 <?=$reserva->telefono?>
                                             </div>
-                                            <div class="col-md-6 reserva-fecha-fin">
+                                            <div class="col-md-6 reserva-fecha-fin" data-value="<?=$reserva->fecha_fin?>">
                                                 <i class="fa-solid fa-person-walking-luggage fa-flip-horizontal"></i>
                                                 <?=$reserva->fecha_fin?>
                                             </div>

@@ -6,7 +6,7 @@
             <?php
         foreach ($reservas as $reserva):
             ?>
-            <div class="reserva" data-index="<?=$reserva["id_reserva_mesa"]?>">
+            <div class="reserva" data-index="<?=$reserva["id_reserva_mesa"]?>" data-email="<?=$reserva["email"]?>">
                 <div class="reserva-contenedor">
                     <div class="div-punzon">
                         <div class="punzon"></div>
@@ -43,12 +43,14 @@
                             </span>
                         </div>
                     </div>
+                    <?php if ($reserva["id_estado"] == 3): ?>
                     <div class="div-botones-reserva">
                         <button type="button" class="btn btn-success b-confirmar-reserva"><i
                                 class="fa-solid fa-check"></i></button>
                         <button type="button" class="btn btn-danger b-rechazar-reserva"><i
                                 class="fa-solid fa-xmark"></i></button>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php

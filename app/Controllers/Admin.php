@@ -11,7 +11,7 @@ use App\Models\M_Mesas;
 use App\Models\M_Estados;
 use App\Models\M_Usuarios;
 
-class Admin extends Controller {
+class Admin extends BaseController {
 
     public function index()
     {
@@ -40,7 +40,7 @@ class Admin extends Controller {
 
         $data["reservas"] = $mRes->dameReservasMesaPendientes()->paginate(8);
         $data["pager"] = $mRes->pager;
-        $data["cuerpo"] = view("admin/mesas/pendientes", $data);
+        $data["cuerpo"] = view("admin/reservas/mesas", $data);
 
         return view("template/admin", $data);
     }
@@ -54,7 +54,7 @@ class Admin extends Controller {
 
         $data["reservas"] = $reservas;
         $data["contador"] = $contador;
-        $data["cuerpo"] = view("admin/habitaciones/pendientes", $data);
+        $data["cuerpo"] = view("admin/reservas/habitaciones", $data);
 
         return view("template/admin", $data);
     }
@@ -78,28 +78,6 @@ class Admin extends Controller {
         $data["cuerpo"] = view("admin/comandas/comandas", $data);
 
         return view("template/admin", $data);
-    }
-
-    /**
-     * ---------- Método para enviar emails ----------
-     */
-
-    public function enviarEmail()
-    {
-        $this->email = \Config\Services::email();
-
-        try {
-            $this->email->setFrom('davidmoralesm2003@gmail.com', 'David Morales - Hostal Restaurante Mejías');
-            $this->email->setTo('davidmomu4@gmail.com');
-            $this->email->setSubject('Asunto del Correo');
-            $this->email->setMessage('Cuerpo del correo electrónico');
-            
-            $this->email->send();
-            
-            echo json_encode(["data" => "success"]);
-        } catch (\Exception $e) {
-            echo "Error al enviar el correo: " . $e->getMessage();
-        }
     }
 
     /**

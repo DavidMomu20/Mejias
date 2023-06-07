@@ -6,14 +6,10 @@ use CodeIgniter\Controller;
 use App\Models\M_Reservas_Mesa;
 use App\Models\M_Mesas;
 use App\Libraries\TableLib;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; // Agrega esta línea
+class ReservasMesa extends BaseController {
 
-class ReservasMesa extends Controller{
-
-    public function realizarReservaMesa()
+    public function realizar()
     {
         $id_user = intval(session()->get('id_user'));
         $mRes = new M_Reservas_Mesa();
@@ -65,7 +61,7 @@ class ReservasMesa extends Controller{
         }
     }
 
-    public function confirmarReservaMesa()
+    public function confirmar()
     {
         $mRes = new M_Reservas_Mesa();
 
@@ -78,32 +74,17 @@ class ReservasMesa extends Controller{
 
         if ($mRes->updateRegistro($id, $datos)) {
 
-            // Crea una instancia de PHPMailer
-            $mail = new PHPMailer(true);
+            $email = $this->request->getPost("email");
+            $usuario = $this->request->getPost("full_name");
 
-            try {
-                // Configuración del servidor de correo
-                $mail->isSMTP();
-                $mail->Host       = 'sandbox.smtp.mailtrap.io';  // Cambia por tu servidor SMTP
-                $mail->SMTPAuth   = true;
-                $mail->Username   = '08fd788cd37fcb';  // Cambia por tu dirección de correo
-                $mail->Password   = '927b6721542ff2';  // Cambia por tu contraseña
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Opcionalmente cambia a ENCRYPTION_SMTPS para SMTPS
-                $mail->Port       = 2525;  // Cambia por el puerto de tu servidor SMTP
+            $datosMail = [
+                "email" => $email, 
+                "usuario" => $usuario, 
+                "asunto" => "Reserva de Mesa Confirmada", 
+                "body" => "Su reserva se ha confirmado. Le esperamos en la mesa " . $datos["id_mesa"] . ". ¡Le esperamos!"
+            ];
 
-                // Configuración del mensaje
-                $mail->setFrom('davidmoralesm2003@hotmail.com', 'David Morales');
-                $mail->addAddress('davidmomu4@gmail.com', 'David Morales');
-                $mail->Subject = 'Correo de prueba';
-                $mail->Body = 'Este es un correo de prueba enviado desde PHPMailer y Mailtrap.';
-                
-                // Envía el correo electrónico
-                $mail->send();
-
-                echo json_encode(["data" => 'Correo enviado correctamente.']);
-            } catch (Exception $e) {
-                echo json_encode(["data" => 'Error al enviar el correo: ' . $mail->ErrorInfo]);
-            }
+            return $this->enviarEmail($datosMail);
         }
     }
 

@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\M_Usuarios;
 use App\Models\M_Roles;
 
-class Register extends Controller {
+class Register extends BaseController {
 
     public function doRegister()
     {

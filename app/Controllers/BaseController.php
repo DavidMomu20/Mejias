@@ -8,6 +8,10 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; // Agrega esta línea
 
 /**
  * Class BaseController
@@ -58,5 +62,39 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+    }
+
+    /**
+     * Método para enviar email
+     */
+
+    public function enviarEmail(array $datos)
+    {
+        // Crea una instancia de PHPMailer
+        $mail = new PHPMailer(true);
+
+        try {
+            // Configuración del servidor de correo
+            $mail->isSMTP();
+            $mail->Host       = 'sandbox.smtp.mailtrap.io';  // Cambia por tu servidor SMTP
+            $mail->SMTPAuth   = true;
+            $mail->Username   = '08fd788cd37fcb';  // Cambia por tu dirección de correo
+            $mail->Password   = '927b6721542ff2';  // Cambia por tu contraseña
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Opcionalmente cambia a ENCRYPTION_SMTPS para SMTPS
+            $mail->Port       = 2525;  // Cambia por el puerto de tu servidor SMTP
+
+            // Configuración del mensaje
+            $mail->setFrom('davidmoralesm2003@hotmail.com', 'David Morales');
+            $mail->addAddress("davidmomu4@gmail.com", $datos["usuario"]);
+            $mail->Subject = $datos["asunto"];
+            $mail->Body = $datos["body"];
+            
+            // Envía el correo electrónico
+            $mail->send();
+
+            return json_encode(["data" => 'Correo enviado correctamente.']);
+        } catch (Exception $e) {
+            return json_encode(["data" => 'Error al enviar el correo: ' . $mail->ErrorInfo]);
+        }
     }
 }

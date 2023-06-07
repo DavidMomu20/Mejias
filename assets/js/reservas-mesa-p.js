@@ -8,6 +8,10 @@ $(".b-confirmar-reserva").click(function() {
     let nComensales = $(this).closest('.reserva-contenedor').find('.reserva-ncomensales span').text();
     let fecha = $(this).closest('.reserva-contenedor').find('.reserva-fecha span').text();
     let idReserva = $(this).closest(".reserva").data("index");
+
+    let email = $(this).closest(".reserva").attr("data-email");
+    let fullName = $(this).closest(".reserva-contenedor").find(".reserva-nombre span").text();
+
     let divReserva = $(this).closest(".reserva");
 
     $(".modal-body").empty();
@@ -28,7 +32,9 @@ $(".b-confirmar-reserva").click(function() {
         dataType: "json", 
         data: {
             n_comensales: nComensales, 
-            fecha: fecha
+            fecha: fecha, 
+            email: email, 
+            full_name: fullName 
         },
         success: function(response) {
 

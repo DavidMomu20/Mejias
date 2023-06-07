@@ -44,12 +44,13 @@ $routes->post('doLogin', 'Login::doLogin');
 $routes->get('logout', 'Login::logout');
 $routes->post('doRegister', 'Register::doRegister');
 
-$routes->post('reservar/reservarMesa', 'ReservasMesa::realizarReservaMesa');
+$routes->post('reservar/reservarMesa', 'ReservasMesa::realizar');
 $routes->post('admin/mostrarMesas', 'ReservasMesa::mostrarMesasDisponibles');
-$routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmarReservaMesa');
+$routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmar');
 
 $routes->post('buscarHabitaciones', 'ReservasHabitacion::buscarHabitaciones');
-$routes->post('reservarHab', 'ReservasHabitacion::realizarReservaHab');
+$routes->post('reservarHab', 'ReservasHabitacion::realizar');
+$routes->post('admin/confirmarReservaHab', 'ReservasHabitacion::confirmar');
 
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/micuenta', "Admin::miCuenta");
