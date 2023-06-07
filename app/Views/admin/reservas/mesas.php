@@ -64,4 +64,4 @@
     </div>
 </div>
 
-<script src="<?=base_url('assets/js/reservas-mesa-p.js')?>"></script>
+<script src="<?=base_url('assets/js/reservas-mesa.js')?>"></script>

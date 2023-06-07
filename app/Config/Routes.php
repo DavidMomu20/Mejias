@@ -60,8 +60,10 @@ $routes->get('admin/reservas-habs-pendientes', 'Admin::reservasHabPendientes');
 
 // ---- CRUD ----
 
-$routes->get('admin/crud/reservas-mesa', 'Admin::crudReservasMesa');
+$routes->get('admin/crud/reservas-mesa', 'ReservasMesa::crud');
 $routes->post('admin/crud/ajax-rm', 'ReservasMesa::ajax');
+
+$routes->get('admin/crud/usuarios', 'Usuarios::crud');
 
 /*
  * --------------------------------------------------------------------

@@ -98,23 +98,4 @@ class Admin extends BaseController {
         $data["titulo"] = "Mi cuenta";
         return view("template/admin", $data);
     }
-
-    /**
-     * ---------- MÉTODOS CRUD ----------
-     */
-
-    public function crudReservasMesa()
-    {
-        $mMesa = new M_Mesas();
-        $mEst = new M_Estados();
-        $mUser = new M_Usuarios();
-
-        $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"]);
-        $data["estados"] = $mEst->obtenerRegistros();
-        $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"]);
-
-        $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);
-
-        return view('template/admin', $data);
-    }
 }

@@ -88,6 +88,9 @@ abstract class BaseController extends Controller
             $mail->addAddress("davidmomu4@gmail.com", $datos["usuario"]);
             $mail->Subject = $datos["asunto"];
             $mail->Body = $datos["body"];
+
+            if (isset($datos["pdf"]))
+                $mail->addStringAttachment($datos["pdf"], 'Fianza.pdf', 'base64', 'application/pdf');
             
             // Envía el correo electrónico
             $mail->send();

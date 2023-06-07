@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\M_Habitaciones;
 use App\Models\M_Reservas_Habitacion;
 use App\Models\M_Usuarios;
+use Dompdf\Dompdf;
 
 class ReservasHabitacion extends BaseController{
 
@@ -90,32 +91,27 @@ class ReservasHabitacion extends BaseController{
 
         if ($mRes->updateRegistro($id, $datos)) {
 
-            // Crea una instancia de PHPMailer
-            $mail = new PHPMailer(true);
+            $vistaPDF = view('pdfs/fianza');
 
-            try {
-                // Configuración del servidor de correo
-                $mail->isSMTP();
-                $mail->Host       = 'sandbox.smtp.mailtrap.io';  // Cambia por tu servidor SMTP
-                $mail->SMTPAuth   = true;
-                $mail->Username   = '08fd788cd37fcb';  // Cambia por tu dirección de correo
-                $mail->Password   = '927b6721542ff2';  // Cambia por tu contraseña
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Opcionalmente cambia a ENCRYPTION_SMTPS para SMTPS
-                $mail->Port       = 2525;  // Cambia por el puerto de tu servidor SMTP
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($vistaPDF);
+            $dompdf->setPaper('A4', 'landscape');
+            $dompdf->render();
 
-                // Configuración del mensaje
-                $mail->setFrom('davidmoralesm2003@hotmail.com', 'David Morales');
-                $mail->addAddress('davidmomu4@gmail.com', 'David Morales');
-                $mail->Subject = 'Su reserva de mesa se ha CONFIRMADO';
-                $mail->Body = 'Se ha realizado la reserva de mesa con éxito. Su mesa será la nº' . $datos["id_mesa"] . ". ¡Le esperamos!";
-                
-                // Envía el correo electrónico
-                $mail->send();
+            $pdfContent = $dompdf->output();
 
-                echo json_encode(["data" => 'Correo enviado correctamente.']);
-            } catch (Exception $e) {
-                echo json_encode(["data" => 'Error al enviar el correo: ' . $mail->ErrorInfo]);
-            }
+            $email = "";
+            $usuario = "David Morales";
+
+            $datosMail = [
+                "email" => $email, 
+                "usuario" => $usuario, 
+                "asunto" => "Reserva de Habitación Confirmada", 
+                "body" => "Su reserva se ha confirmado. Le adjuntamos un PDF con más especificaciones.", 
+                "pdf" => $pdfContent
+            ];
+
+            return $this->enviarEmail($datosMail);
         }
     }
 }

@@ -125,8 +125,11 @@
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
         },
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 }
+        ],
         responsive: true, 
-        scrollX: true,
         processing: true,
         serverSide: true,
         ajax: {
@@ -149,6 +152,11 @@
             { data: "hora" },
             { data: "n_comensales" },
         ]
+    })
+
+    $("td.sorting_1.dtr-control::before").on("click", function(event) {
+
+        event.stopPropagation();
     })
 </script>
 

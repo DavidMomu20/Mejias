@@ -40,18 +40,25 @@ $(".b-confirmar-reserva").click(function() {
 
             $(".modal-body").empty();
 
-            let mesas = '<label for="mesasDisponibles">Elija una mesa de las disponibles:</label>' +
+            if (response.length !== 0) {
+
+                let mesas = '<label for="mesasDisponibles">Elija una mesa de las disponibles:</label>' +
                         '<div class="mesasDisponibles">';
 
-            for (let mesa of response)
-                mesas += '<button class="bMesa">' + mesa.id_mesa + '</button>';
+                for (let mesa of response)
+                    mesas += '<button class="bMesa">' + mesa.id_mesa + '</button>';
 
-            mesas += '</div>' +
-                    '<div class="btn-modal text-center">' +
-                    "<button type='button' class='btn btn-success confirmar'>\nConfirmar\n</button>" +
-                    '</div>';
+                mesas += '</div>' +
+                        '<div class="btn-modal text-center">' +
+                        "<button disabled type='button' class='btn btn-success confirmar'>\nConfirmar\n</button>" +
+                        '</div>';
 
-            $(".modal-body").html(mesas);
+                $(".modal-body").html(mesas);
+            }
+            else {
+
+                $(".modal-body").html('<div class="text-center"><b style="color: red;"><i>¡No existen mesas para esta fecha con estos comensales!</i></b></div>')
+            }
 
             /**
              * Al pulsar el botón de confirmar, se informará al recepcionista del envío del email
@@ -88,6 +95,8 @@ $(".b-confirmar-reserva").click(function() {
 
                 $(".bMesa-active").removeClass("bMesa-active");
                 $(this).addClass("bMesa-active");
+
+                $(".confirmar").removeAttr("disabled");
             })
         }
     })

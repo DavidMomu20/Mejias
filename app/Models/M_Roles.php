@@ -8,15 +8,6 @@ class M_Roles extends M_base{
     protected $primaryKey = 'id_rol';
 
     /**
-     * Método para obtener todos los roles
-     */
-
-    public function dameRoles()
-    {
-        return $this->findAll();
-    }
-
-    /**
      * Método para obtener el id de un rol a partir de su nombre
      */
 

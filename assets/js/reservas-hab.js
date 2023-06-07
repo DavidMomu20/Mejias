@@ -29,12 +29,14 @@ $(function () {
 
   $(".b-confirmar-rh").on("click", function () {
 
-    let id = $(this).closest(".reserva-hab").attr("data-index");
-    let precio = $(this).closest(".reserva-hab").attr("data-precio");
-    let puntos = parseInt($(this).closest(".reserva-hab").attr("data-puntos"));
+    let div = $(this).closest(".reserva-hab");
 
-    let fecha_inicio = new Date($(this).closest(".reserva-hab").find(".reserva-fecha-inicio").attr("data-value"));
-    let fecha_fin = new Date($(this).closest(".reserva-hab").find(".reserva-fecha-fin").attr("data-value"));
+    let id = div.attr("data-index");
+    let precio = div.attr("data-precio");
+    let puntos = parseInt(div.attr("data-puntos"));
+
+    let fecha_inicio = new Date(div.find(".reserva-fecha-inicio").attr("data-value"));
+    let fecha_fin = new Date(div.find(".reserva-fecha-fin").attr("data-value"));
 
     let nDias = Math.floor((fecha_fin - fecha_inicio) / (1000 * 60 * 60 * 24));
     let total = precio * nDias;
@@ -79,7 +81,8 @@ $(function () {
         },
         success: function(response) {
 
-          console.log("Correo enviado con éxito");
+          $(".modal-body").html('<div class="container text-center"><p>Correo con PDF de fianza enviado con éxito</p></div>');
+          div.remove();
         }
       })
     })

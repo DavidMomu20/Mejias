@@ -4,7 +4,9 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 
 use App\Models\M_Reservas_Mesa;
+use App\Models\M_Estados;
 use App\Models\M_Mesas;
+use App\Models\M_Usuarios;
 use App\Libraries\TableLib;
 
 class ReservasMesa extends BaseController {
@@ -91,6 +93,21 @@ class ReservasMesa extends BaseController {
     /**
      * ==================== MÉTODOS CRUD ====================
      */
+
+     public function crud()
+     {
+         $mMesa = new M_Mesas();
+         $mEst = new M_Estados();
+         $mUser = new M_Usuarios();
+ 
+         $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"]);
+         $data["estados"] = $mEst->obtenerRegistros();
+         $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"]);
+ 
+         $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);
+ 
+         return view('template/admin', $data);
+     }
 
     public function ajax()
     {

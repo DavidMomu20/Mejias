@@ -96,4 +96,4 @@
 
 
 
-<script src="<?=base_url('assets/js/reservas-hab-p.js')?>"></script>
+<script src="<?=base_url('assets/js/reservas-hab.js')?>"></script>
