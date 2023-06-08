@@ -386,25 +386,25 @@
                 <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
                     <li class="nav-item">
-                        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-                            <h4>Entrantes</h4>
+                        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-carnes">
+                            <h4>Carnes</h4>
                         </a>
                     </li><!-- End tab nav item -->
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-                            <h4>Desayuno</h4>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-pescados">
+                            <h4>Pescados</h4>
                         </a><!-- End tab nav item -->
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
-                            <h4>Comida</h4>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-raciones-frias">
+                            <h4>Raciones Frías</h4>
                         </a>
                     </li><!-- End tab nav item -->
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
-                            <h4>Cena</h4>
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-bocadillos">
+                            <h4>Bocadillos</h4>
                         </a>
                     </li><!-- End tab nav item -->
 
@@ -412,11 +412,11 @@
 
                 <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
 
-                    <div class="tab-pane fade active show" id="menu-starters">
+                    <div class="tab-pane fade active show" id="menu-carnes">
 
                         <div class="tab-header text-center">
                             <p>Menú</p>
-                            <h3>Entrantes</h3>
+                            <h3>Carnes</h3>
                         </div>
 
                         <div class="row gy-5">
@@ -508,11 +508,11 @@
                         </div>
                     </div><!-- End Starter Menu Content -->
 
-                    <div class="tab-pane fade" id="menu-breakfast">
+                    <div class="tab-pane fade" id="menu-pescados">
 
                         <div class="tab-header text-center">
                             <p>Menu</p>
-                            <h3>Breakfast</h3>
+                            <h3>Pescados</h3>
                         </div>
 
                         <div class="row gy-5">
@@ -592,11 +592,11 @@
                         </div>
                     </div><!-- End Breakfast Menu Content -->
 
-                    <div class="tab-pane fade" id="menu-lunch">
+                    <div class="tab-pane fade" id="menu-raciones-frias">
 
                         <div class="tab-header text-center">
                             <p>Menu</p>
-                            <h3>Lunch</h3>
+                            <h3>Raciones Frías</h3>
                         </div>
 
                         <div class="row gy-5">
@@ -676,11 +676,11 @@
                         </div>
                     </div><!-- End Lunch Menu Content -->
 
-                    <div class="tab-pane fade" id="menu-dinner">
+                    <div class="tab-pane fade" id="menu-bocadillos">
 
                         <div class="tab-header text-center">
                             <p>Menu</p>
-                            <h3>Dinner</h3>
+                            <h3>Bocadillos</h3>
                         </div>
 
                         <div class="row gy-5">
