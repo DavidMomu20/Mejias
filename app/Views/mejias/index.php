@@ -762,9 +762,9 @@
                 </div>
 
                 <div class="col-lg-12 text-center my-4">
-                    <button id="b-verCarta" class="btn btn-book-a-table">
+                    <a href="<?=base_url('carta')?>" id="b-verCarta" class="btn btn-book-a-table">
                         <?php echo lang('Translate.ver-carta'); ?>
-                    </button>
+                    </a>
                 </div>
 
             </div>

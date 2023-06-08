@@ -37,6 +37,7 @@ $routes->get("micuenta", "Home::miCuenta");
 $routes->get('reservar/mesa', 'Home::reservarMesa');
 $routes->get('reservar/habitacion/(:num)', 'Home::reservarHab/$1');
 $routes->get('habitaciones', 'Home::verHabitaciones');
+$routes->get('carta', 'Home::verCarta');
 
 $routes->get('/lang/{locale}', 'Language::index');
 
