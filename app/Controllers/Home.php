@@ -44,14 +44,6 @@ class Home extends BaseController
         return view('template/plantilla', $data);
     }
 
-    public function verCarta()
-    {
-        $data["titulo"] = "Carta";
-        $data["cuerpo"] = view("mejias/carta", $data);
-
-        return view('template/plantilla', $data);
-    }
-
     public function miCuenta()
     {
         $mUser = new M_Usuarios();

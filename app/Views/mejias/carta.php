@@ -19,7 +19,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/1')?>" class="categoria">
+                        <a href="<?=base_url('carta/1')?>" class="categoria">
                             <i class="fa-solid fa-burger"></i>&nbsp;
                             Bocadillos
                         </a>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/2')?>" class="categoria">
+                        <a href="<?=base_url('carta/2')?>" class="categoria">
                             <i class="fa-solid fa-utensils"></i>&nbsp;
                             Platos Combinados
                         </a>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/3')?>" class="categoria">
+                        <a href="<?=base_url('carta/3')?>" class="categoria">
                             <i class="fa-solid fa-snowflake"></i>&nbsp;
                             Raciones Frías
                         </a>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/4')?>" class="categoria">
+                        <a href="<?=base_url('carta/4')?>" class="categoria">
                             <i class="fa-solid fa-fish-fins"></i>&nbsp;
                             Pescados
                         </a>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/5')?>" class="categoria">
+                        <a href="<?=base_url('carta/5')?>" class="categoria">
                             <i class="fa-solid fa-drumstick-bite"></i>&nbsp;
                             Carnes
                         </a>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/6')?>" class="categoria">
+                        <a href="<?=base_url('carta/6')?>" class="categoria">
                             <i class="fa-solid fa-ice-cream"></i>&nbsp;
                             Postres
                         </a>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/7')?>" class="categoria">
+                        <a href="<?=base_url('carta/7')?>" class="categoria">
                             <i class="fa-solid fa-wine-bottle"></i>&nbsp;
                             Vinos
                         </a>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/8')?>" class="categoria">
+                        <a href="<?=base_url('carta/8')?>" class="categoria">
                             <i class="fa-solid fa-whiskey-glass"></i>&nbsp;
                             Bebidas
                         </a>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
-                        <a href="<?=base_url('cambiarPlatos/9')?>" class="categoria">
+                        <a href="<?=base_url('carta/9')?>" class="categoria">
                             <i class="fa-solid fa-shrimp"></i>&nbsp;
                             Tapas
                         </a>
@@ -94,32 +94,22 @@
 
         <div class="col-xl-8">
             <section class="container text-center">
+
                 <div class="row row-cols-3">
-                    <div class="col-lg-4 menu-item">
-                        <a href="assets/img/platos/morcilla.png" class="glightbox"><img
-                                src="assets/img/platos/morcilla.png" class="menu-img img-fluid" alt=""></a>
-                        <h4>Laboriosam Direva</h4>
+                    <?php foreach ($platos as $plato): ?>
+                    <div class="col-lg-4 menu-item" data-precio-entera="<?=$plato["precio_entera"]?>"
+                        <?php if (isset($precio["precio_media"])): ?>
+                        data-precio-media="<?=$plato["precio_media"]?>"
+                        <?php endif; ?>>
+                        <img src="<?=base_url('assets/img/platos/' . $plato["imagen"])?>" class="menu-img img-fluid" alt="">
+                        <h4><?=$plato["nombre"]?></h4>
                         <p class="price">
-                            9.95€
+                            <?=$plato["precio_entera"]?>€
                         </p>
                     </div><!-- Menu Item -->
-                    <div class="col-lg-4 menu-item">
-                        <a href="assets/img/platos/morcilla.png" class="glightbox"><img
-                                src="assets/img/platos/morcilla.png" class="menu-img img-fluid" alt=""></a>
-                        <h4>Laboriosam Direva</h4>
-                        <p class="price">
-                            9.95€
-                        </p>
-                    </div><!-- Menu Item -->
-                    <div class="col-lg-4 menu-item">
-                        <a href="assets/img/platos/morcilla.png" class="glightbox"><img
-                                src="assets/img/platos/morcilla.png" class="menu-img img-fluid" alt=""></a>
-                        <h4>Laboriosam Direva</h4>
-                        <p class="price">
-                            9.95€
-                        </p>
-                    </div><!-- Menu Item -->
+                    <?php endforeach; ?>
                 </div>
+                
             </section>
         </div>
 
@@ -127,3 +117,5 @@
 
     </div>
 </section>
+
+<script src="<?=base_url('assets/js/carta.js')?>"></script>
