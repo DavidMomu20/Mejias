@@ -19,9 +19,8 @@ $(function() {
 
         $(".card-body").find(".alert-danger").remove();
         
-        $(this).prepend(spinner);
+        $(this).html(spinner + "\nEnviando ...");
         $(this).attr("disabled", "true");
-        $(this).text("Enviando...");
 
         $.ajax({
             url: "./doLogin", 
@@ -33,7 +32,7 @@ $(function() {
             }, 
             success: function(response) {
 
-                $(this).text("Redirigiendo...");
+                btn.html(spinner + "\nRedirigiendo...");
 
                 if (response.data === "error") {
                     btn.find(".spinner-border").remove();
