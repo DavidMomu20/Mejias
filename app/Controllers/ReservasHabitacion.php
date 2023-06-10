@@ -68,13 +68,9 @@ class ReservasHabitacion extends BaseController{
         if ($id = $mRes->insertReservaHab($datos, $id_user)) {
 
             $mUser = new M_Usuarios();
-            $user = $mUser->obtenerRegistroByPrimaryKey($id_user);
+            $user = $mUser->buscaUsuarioById($id_user);
 
-            $dataUser = [
-                "puntos" => $user["puntos"] - $puntos 
-            ];
-
-            if ($mUser->updateRegistro($id_user, $dataUser))
+            if ($mUser->restaPuntos($id_user, $puntos))
                 echo json_encode(["data" => "Reserva de habitación Realizada con éxito"]);
         }
     }

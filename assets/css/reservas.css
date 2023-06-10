@@ -248,13 +248,8 @@
   color: #212529;
 }
 
-.plato-comandas {
-  border: 2px solid rgb(146, 146, 146);
-  border-radius: 20px;
-}
-
-.plato-comandas img {
-  width: 15%;
+.cat-comandas .nav-link.active {
+  background-color: #763e3e;
 }
 
 .inp-unidades::-webkit-inner-spin-button,
@@ -262,4 +257,39 @@
 {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#b-info-pedido {
+  border-radius: 50%;
+}
+
+#b-quitar-uno {
+  border-radius: 50%;
+}
+
+.plato-selected img {
+  width: 140%;
+}
+
+.plato-selected h5 {
+  font-size: 83%;
+}
+
+.plato-selected span {
+  font-family: var(--font-secondary);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.plato img {
+  width: 40%;
+}
+
+.plato #b-entera, .plato #b-media {
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+}
+
+.cat-comandas a:disabled {
+  color: rgb(173, 172, 172);
 }

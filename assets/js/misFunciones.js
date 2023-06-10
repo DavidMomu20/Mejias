@@ -6,21 +6,21 @@ $(".select-2").select2();
 
 // ==============
 
-$(function() {
+$(function () {
 
-    /**
-     * Función para cerrar el modal
-     */
+  /**
+   * Función para cerrar el modal
+   */
 
-    $(".modal [aria-label=Close]").on("click", function() {
-    
-        $(".modal").removeClass("fade");
-        $(".modal").removeClass("show");
-      
-        $(".modal").removeAttr("data-id");
+  $(".modal [aria-label=Close]").on("click", function () {
 
-        $(".modal").hide();
-      })
+    $(".modal").removeClass("fade");
+    $(".modal").removeClass("show");
+
+    $(".modal").removeAttr("data-id");
+
+    $(".modal").hide();
+  })
 })
 
 /**
@@ -30,9 +30,21 @@ $(function() {
 function abrirModal() {
 
   $(".modal").addClass("fade");
-    setTimeout(function() {
-        $(".modal").addClass("show");
-    }, 25);
+  setTimeout(function () {
+    $(".modal").addClass("show");
+  }, 25);
 
   $(".modal").show();
+}
+
+/**
+ * Función abrirToast
+ */
+
+function abrirToast(strong, body) {
+
+  $(".toast-header strong").text(strong);
+  $(".toast-body").text(body);
+
+  $("#liveToast").toast('show');
 }

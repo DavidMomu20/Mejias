@@ -39,11 +39,14 @@ $routes->get('reservar/habitacion/(:num)', 'Home::reservarHab/$1');
 $routes->get('habitaciones', 'Home::verHabitaciones');
 
 $routes->get('carta/(:num)', 'Platos::verCarta/$1');
+$routes->post('admin/damePlatos', 'Platos::platosPorCategoria');
 
 $routes->get('/lang/{locale}', 'Language::index');
 
 $routes->post('cambiaDatosCuenta', 'Usuarios::cambiarDatos');
 $routes->post('cambiarPassword', 'Usuarios::cambiarPassword');
+$routes->post('admin/cambiaDatosCuenta', 'Usuarios::cambiarDatos');
+$routes->post('admin/cambiarPassword', 'Usuarios::cambiarPassword');
 
 $routes->post('doLogin', 'Login::doLogin');
 $routes->get('logout', 'Login::logout');

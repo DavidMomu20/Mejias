@@ -25,4 +25,12 @@ class Platos extends BaseController {
         return view('template/plantilla', $data);
     }
 
+    public function platosPorCategoria()
+    {
+        $mPlatos = new M_Platos();
+        $id_cat = $this->request->getPost("id");
+
+        return json_encode(["platos" => $mPlatos->obtenerRegistros(["id_categoria" => $id_cat])]);
+    }
+
 }

@@ -19,7 +19,7 @@ $(function() {
 
         $(".card-body").find(".alert-danger").remove();
         
-        $(this).html(spinner + "\nEnviando ...");
+        $(this).html(spinner + "\nEnviando...");
         $(this).attr("disabled", "true");
 
         $.ajax({
@@ -32,17 +32,18 @@ $(function() {
             }, 
             success: function(response) {
 
-                btn.html(spinner + "\nRedirigiendo...");
-
                 if (response.data === "error") {
                     btn.find(".spinner-border").remove();
                     btn.removeAttr("disabled");
+                    btn.html("Enviar");
 
                     let alertDanger = '<div class="alert alert-danger" role="alert">El correo y la contraseña introducidos no existen en la base de datos.</div>';
                     $(".card-body").prepend(alertDanger);
                 }
-                else
-                    window.location.href = response.data
+                else {
+                    btn.html(spinner + "\nRedirigiendo...");
+                    window.location.href = response.data;
+                }
             }
         })
     })

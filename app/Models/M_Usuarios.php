@@ -76,4 +76,45 @@ class M_Usuarios extends M_base{
                 
         return null;
     }
+
+    /**
+     * Función para sumar puntos cuando realiza una reserva una mesa
+     */
+
+    public function sumaPuntos(int $id)
+    {
+        $usuario = $this->buscaUsuarioById($id);
+
+        if ($usuario) 
+        {
+            $data = [
+                "puntos" => ($usuario["puntos"] + 15)
+            ];
+
+            return $this->updateRegistro($usuario["id_usuario"], $data);
+        }
+    }
+
+    /**
+     * Función para restar puntos cuando realiza una reserva de habitación
+     */
+
+    public function restaPuntos(int $id, int $puntos)
+    {
+        $usuario = $this->buscaUsuarioById($id);
+
+        if ($usuario)
+        {
+            $resultado = $usuario["puntos"] - $puntos;
+
+            if ($resultado < 0)
+                $resultado = 0;
+
+            $data = [
+                "puntos" => $resultado
+            ];
+
+            return $this->updateRegistro($usuario["id_usuario"], $data);
+        }
+    }
 }
