@@ -25,7 +25,7 @@ class M_Reservas_Mesa extends M_base {
     }
 
     /**
-     * Método para obtener todas aquellas incidencias que esten pendientes de confirmar
+     * Método para obtener todas aquellas reservas de emsa que esten pendientes de confirmar
      */
 
     public function dameReservasMesaPendientes()
@@ -39,7 +39,36 @@ class M_Reservas_Mesa extends M_base {
     }
 
     /**
-     * Método para obtener aquellas incidencias cuya fecha coincidan con la pasada por parámetro
+     * Método para obtener todas aquellas reservas de emsa que esten pendientes de confirmar
+     */
+
+     public function dameReservasMesaDeHoy()
+     {   
+         $reservas = $this->select("reservas_mesa.*, usuarios.nombre, usuarios.apellido, usuarios.email, usuarios.telefono")
+                         ->join('usuarios_reservas_mesa', 'reservas_mesa.id_reserva_mesa = usuarios_reservas_mesa.id_reserva_mesa')
+                         ->join('usuarios', 'usuarios_reservas_mesa.id_usuario = usuarios.id_usuario')
+                         ->where("reservas_mesa.id_estado", 1)
+                         ->where("reservas_mesa.fecha", date("Y/m/d"));
+                         
+         return $reservas;
+     }
+
+    /**
+     * Método para obtener todas aquellas mesas cuyas reservas de mesa estén confirmdas para el día de hoy
+     */
+
+    public function dameMesasDeHoy()
+    {   
+        $mesas = $this->select("id_mesa")
+                        ->where("id_estado", 1)
+                        ->where("fecha", date('Y-m-d'))
+                        ->findAll();
+
+        return $mesas;
+    }
+
+    /**
+     * Método para obtener aquellas reservas de mesa cuya fecha coincidan con la pasada por parámetro
      */
 
     public function dameReservasMesaByFecha(string $fecha)

@@ -138,9 +138,8 @@
                         <div class="collapse" id="collapseReservasPendientes" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?=base_url(" admin/reservas-mesa-pendientes")?>">Mesas</a>
-                                <a class="nav-link" href="<?=base_url("
-                                    admin/reservas-habs-pendientes")?>">Habitaciones</a>
+                                <a class="nav-link" href="<?=base_url("admin/reservas-mesa-pendientes")?>">Mesas</a>
+                                <a class="nav-link" href="<?=base_url("admin/reservas-habs-pendientes")?>">Habitaciones</a>
                             </nav>
                         </div>
 
@@ -154,9 +153,8 @@
                         <div class="collapse" id="collapseReservasConfirmadas" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?=base_url(" admin/reservas-mesa-confirmadas")?>">Mesas</a>
-                                <a class="nav-link" href="<?=base_url("
-                                    admin/reservas-habs-confirmadas")?>">Habitaciones</a>
+                                <a class="nav-link" href="<?=base_url("admin/reservas-mesa-confirmadas")?>">Mesas</a>
+                                <a class="nav-link" href="<?=base_url("admin/reservas-habs-confirmadas")?>">Habitaciones</a>
                             </nav>
                         </div>
                         <?php

@@ -45,10 +45,35 @@ class Admin extends BaseController {
         return view("template/admin", $data);
     }
 
+    public function reservasMesaConfirmadasHoy()
+    {
+        $mRes = new M_Reservas_Mesa();
+
+        $data["reservas"] = $mRes->dameReservasMesaDeHoy()->paginate(8);
+        $data["pager"] = $mRes->pager;
+        $data["cuerpo"] = view("admin/reservas/mesas", $data);
+
+        return view("template/admin", $data);
+    }
+
     public function reservasHabPendientes()
     {
         $mRes = new M_Reservas_Habitacion();
         $reservas = $mRes->dameReservasHabPendientes();
+
+        $contador = count($reservas);
+
+        $data["reservas"] = $reservas;
+        $data["contador"] = $contador;
+        $data["cuerpo"] = view("admin/reservas/habitaciones", $data);
+
+        return view("template/admin", $data);
+    }
+
+    public function reservasHabConfirmadasHoy()
+    {
+        $mRes = new M_Reservas_Habitacion();
+        $reservas = $mRes->dameReservasHabDeHoy();
 
         $contador = count($reservas);
 
@@ -65,17 +90,7 @@ class Admin extends BaseController {
 
     public function comandas()
     {
-        $mPlatos = new M_Platos();
-
-        $platos = $mPlatos->obtenerRegistros([], ["*"], "id_categoria");
-
-        $data["platos"] = [
-            "bocadillos" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "1"; }), 
-            "platos_combinados" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "2"; }), 
-            "raciones_frias" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "3"; }), 
-            "bebidas" => array_filter($platos, function ($plato) { return $plato["id_categoria"] == "8"; }), 
-        ];
-        $data["cuerpo"] = view("admin/comandas/comandas", $data);
+        $data["cuerpo"] = view("admin/comandas/comandas");
 
         return view("template/admin", $data);
     }

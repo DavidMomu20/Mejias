@@ -63,6 +63,12 @@ class ReservasMesa extends BaseController {
         }
     }
 
+    public function dameMesasHoy()
+    {
+        $mRes = new M_Reservas_Mesa();
+        return json_encode(["mesas" => $mRes->dameMesasDeHoy()]);
+    }
+
     public function confirmar()
     {
         $mRes = new M_Reservas_Mesa();

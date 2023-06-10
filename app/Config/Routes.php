@@ -55,6 +55,7 @@ $routes->post('doRegister', 'Register::doRegister');
 $routes->post('reservar/reservarMesa', 'ReservasMesa::realizar');
 $routes->post('admin/mostrarMesas', 'ReservasMesa::mostrarMesasDisponibles');
 $routes->post('admin/confirmarReservaMesa', 'ReservasMesa::confirmar');
+$routes->get('admin/dameMesasHoy', 'ReservasMesa::dameMesasHoy');
 
 $routes->post('buscarHabitaciones', 'ReservasHabitacion::buscarHabitaciones');
 $routes->post('reservarHab', 'ReservasHabitacion::realizar');
@@ -65,6 +66,8 @@ $routes->get('admin/micuenta', "Admin::miCuenta");
 $routes->get('admin/comandas', 'Admin::comandas');
 $routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes');
 $routes->get('admin/reservas-habs-pendientes', 'Admin::reservasHabPendientes');
+$routes->get('admin/reservas-mesa-confirmadas', 'Admin::reservasMesaConfirmadasHoy');
+$routes->get('admin/reservas-habs-confirmadas', 'Admin::reservasHabConfirmadasHoy');
 
 // ---- CRUD ----
 

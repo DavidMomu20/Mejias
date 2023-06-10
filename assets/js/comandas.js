@@ -5,8 +5,9 @@ var loading = $('<div>', {'class': 'loading'})
                 .append($('<span>', {'class': 'cargando', text: 'Cargando platos...'}));
 
 var bCrear = $('<div>', {'class': 'container mt-4 mb-4 text-center'})
-                .append($('<button>', {'class': 'btn btn-success', text: 'Crear Comanda'}));
+                .append($('<button>', {'id': 'b-crear-comanda', 'class': 'btn btn-success', text: 'Crear Comanda'}));
 
+var comanda;
 
 $(function() {
     
@@ -19,6 +20,7 @@ $(function() {
     $("#b-info-pedido").click(function() {
 
         $(".modal-title").text("Este es el pedido actual");
+        $(".modal-body").html(comanda);
         abrirModal();
     })
 
@@ -36,6 +38,8 @@ $(function() {
             plato.remove();
         else
             plato.find(".unidades span").text("x" + unidades);
+
+        comanda = $(".modal-body").html();
     })
 
     /**
@@ -58,6 +62,42 @@ $(function() {
     $(".cont-platos").on("click", ".plato #b-media", function() {
         addPedido($(this).closest(".plato"), $(this).attr("data-racion"), $(this).attr("data-value"));
     });
+
+    /**
+     * Confirmar la comanda
+     */
+
+    $(".cont-platos").on("click", "#b-crear-comanda", function() {
+
+        $(".modal-body").html(loading);
+        abrirModal();
+
+        $.ajax({
+            url: "./dameMesasHoy", 
+            type: "GET", 
+            dataType: "json", 
+            success: function(response) {
+
+                if (response.mesas.length !== 0) {
+
+                    let mesas = '<label for="mesasDisponibles">¿A cuál mesa de hoy enviamos la comanda?:</label>' +
+                            '<div class="mesasDisponibles">';
+    
+                    for (let mesa of response.mesas)
+                        mesas += '<button class="bMesa">' + mesa.id_mesa + '</button>';
+    
+                    mesas += '</div>' +
+                            '<div class="btn-modal text-center">' +
+                            "<button disabled type='button' class='btn btn-success confirmar'>\nConfirmar\n</button>" +
+                            '</div>';
+    
+                    $(".modal-body").html(mesas);
+                }
+                else 
+                $(".modal-body").html('<div class="text-center"><b style="color: red;"><i>¡A día de hoy no hay mesas disponibles!</i></b></div>')
+            }
+        })
+    })
 
 });
 
@@ -154,6 +194,7 @@ function addPedido(plato, racion, precio) {
         '</div>';
 
         $(".modal-body").append(platoHTML);
+        comanda = $(".modal-body").html();
 
         abrirToast("Plato añadido", "Mira en el botón de info para más detalles de la comanda");
     }
