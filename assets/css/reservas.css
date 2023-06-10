@@ -211,10 +211,17 @@
 }
 */
 
-.img-plato {
-  border: 1px solid #212529;
-  background-size: contain;
+.card-plato {
+  background: url(./../img/platos/hamburguesa-patatas-verdura-huevo.png);
+  background-size: cover;
   background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cont-plato {
+  border: 1px solid grey;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
 }
 
 /* --------------------------------------- */
@@ -235,4 +242,24 @@
 
 .card-tabla-crud-rm, .filtros-reservas-mesa {
   border-color: #763636;
+}
+
+.cat-comandas .nav-link {
+  color: #212529;
+}
+
+.plato-comandas {
+  border: 2px solid rgb(146, 146, 146);
+  border-radius: 20px;
+}
+
+.plato-comandas img {
+  width: 15%;
+}
+
+.inp-unidades::-webkit-inner-spin-button,
+.inp-unidades::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
 }

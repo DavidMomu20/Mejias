@@ -98,9 +98,10 @@
                 <div class="row row-cols-3">
                     <?php foreach ($platos as $plato): ?>
                     <div class="col-lg-4 menu-item" data-precio-entera="<?=$plato["precio_entera"]?>"
-                        <?php if (isset($precio["precio_media"])): ?>
+                        <?php if (isset($plato["precio_media"])): ?>
                         data-precio-media="<?=$plato["precio_media"]?>"
-                        <?php endif; ?>>
+                        <?php endif; ?>
+                        data-alergenos="<?=implode("|", array_column($plato["alergenos"], "foto"))?>">
                         <img src="<?=base_url('assets/img/platos/' . $plato["imagen"])?>" class="menu-img img-fluid" alt="">
                         <h4><?=$plato["nombre"]?></h4>
                         <p class="price">

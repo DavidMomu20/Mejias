@@ -22,10 +22,11 @@ $(function() {
         let img = $(this).find("img").attr("src");
         let precioEntera = $(this).attr("data-precio-entera");
         let precioMedia = $(this).attr("data-precio-media");
+        let alergenos = $(this).attr("data-alergenos").split("|");
 
         let precioMediaHTML = '<div class="col-md-6 d-flex flex-column justify-content-center gap-2">' +
         '<label for="precio-mitad" class="form-label text-center">Precio Media Ración:</label>' +
-        '<span class="text-center" id="precio-mitad"></span>' +
+        '<span class="text-center" id="precio-media"></span>' +
         '</div>'
 
         $(".modal-title").text(plato);
@@ -41,6 +42,12 @@ $(function() {
         }
         else {
             $("#precios").children(":first").removeClass("col-md-6").addClass("col-md-12");
+        }
+
+        for(let foto of alergenos) {
+            let img = $("<img>");
+            img.attr("src", "../assets/img/alergenos/" + foto);
+            $("#alergenos").append(img);
         }
 
         abrirModal();

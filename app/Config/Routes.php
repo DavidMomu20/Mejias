@@ -42,6 +42,9 @@ $routes->get('carta/(:num)', 'Platos::verCarta/$1');
 
 $routes->get('/lang/{locale}', 'Language::index');
 
+$routes->post('cambiaDatosCuenta', 'Usuarios::cambiarDatos');
+$routes->post('cambiarPassword', 'Usuarios::cambiarPassword');
+
 $routes->post('doLogin', 'Login::doLogin');
 $routes->get('logout', 'Login::logout');
 $routes->post('doRegister', 'Register::doRegister');

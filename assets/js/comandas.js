@@ -11,9 +11,9 @@ $(function() {
             $('.row-cols-dynamic').removeClass('row-cols-1 row-cols-2 row-cols-4 row-cols-5').addClass('row-cols-3');
         } else if (anchoDiv <= 1200) {
             $('.row-cols-dynamic').removeClass('row-cols-1 row-cols-2 row-cols-3 row-cols-5').addClass('row-cols-4');
-        } else {
+        } /* else {
             $('.row-cols-dynamic').removeClass('row-cols-1 row-cols-2 row-cols-3 row-cols-4').addClass('row-cols-5');
-        }
+        } */
     });
 
     $("#carta-accordion .card").click(function() {
