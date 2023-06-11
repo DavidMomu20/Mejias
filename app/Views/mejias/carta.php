@@ -3,10 +3,10 @@
 
     <div class="section-header">
         <h2>
-            <?php echo lang('Translate.our-menu'); ?>
+            <?php echo lang('Translate.our-carta'); ?>
         </h2>
         <p>
-            <?php echo lang('Translate.vistazo-carta'); ?>
+            <?php echo lang('Translate.pulse-plato'); ?>
         </p>
     </div>
 

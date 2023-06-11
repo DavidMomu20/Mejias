@@ -8,19 +8,7 @@ $(".select-2").select2();
 
 $(function () {
 
-  /**
-   * Función para cerrar el modal
-   */
-
-  $(".modal [aria-label=Close]").on("click", function () {
-
-    $(".modal").removeClass("fade");
-    $(".modal").removeClass("show");
-
-    $(".modal").removeAttr("data-id");
-
-    $(".modal").hide();
-  })
+  $(".modal [aria-label=Close]").on("click", cerrarModal);
 })
 
 /**
@@ -35,6 +23,20 @@ function abrirModal() {
   }, 25);
 
   $(".modal").show();
+}
+
+/** 
+ * Función para cerrar modal
+ */
+
+function cerrarModal() {
+
+    $(".modal").removeClass("fade");
+    $(".modal").removeClass("show");
+
+    $(".modal").removeAttr("data-id");
+
+    $(".modal").hide();
 }
 
 /**

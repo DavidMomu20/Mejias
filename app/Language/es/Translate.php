@@ -18,7 +18,7 @@ return [
     "reserva-mesa-ahora" => "Reserva Ahora Tu Mesa", 
     "why-mejias" => "¿Por qué en Mejías?", 
     "saber-mas" => "Saber Más", 
-    "comida-alta" => "Comida de alta calidad a precio económico", 
+    "comida-alta" => "Comida de calidad a precio económico", 
     "excelente-cliente" => "Excelente servicio al cliente", 
     "ambiente" => "Ambiente agradable y familiar", 
     "reseñas" => "Reseñas", 
@@ -68,5 +68,7 @@ return [
     "cuenta-ya" => "¿Ya tienes una cuenta?", 
     "inicia-sesion-ya" => "¡Inicia Sesión!", 
     "mi-cuenta" => "Mi cuenta",
+    "our-carta" => "Esta es nuestra Carta", 
+    "pulse-plato" => "Pulse en cualquier plato para ver <span>más detalles</span>"
 ];
 ?>

@@ -6,6 +6,12 @@ $(function() {
 
         $("#reservarMesa").click(function() { window.location.href = "./reservar/mesa"; })
         $("#reservarHabitacion").click(function() { window.location.href = "./habitaciones"; })
+        $("#ver-habitaciones").click(function() { window.location.href = "./habitaciones"; })
+    }
+    else {
+
+        $("#ver-habitaciones").attr("data-bs-toggle", "modal");
+        $("#ver-habitaciones").attr("data-bs-target", "#modalLogin");
     }
     
     // ========================================

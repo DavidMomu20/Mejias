@@ -565,7 +565,7 @@
                 </div>
 
                 <div class="col-lg-12 text-center my-4">
-                    <a href="<?=base_url('habitaciones')?>" class="btn btn-book-a-table">
+                    <a id="ver-habitaciones" class="btn btn-book-a-table">
                         <?php echo lang('Translate.ver-hab'); ?>
                     </a>
                 </div>

@@ -198,19 +198,7 @@
                     <h5 class="modal-title">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <!--
-                    <div class="text-center">
-                        <label for="razones" class="form-label">¿A qué se debe el rechazo de esta reserva?:</label>
-                        <select name="razones" id="razones" class="form-control mt-3">
-                            <option value="">No existen mesas disponibles</option>
-                            <option value="">Comportamiento negativo previo</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    -->
-                </div>
+                <div class="modal-body"></div>
             </div>
         </div>
     </div>

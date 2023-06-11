@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get("micuenta", "Home::miCuenta");
 
+$routes->get('/lang/{locale}', 'Language::index');
+
 $routes->get('reservar/mesa', 'Home::reservarMesa');
 $routes->get('reservar/habitacion/(:num)', 'Home::reservarHab/$1');
 $routes->get('habitaciones', 'Home::verHabitaciones');
@@ -41,7 +43,7 @@ $routes->get('habitaciones', 'Home::verHabitaciones');
 $routes->get('carta/(:num)', 'Platos::verCarta/$1');
 $routes->post('admin/damePlatos', 'Platos::platosPorCategoria');
 
-$routes->get('/lang/{locale}', 'Language::index');
+$routes->post('admin/subirComanda', 'Comandas::subirComanda');
 
 $routes->post('cambiaDatosCuenta', 'Usuarios::cambiarDatos');
 $routes->post('cambiarPassword', 'Usuarios::cambiarPassword');

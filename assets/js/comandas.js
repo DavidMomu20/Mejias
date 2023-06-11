@@ -8,6 +8,8 @@ var bCrear = $('<div>', {'class': 'container mt-4 mb-4 text-center'})
                 .append($('<button>', {'id': 'b-crear-comanda', 'class': 'btn btn-success', text: 'Crear Comanda'}));
 
 var comanda;
+var precioTotal = 0;
+var arrayDatos = [];
 
 $(function() {
     
@@ -70,6 +72,24 @@ $(function() {
     $(".cont-platos").on("click", "#b-crear-comanda", function() {
 
         $(".modal-body").html(loading);
+        
+        let wrapper = $("<div>").html(comanda);
+        precioTotal = 0;
+        arrayDatos = [];
+        
+        for (let platoSelected of wrapper.children()) {
+
+            platoSelected = $(platoSelected);
+            let unidades = parseInt(platoSelected.find(".unidades span").text().replace(/[^0-9]/g, ''));
+            let precio = platoSelected.attr("data-precio");
+
+            precioTotal += (precio * unidades);
+            arrayDatos.push([platoSelected.attr("data-id"), platoSelected.attr("data-racion"), unidades]);
+            
+        }
+
+        console.log(precioTotal + " - " + arrayDatos);
+
         abrirModal();
 
         $.ajax({
@@ -99,6 +119,52 @@ $(function() {
         })
     })
 
+    /**
+     * Introducir la comanda y sus platos en la base de datos
+     */
+
+    $(".modal-body").on("click", ".confirmar", function() {
+
+        let id_mesa = $(".bMesa-active").text();
+
+        let btn = $(this);
+        let spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
+        btn.prepend(spinner);
+        btn.attr("disabled", "true");
+
+        $.ajax({
+            url: "./subirComanda", 
+            type: "POST", 
+            dataType: "json", 
+            data: {
+                id_mesa: id_mesa, 
+                precio_total: precioTotal, 
+                datos_platos: arrayDatos
+            }, 
+            success: function(response) {
+
+                $(".modal-body").empty();
+                $(".modal-body").html("<p>" + response.data + "</p>");
+
+                comanda = "";
+                arrayDatos = [];
+            }
+        })
+    })
+
+    /**
+     * Seleccionar mesa
+     */
+
+    $(".modal-body").on("click", ".bMesa", function() {
+
+        $(".bMesa-active").removeClass("bMesa-active");
+        $(this).addClass("bMesa-active");
+
+        $(".confirmar").removeAttr("disabled");
+    })
+
 });
 
 /**
@@ -124,6 +190,10 @@ function buscaPlatos(idCategoria) {
 
             for (let plato of response.platos) {
 
+                let disabled = "";
+                if (plato.precio_media === null)
+                    disabled = "disabled";
+
                 let platoHTML = '<div id="' + plato.id_plato + '" class="plato col d-flex justify-content-center align-items-center">' +
                     '<div class="col text-center imagen">' +
                     '<img src="../assets/img/platos/' + plato.imagen + '" alt="Plato Imagen">' +
@@ -137,7 +207,7 @@ function buscaPlatos(idCategoria) {
                     '</button>' +
                     '</div>' +
                     '<div class="col text-center div-media">' +
-                    '<button id="b-media" class="btn btn-info" data-racion="Media" data-value="5">' +
+                    '<button ' + disabled + ' id="b-media" class="btn btn-info" data-racion="Media" data-value="5">' +
                     '+1 Media' +
                     '</button>' +
                     '</div>' +
@@ -165,7 +235,9 @@ function addPedido(plato, racion, precio) {
     if (existingPlato.length > 0) {
         
         let unidades = parseInt(existingPlato.find(".unidades span").text().replace(/[^0-9]/g, ''));
-        existingPlato.find(".unidades span").text("x" + (unidades + 1))
+        existingPlato.find(".unidades span").text("x" + (unidades + 1));
+
+        abrirToast("Unidad de plato añadida", "Mira en el botón de info para más detalles de la comanda");
     }
 
     else {
@@ -173,7 +245,7 @@ function addPedido(plato, racion, precio) {
         let img = plato.find(".imagen img").attr("src");
         let nombre = plato.find(".nombre h5").text();
 
-        let platoHTML = '<div data-id="' + id + '" data-racion="' + racion + '" data-value="' + precio + '" class="plato-selected row d-flex justify-content-center align-items-center gap-3 py-2">' +
+        let platoHTML = '<div data-id="' + id + '" data-racion="' + racion + '" data-precio="' + precio + '" class="plato-selected row d-flex justify-content-center align-items-center gap-3 py-2">' +
         '<div class="col imagen">' +
         '<img src="' + img + '" alt="">' +
         '</div>' +
@@ -194,8 +266,8 @@ function addPedido(plato, racion, precio) {
         '</div>';
 
         $(".modal-body").append(platoHTML);
-        comanda = $(".modal-body").html();
-
         abrirToast("Plato añadido", "Mira en el botón de info para más detalles de la comanda");
     }
+
+    comanda = $(".modal-body").html();
 }

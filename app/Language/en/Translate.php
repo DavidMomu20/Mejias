@@ -68,5 +68,7 @@ return [
     "cuenta-ya" => "Already have an account?",
     "inicia-sesion-ya" => "Log In Now!",
     "mi-cuenta" => "My account",
+    "our-carta" => "This is our Charter", 
+    "pulse-plato" => "Click on any plate to see <span>more details</span>"
 ];
 ?>
