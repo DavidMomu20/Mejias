@@ -89,11 +89,19 @@ class Usuarios extends BaseController {
         $mUser = new M_Usuarios();
         $mRoles = new M_Roles();
 
-        $data["usuarios"] = $mUser->obtenerRegistros();
-        $data["roles"] = $mRoles->obtenerRegistros([], ["id_rol", "nombre"]);
+        $data["usuarios"] = $mUser->obtenerRegistros()->findAll();
+        $data["roles"] = $mRoles->obtenerRegistros([], ["id_rol", "nombre"])->findAll();
         $data["cuerpo"] = view("admin/cruds/usuarios", $data);
 
         return view('template/admin', $data);
+    }
+
+    public function ajax()
+    {
+        $mUser = new M_Usuarios();
+        $mRoles = new M_Roles();
+
+        
     }
 
 }

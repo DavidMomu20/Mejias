@@ -46,7 +46,7 @@ class M_base extends Model {
             if (isset($where[$this->primaryKey]))
                 return $query->first(); 
             
-            return $query->findAll(); 
+            return $query; 
         } catch (\Exception $e) {
             log_message('error', 'Error al obtener los registros: ' . $e->getMessage());
             return [];

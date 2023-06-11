@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use App\Libraries\TableLib;
 
 require 'vendor/autoload.php'; // Agrega esta línea
 
@@ -99,5 +100,27 @@ abstract class BaseController extends Controller
         } catch (Exception $e) {
             return json_encode(["data" => 'Error al enviar el correo: ' . $mail->ErrorInfo]);
         }
+    }
+
+    /**
+     * Método AJAX crud
+     */
+
+    public function ajaxCrud($modelo, array $columns)
+    {
+        $order = $this->request->getVar("order");
+        $order = array_shift($order);
+
+        $lib = new TableLib($modelo, 'gp1', $columns);
+
+        $response = $lib->getResponse([
+            "draw" => $this->request->getVar("draw"), 
+            "length" => $this->request->getVar("length"), 
+            "start" => $this->request->getVar("start"), 
+            "order" => $order["column"], 
+            "direction" => $order["dir"]
+        ]);
+
+        echo json_encode($response);
     }
 }

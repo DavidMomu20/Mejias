@@ -232,16 +232,7 @@
 
 .tabla-crud tbody tr:hover {
   background-color: #bac2ca;
-  color: azure;
-}
-
-.card-tabla-crud-rm .card-header, .filtros-reservas-mesa .card-header {
-  background-color: #763636;
-  color: white;
-}
-
-.card-tabla-crud-rm, .filtros-reservas-mesa {
-  border-color: #763636;
+  color: #3d3e41;
 }
 
 .cat-comandas .nav-link {
@@ -292,4 +283,22 @@
 
 .cat-comandas a:disabled {
   color: rgb(173, 172, 172);
+}
+
+.card-tabla-crud-rm .card-header, .filtros-reservas-mesa .card-header {
+  background-color: #763636;
+  color: white;
+}
+
+.card-tabla-crud-rm, .filtros-reservas-mesa {
+  border-color: #763636;
+}
+
+.card-tabla-crud-usuarios .card-header, .filtros-usuarios .card-header {
+  background-color: #364382;
+  color: white;
+}
+
+.card-tabla-crud-usuarios, .filtros-usuarios {
+  border-color: #364382;
 }

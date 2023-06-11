@@ -13,7 +13,7 @@ class Platos extends BaseController {
         $mPlatos = new M_Platos();
         $mAl = new M_Alergenos();
 
-        $platos = $mPlatos->obtenerRegistros(["id_categoria" => $id_cat]);
+        $platos = $mPlatos->obtenerRegistros(["id_categoria" => $id_cat])->findAll();
 
         foreach ($platos as $cont => $plato)
             $platos[$cont]["alergenos"] = $mAl->dameAlergenosPlato($platos[$cont]["id_plato"]);
@@ -30,7 +30,7 @@ class Platos extends BaseController {
         $mPlatos = new M_Platos();
         $id_cat = $this->request->getPost("id");
 
-        return json_encode(["platos" => $mPlatos->obtenerRegistros(["id_categoria" => $id_cat])]);
+        return json_encode(["platos" => $mPlatos->obtenerRegistros(["id_categoria" => $id_cat])->findAll()]);
     }
 
 }

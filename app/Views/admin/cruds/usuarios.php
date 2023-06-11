@@ -74,7 +74,7 @@
 
     <div class="row mt-4 mb-4">
         <div class="col-xl-12">
-            <div class="card card-tabla-crud-rm">
+            <div class="card card-tabla-crud-usuarios">
                 <div class="card-header">
                     <i class="fa-solid fa-table"></i>
                     Tabla
@@ -111,3 +111,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    $("#tabla-usuarios").DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
+        },
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 }
+        ],
+        responsive: true,
+        columns: [
+            { data: "id_rol" },
+            { data: "nombre" },
+            { data: "apellido" },
+            { data: "email" },
+            { data: "password" },
+            { data: "telefono" },
+            { data: "puntos" },
+            { data: "borrado" }
+        ]
+    })
+</script>

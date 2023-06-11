@@ -28,7 +28,7 @@ class ReservasHabitacion extends BaseController{
                 $where["precio"] = floatval($precio);
         }
 
-        echo json_encode(["habitaciones" => $mHab->obtenerRegistros($where)]);
+        echo json_encode(["habitaciones" => $mHab->obtenerRegistros($where)->findAll()]);
     }
 
     public function realizar()

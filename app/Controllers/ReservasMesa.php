@@ -106,9 +106,9 @@ class ReservasMesa extends BaseController {
          $mEst = new M_Estados();
          $mUser = new M_Usuarios();
  
-         $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"]);
-         $data["estados"] = $mEst->obtenerRegistros();
-         $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"]);
+         $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"])->findAll();
+         $data["estados"] = $mEst->obtenerRegistros()->findAll();
+         $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"])->findAll();
  
          $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);
  
@@ -117,23 +117,11 @@ class ReservasMesa extends BaseController {
 
     public function ajax()
     {
-        $order = $this->request->getVar("order");
-        $order = array_shift($order);
-
         $mRes = new M_Reservas_Mesa();
         $reservas = $mRes->dameReservasMesa();
         
         $columnas = ["id_reserva_mesa", "id_mesa", "estado", "email", "telefono", "fecha", "hora", "n_comensales"];
-        $lib = new TableLib($reservas, 'gp1', $columnas);
 
-        $response = $lib->getResponse([
-            "draw" => $this->request->getVar("draw"), 
-            "length" => $this->request->getVar("length"), 
-            "start" => $this->request->getVar("start"), 
-            "order" => $order["column"], 
-            "direction" => $order["dir"]
-        ]);
-
-        echo json_encode($response);
+        return $this->ajaxCrud($reservas, $columnas);
     }
 }

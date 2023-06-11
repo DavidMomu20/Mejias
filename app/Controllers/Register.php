@@ -18,7 +18,7 @@ class Register extends BaseController {
         $email = $this->request->getPost('email_register');
         $password = $this->request->getPost('password_register');
 
-        if (!$mUser->obtenerRegistros(["email", $email]))
+        if (!$mUser->obtenerRegistros(["email", $email])->first())
         {
             $datos = [
                 "id_rol" => $rol,
