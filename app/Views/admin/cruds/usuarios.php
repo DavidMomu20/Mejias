@@ -105,6 +105,7 @@
         responsive: true,
         processing: true,
         serverSide: true,
+        searching: false,
         ajax: {
             url: "<?php echo base_url('admin/crud/ajax-usuarios'); ?>",
             type: "POST"
