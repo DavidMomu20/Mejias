@@ -31,6 +31,21 @@ class M_base extends Model {
      *          'campo2 as miCampo', 
      *          ...
      *      ];
+     * 
+     * @param array $joins -> 
+     * 
+     * $joins = [
+        [
+            'tabla' => 'tabla_join_1',
+            'columna' => 'columna_1',
+            'tipo' => 'inner'
+        ],
+        [
+            'tabla' => 'tabla_join_2',
+            'columna' => 'columna_2',
+            'tipo' => 'left'
+        ]
+    ];
      */
 
      public function obtenerRegistros(array $where = [], array $campos = ['*'], string $ordenarPor = "")
@@ -39,6 +54,35 @@ class M_base extends Model {
             $query = $this->select($campos)
                         ->where($where);
 
+            if (!empty($ordenarPor)) {
+                $query = $query->orderBy($ordenarPor);
+            }
+     
+            if (isset($where[$this->primaryKey]))
+                return $query->first(); 
+            
+            return $query; 
+        } catch (\Exception $e) {
+            log_message('error', 'Error al obtener los registros: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function obtenerRegistrosv2(array $where = [], array $campos = ['*'], array $joins = [], string $ordenarPor = "")
+     {
+        try {
+            $query = $this->select($campos)
+                        ->where($where);
+
+            // Realizar los joins
+            foreach ($joins as $join) {
+                $table = $join['tabla'];
+                $column = $join['columna'];
+                $type = isset($join['tipo']) ? $join['tipo'] : 'inner';
+
+                $query = $query->join($table, "$table.$column = tabla_principal.$column", $type);
+            }
+            
             if (!empty($ordenarPor)) {
                 $query = $query->orderBy($ordenarPor);
             }

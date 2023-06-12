@@ -8,6 +8,10 @@ use App\Models\M_Roles;
 
 class Usuarios extends BaseController {
 
+    /**
+     * Método para que el usuario pueda cambiar los datos de su cuenta.
+     */
+
     public function cambiarDatos()
     {
         $nombre = $this->request->getPost('nombre');
@@ -43,6 +47,10 @@ class Usuarios extends BaseController {
         else 
             echo json_encode(["data" => "errorIncorrectData"]);
     }
+
+    /**
+     * Método para que el usuario pueda cambiar su contraseña
+     */
 
     public function cambiarPassword()
     {
@@ -99,9 +107,36 @@ class Usuarios extends BaseController {
     public function ajax()
     {
         $mUser = new M_Usuarios();
-        $mRoles = new M_Roles();
 
-        
+        $usuarios = $mUser->dameUsuarios();
+        $columnas = ["nombre", "apellido", "rol", "email", "telefono", "puntos", "borrado"];
+
+        return $this->ajaxCrud($usuarios, $columnas);
+    }
+
+    public function update()
+    {
+        $mUser = new M_Usuarios();
+
+        $id_usuario = $this->request->getPost("id_usuario");
+        $id_rol = $this->request->getPost("id_rol");
+        $nombre = $this->request->getPost("nombre");
+        $apellido = $this->request->getPost("apellido");
+        $email = $this->request->getPost("email");
+        $telefono = $this->request->getPost("telefono");
+        $puntos = $this->request->getPost("puntos");
+
+        $data = [
+            "id_rol" => $id_rol, 
+            "nombre" => $nombre, 
+            "apellido" => $apellido, 
+            "email" => $email, 
+            "telefono" => $telefono, 
+            "puntos" => $puntos
+        ];
+
+        if ($mUser->updateRegistro($id_usuario, $data))
+            return json_encode(["data" => "Registro modificado con éxito"]);
     }
 
 }

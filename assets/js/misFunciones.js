@@ -1,3 +1,5 @@
+var spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
 /**
  * Añadir funcionalidad select2 a los select con clase "select-2"
  */

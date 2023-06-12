@@ -38,7 +38,7 @@ class Home extends BaseController
         $mUser = new M_Usuarios();
         
         $data["habitaciones"] = $mHab->obtenerRegistros()->findAll();
-        $data["puntos"] = $mUser->obtenerRegistros(["id_usuario" => session()->get("id_user")], ["puntos"])->first()["puntos"];
+        $data["puntos"] = $mUser->obtenerRegistros(["id_usuario" => session()->get("id_user")], ["puntos"])["puntos"];
         $data["titulo"] = "Ver Habitaciones";
         $data["cuerpo"] = view('mejias/habitaciones', $data);
         return view('template/plantilla', $data);

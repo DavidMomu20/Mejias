@@ -68,7 +68,6 @@ $(".b-confirmar-reserva").click(function() {
             
             $(".confirmar").click(function() {
 
-                let spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
                 $(this).prepend(spinner);
                 $(this).attr("disabled", "true");
 

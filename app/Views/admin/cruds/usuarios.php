@@ -12,31 +12,11 @@
                     <div class="container">
                         <form class="col-xl-12">
                             <div class="row">
-                                <div class="col-md-3">
-                                    <label for="nombre" class="form-label">Nombre:</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control">
+                                <div class="col-md-4">
+                                    <label for="correo" class="form-label">Correo electrónico:</label>
+                                    <input type="email" name="correo" id="correo" class="form-control">
                                 </div>
-                                <div class="col-md-3">
-                                    <label for="apellido" class="form-label">1º Apellido:</label>
-                                    <input type="text" name="apellido" id="apellido" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="puntos" class="form-label">Puntos:</label>
-                                    <input type="number" name="puntos" id="puntos" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="borrado" class="form-label">¿Se encuentra borrado?:</label>
-                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check" name="borrado" id="radio-no" autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="btnradio1">No</label>
-
-                                        <input type="radio" class="btn-check" name="borrado" id="radio-si" autocomplete="off" checked>
-                                        <label class="btn btn-outline-primary" for="btnradio2">Sí</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label for="roles" class="form-label">Rol:</label>
                                     <select name="roles" id="roles" class="form-control">
                                         <option selected disabled>Seleccionar...</option>
@@ -45,17 +25,15 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
-                                    <label for="email" class="form-label">Correo electrónico:</label>
-                                    <input type="email" name="email" id="email" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="password" class="form-label">Contraseña:</label>
-                                    <input type="text" name="password" id="password" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="telefono" class="form-label">Nº Teléfono:</label>
-                                    <input type="tel" name="telefono" id="telefono" class="form-control">
+                                <div class="col-md-4">
+                                    <label for="borrado" class="form-label">¿Se encuentra borrado?:</label>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="borrado" id="radio-no" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio1">No</label>
+
+                                        <input type="radio" class="btn-check" name="borrado" id="radio-si" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="btnradio2">Sí</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -83,29 +61,32 @@
                     <table id="tabla-usuarios" class="tabla-crud table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID Reserva Mesa</th>
-                                <th>Mesa Asignada</th>
-                                <th>Estado</th>
-                                <th>Email Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Rol</th>
+                                <th>Correo electrónico</th>
                                 <th>Nº Teléfono</th>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                                <th>Nº Comensales</th>
+                                <th>Puntos</th>
+                                <th>¿Está Borrado?</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>ID Reserva Mesa</th>
-                                <th>Mesa Asignada</th>
-                                <th>Estado</th>
-                                <th>Email Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Rol</th>
+                                <th>Correo electrónico</th>
                                 <th>Nº Teléfono</th>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                                <th>Nº Comensales</th>
+                                <th>Puntos</th>
+                                <th>¿Está Borrado?</th>
                             </tr>
                         </tfoot>
                     </table>
+                    <div class="mt-2 text-center">
+                        <button type="button" id="b-crud-crear" class="btn btn-success">
+                            Crear
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,15 +103,46 @@
             { responsivePriority: 2, targets: -1 }
         ],
         responsive: true,
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "<?php echo base_url('admin/crud/ajax-usuarios'); ?>",
+            type: "POST"
+        },
         columns: [
-            { data: "id_rol" },
             { data: "nombre" },
             { data: "apellido" },
+            { data: "rol" },
             { data: "email" },
-            { data: "password" },
             { data: "telefono" },
-            { data: "puntos" },
-            { data: "borrado" }
-        ]
+            { 
+                data: "puntos", 
+                render: function(data, type, row) {
+                    if (data === null)
+                        return "<td><i>No tiene</i></td>";
+                    else
+                        return "<td>" + data + "</td>";
+                }
+            },
+            { 
+                data: "borrado", 
+                render: function(data, type, row) {
+                    return "<td>" + ((data === "0") ? "No" : "Sí") + "</td>";
+                }
+            }
+        ], 
+        createdRow: function(row, data, dataIndex) {
+            $(row).find("td:eq(2)").attr("data-value", data.id_rol);
+        },
+        drawCallback: function(settings) {
+            let table = settings.oInstance.api();
+            table.rows().every(function() {
+                let row = this.node();
+                let rowData = this.data();
+                $(row).attr("data-id", rowData.id_usuario);
+            });
+        }
     })
 </script>
+
+<script src="<?=base_url("assets/js/cruds/usuarios.js")?>"></script>

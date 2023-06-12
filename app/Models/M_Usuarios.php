@@ -4,9 +4,20 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class M_Usuarios extends M_base{
+    
     protected $table      = 'usuarios';
     protected $primaryKey = 'id_usuario';
     protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password", "telefono", "puntos"];
+
+    /**
+     * Método para obtener los usuarios con sus respectivos roles para crud
+     */
+    
+     public function dameUsuarios()
+     {
+         return $this->select("usuarios.*, roles.nombre as rol")
+                     ->join("roles", "usuarios.id_rol = roles.id_rol");
+     }
 
     /**
      * Método para buscar un usuario a través de su ID

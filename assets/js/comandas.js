@@ -128,7 +128,6 @@ $(function() {
         let id_mesa = $(".bMesa-active").text();
 
         let btn = $(this);
-        let spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
         btn.prepend(spinner);
         btn.attr("disabled", "true");

@@ -21,7 +21,6 @@ $(function() {
         e.preventDefault();
 
         let btn = $(this);
-        let spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
         $(".card-body").find(".alert-danger").remove();
         
@@ -61,7 +60,6 @@ $(function() {
         e.preventDefault();
 
         let btn = $(this);
-        let spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
         $(".card-body").find(".alert-danger").remove();
         

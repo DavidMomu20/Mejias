@@ -77,6 +77,8 @@ $routes->get('admin/crud/reservas-mesa', 'ReservasMesa::crud');
 $routes->post('admin/crud/ajax-rm', 'ReservasMesa::ajax');
 
 $routes->get('admin/crud/usuarios', 'Usuarios::crud');
+$routes->post('admin/crud/ajax-usuarios', 'Usuarios::ajax');
+$routes->post('admin/crud/modificar-usuario', 'Usuarios::update');
 
 /*
  * --------------------------------------------------------------------

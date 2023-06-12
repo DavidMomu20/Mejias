@@ -29,6 +29,8 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url('assets/css/main.css'); ?>" rel="stylesheet">
 
+    <script src="<?=base_url('assets/js/misFunciones.js')?>" defer></script>
+
 </head>
 
 <body>
