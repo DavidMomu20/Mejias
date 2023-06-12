@@ -94,10 +94,8 @@ class Usuarios extends BaseController {
 
     public function crud()
     {
-        $mUser = new M_Usuarios();
         $mRoles = new M_Roles();
 
-        $data["usuarios"] = $mUser->obtenerRegistros()->findAll();
         $data["roles"] = $mRoles->obtenerRegistros([], ["id_rol", "nombre"])->findAll();
         $data["cuerpo"] = view("admin/cruds/usuarios", $data);
 

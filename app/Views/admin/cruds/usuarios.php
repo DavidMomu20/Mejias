@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <div class="container">
-                        <form class="col-xl-12">
+                        <form action="<?=base_url('admin/crud/filtrar-usuarios')?>" class="col-xl-12">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="correo" class="form-label">Correo electrónico:</label>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="container d-flex justify-content-center">
-                                    <button class="btn btn-warning" id="b-filtrar">
+                                    <button name="filtrar" class="btn btn-warning" id="b-filtrar">
                                         Filtrar
                                     </button>
                                 </div>
@@ -94,7 +94,7 @@
 </div>
 
 <script>
-    $("#tabla-usuarios").DataTable({
+    var table = $("#tabla-usuarios").DataTable({
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
         },
