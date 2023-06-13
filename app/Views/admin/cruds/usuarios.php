@@ -26,14 +26,38 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
+                                    <label for="telefono" class="form-label">Nº Teléfono:</label>
+                                    <input type="tel" class="form-control" name="telefono" id="telefono">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-4 d-flex flex-column">
                                     <label for="borrado" class="form-label">¿Se encuentra borrado?:</label>
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check" name="borrado" id="radio-no" autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="btnradio1">No</label>
+                                        <input type="radio" class="btn-check" name="borrado" id="radio-no" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="radio-no">No</label>
 
-                                        <input type="radio" class="btn-check" name="borrado" id="radio-si" autocomplete="off" checked>
-                                        <label class="btn btn-outline-primary" for="btnradio2">Sí</label>
+                                        <input type="radio" class="btn-check" name="borrado" id="radio-si" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="radio-si">Sí</label>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ordenar" class="form-label">Ordenar Por:</label>
+                                    <select name="ordenar" id="ordenar" class="form-control">
+                                        <option value="nombre">Nombre</option>
+                                        <option value="apellido">Apellido</option>
+                                        <option value="email">Correo electrónico</option>
+                                        <option value="puntos">Puntos</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="n-registros" class="form-label">Nº Registros a Mostrar:</label>
+                                    <select name="n-registros" id="n-registros" class="form-control">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -70,6 +94,19 @@
                                 <th>¿Está Borrado?</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php foreach($usuarios as $usuario): ?>
+                            <tr data-index="<?=$usuario["id_usuario"]?>">
+                                <td><?=$usuario["nombre"]?></td>
+                                <td><?=$usuario["apellido"]?></td>
+                                <td data-value="<?=$usuario["id_rol"]?>"><?=$usuario["rol"]?></td>
+                                <td><?=$usuario["email"]?></td>
+                                <td><?=$usuario["telefono"]?></td>
+                                <td><?php echo (isset($usuario["puntos"])) ? $usuario["puntos"] : "<i>No tiene</i>" ?></td>
+                                <td><?php echo ($usuario["borrado"] == "0") ? "No" : "Sí" ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
                         <tfoot>
                             <tr>
                                 <th>Nombre</th>
@@ -82,8 +119,10 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <div class="mt-2 text-center">
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <?= $pager->links() ?>
                         <button type="button" id="b-crud-crear" class="btn btn-success">
+                            <i class="fa-solid fa-pen-to-square"></i>
                             Crear
                         </button>
                     </div>
@@ -103,47 +142,12 @@
             { responsivePriority: 2, targets: -1 }
         ],
         responsive: true,
-        processing: true,
-        serverSide: true,
-        searching: false,
-        ajax: {
-            url: "<?php echo base_url('admin/crud/ajax-usuarios'); ?>",
-            type: "POST"
-        },
-        columns: [
-            { data: "nombre" },
-            { data: "apellido" },
-            { data: "rol" },
-            { data: "email" },
-            { data: "telefono" },
-            { 
-                data: "puntos", 
-                render: function(data, type, row) {
-                    if (data === null)
-                        return "<td><i>No tiene</i></td>";
-                    else
-                        return "<td>" + data + "</td>";
-                }
-            },
-            { 
-                data: "borrado", 
-                render: function(data, type, row) {
-                    return "<td>" + ((data === "0") ? "No" : "Sí") + "</td>";
-                }
-            }
-        ], 
-        createdRow: function(row, data, dataIndex) {
-            $(row).find("td:eq(2)").attr("data-value", data.id_rol);
-        },
-        drawCallback: function(settings) {
-            let table = settings.oInstance.api();
-            table.rows().every(function() {
-                let row = this.node();
-                let rowData = this.data();
-                $(row).attr("data-id", rowData.id_usuario);
-            });
-        }
+        lengthChange: false,
+        paging: false, 
+        info: false
     })
 </script>
+
+
 
 <script src="<?=base_url("assets/js/cruds/usuarios.js")?>"></script>

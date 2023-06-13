@@ -96,8 +96,8 @@ class ReservasHabitacion extends BaseController{
 
             $pdfContent = $dompdf->output();
 
-            $email = "";
-            $usuario = "David Morales";
+            $email = $this->request->getPost("email");
+            $usuario = $this->request->getPost("full_name");
 
             $datosMail = [
                 "email" => $email, 
@@ -105,6 +105,33 @@ class ReservasHabitacion extends BaseController{
                 "asunto" => "Reserva de Habitación Confirmada", 
                 "body" => "Su reserva se ha confirmado. Le adjuntamos un PDF con más especificaciones.", 
                 "pdf" => $pdfContent
+            ];
+
+            return $this->enviarEmail($datosMail);
+        }
+    }
+
+    public function rechazar()
+    {
+        $mRes = new M_Reservas_Habitacion();
+
+        $id = $this->request->getPost("id_reserva_hab");
+
+        $datos = [
+            "id_estado" => 2
+        ];
+
+        if ($mRes->updateRegistro($id, $datos))
+        {
+            $razon = $this->request->getPost("razon");
+            $email = $this->request->getPost("email");
+            $usuario = $this->request->getPost("full_name");
+
+            $datosMail = [
+                "email" => $email, 
+                "usuario" => $usuario, 
+                "asunto" => "Reserva de Habitación Rechazada", 
+                "body" => "Su reserva se ha rechazado. A continuación le mostramos los detalles: \n\n" . $razon
             ];
 
             return $this->enviarEmail($datosMail);

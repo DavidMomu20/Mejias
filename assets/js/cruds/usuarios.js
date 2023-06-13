@@ -55,6 +55,12 @@ $(function () {
                 }, 
                 success: function(response) {
 
+                    let tr = $("#tabla-usuarios tbody tr[data-id='" + id + "']");
+                    tr.children("td").eq(1).text(response.nombre);
+                    tr.children("td").eq(2).text(response.apellido);
+                    tr.children("td").eq(3).text(response.rol)
+                    tr.children("td").eq(3).attr(response.id_rol)
+
                     abrirToast(response.data, "Puedes ver las modificaciones aplicadas en la tabla");
                     cerrarModal();
                 }

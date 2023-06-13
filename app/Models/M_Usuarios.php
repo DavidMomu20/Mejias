@@ -13,11 +13,11 @@ class M_Usuarios extends M_base{
      * Método para obtener los usuarios con sus respectivos roles para crud
      */
     
-     public function dameUsuarios()
-     {
-         return $this->select("usuarios.*, roles.nombre as rol")
-                     ->join("roles", "usuarios.id_rol = roles.id_rol");
-     }
+    public function dameUsuarios()
+    {
+        $usuarios = $this->select("usuarios.*, roles.nombre as rol")
+                    ->join("roles", "usuarios.id_rol = roles.id_rol");
+    }
 
     /**
      * Método para buscar un usuario a través de su ID

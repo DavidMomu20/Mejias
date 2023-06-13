@@ -302,3 +302,22 @@
 .card-tabla-crud-usuarios, .filtros-usuarios {
   border-color: #364382;
 }
+
+.form-label {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.pagination .page-item, .pagination .page-link a {
+  text-decoration: none;
+}
+
+.pagination .page-link:first-of-type {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination .page-link:last-of-type {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

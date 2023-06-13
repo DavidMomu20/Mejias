@@ -94,22 +94,24 @@ class Usuarios extends BaseController {
 
     public function crud()
     {
+        $mUser = new M_Usuarios();
         $mRoles = new M_Roles();
 
+        $usuarios = $mUser->dameUsuarios();
+
+        $this->filtrar($usuarios);
+
+        $data["usuarios"] = $usuarios;
+        $data["pager"] = $mUser->pager;
         $data["roles"] = $mRoles->obtenerRegistros([], ["id_rol", "nombre"])->findAll();
         $data["cuerpo"] = view("admin/cruds/usuarios", $data);
 
         return view('template/admin', $data);
     }
 
-    public function ajax()
+    public function filtrar(&$usuarios)
     {
-        $mUser = new M_Usuarios();
-
-        $usuarios = $mUser->dameUsuarios();
-        $columnas = ["nombre", "apellido", "rol", "email", "telefono", "puntos", "borrado"];
-
-        return $this->ajaxCrud($usuarios, $columnas);
+        echo "Hola";
     }
 
     public function update()
@@ -133,8 +135,13 @@ class Usuarios extends BaseController {
             "puntos" => $puntos
         ];
 
-        if ($mUser->updateRegistro($id_usuario, $data))
-            return json_encode(["data" => "Registro modificado con éxito"]);
+        if ($mUser->updateRegistro($id_usuario, $data)) {
+            
+            $mRoles = new M_Roles();
+            
+            $data["rol"] = $mRoles->obtenerRegistros(["id_rol", $data["id_rol"]])["nombre"];
+            return json_encode($data);
+        }
     }
 
 }

@@ -27,7 +27,7 @@
                 <?php endif; ?>
             </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-<?php echo (session()->get('permisos_user')["perm7"] != 1) ? "12" : "6" ?>">
             <div class="col-md-12 text-center mb-4">
                 <h2>Tus datos</h2>
             </div>

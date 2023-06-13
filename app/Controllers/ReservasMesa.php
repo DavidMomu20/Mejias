@@ -92,7 +92,34 @@ class ReservasMesa extends BaseController {
                 "body" => "Su reserva se ha confirmado. Le esperamos en la mesa " . $datos["id_mesa"] . ". ¡Le esperamos!"
             ];
 
-            return json_encode(["data" => 'Correo enviado correctamente.']); // $this->enviarEmail($datosMail);
+            $this->enviarEmail($datosMail);
+        }
+    }
+
+    public function rechazar()
+    {
+        $mRes = new M_Reservas_Mesa();
+
+        $id = $this->request->getPost("id_reserva_mesa");
+        $razon = $this->request->getPost("razon");
+
+        $datos = [
+            "id_estado" => 2
+        ];
+
+        if ($mRes->updateRegistro($id, $datos))
+        {
+            $email = $this->request->getPost("email");
+            $usuario = $this->request->getPost("full_name");
+
+            $datosMail = [
+                "email" => $email, 
+                "usuario" => $usuario, 
+                "asunto" => "Reserva de Mesa Rechazada", 
+                "body" => "Su reserva se ha rechazado. A continuación le mostramos los detalles: \n\n" . $razon
+            ];
+
+            return $this->enviarEmail($datosMail);
         }
     }
 

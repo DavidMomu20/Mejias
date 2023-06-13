@@ -39,7 +39,7 @@
                                         <div class="row">
                                             <div class="col-md-6 reserva-usuario">
                                                 <i class="fa-solid fa-user"></i>
-                                                <?=$reserva->nombre . " " . $reserva->apellido?>
+                                                <span><?=$reserva->nombre . " " . $reserva->apellido?></span>
                                             </div>
                                             <div class="col-md-6 reserva-fecha-inicio" data-value="<?=$reserva->fecha_inicio?>">
                                                 <i class="fa-solid fa-person-walking-luggage"></i>
