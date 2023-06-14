@@ -97,9 +97,7 @@ class Usuarios extends BaseController {
         $mUser = new M_Usuarios();
         $mRoles = new M_Roles();
 
-        $usuarios = $mUser->dameUsuarios();
-
-        $this->filtrar($usuarios);
+        $usuarios = $mUser->dameUsuarios()->paginate(3);
 
         $data["usuarios"] = $usuarios;
         $data["pager"] = $mUser->pager;
@@ -109,10 +107,62 @@ class Usuarios extends BaseController {
         return view('template/admin', $data);
     }
 
-    public function filtrar(&$usuarios)
+    public function filtrar()
     {
-        echo "Hola";
+        $mUser = new M_Usuarios();
+        $mRoles = new M_Roles();
+
+        $correo = $this->request->getVar('correo');
+        $idRol = $this->request->getVar('roles');
+        $telefono = $this->request->getVar('telefono');
+        $borrado = $this->request->getVar('borrado');
+        $ordenar = $this->request->getVar('ordenar');
+        $nRegistros = $this->request->getVar('n-registros');
+
+        // Aplicar los filtros según los valores recibidos
+        $usuarios = $mUser->dameUsuarios();
+        if (!empty($correo))
+            $usuarios->like('usuarios.email', $correo);
+
+        if (!empty($idRol))
+            $usuarios->where('usuarios.id_rol', $idRol);
+        
+        if (!empty($telefono))
+            $usuarios->like('usuarios.telefono', $telefono);
+
+        if ($borrado == 'si')
+            $usuarios->where('usuarios.borrado', 1);
+        else
+            $usuarios->where('usuarios.borrado', 0);
+
+
+        // Aplicar el ordenamiento
+        switch($ordenar)
+        {
+            case 'nombre';
+                $usuarios->orderBy('usuarios.nombre');
+                break;
+            case 'apellido':
+                $usuarios->orderBy('usuarios.apellido');
+                break;
+            case 'email':
+                $usuarios->orderBy('usuarios.email');
+                break;
+            case 'puntos':
+                $usuarios->orderBy('usuarios.puntos');
+                break;
+        }
+
+        $usuarios = $usuarios->paginate($nRegistros);
+
+        $data["usuarios"] = $usuarios;
+        $data["pager"] = $mUser->pager;
+        $data["roles"] = $mRoles->obtenerRegistros([], ["id_rol", "nombre"])->findAll();
+        $data["cuerpo"] = view("admin/cruds/usuarios", $data);
+
+        return view('template/admin', $data);
     }
+
 
     public function update()
     {

@@ -2013,3 +2013,14 @@ div.div-habs-scroll .loading {
 #precio-media {
   color: var(--color-alternative);
 }
+
+.div-distancia {
+  font-family: var(--font-secondary);
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.div-distancia span {
+  color: var(--color-primary);
+}

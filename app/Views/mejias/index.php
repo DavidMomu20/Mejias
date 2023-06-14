@@ -640,6 +640,10 @@
                         frameborder="0" allowfullscreen></iframe>
                 </div><!-- End Google Maps -->
 
+                <div class="div-distancia mt-4 mb-4 text-center">
+                    Estás a <span>50 km</span> del restaurante.
+                </div>
+
                 <div class="row gy-4">
 
                     <div class="col-md-6">
@@ -850,14 +854,6 @@
                                         <div class="invalid-feedback">
                                             <?php echo lang('Translate.contraseña-ob'); ?>
                                         </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-check-label" for="remember-me">
-                                            <input class="form-check-input" type="checkbox" name="rememberMe"
-                                                id="rememberMe">
-                                            Recuérdame
-                                        </label>
                                     </div>
 
                                     <div class="d-flex align-items-center">

@@ -17,6 +17,8 @@ class M_Usuarios extends M_base{
     {
         $usuarios = $this->select("usuarios.*, roles.nombre as rol")
                     ->join("roles", "usuarios.id_rol = roles.id_rol");
+
+        return $usuarios;
     }
 
     /**

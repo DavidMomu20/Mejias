@@ -1,4 +1,20 @@
+var restauranteLatitud = 37.13323221549376;
+var restauranteLongitud = -4.296913824354528;
+
 $(function() {
+
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            let miLatitud = position.coords.latitude;
+            let miLongitud = position.coords.longitude;
+            
+            let distancia = calcularDistancia(miLatitud, miLongitud, restauranteLatitud, restauranteLongitud);
+            
+            $(".div-distancia span").text(distancia.toFixed(2) + " km");
+        });
+    } 
+    else
+        $(".div-distancia").remove();
 
     let haySesion = (($(".div-opReservas").data("haysesion") == 1) ? true : false);
         
@@ -101,3 +117,24 @@ $(function() {
         });
     })
 })
+
+function calcularDistancia(lat1, lon1, lat2, lon2) {
+
+    let radioTierra = 6371; // Radio de la Tierra en kilómetros
+
+    let dLat = toRad(lat2 - lat1);
+    let dLon = toRad(lon2 - lon1);
+
+    let a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    let distancia = radioTierra * c;
+    return distancia;
+}
+  
+function toRad(grados) {
+    return grados * Math.PI / 180;
+}

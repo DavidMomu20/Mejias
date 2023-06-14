@@ -21,6 +21,7 @@ $(function () {
         $("#correo-modal").val($(this).children("td").eq(3).text());
         $("#telefono-modal").val($(this).children("td").eq(4).text());
 
+        compruebaRol();
         abrirModal();
 
         $(".input-modal").change(function() {
@@ -81,6 +82,14 @@ $(function () {
         $(".modal-body").html(form);
         abrirModal();
     })
+
+    /**
+     * Si el usuario es cliente, podrá establecer el nº de puntos que tendrá.
+     * De lo contrario, el input de puntos del modal se deshabilitará y su valor
+     * será nulo.
+     */
+
+    $(".modal-body").on("change", "#rol-modal", compruebaRol)
 })
 
 /**
@@ -138,4 +147,12 @@ function formUsuario() {
     container.append(form);
 
     return container;
+}
+
+function compruebaRol() {
+
+    if ($(".modal-body #rol-modal").val() != 12)
+        $(".modal-body #puntos-modal").attr("disabled", "true");
+    else
+        $(".modal-body #puntos-modal").removeAttr("disabled");
 }
