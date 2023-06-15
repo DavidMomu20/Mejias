@@ -92,7 +92,7 @@ class ReservasMesa extends BaseController {
                 "body" => "Su reserva se ha confirmado. Le esperamos en la mesa " . $datos["id_mesa"] . ". ¡Le esperamos!"
             ];
 
-            $this->enviarEmail($datosMail);
+            return $this->enviarEmail($datosMail);
         }
     }
 

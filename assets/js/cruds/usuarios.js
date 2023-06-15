@@ -1,5 +1,14 @@
 var id = 0;
 
+var eliminar = '<div class="container">' +
+    '<div class="row text-center">' +
+    '<p>¿Estás seguro de que quieres eliminar este registro?</p>' +
+    '</div>' +
+    '<div class="row mt-4 d-flex justify-content-center">' +
+    '<button id="btn-a-eliminar" class="btn btn-danger">\nEliminar</button>' +
+    '</div>' +
+    '</div>';
+
 $(function () {
 
     /**
@@ -9,7 +18,7 @@ $(function () {
 
     $("#tabla-usuarios").on("click", "tbody tr", function () {
 
-        id = parseInt($(this).attr("data-id"));
+        id = parseInt($(this).attr("data-index"));
 
         let form = formUsuario();
         $(".modal-body").html(form);
@@ -56,13 +65,59 @@ $(function () {
                 }, 
                 success: function(response) {
 
-                    let tr = $("#tabla-usuarios tbody tr[data-id='" + id + "']");
-                    tr.children("td").eq(1).text(response.nombre);
-                    tr.children("td").eq(2).text(response.apellido);
-                    tr.children("td").eq(3).text(response.rol)
-                    tr.children("td").eq(3).attr(response.id_rol)
+                    let puntos = response.puntos;
+                    if (puntos === null);
+                        puntos = "<i>No tiene</i>";
+
+                    let tr = $("#tabla-usuarios tbody tr[data-index='" + id + "']");
+                    tr.children("td").eq(0).text(response.nombre);
+                    tr.children("td").eq(1).text(response.apellido);
+                    tr.children("td").eq(2).text(response.rol)
+                    tr.children("td").eq(2).attr("data-value", response.id_rol)
+                    tr.children("td").eq(3).text(response.email);
+                    tr.children("td").eq(4).text(response.telefono);
+                    tr.children("td").eq(5).html(puntos);
 
                     abrirToast(response.data, "Puedes ver las modificaciones aplicadas en la tabla");
+                    cerrarModal();
+                }
+            })
+        })
+
+        /**
+         * Mostrar html para eliminar el registro
+         */
+
+        $("#btn-muestra-eliminar").click(function() {
+
+            $(".modal-body").html(eliminar);
+        })
+
+        /**
+         * Eliminar de forma lógica el registro seleccionado
+         */
+
+        $(".modal-body").on("click", "#btn-a-eliminar", function() {
+
+            $(this).prepend(spinner);
+            $(this).attr("disabled", "true");
+            $(".modal [aria-label=Close]").off("click");
+
+            $.ajax({
+                url: "./eliminar-usuario", 
+                type: "POST", 
+                dataType: "json", 
+                data: {
+                    id_usuario: id
+                },
+                success: function(response) {
+
+                    $(".modal [aria-label=Close]").on("click", cerrarModal);
+
+                    let tr = $("#tabla-usuarios tbody tr[data-index='" + id + "']");
+                    tr.children("td").eq(6).text("Si");
+                    
+                    abrirToast("Usuario Eliminado", "Puedes ver los cambios en la tabla");
                     cerrarModal();
                 }
             })
@@ -92,6 +147,8 @@ $(function () {
     $(".modal-body").on("change", "#rol-modal", compruebaRol)
 })
 
+// ======================= FUNCIONES =======================
+
 /**
  * Función que crea el formulario de modal para usuarios
  */
@@ -110,7 +167,7 @@ function formUsuario() {
     let col6 = $('<div>').addClass('col-md-6 text-center');
     let row4 = $('<div>').addClass('botones-modal row mt-4 d-flex justify-content-center gap-3');
     let btnModificar = $('<button>').attr("type", "button").attr('disabled', true).addClass('btn btn-primary col-md-4').attr('id', 'btn-modificar').text('\nModificar');
-    let btnEliminar = $('<button>').attr("type", "button").addClass('btn btn-danger col-md-4').attr('id', 'btn-eliminar').text('\nEliminar');
+    let btnMuestraEliminar = $('<button>').attr("type", "button").addClass('btn btn-danger col-md-4').attr('id', 'btn-muestra-eliminar').text('\nEliminar');
 
     col1.append($('<label>').attr('for', 'nombre-modal').addClass('form-label').text('Nombre:'));
     col1.append($('<input>').attr('type', 'text').attr('id', 'nombre-modal').attr('name', 'nombre-modal').addClass('input-modal form-control'));
@@ -137,7 +194,7 @@ function formUsuario() {
     row3.append(col6);
 
     row4.append(btnModificar);
-    row4.append(btnEliminar);
+    row4.append(btnMuestraEliminar);
 
     form.append(row1);
     form.append(row2);

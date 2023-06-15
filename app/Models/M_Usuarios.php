@@ -7,7 +7,7 @@ class M_Usuarios extends M_base{
     
     protected $table      = 'usuarios';
     protected $primaryKey = 'id_usuario';
-    protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password", "telefono", "puntos"];
+    protected $allowedFields = ["id_rol", "nombre", "apellido", "email", "password", "telefono", "puntos", "borrado"];
 
     /**
      * Método para obtener los usuarios con sus respectivos roles para crud

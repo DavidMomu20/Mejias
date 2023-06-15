@@ -30,25 +30,16 @@
                                     <input type="tel" class="form-control" name="telefono" id="telefono">
                                 </div>
                             </div>
-                            <div class="row mt-3">
+                            <div class="row d-flex justify-content-center mt-3">
                                 <div class="col-md-4 d-flex flex-column">
                                     <label for="borrado" class="form-label">¿Se encuentra borrado?:</label>
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check" name="borrado" id="radio-no" autocomplete="off" checked>
+                                        <input type="radio" value="no" class="btn-check" name="borrado" id="radio-no" autocomplete="off" checked>
                                         <label class="btn btn-outline-primary" for="radio-no">No</label>
 
-                                        <input type="radio" class="btn-check" name="borrado" id="radio-si" autocomplete="off">
+                                        <input type="radio" value="si" class="btn-check" name="borrado" id="radio-si" autocomplete="off">
                                         <label class="btn btn-outline-primary" for="radio-si">Sí</label>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="ordenar" class="form-label">Ordenar Por:</label>
-                                    <select name="ordenar" id="ordenar" class="form-control">
-                                        <option value="nombre">Nombre</option>
-                                        <option value="apellido">Apellido</option>
-                                        <option value="email">Correo electrónico</option>
-                                        <option value="puntos">Puntos</option>
-                                    </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="n-registros" class="form-label">Nº Registros a Mostrar:</label>
@@ -147,7 +138,5 @@
         info: false
     })
 </script>
-
-
 
 <script src="<?=base_url("assets/js/cruds/usuarios.js")?>"></script>
