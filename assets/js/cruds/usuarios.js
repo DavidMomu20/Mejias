@@ -45,6 +45,7 @@ $(function () {
 
         $("#btn-modificar").click(function() {
 
+            let puntos = $("#puntos-modal").is(":disabled") ? null : $("#puntos-modal").val();
             let btn = $(this);
 
             btn.prepend(spinner);
@@ -61,12 +62,12 @@ $(function () {
                     apellido: $("#apellido-modal").val(), 
                     email: $("#correo-modal").val(), 
                     telefono: $("#telefono-modal").val(), 
-                    puntos: $("#puntos-modal").val()
+                    puntos: puntos
                 }, 
                 success: function(response) {
 
                     let puntos = response.puntos;
-                    if (puntos === null);
+                    if (puntos === null)
                         puntos = "<i>No tiene</i>";
 
                     let tr = $("#tabla-usuarios tbody tr[data-index='" + id + "']");
@@ -128,14 +129,66 @@ $(function () {
      * Abrir modal de creacion de nuevo registro
      */
 
-    $("#b-crud-crear").click(function() {
+    $(".b-crud-crear").click(function() {
 
         let form = formUsuario();
         form.find(".botones-modal").empty();
         form.find(".botones-modal").html($(this).clone());
+        form.find("#puntos-modal").attr("disabled", "true");
+        form.find(".row-password").removeClass("d-none");
 
         $(".modal-body").html(form);
+        $(".modal-title").text("Crear nuevo usuario");
         abrirModal();
+    })
+
+    /**
+     * Crear nuevo registro
+     */
+
+    $(".modal-body").on("click", ".b-crud-crear", function() {
+
+        let puntos = $("#puntos-modal").is(":disabled") ? null : $("#puntos-modal").val();
+        
+        $(this).prepend(spinner);
+        $(this).attr("disabled", "true");
+        $(".modal [aria-label=Close]").off("click");
+
+        $.ajax({
+            url: "./crear-usuario", 
+            type: "POST", 
+            dataType: "json", 
+            data: {
+                id_rol: $("#rol-modal").val(), 
+                nombre: $("#nombre-modal").val(), 
+                apellido: $("#apellido-modal").val(), 
+                email: $("#correo-modal").val(), 
+                password: $("#password-modal").val(),
+                telefono: $("#telefono-modal").val(), 
+                puntos: puntos
+            }, 
+            success: function(response) {
+
+                $(".modal [aria-label=Close]").on("click", cerrarModal);
+
+                let puntos = response.puntos;
+                if (puntos === null);
+                    puntos = "<i>No tiene</i>";
+
+                // Añadir nueva fila
+                let newFila = table.row.add([
+                    '<td>' + response.nombre + '/td>',
+                    '<td>' + response.apellido + '</td>',
+                    '<td data-value="' + response.id_rol + '">' + response.rol + '</td>',
+                    '<td>' + response.email + '</td>',
+                    '<td>' + response.telefono + '</td>',
+                    '<td>' + puntos + '</td>',
+                    '<td>No</td>'
+                ]).draw().node();
+
+                $(newFila).attr("data-index", response.id_usuario);
+            }
+        })
     })
 
     /**
@@ -157,15 +210,17 @@ function formUsuario() {
     let container = $('<div>').addClass('container');
     let form = $('<form>');
     let row1 = $('<div>').addClass('row');
+    let row2 = $('<div>').addClass('row mt-2');
+    let row3 = $('<div>').addClass('row mt-2');
+    let row4 = $('<div>').addClass('botones-modal row mt-4 d-flex justify-content-center gap-3');
+    let row5 = $('<div>').addClass('row-password row mt-2 d-none');
     let col1 = $('<div>').addClass('col-md-6 text-center');
     let col2 = $('<div>').addClass('col-md-6 text-center');
-    let row2 = $('<div>').addClass('row mt-2');
     let col3 = $('<div>').addClass('col-md-6 text-center');
     let col4 = $('<div>').addClass('col-md-6 text-center');
-    let row3 = $('<div>').addClass('row mt-2');
     let col5 = $('<div>').addClass('col-md-6 text-center');
     let col6 = $('<div>').addClass('col-md-6 text-center');
-    let row4 = $('<div>').addClass('botones-modal row mt-4 d-flex justify-content-center gap-3');
+    let col7 = $('<div>').addClass('col-md-12 text-center')
     let btnModificar = $('<button>').attr("type", "button").attr('disabled', true).addClass('btn btn-primary col-md-4').attr('id', 'btn-modificar').text('\nModificar');
     let btnMuestraEliminar = $('<button>').attr("type", "button").addClass('btn btn-danger col-md-4').attr('id', 'btn-muestra-eliminar').text('\nEliminar');
 
@@ -196,9 +251,15 @@ function formUsuario() {
     row4.append(btnModificar);
     row4.append(btnMuestraEliminar);
 
+    col7.append($('<label>').attr('for', 'password-modal').addClass('form-label').text('Contraseña:'));
+    col7.append($('<input>').attr('type', 'password').attr('id', 'password-modal').attr('name', 'password-modal').addClass('input-modal form-control'))
+
+    row5.append(col7);
+
     form.append(row1);
     form.append(row2);
     form.append(row3);
+    form.append(row5);
     form.append(row4);
 
     container.append(form);

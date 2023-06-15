@@ -82,6 +82,7 @@ $routes->get('admin/crud/usuarios', 'Usuarios::crud');
 $routes->post('admin/crud/ajax-usuarios', 'Usuarios::ajax');
 $routes->post('admin/crud/modificar-usuario', 'Usuarios::update');
 $routes->post('admin/crud/eliminar-usuario', 'Usuarios::delete');
+$routes->post('admin/crud/crear-usuario', 'Usuarios::create');
 $routes->get('admin/crud/filtrar-usuarios', 'Usuarios::filtrar');
 
 /*

@@ -12,39 +12,11 @@
                     <div class="container">
                         <form class="col-xl-12">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <label for="mesas" class="form-label">Mesa</label>
-                                    <select id="mesas" class="form-select">
-                                        <option selected disabled>Seleccionar...</option>
-                                        <?php
-                                        foreach($mesas as $mesa):
-                                            ?>
-                                            <option value="<?=$mesa["id_mesa"]?>"><?=$mesa["id_mesa"]?></option>
-                                            <?php
-                                        endforeach;
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label for="fecha" class="form-label">Fecha</label>
                                     <input type="date" class="form-control" id="fecha">
                                 </div>
-                                <div class="col-md-3">
-                                    <label for="hora" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" id="hora">
-                                </div>
                                 <div class="col-md-4">
-                                    <label for="usuarios" class="form-label">Correo electrónico</label>
-                                    <select name="usuarios" id="usuarios" for="usuarios" class="form-select select-2" style="padding-bottom: 2%">
-                                        <option selected disabled>Seleccionar...</option>
-                                        <?php foreach($usuarios as $usuario): ?>
-                                        <option value="<?=$usuario["id_usuario"]?>"><?=$usuario["email"]?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-2">
                                     <label for="estados" class="form-label">Estado</label>
                                     <select name="estados" id="estados" class="form-select">
                                         <option selected disabled>Seleccionar...</option>
@@ -57,13 +29,29 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="n_comensales" class="form-label">Nº Comensales</label>
                                     <input type="number" name="n_comensales" id="n_comensales" class="form-control">
                                 </div>
+                            </div>
+                            <div class="row mt-3 d-flex justify-content-center">
                                 <div class="col-md-4">
-                                    <label for="telefono" class="form-label">Teléfono</label>
-                                    <input type="phone" name="telefono" id="telefono" class="form-control">
+                                    <label for="usuarios" class="form-label">Correo electrónico</label>
+                                    <select name="usuarios" id="usuarios" for="usuarios" class="form-select select-2" style="padding-bottom: 2%">
+                                        <option selected disabled>Seleccionar...</option>
+                                        <?php foreach($usuarios as $usuario): ?>
+                                        <option value="<?=$usuario["id_usuario"]?>"><?=$usuario["email"]?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="n-registros" class="form-label">Nº Registros a Mostrar:</label>
+                                    <select name="n-registros" id="n-registros" class="form-control">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -91,29 +79,44 @@
                     <table id="tabla-reservas-mesa" class="tabla-crud table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID Reserva Mesa</th>
                                 <th>Mesa Asignada</th>
                                 <th>Estado</th>
                                 <th>Email Usuario</th>
-                                <th>Nº Teléfono</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
                                 <th>Nº Comensales</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php foreach($reservas_mesa as $reserva_mesa): ?>
+                            <tr data-index="<?=$reserva_mesa["id_reserva_mesa"]?>">
+                                <td><?=$reserva_mesa["id_mesa"]?></td>
+                                <td data-value="<?=$reserva_mesa["id_estado"]?>"><?=$reserva_mesa["estado"]?></td>
+                                <td><?=$reserva_mesa["email"]?></td>
+                                <td><?=$reserva_mesa["fecha"]?></td>
+                                <td><?=$reserva_mesa["hora"]?></td>
+                                <td><?=$reserva_mesa["n_comensales"]?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
                         <tfoot>
                             <tr>
-                                <th>ID Reserva Mesa</th>
                                 <th>Mesa Asignada</th>
                                 <th>Estado</th>
                                 <th>Email Usuario</th>
-                                <th>Nº Teléfono</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
                                 <th>Nº Comensales</th>
                             </tr>
                         </tfoot>
                     </table>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <?= $pager->links() ?>
+                        <button type="button" class="btn b-crud-crear btn-success">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Crear
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -129,29 +132,10 @@
             { responsivePriority: 1, targets: 0 },
             { responsivePriority: 2, targets: -1 }
         ],
-        responsive: true, 
-        processing: true,
-        serverSide: true,
-        ajax: {
-            url: "<?php echo base_url('admin/crud/ajax-rm'); ?>",
-            type: "POST"
-        },
-        columns: [
-            { data: "id_reserva_mesa" },
-            { 
-                data: "id_mesa",
-                render: function(data, type, row) {
-                    let id = ((data === null) ? "<i>Sin asignar</i>" : data);
-                    return "<td>" + data + "</td>";
-                } 
-            },
-            { data: "estado" },
-            { data: "email" },
-            { data: "telefono" },
-            { data: "fecha" },
-            { data: "hora" },
-            { data: "n_comensales" },
-        ]
+        responsive: true,
+        lengthChange: false,
+        paging: false, 
+        info: false
     })
 
     $("td.sorting_1.dtr-control::before").on("click", function(event) {

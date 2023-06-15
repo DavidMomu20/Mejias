@@ -9,6 +9,19 @@ use App\Models\M_Roles;
 class Usuarios extends BaseController {
 
     /**
+     * --- Mis variables de instancia ---
+     */
+
+    private array $rules = [
+                    'id_rol' => 'required',
+                    'nombre' => 'required',
+                    'apellido' => 'required',
+                    'email' => 'required|valid_email',
+                    'telefono' => 'required',
+                    'puntos' => 'permit_empty|numeric'
+                ];
+
+    /**
      * Método para que el usuario pueda cambiar los datos de su cuenta.
      */
 
@@ -92,6 +105,10 @@ class Usuarios extends BaseController {
      * ========= MÉTODOS CRUD =========
      */
 
+    /**
+     * Acceder a crud
+     */
+
     public function crud()
     {
         $mUser = new M_Usuarios();
@@ -106,6 +123,10 @@ class Usuarios extends BaseController {
 
         return view('template/admin', $data);
     }
+
+    /**
+     * Método FILTRAR
+     */
 
     public function filtrar()
     {
@@ -144,6 +165,59 @@ class Usuarios extends BaseController {
         return view('template/admin', $data);
     }
 
+    /**
+     * Método CREAR
+     */
+
+    public function create()
+    {
+        $mUser = new M_Usuarios();
+
+        $id_rol = $this->request->getPost("id_rol");
+        $nombre = $this->request->getPost("nombre");
+        $apellido = $this->request->getPost("apellido");
+        $email = $this->request->getPost("email");
+        $password = $this->request->getPost("password");
+        $telefono = $this->request->getPost("telefono");
+        $puntos = $this->request->getPost("puntos");
+
+        $rules = $this->rules;
+        $rules["password"] = "required";
+
+        if(empty($puntos))
+            $puntos = null;
+
+        // Realizo la validación de los datos
+        if (!$this->validate($rules)) {
+            // La validación falló, devuelvo los mensajes de error
+            $errors = $this->validator->getErrors();
+            return json_encode(['error' => $errors]);
+        }
+
+        // Los datos son válidos, procedo a actualizar el registro
+        $data = [
+            "id_rol" => $id_rol,
+            "nombre" => $nombre,
+            "apellido" => $apellido,
+            "email" => $email,
+            "password" => $password,
+            "telefono" => $telefono,
+            "puntos" => $puntos, 
+            "borrado" => false
+        ];
+
+        if ($newId = $mUser->insertaUsuario($data)) {
+            $mRoles = new M_Roles();
+            $data["rol"] = $mRoles->obtenerRegistros(["id_rol" => $data["id_rol"]])["nombre"];
+            $data["id_usuario"] = $newId;
+            return json_encode($data);
+        }
+    }
+
+    /**
+     * Método ACTUALIZAR
+     */
+
     public function update()
     {
         $mUser = new M_Usuarios();
@@ -154,33 +228,26 @@ class Usuarios extends BaseController {
         $apellido = $this->request->getPost("apellido");
         $email = $this->request->getPost("email");
         $telefono = $this->request->getPost("telefono");
-        // $puntos = $this->request->getPost("puntos");
+        $puntos = $this->request->getPost("puntos");
 
-        // Define las reglas de validación para cada campo
-        $rules = [
-            'id_rol' => 'required',
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'email' => 'required|valid_email',
-            'telefono' => 'required',
-            // 'puntos' => 'required|numeric'
-        ];
+        if(empty($puntos))
+            $puntos = null;
 
-        // Realiza la validación de los datos
-        if (!$this->validate($rules)) {
-            // La validación falló, devuelve los mensajes de error
+        // Realizo la validación de los datos
+        if (!$this->validate($this->rules)) {
+            // La validación falló, devuelvo los mensajes de error
             $errors = $this->validator->getErrors();
             return json_encode(['error' => $errors]);
         }
 
-        // Los datos son válidos, procede a actualizar el registro
+        // Los datos son válidos, procedo a actualizar el registro
         $data = [
             "id_rol" => $id_rol,
             "nombre" => $nombre,
             "apellido" => $apellido,
             "email" => $email,
             "telefono" => $telefono,
-            // "puntos" => $puntos
+            "puntos" => $puntos
         ];
 
         if ($mUser->updateRegistro($id_usuario, $data)) {
@@ -190,6 +257,9 @@ class Usuarios extends BaseController {
         }
     }
 
+    /**
+     * Método ELIMINAR
+     */
 
     public function delete()
     {
@@ -206,5 +276,4 @@ class Usuarios extends BaseController {
             return json_encode($data);
         }
     }
-
 }

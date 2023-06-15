@@ -66,6 +66,15 @@ abstract class BaseController extends Controller
     }
 
     /**
+     * Método para cambiar los datos del usuario cuando estos son cambiados
+     */
+
+    public function cambiaDatosSesion()
+    {
+        
+    }
+
+    /**
      * Método para enviar email
      */
 

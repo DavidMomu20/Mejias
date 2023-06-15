@@ -112,7 +112,7 @@
                     </table>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <?= $pager->links() ?>
-                        <button type="button" id="b-crud-crear" class="btn btn-success">
+                        <button type="button" class="btn b-crud-crear btn-success">
                             <i class="fa-solid fa-pen-to-square"></i>
                             Crear
                         </button>
@@ -136,6 +136,11 @@
         lengthChange: false,
         paging: false, 
         info: false
+    })
+
+    $("td.sorting_1.dtr-control::before").on("click", function(event) {
+
+        event.stopPropagation();
     })
 </script>
 

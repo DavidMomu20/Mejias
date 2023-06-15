@@ -2025,3 +2025,8 @@ div.div-habs-scroll .loading {
 .div-distancia span {
   color: var(--color-primary);
 }
+
+.reserva-horas .horas button:disabled {
+  background-color: rgb(176, 176, 176);
+  color: #484848;
+}

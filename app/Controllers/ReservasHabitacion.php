@@ -57,6 +57,7 @@ class ReservasHabitacion extends BaseController{
             $puntos = intval($puntos);
 
         $datos = [
+            "id_usuario" => $id_user,
             "id_habitacion" => $id_habitacion,
             "id_estado" => 3, 
             "fecha_inicio" => $fecha_inicio, 
@@ -65,7 +66,7 @@ class ReservasHabitacion extends BaseController{
             "puntos_usados" => $puntos
         ];
 
-        if ($id = $mRes->insertReservaHab($datos, $id_user)) {
+        if ($id = $mRes->insertarRegistro($datos)) {
 
             $mUser = new M_Usuarios();
             $user = $mUser->buscaUsuarioById($id_user);

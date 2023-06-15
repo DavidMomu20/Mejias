@@ -29,13 +29,14 @@ class ReservasMesa extends BaseController {
             $n_comensales = intval($n_comensales);
 
         $datos = [
+            "id_usuario" => $id_user,
             "id_estado" => 3,
             "fecha" => $fecha, 
             "hora" => $hora, 
             "n_comensales" => $n_comensales
         ];
         
-        if ($id = $mRes->insertReservaMesa($datos, $id_user))
+        if ($id = $mRes->insertarRegistro($datos))
             echo json_encode(["data" => "success"]);
     }
 
@@ -127,28 +128,25 @@ class ReservasMesa extends BaseController {
      * ==================== MÉTODOS CRUD ====================
      */
 
-     public function crud()
-     {
-         $mMesa = new M_Mesas();
-         $mEst = new M_Estados();
-         $mUser = new M_Usuarios();
- 
-         $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"])->findAll();
-         $data["estados"] = $mEst->obtenerRegistros()->findAll();
-         $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"])->findAll();
- 
-         $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);
- 
-         return view('template/admin', $data);
-     }
+    /**
+     * Acceder al crud
+     */
 
-    public function ajax()
+    public function crud()
     {
         $mRes = new M_Reservas_Mesa();
-        $reservas = $mRes->dameReservasMesa();
-        
-        $columnas = ["id_reserva_mesa", "id_mesa", "estado", "email", "telefono", "fecha", "hora", "n_comensales"];
+        $mMesa = new M_Mesas();
+        $mEst = new M_Estados();
+        $mUser = new M_Usuarios();
 
-        return $this->ajaxCrud($reservas, $columnas);
+        $data["reservas_mesa"] = $mRes->dameReservasMesa()->paginate(5);
+        $data["pager"] = $mRes->pager;
+        $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"])->findAll();
+        $data["estados"] = $mEst->obtenerRegistros()->findAll();
+        $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"])->findAll();
+
+        $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);
+
+        return view('template/admin', $data);
     }
 }

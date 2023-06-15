@@ -29,6 +29,10 @@ class Calendario {
         this.initialize();
     }
 
+    /**
+     * Función para inicializar el calendario con el mes actual
+     */
+
     initialize() {
         $(".prev-month").click(() => {
             const currentDate = new Date(); // Obtener la fecha actual
@@ -54,6 +58,11 @@ class Calendario {
 
         this.updateCalendar();
     }
+
+    /**
+     * Función para actualizar el calendario, en función de si se retrocede
+     * un mes o se avanza
+     */
 
     updateCalendar() {
         const calendarDays = $(".calendar-days");
@@ -87,6 +96,11 @@ class Calendario {
             .text(this.months[this.month] + " " + this.year);
     }
 
+    /**
+     * Función para seleccionar un día del calendario y crear una fecha a partir de
+     * este, el mes y año en el que se encuentra ajustado el calendario.
+     */
+    
     escribeFecha() {
         const diaSeleccionado = $(this).text();
         const diaActivo = $(".dia-activo");
@@ -163,6 +177,11 @@ class CalendarioPlus extends Calendario {
         super();
     }
 
+    /**
+     * Se reescribe el método padre "escribeFecha" para establecer un dia de inicio
+     * y un día de fin.
+     */
+
     escribeFecha() {
         const diaSeleccionado = $(this).text();
         const year = parseInt($("span.current-month-year").attr("data-year"));
@@ -191,12 +210,17 @@ class CalendarioPlus extends Calendario {
         }
         else {
             if (diaActivo.length > 0) {
-                $(this).addClass("dia-fin-activo");
-
-                $("#fecha-fin-input").val(`${diasSemana[fechaSeleccionada.getDay()]}, ${fechaSeleccionada.getDate()} de ${nombreMeses[fechaSeleccionada.getMonth()]} ${fechaSeleccionada.getFullYear()}`);
-                $("#fecha-fin-input").attr("data-value", formattedDate);
-
-                $("#b-reservar-hab").removeAttr("disabled");
+                const fechaInicioSeleccionada = new Date(year, month, diaActivo.text());
+                const fechaFinSeleccionada = new Date(year, month, diaSeleccionado);
+                
+                if (fechaFinSeleccionada >= fechaInicioSeleccionada) {
+                    $(this).addClass("dia-fin-activo");
+                    
+                    $("#fecha-fin-input").val(`${diasSemana[fechaSeleccionada.getDay()]}, ${fechaSeleccionada.getDate()} de ${nombreMeses[fechaSeleccionada.getMonth()]} ${fechaSeleccionada.getFullYear()}`);
+                    $("#fecha-fin-input").attr("data-value", formattedDate);
+                    
+                    $("#b-reservar-hab").removeAttr("disabled");
+                }
             }
             else {
                 $(this).addClass("dia-activo");
@@ -207,3 +231,31 @@ class CalendarioPlus extends Calendario {
         }
     }
 }
+
+/**
+ * -------- FUNCIONES AUXILIARES ---------
+ */
+
+/*
+function comprobarHoras() {
+    const diaActivo = $(".dia-activo");
+    const horaActual = new Date().getHours();
+    const minutosActual = new Date().getMinutes();
+
+    if (diaActivo.length > 0) {
+        $(".reserva-horas .horas button").each(function() {
+            const horaSeleccionada = $(this).text();
+
+            const horaSeleccionadaParts = horaSeleccionada.split(":");
+            const horaSeleccionadaHora = parseInt(horaSeleccionadaParts[0]);
+            const horaSeleccionadaMinutos = parseInt(horaSeleccionadaParts[1]);
+
+            if (
+                horaSeleccionadaHora < horaActual ||
+                (horaSeleccionadaHora === horaActual && horaSeleccionadaMinutos < minutosActual)
+            )
+                $(this).attr("disabled", "true");
+        });
+    }
+}
+*/
