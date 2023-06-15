@@ -154,25 +154,42 @@ class Usuarios extends BaseController {
         $apellido = $this->request->getPost("apellido");
         $email = $this->request->getPost("email");
         $telefono = $this->request->getPost("telefono");
-        $puntos = $this->request->getPost("puntos");
+        // $puntos = $this->request->getPost("puntos");
 
+        // Define las reglas de validación para cada campo
+        $rules = [
+            'id_rol' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'email' => 'required|valid_email',
+            'telefono' => 'required',
+            // 'puntos' => 'required|numeric'
+        ];
+
+        // Realiza la validación de los datos
+        if (!$this->validate($rules)) {
+            // La validación falló, devuelve los mensajes de error
+            $errors = $this->validator->getErrors();
+            return json_encode(['error' => $errors]);
+        }
+
+        // Los datos son válidos, procede a actualizar el registro
         $data = [
-            "id_rol" => $id_rol, 
-            "nombre" => $nombre, 
-            "apellido" => $apellido, 
-            "email" => $email, 
-            "telefono" => $telefono, 
-            "puntos" => $puntos
+            "id_rol" => $id_rol,
+            "nombre" => $nombre,
+            "apellido" => $apellido,
+            "email" => $email,
+            "telefono" => $telefono,
+            // "puntos" => $puntos
         ];
 
         if ($mUser->updateRegistro($id_usuario, $data)) {
-            
             $mRoles = new M_Roles();
-            
             $data["rol"] = $mRoles->obtenerRegistros(["id_rol" => $data["id_rol"]])["nombre"];
             return json_encode($data);
         }
     }
+
 
     public function delete()
     {
