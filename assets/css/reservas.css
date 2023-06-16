@@ -303,6 +303,15 @@
   border-color: #364382;
 }
 
+.card-tabla-crud-rh .card-header, .filtros-reservas-hab .card-header {
+  background-color: #44205b;
+  color: white;
+}
+
+.card-tabla-crud-rh, .filtros-reservas-hab {
+  border-color: #44205b;
+}
+
 .form-label {
   font-weight: bold;
   font-style: italic;

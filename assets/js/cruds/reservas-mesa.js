@@ -193,7 +193,11 @@ $(function () {
     })
 })
 
-// crear-reserva-mesa
+// ======================= FUNCIONES =======================
+
+/**
+ * Función para crear formulario de modal
+ */
 
 function formReservaMesa() {
     let container = $('<div>').addClass('container');
@@ -247,6 +251,11 @@ function formReservaMesa() {
 
     return container;
 }
+
+/**
+ * Función para comprobar el estado de la reserva. A partir de él, 
+ * se deshabilitará o habilitará el input mesa del formulario del modal
+ */
 
 function compruebaEstado() {
 

@@ -10,7 +10,7 @@ class M_Reservas_Mesa extends M_base {
     protected $allowedFields = ["id_usuario", "id_mesa", "id_estado", "fecha", "hora", "n_comensales"];
 
     /**
-     * Método para obtener todas las reservas con los datos del usuario correspondiente.
+     * Método para obtener todas las reservas con los datos correspondientes.
      * En esta función se hará los filtros del crud
      */
 

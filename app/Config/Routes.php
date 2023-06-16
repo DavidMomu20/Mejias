@@ -80,12 +80,16 @@ $routes->post('admin/crud/modificar-reserva-mesa', 'ReservasMesa::update');
 $routes->post('admin/crud/eliminar-reserva-mesa', 'ReservasMesa::delete');
 $routes->post('admin/crud/crear-reserva-mesa', 'ReservasMesa::create');
 
+$routes->get('admin/crud/reservas-hab', 'ReservasHabitacion::crud');
+$routes->post('admin/crud/modificar-reserva-hab', 'ReservasHabitacion::update');
+$routes->post('admin/crud/eliminar-reserva-hab', 'ReservasHabitacion::delete');
+$routes->post('admin/crud/crear-reserva-hab', 'ReservasHabitacion::create');
+
 $routes->get('admin/crud/usuarios', 'Usuarios::crud');
 $routes->get('admin/crud/filtrar-usuarios', 'Usuarios::filtrar');
 $routes->post('admin/crud/modificar-usuario', 'Usuarios::update');
 $routes->post('admin/crud/eliminar-usuario', 'Usuarios::delete');
 $routes->post('admin/crud/crear-usuario', 'Usuarios::create');
-
 
 /*
  * --------------------------------------------------------------------

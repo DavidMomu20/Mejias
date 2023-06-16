@@ -10,6 +10,39 @@ class M_Reservas_Habitacion extends M_base {
     protected $allowedFields = ["id_usuario", "id_habitacion", "id_estado", "fecha_inicio", "fecha_fin", "n_huespedes", "puntos_usados"];
 
     /**
+     * Método para obtener todas las reservas con los datos correspondientes.
+     * En esta función se hará los filtros del crud
+     */
+
+    public function dameReservasHab(?array $datos = null)
+    {
+        $reservas = $this->select("reservas_hab.*, habitaciones.num_habitacion, estados.descripcion AS estado, usuarios.email")
+            ->join("estados", "reservas_hab.id_estado = estados.id_estado")
+            ->join("habitaciones", "reservas_hab.id_habitacion = habitaciones.id_habitacion")
+            ->join("usuarios", "reservas_hab.id_usuario = usuarios.id_usuario");
+
+        if (!is_null($datos))
+        {
+            if (!empty($datos["fechaInicio"]))
+                $reservas->where("reservas_hab.fecha_inicio >=", $datos["fechaInicio"]);
+
+            if (!empty($datos["estado"]))
+                $reservas->where("reservas_hab.id_estado", $datos["estado"]);
+
+            if (!empty($datos["nHuespedes"]))
+                $reservas->where("reservas_hab.n_comensales", $datos["nHuespedes"]);
+
+            if (!empty($datos["usuario"]))
+                $reservas->where("reservas_hab.id_usuario", $datos["usuario"]);
+
+            if (!empty($datos["fechaFin"]))
+                $reservas->where("reservas_hab.fecha_fin <=", $datos["fechaFin"]);
+        }
+
+        return $reservas;
+    }
+
+    /**
      * Método para obtener todas las reservas pendientes
      */
 

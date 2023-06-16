@@ -3,8 +3,9 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-use App\Models\M_Habitaciones;
 use App\Models\M_Reservas_Habitacion;
+use App\Models\M_Habitaciones;
+use App\Models\M_Estados;
 use App\Models\M_Usuarios;
 use Dompdf\Dompdf;
 
@@ -136,6 +137,113 @@ class ReservasHabitacion extends BaseController{
             ];
 
             return $this->enviarEmail($datosMail);
+        }
+    }
+
+    /**
+     * ==================== MÉTODOS CRUD ====================
+     */
+
+    public function crud()
+    {
+        $mRes = new M_Reservas_Habitacion();
+        $mHab = new M_Habitaciones();
+        $mEst = new M_Estados();
+        $mUser = new M_Usuarios();
+
+        $fecha_inicio = $this->request->getVar('fecha-inicio');
+        $estado = $this->request->getVar('estados');
+        $nHuespedes = $this->request->getVar('n_huespedes');
+        $fecha_fin = $this->request->getVar('fecha-fin');
+        $usuario = $this->request->getVar('usuarios');
+        $nRegistros = $this->request->getVar('n-registros');
+
+        if (empty($nRegistros))
+            $nRegistros = 5;
+
+        $datos = [
+            "fechaInicio" => $fecha_inicio, 
+            "estado" => $estado, 
+            "nHuespedes" => $nHuespedes, 
+            "usuario" => $usuario, 
+            "fechaFin" => $fecha_fin
+        ];
+
+        $data["reservas_hab"] = $mRes->dameReservasHab($datos)->paginate($nRegistros);
+        $data["pager"] = $mRes->pager;
+        $data["habitaciones"] = $mHab->obtenerRegistros([], ["id_habitacion", "num_habitacion"])->findAll();
+        $data["estados"] = $mEst->obtenerRegistros()->findAll();
+        $data["usuarios"] = $mUser->obtenerRegistros(["id_rol" => 12], ["id_usuario", "email"])->findAll();
+        $data["cuerpo"] = view("admin/cruds/reservas-hab", $data);
+
+        return view('template/admin', $data);
+    }
+
+    /**
+     * Método ACTUALIZAR
+     */
+
+    public function update()
+    {
+        $mRes = new M_Reservas_Habitacion();
+        $mUser = new M_Usuarios();
+
+        $id_reserva_hab = $this->request->getPost("id_reserva_hab");
+        $id_habitacion = $this->request->getPost("id_habitacion");
+        $id_estado = $this->request->getPost("id_estado");
+        $id_usuario = $this->request->getPost("id_usuario");
+        $fecha_inicio = $this->request->getPost("fecha_inicio");
+        $fecha_fin = $this->request->getPost("fecha_fin");
+        $n_huespedes = $this->request->getPost("n_huespedes");
+        $puntos_usados = $this->request->getPost("puntos_usados");
+        $puntos_anteriores = $this->request->getPost("puntos_anteriores");
+
+        // Si los puntos se han cambiado, convendría devolverselos o quitarselos
+        // usuario afectado
+
+        $usuario = $mUser->buscaUsuarioById($id_usuario);
+        $diferencia = abs($puntos_usados - $puntos_anteriores);
+
+        if ($diferencia != 0) {
+
+            if ($puntos_anteriores < $puntos_usados)
+                $nuevos_puntos = $usuario["puntos"] - $diferencia;
+
+            else
+                $nuevos_puntos = $usuario["puntos"] + $diferencia;
+        
+            if ($nuevos_puntos >= 0) {
+                $data = [
+                    "puntos" => $nuevos_puntos
+                ];
+        
+                if (!$mUser->updateRegistro($id_usuario, $data)) {
+                    return json_encode(["error" => "Puntos mal introducidos"]);
+                }
+            }
+            else
+                return json_encode(["error" => "El valor de puntos no puede ser 0 o negativo"]);
+        }
+        
+        $data = [
+            "id_habitacion" => $id_habitacion, 
+            "id_estado" => $id_estado, 
+            "id_usuario" => $id_usuario, 
+            "fecha_inicio" => $fecha_inicio, 
+            "fecha_fin" => $fecha_fin,
+            "n_huespedes" => $n_huespedes,  
+            "puntos_usados" => $puntos_usados
+        ];
+
+        if ($mRes->updateRegistro($id_reserva_hab, $data))
+        {
+            $mHab = new M_Habitaciones();
+            $mEstados = new M_Estados();
+
+            $data["num_habitacion"] = $mHab->obtenerRegistros(["id_habitacion" => $id_habitacion])["num_habitacion"];
+            $data["email"] = $usuario["email"];
+            $data["estado"] = $mEstados->obtenerRegistros(["id_estado" => $data["id_estado"]])["descripcion"];
+            return json_encode($data);
         }
     }
 }
