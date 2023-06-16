@@ -1,4 +1,5 @@
 var id = 0;
+var id_usuario = 0;
 var puntos = 0;
 
 var eliminar = '<div class="container">' +
@@ -28,6 +29,7 @@ $(function() {
         $("#m-fecha-fin").val($(this).children("td").eq(4).text());
         $("#m-huespedes").val($(this).children("td").eq(5).text());
 
+        id_usuario = parseInt($("#m-email").val());
         puntos = parseInt($("#m-puntos").val());
 
         abrirModal();
@@ -88,7 +90,107 @@ $(function() {
                 }
             })
         })
+
+        /**
+         * Mostrar html para eliminar el registro
+         */
+
+        $("#btn-muestra-eliminar").click(function() {
+
+            $(".modal-body").html(eliminar);
+        })
+
+        /**
+         * Eliminar de forma física el registro seleccionado
+         */
+
+        $(".modal-body").on("click", "#btn-a-eliminar", function() {
+
+            $(this).prepend(spinner);
+            $(this).attr("disabled", "true");
+            $(".modal [aria-label=Close]").off("click");
+
+            $.ajax({
+                url: "./eliminar-reserva-hab", 
+                type: "POST", 
+                dataType: "json", 
+                data: {
+                    id_reserva_hab: id, 
+                    id_usuario: id_usuario,
+                    puntos: puntos
+                }, 
+                success: function(response) {
+
+                    $(".modal [aria-label=Close]").on("click", cerrarModal);
+
+                    let tr = $('#tabla-reservas-mesa tbody tr[data-index=' + id + ']');
+                    table.row(':eq(' + tr.index() + ')').remove().draw();
+
+                    abrirToast("Reserva Habitación Eliminada", "Se ha eliminado el registro de la tabla");
+                    cerrarModal();
+                }
+            })
+        })
     })
+
+    /**
+     * Abrir modal de creacion de nuevo registro
+     */
+
+    $(".b-crud-crear").click(function() {
+
+        let form = formReservaHab();
+        form.find(".botones-modal").empty();
+        form.find(".botones-modal").html($(this).clone());
+
+        $(".modal-body").html(form);
+        $(".modal-title").text("Crear nueva reserva de habitación");
+        abrirModal();
+    })
+
+    /**
+     * Crear nuevo registro
+     */
+
+    $(".modal-body").on("click", ".b-crud-crear", function() {
+
+        $(this).prepend(spinner);
+        $(this).attr("disabled", "true");
+        $(".modal [aria-label=Close]").off("click");
+
+        $.ajax({
+            url: "./crear-reserva-hab", 
+            type: "POST", 
+            dataType: "json", 
+            data: {
+                id_habitacion: $("#m-habitacion").val(), 
+                id_estado: $("#m-estado").val(), 
+                id_usuario: $("#m-email").val(), 
+                fecha_inicio: $("#m-fecha-inicio").val(),
+                fecha_fin: $("#m-fecha-fin").val(), 
+                n_huespedes: $("#m-huespedes").val(), 
+                puntos_usados: parseInt($("#m-puntos").val())
+            }, 
+            success: function(response) {
+
+                $(".modal [aria-label=Close]").on("click", cerrarModal);
+
+                // Añadir nueva fila
+                let newFila = table.row.add([
+                    '<td data-value="' + response.id_habitacion + '">' + response.num_habitacion + '</td>',
+                    '<td data-value="' + response.id_estado + '">' + response.estado + '</td>',
+                    '<td data-value="' + response.id_usuario + '">' + response.email + '</td>',
+                    '<td>' + response.fecha_inicio + '</td>',
+                    '<td>' + response.fecha_fin + '</td>',
+                    '<td>' + response.n_huespedes + '</td>',
+                    '<td>' + response.puntos_usados + '</td>'
+                ]).draw().node();
+
+                $(newFila).attr("data-index", response.id_reserva_hab);
+            }
+        })
+    })
+
 })
 
 // ======================= FUNCIONES =======================

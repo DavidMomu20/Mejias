@@ -240,6 +240,7 @@ class ReservasMesa extends BaseController {
             $mUser = new M_Usuarios();
             $mEstados = new M_Estados();
 
+            $data["id_reserva_mesa"] = $newId;
             $data["email"] = $mUser->obtenerRegistros(["id_usuario" => $data["id_usuario"]])["email"];
             $data["estado"] = $mEstados->obtenerRegistros(["id_estado" => $data["id_estado"]])["descripcion"];
             return json_encode($data);

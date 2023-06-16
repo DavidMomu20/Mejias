@@ -11,6 +11,20 @@ use Dompdf\Dompdf;
 
 class ReservasHabitacion extends BaseController{
 
+    /**
+     * Mis variables de instancia
+     */
+
+    private array $rules = [
+        'id_habitacion' => 'required|numeric',
+        'id_estado' => 'required|numeric',
+        'id_usuario' => 'required|numeric',
+        'fecha_inicio' => 'required|valid_date[Y-m-d]',
+        'fecha_fin' => 'required|valid_date[Y-m-d]',
+        'n_huespedes' => 'required|numeric',
+        'puntos_usados' => 'required|numeric'
+    ];
+
     public function buscarHabitaciones()
     {
         $mHab = new M_Habitaciones();
@@ -180,6 +194,59 @@ class ReservasHabitacion extends BaseController{
     }
 
     /**
+     * Método CREAR
+     */
+
+    public function create()
+    {
+        $mRes = new M_Reservas_Habitacion();
+        $mUser = new M_Usuarios();
+        $mHab = new M_Habitaciones();
+        $mEstados = new M_Estados();
+
+        $id_habitacion = $this->request->getPost("id_habitacion");
+        $id_estado = $this->request->getPost("id_estado");
+        $id_usuario = $this->request->getPost("id_usuario");
+        $fecha_inicio = $this->request->getPost("fecha_inicio");
+        $fecha_fin = $this->request->getPost("fecha_fin");
+        $n_huespedes = $this->request->getPost("n_huespedes");
+        $puntos_usados = $this->request->getPost("puntos_usados");
+
+        if (!$this->validate($this->rules)) {
+            // La validación falló, devuelvo los mensajes de error
+            $errors = $this->validator->getErrors();
+            return json_encode(['error' => $errors]);
+        }
+
+        // Comprobar si fecha de salida es posterior a fecha de entrada
+        if (strtotime($fecha_fin) < strtotime($fecha_inicio))
+            return json_encode(['error' => 'La fecha de salida no puede ser anterior a la fecha de entrada']);
+
+        // Resto los puntos al usuario seleccionado
+        if (!$mUser->restaPuntos($id_usuario, $puntos_usados))
+            return json_encode(['error' => 'Error al restar puntos al usuario']);
+
+        $data = [
+            "id_habitacion" => $id_habitacion, 
+            "id_estado" => $id_estado, 
+            "id_usuario" => $id_usuario, 
+            "fecha_inicio" => $fecha_inicio, 
+            "fecha_fin" => $fecha_fin,
+            "n_huespedes" => $n_huespedes,  
+            "puntos_usados" => $puntos_usados
+        ];
+
+        if ($newId = $mRes->insertarRegistro($data))
+        {
+            $data["id_reserva_hab"] = $newId;
+            $data["num_habitacion"] = $mHab->obtenerRegistros(["id_habitacion" => $id_habitacion])["num_habitacion"];
+            $data["email"] = $mUser->obtenerRegistros(["id_usuario" => $data["id_usuario"]])["email"];
+            $data["estado"] = $mEstados->obtenerRegistros(["id_estado" => $data["id_estado"]])["descripcion"];
+            return json_encode($data);
+        }
+    }
+
+    /**
      * Método ACTUALIZAR
      */
 
@@ -204,27 +271,18 @@ class ReservasHabitacion extends BaseController{
         $usuario = $mUser->buscaUsuarioById($id_usuario);
         $diferencia = abs($puntos_usados - $puntos_anteriores);
 
-        if ($diferencia != 0) {
+        $this->cambiaPuntos($mUser, $usuario, $diferencia, $puntos_anteriores, $puntos_usados);
 
-            if ($puntos_anteriores < $puntos_usados)
-                $nuevos_puntos = $usuario["puntos"] - $diferencia;
-
-            else
-                $nuevos_puntos = $usuario["puntos"] + $diferencia;
-        
-            if ($nuevos_puntos >= 0) {
-                $data = [
-                    "puntos" => $nuevos_puntos
-                ];
-        
-                if (!$mUser->updateRegistro($id_usuario, $data)) {
-                    return json_encode(["error" => "Puntos mal introducidos"]);
-                }
-            }
-            else
-                return json_encode(["error" => "El valor de puntos no puede ser 0 o negativo"]);
+        if (!$this->validate($this->rules)) {
+            // La validación falló, devuelvo los mensajes de error
+            $errors = $this->validator->getErrors();
+            return json_encode(['error' => $errors]);
         }
-        
+
+        // Comprobar si fecha de salida es posterior a fecha de entrada
+        if (strtotime($fecha_fin) < strtotime($fecha_inicio))
+            return json_encode(['error' => 'La fecha de salida no puede ser anterior a la fecha de entrada']);
+
         $data = [
             "id_habitacion" => $id_habitacion, 
             "id_estado" => $id_estado, 
@@ -241,9 +299,62 @@ class ReservasHabitacion extends BaseController{
             $mEstados = new M_Estados();
 
             $data["num_habitacion"] = $mHab->obtenerRegistros(["id_habitacion" => $id_habitacion])["num_habitacion"];
-            $data["email"] = $usuario["email"];
+            $data["email"] = $mUser->obtenerRegistros(["id_usuario" => $id_usuario])["email"];
             $data["estado"] = $mEstados->obtenerRegistros(["id_estado" => $data["id_estado"]])["descripcion"];
             return json_encode($data);
+        }
+    }
+
+    /**
+     * Método ELIMINAR
+     */
+
+    public function delete()
+    {
+        $mRes = new M_Reservas_Habitacion();
+        $mUser = new M_Usuarios();
+
+        $id_reserva_hab = $this->request->getPost("id_reserva_hab");
+        $id_usuario = $this->request->getPost("id_usuario");
+        $puntos = $this->request->getPost("puntos");
+
+        $usuario = $mUser->buscaUsuarioById($id_usuario);
+        $datosUser = [
+            "puntos" => $usuario["puntos"] + intval($puntos)
+        ];
+
+        if ($mUser->updateRegistro($id_usuario, $datosUser))
+        {
+            if ($mRes->deleteRegistro($id_reserva_hab))
+                return json_encode(["data" => "success"]);
+        }
+    }
+
+    /**
+     * Función privada para cambiar los puntos del usuario
+     */
+
+    private function cambiaPuntos($modelo, $usuario, int $diferencia, int $puntos_anteriores, int $puntos_usados)
+    {
+        if ($diferencia != 0) {
+
+            if ($puntos_anteriores < $puntos_usados)
+                $nuevos_puntos = $usuario["puntos"] - $diferencia;
+
+            else
+                $nuevos_puntos = $usuario["puntos"] + $diferencia;
+        
+            if ($nuevos_puntos >= 0) {
+                $data = [
+                    "puntos" => $nuevos_puntos
+                ];
+        
+                if (!$modelo->updateRegistro($usuario["id_usuario"], $data)) {
+                    return json_encode(["error" => "Puntos mal introducidos"]);
+                }
+            }
+            else
+                return json_encode(["error" => "El valor de puntos no puede ser 0 o negativo"]);
         }
     }
 }

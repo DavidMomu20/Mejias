@@ -183,8 +183,7 @@ $(function () {
                     '<td data-value="' + response.id_usuario + '">' + response.email + '</td>',
                     '<td>' + response.fecha + '</td>',
                     '<td>' + response.hora + '</td>',
-                    '<td>' + response.n_comensales + '</td>',
-                    '<td>No</td>'
+                    '<td>' + response.n_comensales + '</td>'
                 ]).draw().node();
 
                 $(newFila).attr("data-index", response.id_reserva_mesa);
