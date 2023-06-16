@@ -76,14 +76,16 @@ $routes->get('admin/reservas-habs-confirmadas', 'Admin::reservasHabConfirmadasHo
 // ---- CRUD ----
 
 $routes->get('admin/crud/reservas-mesa', 'ReservasMesa::crud');
-$routes->post('admin/crud/ajax-rm', 'ReservasMesa::ajax');
+$routes->post('admin/crud/modificar-reserva-mesa', 'ReservasMesa::update');
+$routes->post('admin/crud/eliminar-reserva-mesa', 'ReservasMesa::delete');
+$routes->post('admin/crud/crear-reserva-mesa', 'ReservasMesa::create');
 
 $routes->get('admin/crud/usuarios', 'Usuarios::crud');
-$routes->post('admin/crud/ajax-usuarios', 'Usuarios::ajax');
+$routes->get('admin/crud/filtrar-usuarios', 'Usuarios::filtrar');
 $routes->post('admin/crud/modificar-usuario', 'Usuarios::update');
 $routes->post('admin/crud/eliminar-usuario', 'Usuarios::delete');
 $routes->post('admin/crud/crear-usuario', 'Usuarios::create');
-$routes->get('admin/crud/filtrar-usuarios', 'Usuarios::filtrar');
+
 
 /*
  * --------------------------------------------------------------------

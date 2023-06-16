@@ -11,6 +11,23 @@ use App\Libraries\TableLib;
 
 class ReservasMesa extends BaseController {
 
+    /**
+     * Mis variables de instancia
+     */
+
+    private array $rules = [
+        'id_mesa' => 'permit_empty|numeric',
+        'id_estado' => 'required|numeric',
+        'id_usuario' => 'required|numeric',
+        'fecha' => 'required',
+        'hora' => 'required',
+        'n_comensales' => 'required|numeric'
+    ];
+
+    /**
+     * Método para crear una nueva reserva por parte del cliente.
+     */
+
     public function realizar()
     {
         $id_user = intval(session()->get('id_user'));
@@ -40,6 +57,11 @@ class ReservasMesa extends BaseController {
             echo json_encode(["data" => "success"]);
     }
 
+    /**
+     * Método para mostrar todas las mesas disponibles para la fecha en la que
+     * se ha establecido la reserva y el nº de comensales establecido en esta.
+     */
+    
     public function mostrarMesasDisponibles()
     {
 
@@ -64,12 +86,21 @@ class ReservasMesa extends BaseController {
         }
     }
 
+    /**
+     * Método para obtener las mesas de hoy
+     */
+
     public function dameMesasHoy()
     {
         $mRes = new M_Reservas_Mesa();
         return json_encode(["mesas" => $mRes->dameMesasDeHoy()]);
     }
 
+    /**
+     * Método para confirmar una reserva. Se manda un email al cliente con 
+     * la confirmación.
+     */
+    
     public function confirmar()
     {
         $mRes = new M_Reservas_Mesa();
@@ -96,6 +127,11 @@ class ReservasMesa extends BaseController {
             return $this->enviarEmail($datosMail);
         }
     }
+
+    /**
+     * Método para rechazar una reserva. Se le manda un email al cliente con
+     * el motivo por el cual se rechaza la reserva.
+     */
 
     public function rechazar()
     {
@@ -139,14 +175,133 @@ class ReservasMesa extends BaseController {
         $mEst = new M_Estados();
         $mUser = new M_Usuarios();
 
-        $data["reservas_mesa"] = $mRes->dameReservasMesa()->paginate(5);
+        $fecha = $this->request->getVar('fecha');
+        $estado = $this->request->getVar('estados');
+        $nComensales = $this->request->getVar('n_comensales');
+        $usuario = $this->request->getVar('usuarios');
+        $nRegistros = $this->request->getVar('n-registros');
+
+        if (empty($nRegistros))
+            $nRegistros = 5;
+
+        $datos = [
+            "fecha" => $fecha, 
+            "estado" => $estado, 
+            "nComensales" => $nComensales, 
+            "usuario" => $usuario
+        ];
+
+        $data["reservas_mesa"] = $mRes->dameReservasMesa($datos)->paginate($nRegistros);
         $data["pager"] = $mRes->pager;
         $data["mesas"] = $mMesa->obtenerRegistros([], ["id_mesa"])->findAll();
         $data["estados"] = $mEst->obtenerRegistros()->findAll();
-        $data["usuarios"] = $mUser->obtenerRegistros([], ["id_usuario", "email"])->findAll();
+        $data["usuarios"] = $mUser->obtenerRegistros(["id_rol" => 12], ["id_usuario", "email"])->findAll();
 
         $data["cuerpo"] = view("admin/cruds/reservas-mesa", $data);
 
         return view('template/admin', $data);
+    }
+
+    /**
+     * Método CREAR
+     */
+
+    public function create()
+    {
+        $mRes = new M_Reservas_Mesa();
+
+        $id_mesa = $this->request->getPost("id_mesa");
+        $id_estado = $this->request->getPost("id_estado");
+        $id_usuario = $this->request->getPost("id_usuario");
+        $fecha = $this->request->getPost("fecha");
+        $hora = $this->request->getPost("hora");
+        $n_comensales = $this->request->getPost("n_comensales");
+
+        if (empty($id_mesa))
+            $id_mesa = null;
+
+        if (!$this->validate($this->rules)) {
+            // La validación falló, devuelvo los mensajes de error
+            $errors = $this->validator->getErrors();
+            return json_encode(['error' => $errors]);
+        }
+
+        $data = [
+            "id_mesa" => $id_mesa, 
+            "id_estado" => $id_estado, 
+            "id_usuario" => $id_usuario, 
+            "fecha" => $fecha, 
+            "hora" => $hora, 
+            "n_comensales" => $n_comensales
+        ];
+
+        if ($newId = $mRes->insertarRegistro($data))
+        {
+            $mUser = new M_Usuarios();
+            $mEstados = new M_Estados();
+
+            $data["email"] = $mUser->obtenerRegistros(["id_usuario" => $data["id_usuario"]])["email"];
+            $data["estado"] = $mEstados->obtenerRegistros(["id_estado" => $data["id_estado"]])["descripcion"];
+            return json_encode($data);
+        }
+    }
+
+    /**
+     * Método ACTUALIZAR
+     */
+
+    public function update()
+    {
+        $mRes = new M_Reservas_Mesa();
+
+        $id_reserva_mesa = $this->request->getPost("id_reserva_mesa");
+        $id_mesa = $this->request->getPost("id_mesa");
+        $id_estado = $this->request->getPost("id_estado");
+        $id_usuario = $this->request->getPost("id_usuario");
+        $fecha = $this->request->getPost("fecha");
+        $hora = $this->request->getPost("hora");
+        $n_comensales = $this->request->getPost("n_comensales");
+
+        if (empty($id_mesa))
+            $id_mesa = null;
+
+        if (!$this->validate($this->rules)) {
+            // La validación falló, devuelvo los mensajes de error
+            $errors = $this->validator->getErrors();
+            return json_encode(['error' => $errors]);
+        }
+
+        $data = [
+            "id_mesa" => $id_mesa, 
+            "id_estado" => $id_estado, 
+            "id_usuario" => $id_usuario, 
+            "fecha" => $fecha, 
+            "hora" => $hora, 
+            "n_comensales" => $n_comensales
+        ];
+
+        if ($mRes->updateRegistro($id_reserva_mesa, $data))
+        {
+            $mUser = new M_Usuarios();
+            $mEstados = new M_Estados();
+
+            $data["email"] = $mUser->obtenerRegistros(["id_usuario" => $data["id_usuario"]])["email"];
+            $data["estado"] = $mEstados->obtenerRegistros(["id_estado" => $data["id_estado"]])["descripcion"];
+            return json_encode($data);
+        }
+    }
+
+    /**
+     * Método ELIMINAR
+     */
+
+    public function delete()
+    {
+        $mRes = new M_Reservas_Mesa();
+
+        $id_reserva_mesa = $this->request->getPost("id_reserva_mesa");
+
+        if ($mRes->deleteRegistro($id_reserva_mesa))
+            return json_encode(["data" => "success"]);
     }
 }

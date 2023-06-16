@@ -10,11 +10,11 @@
                 </div>
                 <div class="card-body">
                     <div class="container">
-                        <form class="col-xl-12">
+                        <form action="<?=base_url('admin/crud/reservas-mesa')?>" class="col-xl-12">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="fecha" class="form-label">Fecha</label>
-                                    <input type="date" class="form-control" id="fecha">
+                                    <input type="date" class="form-control" id="fecha" name="fecha">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="estados" class="form-label">Estado</label>
@@ -92,7 +92,7 @@
                             <tr data-index="<?=$reserva_mesa["id_reserva_mesa"]?>">
                                 <td><?=$reserva_mesa["id_mesa"]?></td>
                                 <td data-value="<?=$reserva_mesa["id_estado"]?>"><?=$reserva_mesa["estado"]?></td>
-                                <td><?=$reserva_mesa["email"]?></td>
+                                <td data-value="<?=$reserva_mesa["id_usuario"]?>"><?=$reserva_mesa["email"]?></td>
                                 <td><?=$reserva_mesa["fecha"]?></td>
                                 <td><?=$reserva_mesa["hora"]?></td>
                                 <td><?=$reserva_mesa["n_comensales"]?></td>
@@ -124,7 +124,7 @@
 </div>
 
 <script>
-    $("#tabla-reservas-mesa").DataTable({
+    var table = $("#tabla-reservas-mesa").DataTable({
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
         },

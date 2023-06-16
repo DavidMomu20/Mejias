@@ -33,6 +33,11 @@ $(function () {
         compruebaRol();
         abrirModal();
 
+        /**
+         * Se habilitará el botón de modificar cuando se cambie los datos de
+         * algún input/select del modal
+         */
+
         $(".input-modal").change(function() {
 
             $("#btn-modificar").removeAttr("disabled");
@@ -79,7 +84,7 @@ $(function () {
                     tr.children("td").eq(4).text(response.telefono);
                     tr.children("td").eq(5).html(puntos);
 
-                    abrirToast(response.data, "Puedes ver las modificaciones aplicadas en la tabla");
+                    abrirToast("Usuario Modificado con Éxito", "Puedes ver las modificaciones aplicadas en la tabla");
                     cerrarModal();
                 }
             })

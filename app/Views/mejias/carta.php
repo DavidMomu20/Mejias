@@ -1,7 +1,7 @@
 <section id="carta" class="carta">
-    <div class="container" data-aos="fade-up">
+    <div class="container">
 
-    <div class="section-header">
+    <div class="section-header" data-aos="fade-down">
         <h2>
             <?php echo lang('Translate.our-carta'); ?>
         </h2>

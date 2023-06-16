@@ -14,11 +14,26 @@ class M_Reservas_Mesa extends M_base {
      * En esta función se hará los filtros del crud
      */
 
-    public function dameReservasMesa()
+    public function dameReservasMesa(?array $datos = null)
     {
         $reservas = $this->select("reservas_mesa.*, estados.descripcion AS estado, usuarios.email")
             ->join("estados", "reservas_mesa.id_estado = estados.id_estado")
             ->join("usuarios", "reservas_mesa.id_usuario = usuarios.id_usuario");
+
+        if (!is_null($datos))
+        {
+            if (!empty($datos["fecha"]))
+                $reservas->where("reservas_mesa.fecha >=", $datos["fecha"]);
+
+            if (!empty($datos["estado"]))
+                $reservas->where("reservas_mesa.id_estado", $datos["estado"]);
+
+            if (!empty($datos["nComensales"]))
+                $reservas->where("reservas_mesa.n_comensales", $datos["nComensales"]);
+
+            if (!empty($datos["usuario"]))
+                $reservas->where("reservas_mesa.id_usuario", $datos["usuario"]);
+        }
 
         return $reservas;
     }

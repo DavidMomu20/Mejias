@@ -58,7 +58,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <!-- <img src="base_url('assets/img/logo-white.png')?>" alt="LogoBlanco"> -->
-        <a class="navbar-brand ps-3" href="<?=base_url(" admin")?>">Mejías</a>
+        <a class="navbar-brand ps-3" href="<?=base_url("admin")?>">Mejías</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -106,12 +106,12 @@
                         <div class="collapse" id="collapseCruds" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?=base_url(" admin/crud/reservas-mesa")?>">Reservas Mesas</a>
-                                <a class="nav-link" href="<?=base_url(" admin")?>">Reservas Habitaciones</a>
-                                <a class="nav-link" href="<?=base_url(" admin")?>">Comandas</a>
-                                <a class="nav-link" href="<?=base_url(" admin")?>">Habitaciones</a>
-                                <a class="nav-link" href="<?=base_url(" admin")?>">Platos</a>
-                                <a class="nav-link" href="<?=base_url(" admin/crud/usuarios")?>">Usuarios</a>
+                                <a class="nav-link" href="<?=base_url("admin/crud/reservas-mesa")?>">Reservas Mesas</a>
+                                <a class="nav-link" href="<?=base_url("admin")?>">Reservas Habitaciones</a>
+                                <a class="nav-link" href="<?=base_url("admin")?>">Comandas</a>
+                                <a class="nav-link" href="<?=base_url("admin")?>">Habitaciones</a>
+                                <a class="nav-link" href="<?=base_url("admin")?>">Platos</a>
+                                <a class="nav-link" href="<?=base_url("admin/crud/usuarios")?>">Usuarios</a>
                             </nav>
                         </div>
                         <?php
