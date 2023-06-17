@@ -55,7 +55,7 @@ $(function() {
                     id_comanda: id, 
                     id_mesa: $("#m-mesa").val(), 
                     fecha: $("#m-fecha").val(), 
-                    hora: $("#m-hora").val(),
+                    hora: $("#m-hora").val()
                 }, 
                 success: function(response) {
 
