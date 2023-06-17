@@ -50,6 +50,7 @@ $(function () {
 
         $("#btn-modificar").click(function() {
 
+            console.log("A modificar");
             let puntos = $("#puntos-modal").is(":disabled") ? null : $("#puntos-modal").val();
             let btn = $(this);
 
@@ -94,7 +95,7 @@ $(function () {
          * Mostrar html para eliminar el registro
          */
 
-        $("#btn-muestra-eliminar").click(function() {
+        $("#btn-muestra-eliminar").one("click", function() {
 
             $(".modal-body").html(eliminar);
         })
@@ -103,8 +104,9 @@ $(function () {
          * Eliminar de forma lógica el registro seleccionado
          */
 
-        $(".modal-body").on("click", "#btn-a-eliminar", function() {
+        $(".modal-body").one("click", "#btn-a-eliminar", function() {
 
+            console.log("A eliminar");
             $(this).prepend(spinner);
             $(this).attr("disabled", "true");
             $(".modal [aria-label=Close]").off("click");

@@ -85,6 +85,11 @@ $routes->post('admin/crud/modificar-reserva-hab', 'ReservasHabitacion::update');
 $routes->post('admin/crud/eliminar-reserva-hab', 'ReservasHabitacion::delete');
 $routes->post('admin/crud/crear-reserva-hab', 'ReservasHabitacion::create');
 
+$routes->get('admin/crud/comandas', 'Comandas::crud');
+$routes->post('admin/crud/modificar-comanda', 'Comandas::update');
+$routes->post('admin/crud/eliminar-comanda', 'Comandas::delete');
+$routes->post('admin/crud/crear-comanda', 'Comandas::create');
+
 $routes->get('admin/crud/usuarios', 'Usuarios::crud');
 $routes->get('admin/crud/filtrar-usuarios', 'Usuarios::filtrar');
 $routes->post('admin/crud/modificar-usuario', 'Usuarios::update');

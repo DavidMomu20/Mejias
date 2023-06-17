@@ -95,7 +95,7 @@ $(function() {
          * Mostrar html para eliminar el registro
          */
 
-        $("#btn-muestra-eliminar").click(function() {
+        $("#btn-muestra-eliminar").one("click", function() {
 
             $(".modal-body").html(eliminar);
         })
@@ -104,7 +104,7 @@ $(function() {
          * Eliminar de forma física el registro seleccionado
          */
 
-        $(".modal-body").on("click", "#btn-a-eliminar", function() {
+        $(".modal-body").one("click", "#btn-a-eliminar", function() {
 
             $(this).prepend(spinner);
             $(this).attr("disabled", "true");

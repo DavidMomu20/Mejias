@@ -89,7 +89,7 @@ $(function () {
          * Mostrar html para eliminar el registro
          */
 
-        $("#btn-muestra-eliminar").click(function() {
+        $("#btn-muestra-eliminar").one("click", function() {
 
             $(".modal-body").html(eliminar);
         })
@@ -98,7 +98,7 @@ $(function () {
          * Eliminar de forma física el registro seleccionado
          */
 
-        $(".modal-body").on("click", "#btn-a-eliminar", function() {
+        $(".modal-body").one("click", "#btn-a-eliminar", function() {
 
             $(this).prepend(spinner);
             $(this).attr("disabled", "true");
@@ -217,7 +217,7 @@ function formReservaMesa() {
     col1_1.append($('<label>').attr('for', 'm-mesa').addClass('form-label').text('Mesa Asignada'));
     col1_1.append($('<input>').attr('type', 'number').attr('name', 'm-mesa').attr('id', 'm-mesa').addClass('form-control input-modal modal-form'));
     col1_2.append($('<label>').attr('for', 'm-estado').addClass('form-label').text('Estado'));
-    col1_2.append($('<select>').attr('type', 'text').attr('name', 'm-estado').attr('id', 'm-estado').addClass('form-control input-modal modal-form').html($("#estados").html()));
+    col1_2.append($('<select>').attr('name', 'm-estado').attr('id', 'm-estado').addClass('form-control input-modal modal-form').html($("#estados").html()));
 
     row1.append(col1_1);
     row1.append(col1_2);

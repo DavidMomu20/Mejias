@@ -108,8 +108,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="<?=base_url("admin/crud/reservas-mesa")?>">Reservas Mesas</a>
                                 <a class="nav-link" href="<?=base_url("admin/crud/reservas-hab")?>">Reservas Habitaciones</a>
-                                <a class="nav-link" href="<?=base_url("admin")?>">Comandas</a>
-                                <a class="nav-link" href="<?=base_url("admin")?>">Habitaciones</a>
+                                <a class="nav-link" href="<?=base_url("admin/crud/comandas")?>">Comandas</a>
                                 <a class="nav-link" href="<?=base_url("admin")?>">Platos</a>
                                 <a class="nav-link" href="<?=base_url("admin/crud/usuarios")?>">Usuarios</a>
                             </nav>

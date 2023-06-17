@@ -66,20 +66,6 @@ class M_Reservas_Mesa extends M_base {
      }
 
     /**
-     * Método para obtener todas aquellas mesas cuyas reservas de mesa estén confirmdas para el día de hoy
-     */
-
-    public function dameMesasDeHoy()
-    {   
-        $mesas = $this->select("id_mesa")
-                        ->where("id_estado", 1)
-                        ->where("fecha", date('Y-m-d'))
-                        ->findAll();
-
-        return $mesas;
-    }
-
-    /**
      * Método para obtener aquellas reservas de mesa cuya fecha coincidan con la pasada por parámetro
      */
 

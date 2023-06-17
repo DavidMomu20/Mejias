@@ -312,6 +312,15 @@
   border-color: #44205b;
 }
 
+.card-tabla-crud-comandas .card-header, .filtros-comandas .card-header {
+  background-color: #349e6e;
+  color: white;
+}
+
+.card-tabla-crud-comandas, .filtros-comandas {
+  border-color: #349e6e;
+}
+
 .form-label {
   font-weight: bold;
   font-style: italic;
