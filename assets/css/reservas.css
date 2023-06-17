@@ -321,6 +321,19 @@
   border-color: #349e6e;
 }
 
+.card-tabla-crud-platos .card-header, .filtros-platos .card-header {
+  background-color: #e1e80c;
+  color: rgb(38, 38, 38);
+}
+
+.card-tabla-crud-platos, .filtros-platos {
+  border-color: #e1e80c;
+}
+
+#tabla-platos img {
+  width: 15%;
+}
+
 .form-label {
   font-weight: bold;
   font-style: italic;

@@ -90,6 +90,11 @@ $routes->post('admin/crud/modificar-comanda', 'Comandas::update');
 $routes->post('admin/crud/eliminar-comanda', 'Comandas::delete');
 $routes->post('admin/crud/crear-comanda', 'Comandas::create');
 
+$routes->get('admin/crud/platos', 'Platos::crud');
+$routes->post('admin/crud/modificar-plato', 'Platos::update');
+$routes->post('admin/crud/eliminar-plato', 'Platos::delete');
+$routes->post('admin/crud/crear-plato', 'Platos::create');
+
 $routes->get('admin/crud/usuarios', 'Usuarios::crud');
 $routes->get('admin/crud/filtrar-usuarios', 'Usuarios::filtrar');
 $routes->post('admin/crud/modificar-usuario', 'Usuarios::update');

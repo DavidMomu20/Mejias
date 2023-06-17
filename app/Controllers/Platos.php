@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 
 use App\Models\M_Platos;
+use App\Models\M_Categorias;
 use App\Models\M_Alergenos;
 
 class Platos extends BaseController {
@@ -31,6 +32,27 @@ class Platos extends BaseController {
         $id_cat = $this->request->getPost("id");
 
         return json_encode(["platos" => $mPlatos->obtenerRegistros(["id_categoria" => $id_cat])->findAll()]);
+    }
+
+    /**
+     * ====================== MÉTODOS CRUD ======================
+     */
+
+    /**
+     * Método para acceder al crud
+     */
+
+    public function crud()
+    {
+        $mPlatos = new M_Platos();
+        $mCat = new M_Categorias();
+
+        $data["platos"] = $mPlatos->damePlatos()->paginate(5);
+        $data["categorias"] = $mCat->obtenerRegistros()->findAll();
+        $data["pager"] = $mPlatos->pager;
+        $data["cuerpo"] = view("admin/cruds/platos", $data);
+
+        return view('template/admin', $data);
     }
 
 }
