@@ -331,7 +331,15 @@
 }
 
 #tabla-platos img {
-  width: 15%;
+  width: 75%;
+}
+
+#tabla-platos tbody td:first-of-type {
+  width: 10%;
+}
+
+.plato-modal img {
+  width: 80%;
 }
 
 .form-label {
