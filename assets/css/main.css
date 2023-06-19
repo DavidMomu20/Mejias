@@ -586,6 +586,7 @@ section {
 --------------------------------------------------------------*/
 .about .about-img {
   min-height: 500px;
+  background-position: center;
 }
 
 .about h3 {

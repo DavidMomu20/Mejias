@@ -169,7 +169,7 @@
 
                 <div class="row gy-4">
                     <div class="col-lg-7 position-relative about-img"
-                        style="background-image: url(<?php echo base_url('assets/img/weAreMejias.jpg'); ?>) ;"
+                        style="background-image: url(<?php echo base_url('assets/img/placa.jpeg'); ?>) ;"
                         data-aos="fade-up" data-aos-delay="150">
                         <div class="call-us position-absolute">
                             <h4>
