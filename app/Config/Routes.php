@@ -32,13 +32,13 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get("micuenta", "Home::miCuenta");
+$routes->get("micuenta", "Home::miCuenta", ['filter' => 'auth']);
 
 $routes->get('/lang/{locale}', 'Language::index');
 
-$routes->get('reservar/mesa', 'Home::reservarMesa');
+$routes->get('reservar/mesa', 'Home::reservarMesa', ['filter' => 'auth']);
 $routes->get('reservar/habitacion/(:num)', 'Home::reservarHab/$1');
-$routes->get('habitaciones', 'Home::verHabitaciones');
+$routes->get('habitaciones', 'Home::verHabitaciones', ['filter' => 'auth']);
 
 $routes->get('carta/(:num)', 'Platos::verCarta/$1');
 $routes->post('admin/damePlatos', 'Platos::platosPorCategoria');
@@ -65,37 +65,37 @@ $routes->post('reservarHab', 'ReservasHabitacion::realizar');
 $routes->post('admin/confirmarReservaHab', 'ReservasHabitacion::confirmar');
 $routes->post('admin/rechazarReservaHab', 'ReservasHabitacion::rechazar');
 
-$routes->get('admin', 'Admin::index');
-$routes->get('admin/micuenta', "Admin::miCuenta");
-$routes->get('admin/comandas', 'Admin::comandas');
-$routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes');
-$routes->get('admin/reservas-habs-pendientes', 'Admin::reservasHabPendientes');
-$routes->get('admin/reservas-mesa-confirmadas', 'Admin::reservasMesaConfirmadasHoy');
-$routes->get('admin/reservas-habs-confirmadas', 'Admin::reservasHabConfirmadasHoy');
+$routes->get('admin', 'Admin::index', ['filter' => 'auth']);
+$routes->get('admin/micuenta', "Admin::miCuenta", ['filter' => 'auth']);
+$routes->get('admin/comandas', 'Admin::comandas', ['filter' => 'auth']);
+$routes->get('admin/reservas-mesa-pendientes', 'Admin::reservasMesaPendientes', ['filter' => 'auth']);
+$routes->get('admin/reservas-habs-pendientes', 'Admin::reservasHabPendientes', ['filter' => 'auth']);
+$routes->get('admin/reservas-mesa-confirmadas', 'Admin::reservasMesaConfirmadasHoy', ['filter' => 'auth']);
+$routes->get('admin/reservas-habs-confirmadas', 'Admin::reservasHabConfirmadasHoy', ['filter' => 'auth']);
 
 // ---- CRUD ----
 
-$routes->get('admin/crud/reservas-mesa', 'ReservasMesa::crud');
+$routes->get('admin/crud/reservas-mesa', 'ReservasMesa::crud', ['filter' => 'auth']);
 $routes->post('admin/crud/modificar-reserva-mesa', 'ReservasMesa::update');
 $routes->post('admin/crud/eliminar-reserva-mesa', 'ReservasMesa::delete');
 $routes->post('admin/crud/crear-reserva-mesa', 'ReservasMesa::create');
 
-$routes->get('admin/crud/reservas-hab', 'ReservasHabitacion::crud');
+$routes->get('admin/crud/reservas-hab', 'ReservasHabitacion::crud', ['filter' => 'auth']);
 $routes->post('admin/crud/modificar-reserva-hab', 'ReservasHabitacion::update');
 $routes->post('admin/crud/eliminar-reserva-hab', 'ReservasHabitacion::delete');
 $routes->post('admin/crud/crear-reserva-hab', 'ReservasHabitacion::create');
 
-$routes->get('admin/crud/comandas', 'Comandas::crud');
+$routes->get('admin/crud/comandas', 'Comandas::crud', ['filter' => 'auth']);
 $routes->post('admin/crud/modificar-comanda', 'Comandas::update');
 $routes->post('admin/crud/eliminar-comanda', 'Comandas::delete');
 $routes->post('admin/crud/crear-comanda', 'Comandas::create');
 
-$routes->get('admin/crud/platos', 'Platos::crud');
+$routes->get('admin/crud/platos', 'Platos::crud', ['filter' => 'auth']);
 $routes->post('admin/crud/modificar-plato', 'Platos::update');
 $routes->post('admin/crud/eliminar-plato', 'Platos::delete');
 $routes->post('admin/crud/crear-plato', 'Platos::create');
 
-$routes->get('admin/crud/usuarios', 'Usuarios::crud');
+$routes->get('admin/crud/usuarios', 'Usuarios::crud', ['filter' => 'auth']);
 $routes->get('admin/crud/filtrar-usuarios', 'Usuarios::filtrar');
 $routes->post('admin/crud/modificar-usuario', 'Usuarios::update');
 $routes->post('admin/crud/eliminar-usuario', 'Usuarios::delete');

@@ -181,24 +181,18 @@
                     <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
                         <div class="content ps-0 ps-lg-5">
                             <p class="fst-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore
-                                magna aliqua.
+                                <?php echo lang('Textos.t1'); ?>
                             </p>
                             <ul>
-                                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat.</li>
-                                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate
-                                    velit.</li>
-                                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
-                                    storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                <li><i class="bi bi-check2-all"></i>
+                                    <?php echo lang('Textos.t3'); ?></li>
+                                <li><i class="bi bi-check2-all"></i>
+                                    <?php echo lang('Textos.t4'); ?></li>
+                                <li><i class="bi bi-check2-all"></i>
+                                    <?php echo lang('Textos.t5'); ?></li>
                             </ul>
                             <p>
-                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident
+                                <?php echo lang('Textos.t2'); ?>
                             </p>
 
                             <div class="position-relative mt-4">
@@ -224,16 +218,8 @@
                                 <?php echo lang('Translate.why-mejias'); ?>
                             </h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
-                                optio ad corporis.
+                                <?php echo lang('Textos.t6'); ?>
                             </p>
-                            <div class="text-center">
-                                <a href="#" class="more-btn">
-                                    <?php echo lang('Translate.saber-mas'); ?> <i class="bx bx-chevron-right"></i>
-                                </a>
-                            </div>
                         </div>
                     </div><!-- End Why Box -->
 
@@ -246,8 +232,7 @@
                                     <h4>
                                         <?php echo lang('Translate.comida-alta'); ?>
                                     </h4>
-                                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                        aliquip</p>
+                                    <p><?php echo lang('Textos.t7'); ?></p>
                                 </div>
                             </div><!-- End Icon Box -->
 
@@ -257,8 +242,7 @@
                                     <h4>
                                         <?php echo lang('Translate.excelente-cliente'); ?>
                                     </h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt</p>
+                                    <p><?php echo lang('Textos.t8'); ?></p>
                                 </div>
                             </div><!-- End Icon Box -->
 
@@ -268,7 +252,7 @@
                                     <h4>
                                         <?php echo lang('Translate.ambiente'); ?>
                                     </h4>
-                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere
+                                    <p><?php echo lang('Textos.t9'); ?>
                                     </p>
                                 </div>
                             </div><!-- End Icon Box -->
@@ -475,10 +459,6 @@
                                 <?php echo lang('Translate.bautizos'); ?>
                             </h3>
                             <div class="price align-self-start">99€</div>
-                            <p class="description">
-                                Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis
-                                facere. Enim facilis veritatis id est rem repudiandae nulla expedita quas.
-                            </p>
                         </div><!-- End Event item -->
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
@@ -487,10 +467,6 @@
                                 <?php echo lang('Translate.comuniones'); ?>
                             </h3>
                             <div class="price align-self-start">289€</div>
-                            <p class="description">
-                                In delectus sint qui et enim. Et ab repudiandae inventore quaerat doloribus. Facere nemo
-                                vero est ut dolores ea assumenda et. Delectus saepe accusamus aspernatur.
-                            </p>
                         </div><!-- End Event item -->
 
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
@@ -499,10 +475,6 @@
                                 <?php echo lang('Translate.comidas-empresa'); ?>
                             </h3>
                             <div class="price align-self-start">499€</div>
-                            <p class="description">
-                                Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam.
-                                Esse quisquam ducimus officia ipsum ut quibusdam maxime. Non enim perspiciatis.
-                            </p>
                         </div><!-- End Event item -->
 
                     </div>
@@ -536,8 +508,7 @@
                                 <h4>
                                     <?php echo lang('Translate.camas-comodas'); ?>
                                 </h4>
-                                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
-                                    Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+                                <p><?php echo lang('Textos.t10'); ?></p>
                             </div>
                         </div>
                     </div><!-- End Chefs Member -->
@@ -551,8 +522,7 @@
                                 <h4>
                                     <?php echo lang('Translate.baños'); ?>
                                 </h4>
-                                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima
-                                    suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+                                <p><?php echo lang('Textos.t11'); ?></p>
                             </div>
                         </div>
                     </div><!-- End Chefs Member -->
@@ -566,8 +536,7 @@
                                 <h4>
                                     <?php echo lang('Translate.salas-estar'); ?>
                                 </h4>
-                                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt.
-                                    Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
+                                <p><?php echo lang('Textos.t12'); ?></p>
                             </div>
                         </div>
                     </div><!-- End Chefs Member -->
