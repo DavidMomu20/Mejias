@@ -1,3 +1,6 @@
+var fechaSelected = false;
+var horaSelected = false;
+
 $(function() {
     
     new Calendario();
@@ -22,7 +25,23 @@ $(function() {
         if (valorActual > valorMinimo)
             $("#n_comensales").val(valorActual - 1);
     });
+
+    $(".calendar").on("click", ".calendar-days .calendar-day:not(.dia-inactivo)", function() {
+        
+        if ($(this).text().trim().length > 0) {
+          
+            fechaSelected = true;
+            compruebaCampos();
+        }
+    });
+
+    $(".horas button").click(function() {
+
+        horaSelected = true;
+        compruebaCampos();
+    })
 })
+
 
 $("button").click(function(e) {
 
@@ -63,15 +82,22 @@ $("#bReservarMesa").click(function() {
             }, 
             success: function(response) {
                 
-                btn.find(".spinner-border").remove();
-                btn.removeAttr("disabled");
-
-                $(".toast-header strong").text("Reserva de mesa realizada con éxito");
-                $(".toast-body").text("Se le enviará un correo con la reserva confirmada o rechazada. Si lo desea, puede realizar otra reserva.");
-
-                $("#liveToast").toast('show');
+                window.location.href = response.data;
             }
         })
     }
 
 })
+
+/**
+ * Función para comprobar que se ha seleccionado una fecha y una hora.
+ * Si se da este, se habilitará el botón para realizar la reserva
+ */
+
+function compruebaCampos() {
+
+    if (fechaSelected && horaSelected)
+       $("#bReservarMesa").removeAttr("disabled");
+    else
+        $("#bReservarMesa").attr("disabled", "true"); 
+}

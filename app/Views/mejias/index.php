@@ -113,8 +113,16 @@
                     <h2 data-aos="fade-up">
                         <?php echo lang("Translate.titulo"); ?>
                     </h2>
-                    <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea
-                        consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
+                    <p data-aos="fade-up" data-aos-delay="100">
+                        <?php echo lang("Translate.subtitulo") ?>
+                    </p>
+                    <?php if (session()->getFlashData('reserva')): ?>
+                    <div class="row">
+                        <div class="alert alert-success" data-aos="fade-right" data-aos-delay="800">
+                            <strong><?= session()->getFlashData('reserva') ?></strong>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                     <?php if (session()->get('logged_in')): ?>
                     <?php if (session()->get('permisos_user')["perm7"] == 1): ?>
                     <div class="d-flex div-opReservas" data-aos="fade-up" data-aos-delay="200"

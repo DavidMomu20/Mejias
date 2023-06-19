@@ -7,7 +7,6 @@ use App\Models\M_Reservas_Mesa;
 use App\Models\M_Estados;
 use App\Models\M_Mesas;
 use App\Models\M_Usuarios;
-use App\Libraries\TableLib;
 
 class ReservasMesa extends BaseController {
 
@@ -54,7 +53,14 @@ class ReservasMesa extends BaseController {
         ];
         
         if ($id = $mRes->insertarRegistro($datos))
-            echo json_encode(["data" => "success"]);
+        {
+            $mUser = new M_Usuarios();
+
+            session()->setFlashData('reserva', "Su reserva de mesa se ha realizado correctamente. Le enviaremos un correo con la confirmación o rechazo de esta.");
+
+            if ($mUser->sumaPuntos($id_user))
+                echo json_encode(["data" => base_url()]);
+        }
     }
 
     /**

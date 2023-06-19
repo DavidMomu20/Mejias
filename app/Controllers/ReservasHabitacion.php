@@ -83,11 +83,13 @@ class ReservasHabitacion extends BaseController{
 
         if ($id = $mRes->insertarRegistro($datos)) {
 
+            session()->setFlashData('reserva', "Su reserva de habitación se ha realizado correctamente. Le enviaremos un correo con la confirmación o rechazo de esta.");
+
             $mUser = new M_Usuarios();
             $user = $mUser->buscaUsuarioById($id_user);
 
             if ($mUser->restaPuntos($id_user, $puntos))
-                echo json_encode(["data" => "Reserva de habitación Realizada con éxito"]);
+                echo json_encode(["data" => base_url()]);
         }
     }
 

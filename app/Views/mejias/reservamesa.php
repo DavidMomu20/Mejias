@@ -122,7 +122,7 @@
                 </div>
                 <div class="row" style="margin-top: 3rem;">
                     <div class="col text-center">
-                        <button type="submit" id="bReservarMesa" class="btn-book-a-table" style="font-size: 1.3rem;">
+                        <button disabled type="submit" id="bReservarMesa" class="btn-book-a-table" style="font-size: 1.3rem;">
                             Reservar
                         </button>
                     </div>

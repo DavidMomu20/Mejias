@@ -46,10 +46,7 @@ $(function() {
             }, 
             success: function(response) {
 
-                btn.find(".spinner-border").remove();
-                btn.removeAttr("disabled");
-
-                console.log(response.data);
+                window.location.href = response.data;
             }
         })
     })
