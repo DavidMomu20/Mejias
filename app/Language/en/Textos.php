@@ -23,5 +23,12 @@ return [
     "t11" => "With all the necessary services to meet the needs of our guests, maintaining a high
                 level of cleanliness.",
     "t12" => "Spacious and cozy spaces where guests can relax, decorated in a pleasant style and
-                furnished with comfortable furniture."
+                furnished with comfortable furniture.", 
+    "t13" => "At just 20 years old, he stepped behind the bar of the bar that his father had just bought,
+                with the sole intention of seeking a future for the family. Together with his parents
+                and sister, they began their journey.",
+    "t14" => "But it was after his wedding and together with his wife Lola, that they dedicated every
+                minute of their lives to work tirelessly and be able to offer everything that today
+                is MEJÍAS.",
+    "t15" => "Always in the memory of your family and employees."
 ];

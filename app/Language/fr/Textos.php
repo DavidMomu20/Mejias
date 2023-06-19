@@ -27,5 +27,12 @@ return [
     "t11" => "Avec tous les services nécessaires pour répondre aux besoins de nos clients, en maintenant
                 un haut niveau de propreté.",
     "t12" => "Des espaces spacieux et confortables où les clients peuvent se détendre, décorés dans un
-                style agréable et meublés avec des meubles confortables."
+                style agréable et meublés avec des meubles confortables.", 
+    "t13" => "À seulement 20 ans, il s'est installé derrière le bar du bar que son père venait d'acheter,
+                dans le seul but de chercher un avenir pour la famille. Avec ses parents et sa sœur,
+                ils ont commencé leur parcours.",
+    "t14" => "Mais c'est à la suite de son mariage et avec sa femme Lola qu'ils ont consacré chaque minute
+                de leur vie à travailler sans relâche pour pouvoir offrir tout ce qui est aujourd'hui
+                MEJÍAS.",
+    "t15" => "Toujours dans la mémoire de votre famille et de vos employés."
 ];

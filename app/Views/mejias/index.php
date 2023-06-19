@@ -334,7 +334,7 @@
                             <img src="<?=base_url('assets/img/antonio.png')?>" alt="Antonio Mejías Rubio">
                         </div>
                         <div class="fecha-antonio d-flex justify-content-center text-center">
-                            <span>26/12/1956 - 30/12/2022</span>
+                            <span>26/12/1957 - 30/12/2022</span>
                         </div>
                     </div>
                     <div class="col-xl-6 d-flex flex-column gap-1">
@@ -345,18 +345,9 @@
                             <p>Antonio Mejías Rubio</span></p>
                         </div>
                         <div class="col-md-12">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
-                                beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi!
-                                Earum
-                                cumque at eos dolores non.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
-                                beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi!
-                                Earum
-                                cumque at eos dolores non.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur praesentium
-                                beatae maiores corporis quo voluptate suscipit odit animi, harum nesciunt iusto quasi!
-                                Earum
-                                cumque at eos dolores non.</p>
+                            <p><?php echo lang('Textos.t13'); ?></p>
+                            <p><?php echo lang('Textos.t14'); ?></p>
+                            <p><?php echo lang('Textos.t15'); ?></p>
                             <span class="firma text-md-right">Antonio.</span>
                         </div>
                     </div>

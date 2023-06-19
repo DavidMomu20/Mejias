@@ -28,5 +28,11 @@ return [
     "t11" => "Con todos los servicios necesarios para satisfacer las necesidades de nuestros huéspedes,
                 manteniendo un alto nivel de limpieza", 
     "t12" => "Espacios amplios y acogedores donde los huéspedes pueden relajarse, decoradas con un estilo
-                agradable y contando con mobiliario confortable"
+                agradable y contando con mobiliario confortable", 
+    "t13" => "Con tan solo 20 años se metió detrás de la barra del bar que su padre acababa de comprar, 
+                con la única intención de buscar un porvenir para la familia. Junto a sus padres y hermana
+                empezaron su andadura.", 
+    "t14" => "Pero fue a raíz de su boda y junto a su mujer Lola, cuando dedicaron cada minuto de su vida
+                a trabajar sin descanso y poder ofrecer todo lo que a día de hoy es el MEJÍAS.", 
+    "t15" => "Siempre en la memoria de tu familia y empleados."
 ];
