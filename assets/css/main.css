@@ -1544,6 +1544,16 @@ a.btn-login, a.btn-register {
   font-size: 1.2rem;
 }
 
+label[for="n_comensales"] {
+  font-family: var(--font-secondary);
+  color: white;
+}
+
+input[name=n_comensales] {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
 .comensales .inp-comensales {
   margin-bottom: 3%;
 }

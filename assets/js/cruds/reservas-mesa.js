@@ -175,6 +175,7 @@ $(function () {
             success: function(response) {
 
                 $(".modal [aria-label=Close]").on("click", cerrarModal);
+                cerrarModal();
 
                 // Añadir nueva fila
                 let newFila = table.row.add([
@@ -187,6 +188,7 @@ $(function () {
                 ]).draw().node();
 
                 $(newFila).attr("data-index", response.id_reserva_mesa);
+                abrirToast("Reserva creada con Éxito", "Se ha introducido el nuevo registro en la tabla");
             }
         })
     })

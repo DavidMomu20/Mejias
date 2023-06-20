@@ -90,7 +90,7 @@
                         <tbody>
                             <?php foreach($reservas_mesa as $reserva_mesa): ?>
                             <tr data-index="<?=$reserva_mesa["id_reserva_mesa"]?>">
-                                <td><?=$reserva_mesa["id_mesa"]?></td>
+                                <td><?php echo (isset($reserva_mesa["id_mesa"])) ? $reserva_mesa["id_mesa"] : "<i>Sin asignar</i>"; ?></td>
                                 <td data-value="<?=$reserva_mesa["id_estado"]?>"><?=$reserva_mesa["estado"]?></td>
                                 <td data-value="<?=$reserva_mesa["id_usuario"]?>"><?=$reserva_mesa["email"]?></td>
                                 <td><?=$reserva_mesa["fecha"]?></td>

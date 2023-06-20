@@ -18,7 +18,7 @@ class Register extends BaseController {
         $email = $this->request->getPost('email_register');
         $password = $this->request->getPost('password_register');
 
-        if (!$mUser->obtenerRegistros(["email", $email])->first())
+        if (!$mUser->obtenerRegistros(["email" => $email])->first())
         {
             $datos = [
                 "id_rol" => $rol,
@@ -32,6 +32,7 @@ class Register extends BaseController {
             if ($id = $mUser->insertaUsuario($datos)) {
     
                 $permisos = $mUser->damePermisosUser($id);
+                $mUser->updateRegistro($id, ["puntos" => 0]);
     
                 $session = session();
                 $session->set('logged_in', true);

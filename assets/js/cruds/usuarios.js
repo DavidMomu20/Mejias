@@ -177,6 +177,7 @@ $(function () {
             success: function(response) {
 
                 $(".modal [aria-label=Close]").on("click", cerrarModal);
+                cerrarModal();
 
                 let puntos = response.puntos;
                 if (puntos === null);
@@ -184,7 +185,7 @@ $(function () {
 
                 // Añadir nueva fila
                 let newFila = table.row.add([
-                    '<td>' + response.nombre + '/td>',
+                    '<td>' + response.nombre + '</td>',
                     '<td>' + response.apellido + '</td>',
                     '<td data-value="' + response.id_rol + '">' + response.rol + '</td>',
                     '<td>' + response.email + '</td>',
@@ -194,6 +195,7 @@ $(function () {
                 ]).draw().node();
 
                 $(newFila).attr("data-index", response.id_usuario);
+                abrirToast("Usuario creado con Éxito", "Se ha introducido el nuevo registro en la tabla");
             }
         })
     })

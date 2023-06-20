@@ -72,6 +72,7 @@ $(function() {
     $(".cont-platos").on("click", "#b-crear-comanda", function() {
 
         $(".modal-body").html(loading);
+        $(".loading span").text("Cargando mesas...")
         
         let wrapper = $("<div>").html(comanda);
         precioTotal = 0;

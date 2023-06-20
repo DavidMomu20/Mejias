@@ -166,7 +166,7 @@ $(function() {
 
                 $(newFila).attr("data-index", response.id_comanda);
 
-                abrirToast("Comanda creado con Éxito", "Se ha introducido el nuevo registro en la tabla");
+                abrirToast("Comanda creada con Éxito", "Se ha introducido el nuevo registro en la tabla");
             }
         })
     })
