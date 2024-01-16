@@ -157,6 +157,11 @@ class M_base extends Model {
      public function deleteRegistro(int $id)
      {
         try {
+            // Verificar que el ID sea válido
+            if (!is_numeric($id) || $id <= 0) {
+                return false;
+            }
+
             return $this->delete($id);
 
         } catch (\Exception $e) {
